@@ -39,7 +39,7 @@ namespace Looker.Regions
         public static void Pomegranate_Update(On.Pomegranate.orig_Update orig, Pomegranate self, bool eu)
         {
             orig(self, eu);
-            if (CheckMechanics(self.room, "desolate", "WTDB") && CWTs.PomegranateCWT.TryGetData(self, out var data))
+            if (CheckMechanics(self?.room, "desolate", "WTDB") && CWTs.PomegranateCWT.TryGetData(self, out var data))
             {
                 if (data.cooldown > 0)
                 {
@@ -65,7 +65,7 @@ namespace Looker.Regions
                             data.cooldown--;
                             if (data.cooldown < -80)
                             {
-                                data.cooldown = (int)(80 * OptionsMenu.melonCooldown.Value);
+                                data.cooldown = (int)(60 * OptionsMenu.melonCooldown.Value);
                             }
                         }
                         return;

@@ -40,21 +40,13 @@ namespace Looker.Regions
             orig(self);
             if (self.room != null && CheckMechanics(self.room, "alley", "WSKB"))
             {
-                if (darknessStayStillTimer < 200)
+                if (retractDarkness)
                 {
-                    if (darknessProgress == 1)
-                    {
-                        darknessStayStillTimer++;
-                    }
-                    else darknessProgress = Math.Min(1f, darknessProgress + (0.0010f * OptionsMenu.darknessSpeed.Value * (OptionsMenu.resetDarkness.Value ? 2 : 1)));
+                    darknessProgress = Math.Max(0f, darknessProgress - (0.0075f * OptionsMenu.darknessSpeed.Value));
                 }
                 else
                 {
-                    if (darknessProgress == 0)
-                    {
-                        darknessStayStillTimer = 0;
-                    }
-                    else darknessProgress = Math.Max(0f, darknessProgress - (0.0025f * OptionsMenu.darknessSpeed.Value));
+                    darknessProgress = Math.Min(1f, darknessProgress + (0.0010f * OptionsMenu.darknessSpeed.Value * (OptionsMenu.resetDarkness.Value ? 2 : 1)));
                 }
                 self.sofBlackFade = darknessProgress;
                 self.effect_darkness = darknessProgress;

@@ -142,11 +142,12 @@ namespace Looker
                 }
                 if (data.darknessImmunity > 0)
                 {
+                    retractDarkness = true;
                     data.darknessImmunity--;
                 }
-                if (data.darknessImmunity > 0)
+                else
                 {
-                    darknessProgress = 0;
+                    retractDarkness = false;
                 }
                 if (darknessProgress > 0.8)
                 {
@@ -159,90 +160,6 @@ namespace Looker
                             self.Die();
                         }
                     }
-                }
-
-                self.watcherInstability = self.camoProgress;
-                if (data.rippleTimer > 1 && self.standingInWarpPointProtectionTime < 10)
-                {
-                    self.watcherInstability = (float)(data.rippleTimer) / (float)MaxRippleDuration();
-                    data.rippleTimer--;
-                    if (data.rippleTimer == 1)
-                    {
-                        self.Stun(12);
-                    }
-                }
-                self.watcherInstability /= 2;
-                self.WatcherInstabilityUpdate();
-                if (self.standingInWarpPointProtectionTime > 0)
-                {
-                    self.standingInWarpPointProtectionTime--;
-                }
-                if (data.startingRipple)
-                {
-                    if (self.startingCamoStateOnActivate == -1)
-                    {
-                        self.startingCamoStateOnActivate = (self.isCamo ? 1 : 0);
-                        self.ringsToSpiralsTarget = self.startingCamoStateOnActivate;
-                    }
-                    if (self.transitionRipple == null)
-                    {
-                        self.rippleAnimationJitterTimer = UnityEngine.Random.Range(0, 100);
-                        self.rippleAnimationIntensityTarget = 0f;
-                        self.transitionRipple = self.SpawnWatcherMechanicRipple();
-                        self.transitionRipple.Data.scale = self.GetTransitionRippleTargets(5f).Item1;
-                    }
-                    self.activateCamoTimer++;
-                    
-                    if (!self.CanLevitate)
-                    {
-                        self.rippleActivating = true;
-                    }
-                    if (self.activateCamoTimer == 80 && self.performingActivationTimer == 0)
-                    {
-                        self.ChangeRippleLayer(1);
-                        if (self.rippleData != null)
-                        {
-                            self.rippleData.gameplayRippleActive = true;
-                            self.rippleData.gameplayRippleAnimation = 1f;
-                        }
-                        data.startingRipple = false;
-                        self.ToggleCamo();
-                    }
-                    if (self.performingActivationTimer > 0)
-                    {
-                        self.performingActivationTimer++;
-                        if (self.performingActivationTimer >= self.performingActivationDuration)
-                        {
-                            self.performingActivationTimer = 0;
-                        }
-                    }
-                    else if (self.activateCamoTimer >= self.enterIntoCamoDuration)
-                    {
-                        self.performingActivationTimer = 1;
-                    }
-                }
-                else
-                {
-                    if (self.activateCamoTimer > 0)
-                    {
-                        self.activateCamoTimer = 0;
-                        self.performingActivationTimer = 0;
-                        self.StopLevitation();
-                    }
-                    self.rippleActivating = false;
-                    self.startingCamoStateOnActivate = -1;
-                }
-                if (self.room.game.cameras != null) //&& self.room.game.cameras[0].rippleData != null)
-                {
-                    self.CamoUpdate();
-                }
-                if (self.transitionRipple != null)
-                {
-                    self.TransitionRippleUpdate();
-                }
-                if (self.warpSpawningRipple != null)
-                {
-                    self.WarpSpawningUpdate();
                 }
             }
         }
@@ -290,6 +207,8 @@ namespace Looker
                 return;
             }
             string roomName = newRoom?.abstractRoom?.name;
+            bool enteredNewRoom = (data.oldRoom != roomName);
+            data.oldRoom = roomName;
 
             if (CheckMechanics(newRoom, "migration", "WMPA"))
             {
@@ -309,7 +228,6 @@ namespace Looker
                     self.bodyChunks[i].vel = vector * 35f;
                 }
             }
-
             if (roomName.StartsWith("WARA") && CheckMechanics(self.room, "signal", "WPTA"))
             {
                 Plugin.delayedTutorial = "WPTA";
@@ -347,16 +265,16 @@ namespace Looker
                 Plugin.delayedTutorial = null;
             }
 
-            if (data.inShelter && SaveFileCode.GetBool(self.room.game.GetStorySession.saveState, "ReachedThrone") && !SaveFileCode.GetBool(self.room.game.GetStorySession.saveState, "ShownMaskTutorial"))
+            if (data.inShelter && SaveFileCode.GetBool(self.room.game.GetStorySession.saveState, "ReachedThrone") && !SaveFileCode.GetBool(self.room.game.GetStorySession.saveState, "ShownMaskTutorial") && enteredNewRoom)
             {
                 SaveFileCode.SetBool(self.room.game.GetStorySession.saveState, "ShownMaskTutorial", true);
                 newRoom.game.cameras[0].hud.textPrompt.AddMessage("Karma mask can be remade if lost", 120, 160, darken: true, hideHud: true);
                 newRoom.game.cameras[0].hud.textPrompt.AddMessage("To do so, hibernate while holding a flower and any mask", 120, 160, darken: true, hideHud: true);
             }
 
-            if (CheckMechanics(self.room, "turbulent", "WRFB") && (data.inShelter || OptionsMenu.moreJetfish.Value))
+            if (CheckMechanics(self.room, "turbulent", "WRFB") && data.inShelter && enteredNewRoom)
             {
-                data.inShelter = false;
+                data.inShelter = OptionsMenu.moreJetfish.Value;
                 AbstractCreature abstractCreature = new(newRoom.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.JetFish), null, self.abstractCreature.pos, newRoom.game.GetNewID())
                 {
                     saveCreature = false
@@ -365,7 +283,7 @@ namespace Looker
                 abstractCreature.RealizeInRoom();
                 newRoom.AddObject(new ShockWave(new Vector2(self.mainBodyChunk.pos.x, self.mainBodyChunk.pos.y), 300f, 0.2f, 15, false));
             }
-            if (CheckMechanics(self.room, "signal", "WPTA") && data.inShelter)
+            if (CheckMechanics(self.room, "signal", "WPTA") && data.inShelter && enteredNewRoom)
             {
                 data.inShelter = false;
                 data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value);
@@ -378,12 +296,12 @@ namespace Looker
                 newRoom.AddObject(new ShockWave(new Vector2(self.mainBodyChunk.pos.x, self.mainBodyChunk.pos.y), 300f, 0.2f, 15, false));
             }
 
-            if (CheckMechanics(self.room, "sunbaked", "WSKB") && OptionsMenu.resetDarkness.Value)
+            if (CheckMechanics(self.room, "sunbaked", "WSKB") && OptionsMenu.resetDarkness.Value && enteredNewRoom)
             {
                 darknessProgress = 0f;
             }
 
-            if (CheckMechanics(self.room, "fetid", "WARC"))
+            if (CheckMechanics(self.room, "fetid", "WARC") && enteredNewRoom)
             {
                 if (!OptionsMenu.stableMovement.Value)
                 {
@@ -409,6 +327,11 @@ namespace Looker
                         case 2: announcement += "Jump and throw swapped"; break;
                     }
                     newRoom.game.cameras[0].hud.textPrompt.AddMessage(announcement, 40, 200, darken: false, hideHud: false);
+                }
+                for (int i = 0; i < self.bodyChunks.Length; i++)
+                {
+                    Vector2 vector = Custom.IntVector2ToVector2(newRoom.ShorcutEntranceHoleDirection(pos));
+                    self.bodyChunks[i].vel = vector * 3f;
                 }
             }
             

@@ -85,7 +85,7 @@ namespace Looker.Regions
         {
             if (CheckMechanics(self.room, "signal", "WPTA"))
             {
-                SignalGameOver(self);
+                //SignalGameOver(self);
                 return;
             }
             else orig(self);
@@ -103,7 +103,7 @@ namespace Looker.Regions
 
         public static void VultureGrub_Act(On.VultureGrub.orig_Act orig, VultureGrub self)
         {
-            if (self.singalCounter < 10 && Plugin.CheckMechanics(self.room, "signal", "WPTA"))
+            if (self.singalCounter > 0 && self.singalCounter < 10 && Plugin.CheckMechanics(self.room, "signal", "WPTA"))
             {
                 SignalGameOver(self);
             }

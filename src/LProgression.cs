@@ -639,6 +639,10 @@ namespace Looker
             {
                 room.AddObject(new WatcherRoomSpecificScript. HI_W05(room));
             }
+            if (name == "WAUA_TOYS" && room.game.GetStorySession.saveState.denPosition == "WAUA_TOYS")
+            {
+                room.AddObject(new WatcherRoomSpecificScript.WAUA_TOYS(room));
+            }
         }
 
         public static void ShowTutorial(Room room)

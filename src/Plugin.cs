@@ -85,7 +85,7 @@ namespace Looker
         public static int puzzleInput = 0;
         public static bool warptodaemon = false;
         public static float darknessProgress;
-        public static int darknessStayStillTimer;
+        public static bool retractDarkness = false;
         public static string delayedTutorial = null;
         public static bool shownPopupMenu = false;
 
@@ -197,6 +197,7 @@ namespace Looker
 
                 {
                     On.VultureGrub.AttemptCallVulture += LSignal.VultureGrub_AttemptCallVulture;
+                    On.VultureGrub.Act += LSignal.VultureGrub_Act;
                     On.Player.ThrowObject += LSignal.Player_ThrowObject;
                     On.VultureGrub.Violence += LSignal.VultureGrub_Violence;
                 }
@@ -453,7 +454,7 @@ namespace Looker
                 {
                     if (self?.world?.region?.name != null && self.world.region.name == "WSKA")
                     {
-                        value = (int)((float)value * 0.20);
+                        value = (int)((float)value * 0.30);
                     }
                     else if (self?.world?.region?.name != null && self.world.region.name == "WRRA")
                     {
@@ -509,7 +510,6 @@ namespace Looker
                         if (PlayerCWT.TryGetData(player, out var data))
                         {
                             data.darknessImmunity = 120;
-                            darknessProgress = 0;
                         }
                         else
                         {
@@ -599,13 +599,21 @@ namespace Looker
             {
                 return value;
             }
+            if (self.room.lightningMaker == null)
+            {
+                return value;
+            }
             foreach (PhysicalObject physicalObject in self.targets)
             {
-                if (physicalObject != null && !self.IsTargetForbidden(physicalObject) && physicalObject is Player player && PlayerCWT.TryGetData(player, out var data))
+                if (physicalObject != null && !self.IsTargetForbidden(physicalObject) && !self.room.lightningMaker.IsPosProtected(physicalObject.firstChunk.pos) && physicalObject is Player player && PlayerCWT.TryGetData(player, out var data))
                 {
                     if (data.timesUntilTargetedByLightning > 0)
                     {
                         data.timesUntilTargetedByLightning--;
+                        if (data.timesUntilTargetedByLightning == 0)
+                        {
+                            player.eyesClosedTime = 200;
+                        }
                         return value;
                     }
                     data.timesUntilTargetedByLightning = 2;
@@ -701,7 +709,7 @@ namespace Looker
         public static void ResetModData()
         {
             darknessProgress = 0;
-            darknessStayStillTimer = 0;
+            retractDarkness = false;
             timeUntilFloatEnds = -1;
             shownPopupMenu = false;
         }

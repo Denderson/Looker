@@ -59,6 +59,8 @@ namespace Looker.CWTs
             public float overrideAirfriction = 0;
 
             public int timesUntilTargetedByLightning = 3;
+
+            public string oldRoom = string.Empty;
         }
     }
 }

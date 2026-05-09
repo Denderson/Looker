@@ -81,9 +81,9 @@ namespace Looker.Regions
         public static void Angler_Update(On.Watcher.Angler.orig_Update orig, Angler self, bool eu)
         {
             orig(self, eu);
-            if (CheckMechanics(self.room, "salination", "WARB"))
+            if (CheckMechanics(self?.room, "salination", "WARB"))
             {
-                if (self.Submersion > 0.9f)
+                if (self?.lightSource?.pos != null && self.Submersion > 0.9f)
                 {
                     Bubble bubble = new(self.lightSource.pos + Custom.RNV() * UnityEngine.Random.value * 6f, Custom.RNV() * 1.5f * Mathf.Lerp(6f, 16f, UnityEngine.Random.value) * Mathf.InverseLerp(0f, 0.45f, 0.5f), bottomBubble: false, fakeWaterBubble: false);
                     self.room.AddObject(bubble);
