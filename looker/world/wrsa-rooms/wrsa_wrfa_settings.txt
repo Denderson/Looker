@@ -1,0 +1,8 @@
+Template: NONE
+DangerType: None
+Clouds: 0.3066194
+Grime: 0.1004652
+Palette: 102
+EffectColorB: 21
+Effects: RoomWrap-1-20-20, ZeroG-0.6562142-18.88736-75.27697, 
+PlacedObjects: AirPocket><637.6724><1942.102><148~112~271~51~Y~-62, 

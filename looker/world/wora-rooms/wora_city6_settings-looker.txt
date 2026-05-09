@@ -1,0 +1,24 @@
+Template: NONE
+DangerType: Sandstorm
+CeilingDrips: 0
+RainIntensity: 0.4565217
+RumbleIntensity: 0.1086956
+Clouds: 0.2173913
+Grime: 0
+Palette: 69
+EffectColorA: 15
+EffectColorB: 16
+TerrainLight: 0.8152174
+TerrainStainAmount: 1
+TerrainStainBrightness: 0.9130435
+TerrainStainHeight: 0.3478261
+TerrainWaves: 0.1413043
+TerrainEdgeRadius: 53.47821
+TerrainGooHeight: 0.1195652
+TerrainGrain: 1
+TerrainPalette: outerrim
+Effects: Darkness-0.3478261-20-20, 
+PlacedObjects: CustomDecal><197.0569><-41.55487><-137.3939~917~632.3865~782~597.5403~-2~-27.87701~-257~0~1~0~rust3~0.3268499~1~0.1212357~1~0.6839706~1~0.4350685~1, TerrainHandle><358.2765><124.8112><-188.978~17~44.98688~4~13, TerrainHandle><443.0865><123.7468><-62.00439~3~48.00439~-23~20, TerrainHandle><527.5474><86.42557><-38.01318~14~51.96045~-26~20, TerrainHandle><630.8325><64.5416><-50.99561~-4~48.96045~8~20, BlackSpot><292.1909><63.81607><0~128~-670~159~-593~-9, BlackSpot><697.8645><22.02213><3~120~596~212~493~10, RippleSpawnEgg><716.8214><607.66><, TerrainGrassPatch><484.0502><153.9928><484.0502~153.9928~92~0.4960001~0.74~32~5~1~296~0.64, KarmaFlower><589.6382><585.6446><0~0~5~7, 
+AmbientSounds: OMNI><RWTW_DustStorm_Deep.ogg><779.0137><503.6995><0.1086956><0.6086956, OMNI><RWTW_RotAmb_VanillaRot.ogg><784.8932><431.8896><0.1086956><1, SPOT><AM_WIN-StrongWnd2.ogg><792.4342><311.0611><0.5><1.48913><529.4342><580.0612><-30.35535><-193.3553><0><0.2956523, 
+FadePalette: 19, 0.6836367
+TerrainFadePalette: test_sand_2, 0.2065217

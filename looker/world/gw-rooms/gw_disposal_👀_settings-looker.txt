@@ -1,0 +1,4 @@
+EffectColorA: 18
+EffectColorB: 5
+PlacedObjects: WarpPoint><774.8512><1196.828><75~72~looker~looker~WGWR~wgwr_disposal~770~1190~8366fdc9-7e38-46ea-bb40-a8deb7ae7ff7~WatcherOnly~0~6~8~4~8~4~4~4~7~150~150~-1~0~0~false~false~false~false~false~0~-1~false, RippleFlower><359.8002><1459.992><0~0~2~3, 
+FadePalette: 11, 0.2173913, 0.2608696

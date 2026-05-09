@@ -1,0 +1,3 @@
+Palette: 468
+PlacedObjects: ExitSymbolShelter><912.4487><266.477><, 
+FadePalette: 469, 0.5

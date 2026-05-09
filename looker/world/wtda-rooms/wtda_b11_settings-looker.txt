@@ -1,0 +1,8 @@
+Template: wtda_settingstemplate_tomblooker
+RainIntensity: 1
+WaveSpeed: 0.3528524
+WaveLength: 0.9264262
+WaveAmplitude: 1.643871E-06
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+PlacedObjects: LanternOnStick><709.3122><333.5688><-91~-138, LanternOnStick><330.306><389.9514><68~-148, ScavengerTreasury><517.0646><215.075><45~218, SlipperyZone><87.03683><75.44658><100~50~42^25~0.1521739~False~False, 

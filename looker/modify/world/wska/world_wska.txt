@@ -1,0 +1,185 @@
+[FINDLINESTART]WSKA_D01 :
+[REPLACE_2](X-looker)WSKA_D01 : 3-Salamander
+[FINDLINESTART]WSKA_D02 :
+[REPLACE_2](X-looker)WSKA_D02 : 4-Salamander, 5-Salamander, 6-CicadaB-4
+[FINDLINESTART]WSKA_D03 :
+[REPLACE_2](X-looker)WSKA_D03 : 2-Snail-3
+[FINDLINESTART]WSKA_D06 :
+[REPLACE_2](X-looker)WSKA_D06 : 3-CicadaB-3
+[FINDLINESTART]WSKA_D10 :
+[REPLACE_2](X-looker)WSKA_D10 : 3-CicadaB-3
+[FINDLINESTART]LINEAGE : WSKA_D10 :
+[REPLACE](X-looker)LINEAGE : WSKA_D10 : 2 : Blue-0.5, White-0.5, Cyan-0
+[FINDLINESTART]WSKA_D12 :
+[REPLACE_2](X-looker)WSKA_D12 : 4-Snail-3
+[FINDLINESTART]LINEAGE : WSKA_D12 :
+[REPLACE](X-looker)LINEAGE : WSKA_D12 : 5 : Blue-0.5, White-0.5, Cyan-0
+[FINDLINESTART]WSKA_D13 :
+[REPLACE_2](X-looker)WSKA_D13 : 1-CicadaB-2
+[FINDLINESTART]WSKA_D15 :
+[REPLACE_2](X-looker)WSKA_D15 : 6-CicadaB-3, 7-Salamander, 8-Leech-6
+[FINDLINESTART]WSKA_D18 :
+[REPLACE_2](X-looker)WSKA_D18 : 2-CicadaB-3
+[FINDLINESTART]WSKA_D20 :
+[REPLACE_2](X-looker)WSKA_D20 : 2-Leech-4, 3-Leech-4
+[FINDLINESTART]WSKA_D21 :
+[REPLACE_2](X-looker)WSKA_D21 : 2-Snail-2
+[FINDLINESTART]WSKA_D22 :
+[REPLACE_2](X-looker)WSKA_D22 : 2-Salamander
+[FINDLINESTART]WSKA_D25 :
+[REPLACE_2](X-looker)WSKA_D25 : 5-Leech-6
+[FINDLINESTART]WSKA_D26 :
+[REPLACE_2](X-looker)WSKA_D26 : 2-Snail-2
+[FINDLINESTART]WSKA_D27 :
+[REPLACE_2](X-looker)WSKA_D27 : 1-Snail-3
+[FINDLINESTART]WSKA_N01 :
+[REPLACE_2]WSKA_N01 : 2-CicadaB-3, 3-Salamander
+[FINDLINESTART]WSKA_N02 :
+[REPLACE_2]WSKA_N02 : 2-Snail-4
+[FINDLINESTART]WSKA_N04 :
+[REPLACE_2]WSKA_N04 : 2-Snail-3
+[MERGE]
+CREATURES
+(looker){LookerRemix=3,#nonescreatures}OFFSCREEN : 0-KingMiros
+(looker){LookerRemix=3,#!nonescreatures}OFFSCREEN : 0-MirosVulture-2
+(looker){LookerRemix=2}OFFSCREEN : 0-MirosVulture
+(looker){LookerRemix=1}OFFSCREEN : 0-KingVulture
+
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_D01 : 3-CommonEel
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKA_D01 : 3-Red
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_D01 : 3-WaterSpitter
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKA_D01 : 3-Eel
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D01 : 3-WaterSpitter
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_D01 : 3-Salamander
+
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_D02 : 4-CommonEel, 5-CommonEel, 6-Aquapede
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKA_D02 : 4-Red, 5-Red, 6-Aquapede
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_D02 : 4-WaterSpitter, 5-WaterSpitter, 6-Teuthicada-4
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKA_D02 : 4-Eel, 5-Eel, 6-Cicada-4
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D02 : 4-WaterSpitter, 5-WaterSpitter, 6-CicadaB-3, 6-Teuthicada
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_D02 : 4-Salamander, 5-Salamander, 6-CicadaB-4
+
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_D03 : 2-BouncingBall-3
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_D03 : 2-BouncingBall-2, 2-Snail
+(looker){LookerRemix-2,#!lb-fgf-m4r-ik.modpack}WSKA_D03 : 2-Snail-5
+(looker){LookerRemix=1}WSKA_D03 : 2-Snail-3
+
+(looker){LookerRemix-2}WSKA_D10 : 2-Red
+(looker){LookerRemix=1}WSKA_D10 : 2-Cyan
+
+(looker){LookerRemix-2,#lb-fgf-m4r-ik.modpack}WSKA_D12 : 4-BouncingBall-3
+(looker){LookerRemix-2,#!lb-fgf-m4r-ik.modpack}WSKA_D12 : 4-Snail-3
+(looker){LookerRemix=1}WSKA_D12 : 4-Snail-3
+
+(looker){LookerRemix=3}WSKA_D12 : 5-Red
+(looker){LookerRemix=2}WSKA_D12 : 5-Cyan
+(looker){LookerRemix=1}WSKA_D12 : 5-Cyan
+
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-CommonEel, 8-AquaCenti-2
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpacWSKA_D15 : 6-CicadaB-3, 7-Red, 8-AquaCenti-2
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-WaterSpitter, 8-AquaCenti-2
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-Eel, 8-AquaCenti-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-WaterSpitter, 8-AquaCenti-2
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-Salamander, 8-AquaCenti-2
+
+(looker){LookerRemix=3,LookerWarp-18,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=3,LookerWarp-15,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=3,LookerWarp-10,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=3,LookerWarp-5,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-18,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-15,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-10,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-5,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-18,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-15,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-10,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-5,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-18,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-15,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-10,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-5,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
+
+(looker){LookerRemix-2}WSKA_D20 : 2-SeaLeech-6, 3-AquaCenti
+(looker){LookerRemix=1}WSKA_D20 : 2-Leech-6, 3-AquaCenti
+
+(looker){LookerRemix-2,#lb-fgf-m4r-ik.modpack}WSKA_D21 : 2-BouncingBall-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D21 : 2-Snail, 2-BouncingBall
+(looker){LookerRemix-1,#!lb-fgf-m4r-ik.modpack}WSKA_D21 : 2-Snail-2
+
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_D22 : 2-CommonEel
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_D22 : 2-Red
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_D22 : 2-WaterSpitter
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_D22 : 2-Eel
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D22 : 2-WaterSpitter
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D22 : 2-Eel
+
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKA_D25 : 5-JungleLeech-8
+(looker){LookerRemix-2,#lb-fgf-m4r-ik.modpack}WSKA_D25 : 5-MiniBlackLeech-8
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKA_D25 : 5-SeaLeech-8
+(looker){LookerRemix=1}WSKA_D25 : 5-Leech-6
+
+(looker){LookerRemix-2,#lb-fgf-m4r-ik.modpack}WSKA_D26 : 2-BouncingBall-2
+(looker){LookerRemix-2,#!lb-fgf-m4r-ik.modpack}WSKA_D26 : 2-Snail-4
+(looker){LookerRemix=1}WSKA_D26 : 2-Snail-2
+
+(looker){LookerRemix-2,#lb-fgf-m4r-ik.modpack}WSKA_D27 : 1-BouncingBall-3
+(looker){LookerRemix-2,#!lb-fgf-m4r-ik.modpack}WSKA_D27 : 1-Snail-5
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D27 : 1-Snail-2, 1-BouncingBall
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_D27 : 1-Snail-3
+
+(looker){LookerRemix=3}WSKA_N01 : 2-CicadaB-3, 3-Red
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_N01 : 2-CicadaB-3, 3-WaterSpitter
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKA_N01 : 2-CicadaB-3, 3-Eel
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_N01 : 2-CicadaB-3, 3-WaterSpitter
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_N01 : 2-CicadaB-3, 3-Salamander
+
+(looker){LookerRemix=3,LookerWarp-18,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=3,LookerWarp-15,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=3,LookerWarp-10,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=3,LookerWarp-5,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-18,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-15,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-10,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=2,LookerWarp-5,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-18,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-15,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-10,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=1,LookerWarp-5,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-18,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-15,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-10,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
+(looker){LookerRemix=0,LookerWarp-5,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
+
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_N02 : 2-BouncingBall-4
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_N02 : 2-Snail-2, 2-BouncingBall-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_N02 : 2-Snail-3, 2-BouncingBall
+(looker){LookerRemix-1,#!lb-fgf-m4r-ik.modpack}WSKA_N02 : 2-Snail-4
+
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKA_N04 : 2-BouncingBall-3
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_N04 : 2-Snail-2, 2-BouncingBall
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_N04 : 2-Snail-3
+(looker){LookerRemix-1,#!lb-fgf-m4r-ik.modpack}WSKA_N04 : 2-Snail-3
+
+
+(looker){LookerRemix=0}WSKA_D01 : 3-Salamander
+(looker){LookerRemix=0}WSKA_D02 : 4-Salamander, 5-Salamander, 6-CicadaB-4
+(looker){LookerRemix=0}WSKA_D03 : 2-Snail-3
+(looker)WSKA_D06 : 3-CicadaB-3
+(looker)WSKA_D10 : 3-CicadaB-3
+(looker){LookerRemix=0}WSKA_D10 : 2-Blue
+(looker){LookerRemix=0}WSKA_D12 : 4-Snail-3
+(looker){LookerRemix=0}WSKA_D12 : 5-Blue
+(looker)WSKA_D13 : 1-CicadaB-2
+(looker){LookerRemix=0}WSKA_D15 : 6-CicadaB-3, 7-Salamander, 8-Leech-6
+(looker)WSKA_D18 : 2-CicadaB-3
+(looker){LookerRemix=0}WSKA_D20 : 2-Leech-4, 3-Leech-4
+(looker){LookerRemix=0}WSKA_D21 : 2-Snail-2
+(looker){LookerRemix=0}WSKA_D22 : 2-Salamander
+(looker){LookerRemix=0}WSKA_D25 : 5-Leech-6
+(looker){LookerRemix=0}WSKA_D26 : 2-Snail-2
+(looker){LookerRemix=0}WSKA_D27 : 1-Snail-3
+(looker){LookerRemix=0}WSKA_N01 : 2-CicadaB-3, 3-Salamander
+(looker){LookerRemix=0}WSKA_N02 : 2-Snail-4
+(looker){LookerRemix=0}WSKA_N04 : 2-Snail-3
+
+END CREATURES

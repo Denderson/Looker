@@ -1,0 +1,9 @@
+Template: wtda_settingstemplate_tomblooker
+DangerType: None
+WaveSpeed: 0.6792451
+WaveLength: 0.9103774
+WaveAmplitude: 0.0008383241
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+PlacedObjects: CustomDecal><344.3173><254.9269><0~115~230.1611~180~261.0249~14~-445.0366~78~0~1~0~yellowrust~0.3593163~1~0.3593163~1~0.3593163~1~0.3593163~1, LightSource><418.6992><322.4368><0.4589087~Environment~1.991211~37~387~144.6025~1~0~None~0~0, SlipperyZone><269.6883><235.3174><100~50~18^9~0.1521739~False~False, 
+AmbientSounds: OMNI><AM_SUB-BlankState.ogg><774.9285><385.125><0.1645236><1, 

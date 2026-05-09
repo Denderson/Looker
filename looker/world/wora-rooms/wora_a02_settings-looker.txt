@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: Sandstorm
+CeilingDrips: 0
+RainIntensity: 0.3586957
+RumbleIntensity: 0.1086956
+Clouds: 0.8260869
+Grime: 0.1304348
+BkgDroneVolume: 0
+Palette: 69
+EffectColorA: 6
+EffectColorB: 1
+Effects: Darkness-0.3043478-20-20, 
+PlacedObjects: CustomDecal><40.30029><118.2608><-103~492~994~642~388~-94~853~-330~0~1~1~runningwhite~0.08695652~1~0.08695652~1~0.08695652~1~0.08695652~1, DangleFruit><466.8667><506.8991><0~0~2~3, 
+AmbientSounds: OMNI><RWTW_DustStorm_Deep.ogg><770.8126><504.8149><0.1521739><0.3347826, OMNI><RWTW_RotAmb_VanillaRot.ogg><770.8353><436.2615><0.1521739><1, 
+FadePalette: 19, 0.5326087

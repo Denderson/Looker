@@ -1,0 +1,13 @@
+corruptionEffectColor: 0.68,0.97,1
+corruptionEyeColor: 0.68,0.97,1
+overseersSpawnChance: 0
+overseersMin: 0
+overseersMax: 0
+playerGuideOverseerSpawnChance: 0.0
+proceduralMusicBank: rwtw2
+Subregion: Glacial Tundra
+glacialWasteland: 1
+Room Setting Templates: Desertlooker, Towerlooker, Tomblooker
+Room_Attr: Default: DrillCrab-Forbidden,RotLoach-Forbidden
+Room_Attr: WTDA_B04: BlueLizard-Avoid,WhiteLizard-Avoid,Scavenger-Avoid,DropBug-Avoid,DrillCrab-Forbidden,ScavengerTemplar-Avoid,ScavengerDisciple-Avoid,RotLoach-Stay,
+Room_Attr: WTDA_B08: BlueLizard-Forbidden,WhiteLizard-Forbidden,Scavenger-Forbidden,DropBug-Forbidden,DrillCrab-Stay,ScavengerTemplar-Forbidden,ScavengerDisciple-Forbidden,

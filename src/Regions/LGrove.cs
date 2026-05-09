@@ -95,10 +95,14 @@ namespace Looker.Regions
                     else if (self.sprites[i].element.name != ogsculeSprite)
                     {
                         self.sprites[i].SetElementByName(ogsculeSprite);
-                        self.sprites[i].height = 3f;
-                        self.sprites[i].width = 3f;
+                        self.sprites[i].height = 30f;
+                        self.sprites[i].width = 30f;
                         self.sprites[i].rotation = 0;
                         self.sprites[i].MoveToFront();
+                        if (!OptionsMenu.colorfulOgscules.Value)
+                        {
+                            self.sprites[i].color = Color.red;
+                        }
                     }
                 }
             }

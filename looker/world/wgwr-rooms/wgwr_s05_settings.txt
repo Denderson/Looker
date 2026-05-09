@@ -1,0 +1,2 @@
+DangerType: None
+Effects: Sentient Rot Spores-0-30-30, 

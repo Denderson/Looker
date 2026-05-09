@@ -1,0 +1,23 @@
+DangerType: Blizzard
+CeilingDrips: 0
+RainIntensity: 1
+RumbleIntensity: 0
+WaveSpeed: 0.7021492
+WaveLength: 0.8989254
+WaveAmplitude: 9.813096E-06
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.1321739
+Grime: 0.09782609
+BkgDroneVolume: 0.3
+BkgDroneNoThreatVolume: 1
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 35787
+EffectColorA: 4
+EffectColorB: 13
+TerrainPalette: looker_ice
+Effects: Coldness-1-20-20, SandPuffs-1-308.7701-166, 
+AmbientSounds: OMNI><AM_IND-Fabrik01.ogg><783.1484><69.9507><0.2078121><0.1234319, OMNI><AM_ENV-LightWind.ogg><733.7541><516.3052><0.1320582><0.7272894, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_160 - Rubber Bass<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>1<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>620.9686<tB>369.5732<tA>fireChance<tB>1<tA>entrance<tB>1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>5876.056<tB>273.9626<tA>handlePos<tB>-301.3553<tB>136.6447, Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_160 - Rubber Bass<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>1<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>157.8201<tB>311.7939<tA>fireChance<tB>1<tA>entrance<tB>0<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1649.82<tB>279.7939<tA>handlePos<tB>-289.3553<tB>234.6447, 

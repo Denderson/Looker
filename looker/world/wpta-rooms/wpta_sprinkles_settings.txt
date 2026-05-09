@@ -1,0 +1,2 @@
+Template: wpta_settingstemplate_spireinside
+FadePalette: 3, 0.1555299

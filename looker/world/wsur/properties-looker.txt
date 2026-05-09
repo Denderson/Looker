@@ -1,0 +1,15 @@
+corruptionEffectColor: 0.37,0.11,0.83
+corruptionEyeColor: 0.37,0.11,0.83
+kelpColor: 0.3,0,1.0
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+batsPerActiveSwarmRoom: 6
+overseersSpawnChance: 0.0
+overseersMin: 0
+overseersMax: 0
+playerGuideOverseerSpawnChance: 0
+proceduralMusicBank: rwtw8
+Subregion: we're still rendering this one sorry
+Room Setting Templates: Rotlooker

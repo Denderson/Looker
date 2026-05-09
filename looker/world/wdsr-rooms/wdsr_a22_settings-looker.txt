@@ -1,0 +1,1 @@
+PlacedObjects: PassiveCorruption><473.5415><-161.1956><-538~58~0~0~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, RottenDangleFruit><768.9491><463.2303><0~0~2~3, RottenDangleFruit><738.5522><447.2791><0~0~2~3, Rattler><284.0568><494.3017><, Rattler><668.8036><395.2875><, 

@@ -1,0 +1,7 @@
+Template: wvwa_settingstemplate_pillars
+EffectColorA: 16
+EffectColorB: 17
+Effects: Ripple Settings-0-1009-422-White-WARD-ward_e26-0-6.6-32-1, 
+PlacedObjects: Corruption><-253.1534><209.6752><0~100, Corruption><1007.11><415.4489><46~163, Corruption><794.7736><261.9486><0~100, Corruption><1004.772><166.4359><0~42, Corruption><873.8474><174.8707><1~41, CorruptionTube><573.1973><84.28206><448~114, CorruptionTube><1348.45><455.2466><-185~-260, Corruption><1170.094><251.8753><0~100, 
+AmbientSounds: SPOT><SO_ENV-StrongWnd.ogg><600.5631><536.8432><0.5><1><-156.4719><337.7609><292.0402><-327.52><0><0.2022068, SPOT><SO_ENV-StrongWnd.ogg><796.4127><546.4413><0.5><1><2159.819><356.0476><-292.6558><-308.7258><0><0.2022068, 
+FadePalette: 35786, 1, 1

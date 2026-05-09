@@ -1,0 +1,20 @@
+{
+	"id": "Slugcat_looker",
+	"scene_folder": "scenes/slugcat - looker",
+	"images": [
+		{ "name": "looker - bg - 8", "pos": [420, 129], "depth": 3.7, "shader": "Basic" },
+		{ "name": "looker bgadd - 7", "pos": [474, 110], "depth": 3.4, "shader": "Basic" },
+		{ "name": "looker bgplants - 6", "pos": [473, 129], "depth": 3.2, "shader": "Basic" },
+		{ "name": "looker slugcat - 5", "pos": [577, 100], "depth": 2.8, "shader": "Basic" },
+		{ "name": "looker hangers - 4", "pos": [533, 360], "depth": 2.7, "shader": "Basic" },
+		{ "name": "looker fogmult - 3", "pos": [523, 154], "depth": 2.6, "shader": "Basic" },
+		{ "name": "looker fogadd - 2", "pos": [423, 104], "depth": 2.5, "shader": "Normal" },
+		{ "name": "looker sparks - 1", "pos": [523, 194], "depth": 2.4, "shader": "Normal" },
+		{ "name": "looker fgplants - 0", "pos": [332, 28], "depth": 2.2, "shader": "Basic" }
+	],
+	"idle_depths": [ 2.8 ],
+	"glow_pos": [688, 484],
+	"mark_pos": [689, 583],
+	"select_menu_pos": [0, 100],
+	"slugcat_depth": 2.8
+}

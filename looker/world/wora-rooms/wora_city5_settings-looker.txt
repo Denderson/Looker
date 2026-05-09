@@ -1,0 +1,22 @@
+Template: NONE
+DangerType: FloodAndRain
+CeilingDrips: 0
+RainIntensity: 0.4565217
+RumbleIntensity: 0.1086956
+Clouds: 0.1630435
+Grime: 0
+Palette: 69
+TerrainLight: 0.08638332
+TerrainStainAmount: 1
+TerrainStainBrightness: 1
+TerrainStainHeight: 0
+TerrainWaves: 0.7826087
+TerrainEdgeRadius: 42.35097
+TerrainGooHeight: 0.08695652
+TerrainGrain: 1
+TerrainDepth: 1.195646
+TerrainPalette: outerrim
+Effects: WaterFluxMinLevel-0.3043478-20-20, WaterFluxMaxLevel-0.3043478-28-57, Darkness-0.3043478-316-12, 
+PlacedObjects: CustomDecal><273.5967><50.9416><-147.3499~576~681.1932~544~880.2929~-45~618.2722~53.99998~0~1~0~rustb3~0.445891~1~0.5~1~0.5432872~1~0~1, CustomDecal><120.8002><-6.677414><-165.2796~684~481.0541~754~499.9707~-120~-326.9327~282~0~1~0~rust1~0.1212364~1~0.3052073~1~0.391782~1~0.7727419~1, BlackSpot><249.9841><79.37262><-501~-43~-496~257~-150~127, BlackSpot><679.8367><98.24039><138~72~488~123~554~-69, 
+AmbientSounds: OMNI><RWTW_RotAmb_VanillaRot.ogg><781.1769><545.6888><0.1304348><1, OMNI><RWTW_DustStorm_Deep.ogg><779.9467><473.9113><0.2065217><1, SPOT><waterGurgleLOOP2.wav><715.8131><296.9463><0.3695652><0.4521739><469.8131><107.9463><-186.3553><59.64465><0><0.3500001, OMNI><SO_WAT-MoreDrips.ogg><786.3042><402.9156><0.4891304><0.5108696, 
+FadePalette: 19, 0.5529155

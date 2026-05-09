@@ -1,0 +1,9 @@
+Template: NONE
+DangerType: None
+Clouds: 0.3066194
+Grime: 0.1004652
+Palette: 102
+EffectColorB: 21
+Effects: RoomWrap-1-20-20, ZeroG-0.6562142-18.88736-75.27697, 
+PlacedObjects: CustomDecal><321.9307><131.6642><0~94~98~94~98~0~411~-88~0~1~0~scavmark arrow~1~0~1~0~1~0~1~0, CosmeticRipple><4256.102><724.0184><0~0~-4434~-704~4256.102~724.0184~4489.541~0.7717391~0.08695652~False~0.5~False~0~False~-1~0~False, CosmeticRipple><-172.628><727.4084><49~-211~4426~-755~-172.628~727.4084~4489.933~0.7717391~0.08695652~False~0.5~False~0~False~-1~0~False, 
+FadePalette: 301, 0, 0.07608695, 0.1413043, 0.2065217

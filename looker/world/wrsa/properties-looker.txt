@@ -1,0 +1,31 @@
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+batsPerActiveSwarmRoom: 6
+overseersSpawnChance: 0
+overseersMin: 0
+overseersMax: 0
+playerGuideOverseerSpawnChance: 0
+Subregion: Daemon (Aether Ridge)
+Subregion: Daemon (Badlands)
+Subregion: Daemon (Cold Storage)
+Subregion: Daemon (Coral Caves)
+Subregion: Daemon (Desalination)
+Subregion: Daemon (Desolate Tract)
+Subregion: Daemon (Fetid Glen)
+Subregion: Daemon (Fractured Gateways)
+Subregion: Daemon (Heat Ducts)
+Subregion: Daemon (Migration Path)
+Subregion: Daemon (Pilar Grove)
+Subregion: Daemon (Rusted Wrecks)
+Subregion: Daemon (Shrouded Stacks)
+Subregion: Daemon (Signal Spires)
+Subregion: Daemon (Stormy Coast)
+Subregion: Daemon (Sunbaked Alley)
+Subregion: Daemon (The Surface)
+Subregion: Daemon (Torrential Railways)
+Subregion: Daemon (Torrid Desert)
+Subregion: Daemon (Turbulent Pump)
+Subregion: Daemon (Verdant Waterways)
+hideTimer: true

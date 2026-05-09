@@ -1,0 +1,20 @@
+Template: NONE
+DangerType: Sandstorm
+CeilingDrips: 0
+RainIntensity: 0.6521739
+RumbleIntensity: 0.1086956
+WaveSpeed: 0.4985471
+WaveLength: 0.8576902
+WaveAmplitude: 0.04956361
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2762056
+Grime: 0.09782609
+Palette: 69
+EffectColorA: 3
+EffectColorB: 21
+Effects: Darkness-0.2717391-20-20, FlowerWind-0,0,0.1823633-17.29456-102.3203, 
+PlacedObjects: CustomDecal><123.1095><799.7924><-11~774~819~786~683~-194~-289~48~0~1~0~rustb2~0.3369565~1~0.3369565~1~0.3369565~1~0.3369565~1, CustomDecal><44.30267><59.84247><-45~318~953~319~900~9~-190~370~0.2717391~1~1~dirtywaterline~0.3586957~1~0.3586957~1~0.3586957~1~0.3586957~1, RippleSpawnEgg><764.3912><1464.332><, RippleSpawnEgg><765.9499><1103.747><, RippleSpawnEgg><764.5681><1344.417><, RippleSpawnEgg><764.3055><985.5579><, DangleFruit><197.4305><1321.798><29~-125~2~3, DangleFruit><394.1445><371.0801><0~0~2~3, DangleFruit><375.3386><316.4293><0~0~2~3, DangleFruit><357.6696><355.144><-228~-282~2~3, DangleFruit><218.7421><1344.05><0~0~2~3, 
+AmbientSounds: OMNI><RWTW_DustStorm_Deep.ogg><784.8137><533.1978><0.1413043><0.6673913, OMNI><RWTW_RotAmb_VanillaRot.ogg><788.9495><461.1392><0.1304348><1, SPOT><RWTW_DustStorm_Gusting.ogg><750.514><251.9255><0.1956522><0.7456522><498.514><1523.926><-144.3553><-194.3553><0><0.4586958, SPOT><SO_IND-Turbine.ogg><759.0502><100.1166><0.1630435><1.9><447.0502><84.11661><-35.35534><-35.35534><0><0.1869567, 
+FadePalette: 19, 0.6086956, 0.7391304
+WetTerrain: OFF

@@ -1,0 +1,1 @@
+PlacedObjects: LightSource><482.6754><367.796><0.5671268~Environment~469.9268~-179~259~158.6026~0~0~None~0~0, WarpPoint><482.0687><368.4155><-116~14~Watcher~looker~WORA~wora_desert9~7510~530~~WatcherOnly~0~6~8~4~8~4~4~4~7~150~150~-1~0~0~true~false~true~true~false~0~-1~false~-1~-1~-1~-1, 

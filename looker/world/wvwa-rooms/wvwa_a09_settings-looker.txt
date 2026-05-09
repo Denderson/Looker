@@ -1,0 +1,7 @@
+Template: wvwa_settingstemplate_pillars
+EffectColorA: 16
+EffectColorB: 17
+Effects: Ripple Settings-0-1009-422-looker-WARD-ward_e26-0-6.6-32-1, LethalWater-1-40-40, 
+PlacedObjects: LightSource><462.3973><184.5197><0.1358901~Environment~553.0675~436.5873~50~86.60254~1~1~None~0~0, CustomDecal><-27.39948><-3.782087><-11.11267~697.7975~1029.025~728.5517~1046.121~6.834259~0~0~0~1~0~rustb1~0.3885017~1~0.4349594~1~0.2491293~1~0.2026719~1, FluxWaterfall><500><640><3~0.9552838~D~0~0, FluxWaterfall><400><640><3~0.9552838~D~0~0, FluxWaterfall><600><640><3~0.9552838~D~0~0, FluxWaterfall><300><640><3~0.9552838~D~0~0, WarpPoint><482.251><546.1553><159~-125~Watcher~looker~WRSA~wrsa_wvwa~NULL~NULL~90619dc7-458a-4ec5-bf08-b2e16e42a435~AnySlugcat~0~6~8~4~8~4~4~4~7~150~150~-1~0~0~false~true~true~true~false~0~-1~-1~-1~-1~-1, Corruption><479.3585><-35.91802><5~481, Corruption><298.0547><304.4424><3~142, Corruption><677.0836><301.3609><102~106, CorruptionTube><809.0691><237.6647><-428~207, Corruption><376.565><431.424><17~16, StuckDaddy><280.3694><218.3604><-123~-69, StuckDaddy><698.6326><339.4119><54~90, Corruption><596.9476><171.2805><22~276, Corruption><380.8449><170.6237><18~270, Corruption><501.9785><-39.94881><-3~489, 
+AmbientSounds: SPOT><RWTW_AmbSubBubble.ogg><241.0467><378.9438><0.1840893><1><485.9717><596.3943><-125.1113><-109.6779><0><0.1836236, 
+FadePalette: 35786, 1

@@ -1,0 +1,105 @@
+[FINDLINESTART]WVWA_A01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_A03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_A04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_A10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_B10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_C01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_C02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_D01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_E02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_F01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_F02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_F03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_H01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWA_H02 :
+[ADDBEFORE_2](X-looker)
+[MERGE]
+CREATURES
+
+(looker){LookerRemix>0}OFFSCREEN : 0-BigEel
+(looker){LookerRemix=3}OFFSCREEN : 0-MirosVulture-5
+
+(looker){LookerRemix<2}WVWA_A01 : 2-Snail-2, 3-Eel
+(looker){LookerRemix>1}WVWA_A01 : 2-Snail-4, 3-Eel-2
+
+(looker){LookerRemix<2}WVWA_A04 : 2-Snail-3
+(looker){LookerRemix=2}WVWA_A04 : 2-Barnacle-3
+(looker){LookerRemix=3}WVWA_A04 : 2-Barnacle-6
+
+(looker){LookerRemix=0}WVWA_A05 : 2-Eel
+(looker){LookerRemix>0}WVWA_A05 : 2-Red
+
+(looker){LookerRemix<2}WVWA_B02 : 3-Snail-2
+(looker){LookerRemix>1}WVWA_B02 : 3-Cyan-2
+
+(looker){LookerRemix=0}WVWA_B03 : 4-Eel
+(looker){LookerRemix>0}WVWA_B03 : 4-Salamander-2
+
+(looker){LookerRemix<2}WVWA_B06 : 3-Snail-2, 4-Frog
+(looker){LookerRemix>1}WVWA_B06 : 3-RedCentipede, 4-Frog-2
+
+(looker){LookerRemix<2}WVWA_B08 : 3-Snail-2, 4-Centiwing
+(looker){LookerRemix=2}WVWA_B08 : 3-Barnacle-3, 4-Centiwing
+(looker){LookerRemix>2}WVWA_B08 : 3-RedCentipede, 4-RedCentipede
+
+(looker){LookerRemix=0}WVWA_C01 : 3-TentaclePlant, 4-EggBug, 5-Centiwing
+(looker){LookerRemix=1}WVWA_C01 : 3-Mimic-{12}, 4-EggBug, 5-Centiwing
+(looker){LookerRemix=2}WVWA_C01 : 3-Mimic-{12}, 4-Red, 5-Centiwing
+(looker){LookerRemix=3}WVWA_C01 : 3-Mimic-{12}, 4-Red, 5-Cyan-2
+
+(looker){LookerRemix=0}WVWA_C02 : 2-Eel
+(looker){LookerRemix=1}WVWA_C02 : 2-Eel-2
+(looker){LookerRemix<3}WVWA_C02 : 2-Eel-3
+
+(looker){LookerRemix=0}WVWA_F02 : 2-Centiwing-2, 3-TentaclePlant, 4-EggBug, 6-TentaclePlant
+(looker){LookerRemix=1}WVWA_F02 : 2-Centiwing-2, 3-TentaclePlant, 4-Red, 6-TentaclePlant
+(looker){LookerRemix=2}WVWA_F02 : 2-Red, 3-TentaclePlant, 4-Cyan-2, 6-TentaclePlant
+(looker){LookerRemix=3}WVWA_F02 : 2-Red, 3-Red, 4-Red, 6-Red
+
+(looker){LookerRemix=0}WVWA_H01 : 6-EggBug, 8-Snail-2
+(looker){LookerRemix=1}WVWA_H01 : 6-Snail-2, 8-Snail-4
+(looker){LookerRemix=2}WVWA_H01 : 6-Barnacle-2, 8-Barnacle-4
+(looker){LookerRemix=3}WVWA_H01 : 6-Barnacle-4, 8-Barnacle-6
+
+(looker)WVWA_F03 : 1-Jetfish-5
+(looker)WVWA_F01 : 4-TentaclePlant, 5-Eel-2, 6-Frog-2
+(looker)WVWA_E02 : 4-TentaclePlant, 5-TentaclePlant, 6-Eel
+(looker)WVWA_B10 : 2-Frog
+(looker)WVWA_B01 : 3-Frog
+(looker)WVWA_B04 : 3-Snail-3
+(looker)WVWA_B07 : 3-Eel, 5-Frog
+(looker)WVWA_H02 : 2-TentaclePlant, 3-TentaclePlant, 7-TentaclePlant, 9-TentaclePlant, 10-TentaclePlant
+
+END CREATURES
+[ENDMERGE]

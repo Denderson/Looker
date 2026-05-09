@@ -1,0 +1,5 @@
+EffectColorA: 16
+EffectColorB: 17
+PlacedObjects: FluxWaterfall><620><480><3~0.9088264~D~0~0, FluxWaterfall><500><480><3~0.9088264~D~0~0, FluxDrain><480><260><3~0.5~D~0~0, FluxDrain><600><260><3~0.5~D~0~0, WaterCycleTop><589.0544><311.4373><, WaterCycleBottom><583.8466><186.5831><, Corruption><-307.8065><283.5582><0~100, Corruption><-259.9146><286.8634><0~100, Corruption><502.414><376.1146><0~100, 
+AmbientSounds: OMNI><RWTW_AmbSubBubble.ogg><585.1848><535.3921><0.2119632><0.7156798, OMNI><RWTW_AmbDrips_02.ogg><404.5619><532.0023><0.2584212><1, 
+FadePalette: 35786, 1

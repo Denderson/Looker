@@ -1,0 +1,9 @@
+Template: wtda_settingstemplate_tomblooker
+WaveSpeed: 0.5320464
+WaveLength: 0.9839768
+WaveAmplitude: 8.700466E-15
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Effects: LightBurn-0.3066197-25.72592-117.1368, 
+PlacedObjects: SlipperyZone><146.5649><167.5759><100~50~37^23~0.1521739~False~False, 
+FadePalette: 337, 0.1022067

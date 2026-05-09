@@ -1,0 +1,4 @@
+Template: wskb_settingstemplate_insidelooker
+Grime: 0.1413043
+PlacedObjects: KarmaFlower><501.8075><298.3043><-225~-101~1~1, LightSource><339.6454><357.5795><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LightSource><622.6381><352.4158><1~EffectColor1~0~100~50~86.60254~1~0~None~0~0, LanternOnStick><489.7053><334.5551><30~92, 
+FadePalette: 8, 0

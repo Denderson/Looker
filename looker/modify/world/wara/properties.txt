@@ -1,0 +1,6 @@
+[MERGE]
+Subregion: Lumen Station
+Subregion: Gilded Sanctuary
+Subregion: The Depths
+Subregion: Sunken Temple
+[ENDMERGE]

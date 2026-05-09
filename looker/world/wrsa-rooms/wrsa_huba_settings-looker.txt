@@ -1,0 +1,8 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Grime: 0
+Palette: 102
+Effects: ZeroG-0.6521739-20-20, RoomWrap-1-198-149, 
+PlacedObjects: CosmeticRipple><-190.3225><724.4078><39~-217~2499~-806~-190.3225~724.4078~2625.764~0.8043478~0.06521741~False~0.5~False~0~True~-1~0~False, CosmeticRipple><2186.843><727.1266><-270~-162~-2383~-760~2186.843~727.1266~2501.258~0.8043478~0.06521739~False~0.5~False~0~True~-1~0~False, 
+AmbientSounds: OMNI><RWTW_DaemonSpace_03.ogg><693.61><171.4171><0.25><1, 

@@ -1,0 +1,33 @@
+Template: NONE
+DangerType: FloodAndRain
+CeilingDrips: 0
+RainIntensity: 0.75
+RumbleIntensity: 0.1086956
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04990017
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.02173913
+Grime: 0.06521739
+Palette: 69
+EffectColorA: 7
+EffectColorB: 21
+TerrainLight: 0.3478261
+TerrainStainAmount: 1
+TerrainStainBrightness: 0.6304348
+TerrainStainHeight: 0.4347826
+TerrainWaves: 0.3695652
+TerrainEdgeRadius: 200
+TerrainGooHeight: 0.4130435
+TerrainGrain: 1
+TerrainDepth: 0.2173844
+TerrainSkyFade: 1
+TerrainPalette: outerrim
+Effects: SurfaceSandstorm-0-20-20, FlowerWind-0,0,0-33.81165-79.48228, WaterFluxMinLevel-0.3043478-30-30, WaterFluxMaxLevel-0.3043478-40-40, 
+PlacedObjects: CustomDecal><1278.198><103.8997><-170~823~816~842~684~-43~554~7.999992~0~1~0.8260869~rustb3~0.2065217~1~0.2065217~1~0.2065217~1~0.2065217~1, CustomDecal><223.3279><227.9768><-347~671~841~806~673~-56~-69~76~0~1~1~rustb3~0.3695652~1~0.3695652~1~0.3695652~1~0.3695652~1, TerrainSunOffset><1144.949><406.8614><-21~102, CustomDecal><310.3137><197.0522><-43~351~556~329~543~-31~-54.99997~-178~0.326087~1~0.0326087~skullduckpng~0.05434782~0.2826087~0.05434782~0.2826087~0.05434782~0.2826087~0.05434782~0.2826087, RippleSpawnEgg><1947.554><599.4604><, RippleSpawnEgg><291.3115><643.0603><, FluxWaterfall><1420><440><3~0.3695652~S~0~0, FluxWaterfall><1340><340><11~0.1304348~S~0~0, FluxWaterfall><1360><260><9~0.1195652~S~0~0, WaterCutoff><186.5275><47.5519><1030~0~30~30~Y, WaterCutoff><1684.939><54.81618><367~0~30~30~Y, WaterSpout><1452.854><438.863><100~50~1.086957~0.5~-1^56, AirPocket><1663.316><97.07866><100~200~30~30~Y~-32, AirPocket><1150.519><93.19911><88~201~30~30~Y~-37, 
+AmbientSounds: SPOT><SO_WAT-MoreDrips.ogg><777.5901><260.5049><0.2282609><0.3152174><1451.59><253.5049><-137.3553><-61.35535><0><0.154348, SPOT><SO_WAT-LilDrips.ogg><775.075><147.0283><0.2717391><0.3347826><1451.075><289.0283><-74.35535><-129.3553><0><0.1, SPOT><waterGurgleLOOP1.wav><790.0748><22.77853><0.4673913><0.1978261><1446.075><162.7785><-165.3553><7.644653><0><0.2956523, OMNI><RWTW_DustStorm_Gusting.ogg><713.6067><519.4855><0.1521739><0.3347826, OMNI><RWTW_RotAmb_VanillaRot.ogg><710.9391><443.8099><0.1521739><1, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_125 - Timelapse<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>5<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>785.5177<tB>409.1401<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>1455.518<tB>386.1401<tA>handlePos<tB>-450.3553<tB>-215.3553, 
+FadePalette: 19, 0.6521739, 0.7173913
+TerrainFadePalette: test_sand, 0.3043478, 0.3043478
+WetTerrain: OFF

@@ -1,0 +1,2 @@
+Template: wskd_settingstemplate_insidelooker
+FadePalette: 457, 0.1742472, 0.130387

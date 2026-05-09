@@ -1,0 +1,35 @@
+[FINDLINESTART]WAUA_B04B :
+[REPLACE_2](X-looker)WAUA_B04B : 4-smallmoth-2
+[FINDLINESTART]WAUA_D02B :
+[REPLACE_3](X-looker)WAUA_D02B : 2-smallmoth-4, 3-smallmoth-4, 4-smallmoth-4
+[FINDLINESTART]WAUA_D02B :
+[REPLACE_2](X-looker)WAUA_D02B : 2-smallmoth-3
+[FINDLINESTART]WAUA_B06B :
+[REPLACE_2](X-looker)WAUA_B06B : 2-smallmoth-3
+[MERGE]
+CREATURES
+(looker)OFFSCREEN : 0-Vulture-{NamedAttr:cityscape}-3, 0-Vulture-{AlternateForm,NamedAttr:cityscape}, 0-KingVulture-{NamedAttr:cityscape}, 0-Scavenger-{NamedAttr:cityscape}-6, 0-Elite-3-{NamedAttr:cityscape}
+(looker)WAUA_A10B : 2-Centiwing, 2-Small Centipede-2-{AlternateForm}
+(looker)WAUA_B06B : 2-Cicada-3, 3-Centiwing
+(looker)WAUA_B04B : 4-Cyan
+(looker)WAUA_D02B : 2-Centiwing, 3-White, 4-Yellow-4
+(looker)OFFSCREEN : 0-Scavenger-{NamedAttr:shelves}-8
+(looker)WAUA_A02B : 2-Centipede, 3-Small Centipede-2
+(looker)WAUA_A03B : 3-Blue, 4-Centiwing
+(looker)WAUA_A04B : 3-Green, 4-Centipede
+(looker)WAUA_A05B : 2-Centipede, 3-Small Centipede-3
+(looker)WAUA_A07B : 4-Small Centipede-3
+(looker)WAUA_A08B : 3-Blue
+(looker)WAUA_A09B : 1-RedCentipede
+(looker)WAUA_B05B : 4-Yellow-3
+(looker)WAUA_C02B : 2-Red, 3-smallmoth-3
+(looker)WAUA_D01B : 3-White-{Mean:0.4}, 4-Yellow-4, 5-Pink
+(looker)WAUA_E02B : 9-White, 10-Cyan, 11-Small Centipede-3, 11-Centipede
+(looker)OFFSCREEN : 0-Vulture-{NamedAttr:sewers}, 0-Scavenger-{NamedAttr:sewers}-4
+(looker)WAUA_C02 : 3-Basilisk
+(looker)WAUA_D01 : 3-Basilisk
+(looker)WAUA_D02 : 2-Salamander, 3-BigSpider-2, 4-Eel, 5-Aquapede
+(looker)WAUA_E02 : 3-Centipede, 3-Small Centipede-3, 4-SpitterSpider, 4-Spider-15
+(looker)WAUA_I01 : 4-Blue, 5-SpitterSpider, 6-Basilisk-2
+END CREATURES
+[ENDMERGE]

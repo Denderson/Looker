@@ -1,0 +1,26 @@
+corruptionEffectColor: 0.38,0.73,0.81
+corruptionEyeColor: 0.38,0.73,0.81
+kelpColor: 0.04,0.33,0.26
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+overseersSpawnChance: 0
+overseersMin: 0
+overseersMax: 0
+Subregion: Barnacle Caves
+Subregion: what are you looking at files for
+playerGuideOverseerSpawnChance: 0
+proceduralMusicBank: wrfa
+pupSpawnChance: 0.10
+Room_Attr: WRFA_B02: YellowLizard-Forbidden,
+Room_Attr: WRFA_A01: YellowLizard-Forbidden,
+Room_Attr: WRFA_A04: YellowLizard-Forbidden,
+Room_Attr: WRFA_C02: YellowLizard-Stay,
+Room_Attr: WRFA_E01: YellowLizard-Forbidden,
+Room_Attr: WRFA_B04: YellowLizard-Forbidden,
+Room_Attr: WRFA_C03: YellowLizard-Stay,
+Room_Attr: WRFA_F05: Vulture-Avoid,KingVulture-Avoid,
+Room_Attr: WRFA_E04: YellowLizard-Forbidden,Scavenger-Like,ScavengerElite-Like,
+Room_Attr: WRFA_SK04: Vulture-Avoid,
+Room_Attr: WRFA_F06: TardigrusTheFifth-Stay,

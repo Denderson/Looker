@@ -1,0 +1,43 @@
+OFFSCREEN : 0-MirosVulture-5, 0-Scavenger-16
+
+HI_B12 : 2-WeaverLizard, 3-SpitterSpider
+HI_A18 : 2-WeaverLizard, 2-TentaclePlant-{PreCycle}
+HI_A06 : 2-WeaverLizard
+HI_A19 : 4-Garbage Worm-2
+
+LINEAGE : HI_B06 : 4 : Mimic-{14}-0
+HI_A10 : 3-Centiwing
+LINEAGE : HI_C01 : 4 : WeaverLizard-0
+LINEAGE : HI_C01 : 3 : WeaverLizard-0
+LINEAGE : HI_B03 : 3 : WeaverLizard-0
+LINEAGE : HI_C02 : 5 : WeaverLizard-0
+LINEAGE : HI_C02 : 6 : SpitterSpider-0
+
+HI_B09 : 3-Dropwig, 2-WeaverLizard
+HI_B15 : 2-Small Centipede-2, 3-RedCentipede, 2-RedCentipede, 3-RedCentipede
+HI_C04 : 5-WeaverLizard, 7-TentaclePlant-{PreCycle}, 5-Cyan-{PreCycle}
+HI_B07 : 3-WeaverLizard-2, 2-SpitterSpider, 3-TentaclePlant-{PreCycle}
+HI_C05 : 3-SpitterSpider, 4-WeaverLizard
+HI_C11 : 3-WeaverLizard
+HI_C03 : 3-WeaverLizard, 3-Eel-{PreCycle}
+HI_D01 : 2-Cyan-2-{PreCycle}
+HI_A17W : 3-WeaverLizard, 3-Cyan-{PreCycle}
+HI_A16 : 4-WeaverLizard
+
+HI_A25 : 2-Dropbug
+HI_B06 : 3-SpitterSpider, 4-WeaverLizard
+LINEAGE : HI_C11 : 4 : WeaverLizard-0
+LINEAGE : HI_A04 : 2 : TentaclePlant-0
+HI_B13 : 2-Yellow-5
+HI_C02 : 5-Yellow-3
+
+HI_W03 : 4-DropBug
+HI_W04 : 5-DropBug
+HI_W07 : 4-Garbage Worm-4, 4-CicadaB-1, 4-CicadaA-1, 5-Yellow-2, 6-Yellow-3
+HI_W11 : 5-WeaverLizard
+HI_W12 : 3-Garbage Worm-3, 4-BigNeedle, 4-SmallNeedle-2, 9-WeaverLizard, 12-Eel-{PreCycle}
+HI_W17 : 6-CicadaB-3, 5-CicadaA-2
+HI_W19 : 1-WeaverLizard
+LINEAGE : HI_W12 : 11 : TentaclePlant-0
+LINEAGE : HI_W15 : 4 : WeaverLizard-0
+

@@ -1,0 +1,282 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A02 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A03 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A07 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A10 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A14 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A20 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A21 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A22 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A23 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A23 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A23 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A24 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_A25 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A26 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A27 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_A28 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_A30 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B02 : 4 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B02 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B03 : 5 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B04 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B05 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B07 : 5 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_B07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_B08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_B09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_B11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_B12 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_C01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_C02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_C03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_C04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_C04 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_C05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_C06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_D01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_D02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_D02 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_D02 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_D03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_D04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_D04 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRRA_D05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRRA_L01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRRA_L01 :
+[ADDBEFORE](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}OFFSCREEN : 0-MirosVulture-2, KingVulture-2, 0-Elite-17, 0-DrillCrab-6
+(looker){LookerRemix=2}OFFSCREEN : 0-Vulture, 0-KingVulture-3, 0-Scavenger-10, 0-Elite-11, 0-DrillCrab-6
+(looker){LookerRemix=1}OFFSCREEN : 0-Vulture-3, 0-KingVulture, 0-Scavenger-15, 0-Elite-6, 0-DrillCrab-6
+
+(looker){LookerRemix=3}WRRA_A02 : 2-RedCentipede, 2-SmallCentipede-3
+(looker){LookerRemix<3}WRRA_A02 : 2-Centipede, 2-SmallCentipede-3
+
+(looker){LookerRemix=3}WRRA_A03 : 3-Red-2
+(looker){LookerRemix=2}WRRA_A03 : 3-Cyan-2
+(looker){LookerRemix=1}WRRA_A03 : 3-White-2
+
+(looker){LookerRemix=3}WRRA_A04 : 2-Frog-12
+(looker){LookerRemix=2}WRRA_A04 : 2-Frog-5
+(looker){LookerRemix=1}WRRA_A04 : 2-Frog-3
+
+
+
+(looker){LookerRemix-2}WRRA_A06 : 2-Red, 3-Leech-8
+(looker){LookerRemix=1}WRRA_A06 : 2-Eel, 3-Leech-8
+
+(looker){LookerRemix-1}WRRA_A07 : 2-TentaclePlant
+
+(looker){LookerRemix-2}WRRA_A08 : 2-Red
+(looker){LookerRemix=1}WRRA_A08 : 2-Eel
+
+(looker){LookerRemix-2}WRRA_A10 : 2-RedCentipede, 2-SmallCentipede-3
+(looker){LookerRemix<2}WRRA_A10 : 2-Centipede, 2-SmallCentipede-3
+
+(looker){LookerRemix=3}WRRA_A13 : 3-Frog-7
+(looker){LookerRemix=2}WRRA_A13 : 3-Frog-4
+(looker){LookerRemix=1}WRRA_A13 : 3-Frog-2
+
+
+(looker){LookerRemix-1}WRRA_A16 : 2-Red
+
+
+
+(looker){LookerRemix=3}WRRA_A22 : 3-RaspberryLizard-{AlternateForm}-2
+(looker){LookerRemix=2}WRRA_A22 : 3-Peach, 3-RaspberryLizard-{AlternateForm}
+(looker){LookerRemix=1}WRRA_A22 : 3-Peach-2
+
+(looker){LookerRemix=3}WRRA_A23 : 3-RedCentipede, 3-SmallCentipede-4, 4-Frog-9, 4-RaspberryLizard-{AlternateForm}
+(looker){LookerRemix=2}WRRA_A23 : 3-Centipede, 3-SmallCentipede-4, 4-Frog-6, 4-RaspberryLizard-{AlternateForm}
+(looker){LookerRemix=1}WRRA_A23 : 3-Centipede, 3-SmallCentipede-4, 4-Frog-3, 4-Peach
+
+
+(looker){LookerRemix-1}WRRA_A25 : 3-RaspberryLizard-{AlternateForm,Mean:0.7}
+
+
+
+(looker){LookerRemix=3}WRRA_A28 : 3-RaspberryLizard-{AlternateForm}-2
+(looker){LookerRemix<3}WRRA_A28 : 3-Peach-2
+
+(looker){LookerRemix-2}WRRA_A30 : 3-Red
+(looker){LookerRemix=1}WRRA_A30 : 3-Cyan
+
+(looker){LookerRemix=3}WRRA_B01 : 2-Leech-6, 3-Frog-14
+(looker){LookerRemix=2}WRRA_B01 : 2-Leech-6, 3-Frog-6
+(looker){LookerRemix=1}WRRA_B01 : 2-Leech-6, 3-Frog-2
+
+(looker){LookerRemix-2}WRRA_B02 : 3-Red, 4-RedCentipede, 4-SmallCentipede-2
+(looker){LookerRemix=1}WRRA_B02 : 3-Red, 4-Centipede, 4-SmallCentipede-2
+
+(looker){LookerRemix=3}WRRA_B03 : 4-Tardigrade-3, 5-Red
+(looker){LookerRemix=2}WRRA_B03 : 4-Tardigrade-3, 5-Cyan
+(looker){LookerRemix=1}WRRA_B03 : 4-Tardigrade-3, 5-Blue
+
+
+(looker){LookerRemix=3}WRRA_B05 : 3-Dropbug, 4-Frog-11
+(looker){LookerRemix=2}WRRA_B05 : 3-Dropbug, 4-Frog-5
+(looker){LookerRemix=1}WRRA_B05 : 3-Dropbug, 4-Frog-2
+
+
+(looker){LookerRemix-2}WRRA_B06 : 3-Red-{Mean:-0.9}, 4-CicadaB-3
+(looker){LookerRemix=1}WRRA_B06 : 3-White-{Mean:-0.9}, 4-CicadaB-3
+
+(looker){LookerRemix=3}WRRA_B07 : 5-RedCentipede, 5-SmallCentipede-4
+(looker){LookerRemix<3}WRRA_B07 : 5-Centipede, 5-SmallCentipede-4
+
+
+
+
+
+
+(looker){LookerRemix=3}WRRA_C02 : 2-CicadaB-5, 3-RaspberryLizard-{AlternateForm}-4
+(looker){LookerRemix=2}WRRA_C02 : 2-CicadaB-5, 3-Peach-2, 3-RaspberryLizard-{AlternateForm}-2
+(looker){LookerRemix=1}WRRA_C02 : 2-CicadaB-5, 3-Peach-3, 3-RaspberryLizard-{AlternateForm}
+
+
+(looker){LookerRemix=3}WRRA_C04 : 2-Red-2
+(looker){LookerRemix=2}WRRA_C04 : 2-Cyan-2
+(looker){LookerRemix=1}WRRA_C04 : 2-Cyan-2
+
+
+(looker){LookerRemix-2}WRRA_C06 : 2-CicadaB-5, 3-Red-3, 4-SeaLeech-5, 5-SeaLeech-6
+(looker){LookerRemix=1}WRRA_C06 : 2-CicadaB-5, 3-Eel-3, 4-SeaLeech-5, 5-SeaLeech-6
+
+
+(looker){LookerRemix=3}WRRA_D02 : 2-Red, 3-Red, 4-Leech-5, 5-Barnacle-6, 6-Barnacle-3, 7-Leech-8, 8-Frog
+(looker){LookerRemix=2}WRRA_D02 : 2-Cyan, 3-Red, 4-Leech-5, 5-Barnacle-6, 6-Barnacle-3, 7-Leech-8, 8-Frog
+(looker){LookerRemix=1}WRRA_D02 : 2-Cyan, 3-White, 4-Leech-5, 5-Barnacle-6, 6-Barnacle-3, 7-Leech-8, 8-Frog
+
+
+(looker){LookerRemix-2}WRRA_D04 : 2-BigNeedle, 2-SmallNeedle-3, 3-Red
+(looker){LookerRemix=1}WRRA_D04 : 2-BigNeedle, 2-SmallNeedle-3, 3-White
+
+(looker){LookerRemix-1}WRRA_D05 : 2-CicadaB-3, 3-SeaLeech-7, 4-SeaLeech-6, 5-SeaLeech-6, 6-Red-{Mean-0.4}, 7-CicadaB-4
+
+(looker){LookerRemix=1}WRRA_L01 : 7-CicadaB-8, 8-Red, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Red, 13-SeaLeech-4, 14-SeaLeech-3
+(looker){LookerRemix=1}WRRA_L01 : 7-CicadaB-8, 8-Cyan, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Red, 13-SeaLeech-4, 14-SeaLeech-3
+(looker){LookerRemix<2}WRRA_L01 : 7-CicadaB-8, 8-White, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Green, 13-SeaLeech-4, 14-SeaLeech-3
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Vulture-2, 0-Scavenger-17, 0-DrillCrab-6
+(looker){LookerRemix=0}WRRA_A03 : 3-Blue-2
+(looker){LookerRemix=0}WRRA_A04 : 2-Frog
+(looker)WRRA_A05 : 2-Eggbug
+(looker){LookerRemix=0}WRRA_A06 : 2-Salamander, 3-Leech-8
+(looker){LookerRemix=0}WRRA_A07 : 2-Mimic-{15}
+(looker){LookerRemix=0}WRRA_A08 : 2-Salamander
+(looker){LookerRemix=0}WRRA_A13 : 3-Frog
+(looker)WRRA_A14 : 2-Leech-7
+(looker){LookerRemix=0}WRRA_A16 : 2-Blue
+(looker)WRRA_A20 : 4-Garbageworm
+(looker)WRRA_A21 : 3-SeaLeech-6
+(looker){LookerRemix=0}WRRA_A22 : 3-Peach-2
+(looker){LookerRemix=0}WRRA_A23 : 3-Centipede, 3-SmallCentipede-4, 4-Frog, 4-Peach
+(looker)WRRA_A24 : 2-Eggbug
+(looker){LookerRemix=0}WRRA_A25 : 3-Peach-{Mean:0.7}
+(looker)WRRA_A26 : 4-Barnacle-8
+(looker)WRRA_A27 : 2-SmallCentipede-3
+(looker){LookerRemix=0}WRRA_A30 : 3-White
+(looker){LookerRemix=0}WRRA_B01 : 2-Leech-6, 3-Frog-2
+(looker){LookerRemix=0}WRRA_B02 : 3-White, 4-Centipede, 4-SmallCentipede-2
+(looker){LookerRemix=0}WRRA_B03 : 4-Tardigrade-3, 5-Pink
+(looker)WRRA_B04 : 2-Mimic-{13}, 3-CicadaB-4
+(looker){LookerRemix=0}WRRA_B05 : 3-Dropbug, 4-Frog-2
+(looker){LookerRemix=0}WRRA_B06 : 3-White-{Mean-0.9}, 4-CicadaB-3
+(looker)WRRA_B08 : 2-Tardigrade-6, 2-Eggbug
+(looker)WRRA_B09 : 2-Leech-8, 3-Leech-10, 4-Barnacle-5
+(looker)WRRA_B11 : 2-SeaLeech-7
+(looker)WRRA_B12 : 3-Eggbug
+(looker)WRRA_C01 : 3-Leech-6, 4-Leech-6, 5-CicadaB-4
+(looker){LookerRemix=0}WRRA_C02 : 2-CicadaB-5, 3-Peach-4
+(looker)WRRA_C03 : 3-Barnacle-6
+(looker){LookerRemix=0}WRRA_C04 : 2-Blue-2
+(looker)WRRA_C05 : 2-Leech-5, 3-Leech-6, 4-Leech-3
+(looker){LookerRemix=0}WRRA_C06 : 2-CicadaB-5, 3-Salamander-3, 4-SeaLeech-5, 5-SeaLeech-6
+(looker)}WRRA_D01 : 4-CicadaB-3, 5-Barnacle-6, 6-Leech-7, 7-Leech-8
+(looker){LookerRemix=0}WRRA_D02 : 2-Blue, 3-White, 4-Leech-5, 5-Barnacle-6, 6-Barnacle-3, 7-Leech-8, 8-Frog
+(looker)WRRA_D03 : 2-CicadaB-3, 3-SeaLeech-8, 4-SeaLeech-5, 5-SeaLeech-4, 6-CicadaB-3
+(looker){LookerRemix=0}WRRA_D04 : 2-BigNeedle, 2-SmallNeedle-3, 3-Blue
+(looker){LookerRemix=0}WRRA_D05 : 2-CicadaB-3, 3-SeaLeech-7, 4-SeaLeech-6, 5-SeaLeech-6, 6-White-{Mean-0.4}, 7-CicadaB-4
+
+END CREATURES
+[ENDMERGE]

@@ -1,0 +1,7 @@
+DangerType: None
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04452905
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Effects: Sentient Rot Spores-0-30-30, 

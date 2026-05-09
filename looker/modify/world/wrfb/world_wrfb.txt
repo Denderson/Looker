@@ -1,0 +1,77 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRFB_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_B08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_B11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_C07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_C13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_D01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_D02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_D03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_D09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFB_F03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRFB_D01 :
+[ADDBEFORE](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}WRFB_B06 : 3-Snail-3, 4-RaspberryLizard-{AlternateForm}-3
+(looker){LookerRemix=3}WRFB_F03 : 6-Barnacle-5, 8-RaspberryLizard-{AlternateForm}-3, 9-Barnacle-2, 10-RaspberryLizard-{AlternateForm}-2, 11-Barnacle-5
+
+
+(looker){LookerRemix=2}WRFB_B06 : 3-Snail-3, 4-Peach, 4-RaspberryLizard-{AlternateForm}-2
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WRFB_F03 : 6-Barnacle-5, 8-Peach-2, 8-RaspberryLizard-{AlternateForm}, 9-Snail-2, 10-polliwog-2, 11-Barnacle-5
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WRFB_F03 : 6-Barnacle-5, 8-Peach-2, 8-RaspberryLizard-{AlternateForm}, 9-Snail-2, 10-Peach-2, 11-Barnacle-5
+
+
+(looker){LookerRemix-2,#lb-fgf-m4r-ik.modpack}WRFB_C13 : 4-Red, 5-SeaLeech-5
+(looker){LookerRemix-2}WRFB_D02 : 3-Red, 4-Barnacle-4
+(looker){LookerRemix-2}WRFB_D03 : 4-Red-2
+(looker){LookerRemix-2}WRFB_F04 : 2-Red
+
+
+(looker){LookerRemix<2}WRFB_B06 : 3-Snail-3, 4-Peach-3
+(looker){LookerRemix<2,#lb-fgf-m4r-ik.modpack}WRFB_C13 : 4-polliwog-3, 5-SeaLeech-5
+(looker){LookerRemix<2}WRFB_D02 : 3-Salamander, 4-Barnacle-4
+(looker){LookerRemix<2}WRFB_D03 : 4-Cyan-2
+(looker){LookerRemix<2,#lb-fgf-m4r-ik.modpack}WRFB_F04 : 2-polliwog-2
+(looker){LookerRemix<2,#!lb-fgf-m4r-ik.modpack}WRFB_F04 : 2-Salamander
+
+
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFB_F03 : 6-Barnacle-5, 8-Peach-3, 9-Snail-2, 10-polliwog-2, 11-Barnacle-5
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFB_F03 : 6-Barnacle-5, 8-Peach-3, 9-Snail-2, 10-Peach-2, 11-Barnacle-5
+
+
+(looker){LookerRemix-1,#lb-fgf-m4r-ik.modpack}OFFSCREEN : 0-Leviathan-1, 0-MiniLeviathan-3-{AlternateForm}
+(looker){LookerRemix-1,#!lb-fgf-m4r-ik.modpack}OFFSCREEN : 0-Leviathan-1
+(looker){LookerRemix-1}WRFB_B05 : 2-Red
+(looker){LookerRemix-1}WRFB_D01 : 5-Barnacle-4, 5-RedLizard
+(looker){LookerRemix-1}WRFB_D09 : 4-Barnacle-3, 4-Barnacle-2
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Leviathan-1
+(looker){LookerRemix=0}WRFB_D01 : 5-Barnacle-4, 5-BlueLizard
+(looker){LookerRemix=0}WRFB_D09 : 4-Snail-3 4-Barnacle-2
+(looker){LookerRemix=0}WRFB_F03 : 6-Barnacle-5, 8-Peach-3, 9-Snail-2, 10-Peach-2, 11-Barnacle-5
+
+
+(looker)WRFB_B08 : 2-Snail-2, 3-Barnacle-3
+(looker)WRFB_B11 : 2-Barnacle-5
+(looker)WRFB_C07 : 2-Snail-3
+
+(looker){#!lb-fgf-m4r-ik.modpack}WRFB_C13 : 4-Snail-3, 5-SeaLeech-5
+(looker){LookerWeaver}WRFB_D09 : 3-WeaverLizard
+(looker){LookerWeaver}WRFB_D10 : 2-WeaverLizard
+END CREATURES
+[ENDMERGE]
