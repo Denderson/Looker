@@ -191,7 +191,7 @@ namespace Looker
                     room.PlaySound(LookerEnums.vineboom, self.firstChunk.pos, 0.6f + UnityEngine.Random.value * 0.2f, 0.8f + UnityEngine.Random.value * 0.4f);
                 }
             }
-            
+
         }
         public static void Player_SpitOutOfShortCut(On.Player.orig_SpitOutOfShortCut orig, Player self, IntVector2 pos, Room newRoom, bool spitOutAllSticks)
         {
@@ -209,6 +209,15 @@ namespace Looker
             string roomName = newRoom?.abstractRoom?.name;
             bool enteredNewRoom = (data.oldRoom != roomName);
             data.oldRoom = roomName;
+
+            string regionName = newRoom?.world?.region?.name;
+            bool enteredNewRegion = (data.oldRegion != regionName);
+            data.oldRegion = regionName;
+
+            if (enteredNewRegion)
+            {
+                data.inShelter = true;
+            }
 
             if (CheckMechanics(newRoom, "migration", "WMPA"))
             {
@@ -283,7 +292,7 @@ namespace Looker
                 abstractCreature.RealizeInRoom();
                 newRoom.AddObject(new ShockWave(new Vector2(self.mainBodyChunk.pos.x, self.mainBodyChunk.pos.y), 300f, 0.2f, 15, false));
             }
-            if (CheckMechanics(self.room, "signal", "WPTA") && data.inShelter && enteredNewRoom)
+            if (CheckMechanics(self.room, "signal", "WPTA") && enteredNewRoom && data.inShelter)
             {
                 data.inShelter = false;
                 data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value);

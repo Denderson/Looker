@@ -61,6 +61,7 @@ namespace Looker.CWTs
             public int timesUntilTargetedByLightning = 3;
 
             public string oldRoom = string.Empty;
+            public string oldRegion = string.Empty;
         }
     }
 }

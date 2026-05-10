@@ -597,7 +597,7 @@ namespace Looker
 
         public static void WRSA_WEAVER_ctor(On.Watcher.WatcherRoomSpecificScript.WRSA_WEAVER.orig_ctor orig, WatcherRoomSpecificScript.WRSA_WEAVER self, Room room)
         {
-            if (room.game.IsStorySession && room.game.StoryCharacter == LookerEnums.looker)
+            if (room?.game != null && room.game.IsStorySession && room.game.StoryCharacter == LookerEnums.looker)
             {
                 room.game.GetStorySession.finalWarpSequenceStarted = true;
                 orig(self, room);

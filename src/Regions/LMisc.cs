@@ -94,7 +94,7 @@ namespace Looker.Regions
                         {
                             continue;
                         }
-                        if (self.room.abstractRoom.creatures[i].realizedCreature is Player && Custom.DistLess(self.firstChunk.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, 130f * OptionsMenu.breathZoneSize.Value))
+                        if (self.room.abstractRoom.creatures[i].realizedCreature is Player && Custom.DistLess(self.lightSource.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, 130f * OptionsMenu.breathZoneSize.Value))
                         {
                             (self.room.abstractRoom.creatures[i].realizedCreature as Player).airInLungs = 1f;
                         }
