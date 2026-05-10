@@ -295,8 +295,6 @@ namespace Looker
 
                 // pillar grove
                 {
-                    On.HUD.Map.Draw += LGrove.Map_Draw;
-                    On.HUD.Map.ItemMarker.Draw += LGrove.ItemMarker_Draw;
                     On.RoomCamera.SpriteLeaser.Update += LGrove.SpriteLeaser_Update;
                     On.ItemSymbol.ColorForItem += LGrove.ItemSymbol_ColorForItem;
                     On.ItemSymbol.SpriteNameForItem += LGrove.ItemSymbol_SpriteNameForItem;

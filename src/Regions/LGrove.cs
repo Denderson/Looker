@@ -31,47 +31,29 @@ namespace Looker.Regions
 
         public static string ItemSymbol_SpriteNameForItem(On.ItemSymbol.orig_SpriteNameForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
         {
+            string value = orig(itemType, intData);
             if (intData == ogsculeNumber)
             {
+                Log.LogMessage("Forcing ogscule image");
                 return ogsculeIcon;
             }
-            return orig(itemType, intData);
+            return value;
         }
 
         public static IconSymbol.IconSymbolData? ItemSymbol_SymbolDataFromItem(On.ItemSymbol.orig_SymbolDataFromItem orig, AbstractPhysicalObject item)
         {
             IconSymbol.IconSymbolData? value = orig(item);
-            if (item?.world?.game != null && CheckMechanics(item.world.game, "pillar", "WPGA"))
+            Log.LogMessage("Stating the ogscule override");
+            if (item?.Room?.realizedRoom != null)
             {
-                return new IconSymbol.IconSymbolData(CreatureTemplate.Type.StandardGroundCreature, item.type, ogsculeNumber);
+                Log.LogMessage("Ogspores have been spread");
+                if (CheckMechanics(item.Room.realizedRoom, "pillar", "WPGA"))
+                {
+                    Log.LogMessage("Ogspores have been spread 2");
+                    return new IconSymbol.IconSymbolData(CreatureTemplate.Type.StandardGroundCreature, item.type, ogsculeNumber);
+                }
             }
             return value;
-        }
-
-        public static void ItemMarker_Draw(On.HUD.Map.ItemMarker.orig_Draw orig, HUD.Map.ItemMarker self, float timeStacker)
-        {
-            if (ModManager.MMF && CheckMechanics(self?.obj?.Room?.realizedRoom, "pillar", "WPGA"))
-            {
-                bool value = MoreSlugcats.MMF.cfgCreatureSense.Value;
-                MoreSlugcats.MMF.cfgCreatureSense.Value = false;
-                orig(self, timeStacker);
-                MoreSlugcats.MMF.cfgCreatureSense.Value = value;
-                return;
-            }
-            orig(self, timeStacker);
-        }
-
-        public static void Map_Draw(On.HUD.Map.orig_Draw orig, HUD.Map self, float timeStacker)
-        {
-            if (ModManager.MMF && self?.hud?.owner?.GetOwnerType() == HUD.HUD.OwnerType.Player && self.hud.owner is Player player && CheckMechanics(player?.room, "pillar", "WPGA"))
-            {
-                bool value = MoreSlugcats.MMF.cfgCreatureSense.Value;
-                MoreSlugcats.MMF.cfgCreatureSense.Value = false;
-                orig(self, timeStacker);
-                MoreSlugcats.MMF.cfgCreatureSense.Value = value;
-                return;
-            }
-            orig(self, timeStacker);
         }
 
         public static bool IsSpriteBlacklisted(IDrawable obj, out int mainSprite)

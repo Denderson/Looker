@@ -323,10 +323,9 @@ namespace Looker
                 }
                 if (flag)
                 {
-                    WorldCoordinate maskCoords = new(newRoom.abstractRoom.index, 1800, 360, -1);
-                    VultureMask.AbstractVultureMask abstractVultureMask = new(newRoom.world, null, maskCoords, SpecialId, self.abstractCreature.ID.RandomSeed, false);
+                    Log.LogMessage("Spawning karma mask!");
+                    VultureMask.AbstractVultureMask abstractVultureMask = new(newRoom.world, null, newRoom.GetWorldCoordinate(new Vector2(1050f, 400f)), SpecialId, self.abstractCreature.ID.RandomSeed, false);
                     self.room.abstractRoom.AddEntity(abstractVultureMask);
-                    
                     abstractVultureMask.RealizeInRoom();
                 }
             }
@@ -403,7 +402,7 @@ namespace Looker
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
                     Vector2 vector = Custom.IntVector2ToVector2(newRoom.ShorcutEntranceHoleDirection(pos));
-                    self.bodyChunks[i].vel = vector * 3f;
+                    self.bodyChunks[i].vel = vector * 10f;
                 }
             }
             

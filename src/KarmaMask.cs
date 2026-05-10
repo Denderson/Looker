@@ -37,7 +37,7 @@ namespace Looker
                     {
                         foreach (Creature.Grasp t in player.grasps)
                         {
-                            if (t.grabbed is VultureMask mask && CWTs.VultureMaskCWT.TryGetData(mask, out var data) && data.isKarmaMask)
+                            if (t != null && t.grabbed != null && t.grabbed is VultureMask mask && CWTs.VultureMaskCWT.TryGetData(mask, out var data) && data != null && data.isKarmaMask)
                             {
                                 return true;
                             }

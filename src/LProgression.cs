@@ -496,11 +496,34 @@ namespace Looker
 
         public static void WRSA_WEAVER_ctor(On.Watcher.WatcherRoomSpecificScript.WRSA_WEAVER.orig_ctor orig, WatcherRoomSpecificScript.WRSA_WEAVER self, Room room)
         {
-            if (room?.game != null && room.game.IsStorySession && room.game.StoryCharacter == LookerEnums.looker)
+            if (room?.abstractRoom != null && room.game != null && room.game.IsStorySession && room.game.StoryCharacter == LookerEnums.looker)
             {
-                room.game.GetStorySession.finalWarpSequenceStarted = true;
-                orig(self, room);
-                room.game.GetStorySession.finalWarpSequenceStarted = false;
+                self.room = room;
+                VoidWeaverEndingScene obj = new VoidWeaverEndingScene(room);
+                room.AddObject(obj);
+                room.abstractRoom.mapPos = Vector2.zero;
+                {
+                    OmniDirectionalSound item = new OmniDirectionalSound("RWTW_PlateTree_A1.ogg", inherited: false)
+                    {
+                        volume = 0.2f
+                    };
+                    OmniDirectionalSound item2 = new OmniDirectionalSound("RWTW_PlateTree_B1.ogg", inherited: false)
+                    {
+                        volume = 0.35f
+                    };
+                    if (room.roomSettings?.ambientSounds != null)
+                    {
+                        room.roomSettings.ambientSounds.Add(item);
+                        room.roomSettings.ambientSounds.Add(item2);
+                    }
+                    if (room.game.cameras != null && room.game.cameras.Length > 0 && room.game.cameras[0].virtualMicrophone != null)
+                    {
+                        room.game.cameras[0].virtualMicrophone.NewRoom(room);
+                    }
+                }
+                room.AddObject(new FadeOut(room, UnityEngine.Color.black, 10f, fadeIn: true));
+                MusicPlayer musicPlayer = room.game.manager.musicPlayer;
+                musicPlayer?.FadeOutAllSongs(120f);
                 return;
             }
             orig(self, room);
