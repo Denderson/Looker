@@ -87,5 +87,67 @@ namespace Looker
             return text;
 
         }
+
+        public static void Oracle_ctor(On.Oracle.orig_ctor orig, Oracle self, AbstractPhysicalObject abstractPhysicalObject, Room room)
+        {
+            Log.LogMessage("Spawning oracle!!");
+            if (room.abstractRoom?.name.ToLowerInvariant() == "wssr_ai")
+            {
+                self.ID = Oracle.OracleID.SS;
+            }
+            orig(self, abstractPhysicalObject, room);
+        }
+
+        public static void Room_ReadyForAI(On.Room.orig_ReadyForAI orig, Room self)
+        {
+            orig(self);
+            Log.LogMessage("Ready for AI!");
+            if (self.abstractRoom?.name.ToLowerInvariant() == "wssr_ai")
+            {
+                if (self.game?.StoryCharacter == null)
+                {
+                    Log.LogMessage("Fail 1!");
+                    return;
+                }
+                if (self.game.StoryCharacter != LookerEnums.looker)
+                {
+                    Log.LogMessage("Fail 2!");
+                    return;
+                }
+                if (self.world == null)
+                {
+                    Log.LogMessage("Fail 3!");
+                    return;
+                }
+                Log.LogMessage("Ready for AI 2 !");
+                Oracle obj3 = new(new AbstractPhysicalObject(self.world, AbstractPhysicalObject.AbstractObjectType.Oracle, null, new WorldCoordinate(self.abstractRoom.index, 15, 15, -1), self.game.GetNewID()), self);
+                self.AddObject(obj3);
+                self.waitToEnterAfterFullyLoaded = Math.Max(self.waitToEnterAfterFullyLoaded, 80);
+                Log.LogMessage("Ready for AI 3 !");
+            }
+        }
+
+        public static bool Is_Alive(Func<Oracle, bool> orig, Oracle self)
+        {
+            return orig(self) || (self.ID == Oracle.OracleID.SS && self?.room?.game?.StoryCharacter == LookerEnums.looker && OptionsMenu.metSliver.Value);
+        }
+
+        public static bool Is_Sliver(Func<OracleGraphics, bool> orig, OracleGraphics self)
+        {
+            if (self?.oracle?.room?.game?.StoryCharacter == LookerEnums.looker)
+            {
+                return true;
+            }
+            return orig(self);
+        }
+
+        public static bool Is_EP(Func<OracleGraphics, bool> orig, OracleGraphics self)
+        {
+            if (self?.oracle?.room?.game?.StoryCharacter == LookerEnums.looker)
+            {
+                return false;
+            }
+            return orig(self);
+        }
     }
 }

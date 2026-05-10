@@ -36,6 +36,90 @@ namespace Looker
 {
     public static class LProgression
     {
+        public static bool RegionState_InfectRegionRoomWithSentientRot(On.RegionState.orig_InfectRegionRoomWithSentientRot orig, RegionState self, float amount, string roomName)
+        {
+            if (self?.world?.game?.StoryCharacter == LookerEnums.looker)
+            {
+                return false;
+            }
+            return orig(self, amount, roomName);
+        }
+
+        public static bool Room_InfectRoomWithSentientRot(On.Room.orig_InfectRoomWithSentientRot orig, Room self, float amount)
+        {
+            if (self.game?.StoryCharacter == LookerEnums.looker)
+            {
+                return false;
+            }
+            return orig(self, amount);
+        }
+
+        public static void WarpPoint_NewWorldLoaded_Room(On.Watcher.WarpPoint.orig_NewWorldLoaded_Room orig, WarpPoint self, Room newRoom)
+        {
+            orig(self, newRoom);
+
+            if (!OptionsMenu.checkpointWarps.Value || self.room?.game?.StoryCharacter != LookerEnums.looker) return;
+
+            WarpPoint.WarpPointData warpPointData = (self.overrideData ?? self.Data);
+            newRoom.game.GetStorySession.saveState.warpPointTargetAfterWarpPointSave = warpPointData;
+            newRoom.game.GetStorySession.saveState.transferCreaturesAfterWarpPointSave.Clear();
+            newRoom.game.GetStorySession.saveState.transferObjectsAfterWarpPointSave.Clear();
+            newRoom.game.GetStorySession.saveState.importantTransferEntitiesAfterWarpPointSave.Clear();
+            foreach (AbstractPhysicalObject t in newRoom.game.GetStorySession.pendingWarpPointTransferObjects)
+            {
+                if (t is AbstractCreature creature)
+                {
+                    newRoom.game.GetStorySession.saveState.transferCreaturesAfterWarpPointSave.Add(SaveState.AbstractCreatureToStringStoryWorld(creature));
+                }
+                else
+                {
+                    newRoom.game.GetStorySession.saveState.transferObjectsAfterWarpPointSave.Add(t);
+                }
+            }
+            foreach (EntityID t in newRoom.game.GetStorySession.importantWarpPointTransferedEntities)
+            {
+                newRoom.game.GetStorySession.saveState.importantTransferEntitiesAfterWarpPointSave.Add(t);
+            }
+            if (newRoom.game.GetStorySession.saveState.miscWorldSaveData.hasSkippedFirstWarpFatigueTransfer == 0)
+            {
+                newRoom.game.GetStorySession.saveState.preserveWarpFatigueAfterWarpPointSave = 0;
+                newRoom.game.GetStorySession.saveState.miscWorldSaveData.hasSkippedFirstWarpFatigueTransfer = 1;
+            }
+            else
+            {
+                newRoom.game.GetStorySession.saveState.preserveWarpFatigueAfterWarpPointSave = newRoom.game.GetStorySession.warpsTraversedThisCycle;
+            }
+            newRoom.game.Win(malnourished: false, fromWarpPoint: true);
+        }
+
+        public static bool UsesWarpMap(Func<Menu.KarmaLadderScreen, bool> orig, Menu.KarmaLadderScreen self)
+        {
+            if (self.saveState != null && self.saveState.saveStateNumber == LookerEnums.looker)
+            {
+                return !self.RippleLadderMode;
+            }
+            return orig(self);
+        }
+        public static void WarpPoint_PerformWarp(On.Watcher.WarpPoint.orig_PerformWarp orig, WarpPoint self)
+        {
+            if (self?.room?.game?.StoryCharacter == null)
+            {
+                Log.LogMessage("Cannot get story character!");
+                orig(self);
+                return;
+            }
+            if (self.room.game.StoryCharacter != LookerEnums.looker)
+            {
+                Log.LogMessage("Story character is not Looker!");
+                orig(self);
+                return;
+            }
+            self.Data.destTimeline = LookerEnums.lookerTimeline;
+            self.Data.sourceTimeline = LookerEnums.lookerTimeline;
+            orig(self);
+            Log.LogMessage("Set to Looker timeline!!! from warp");
+            self.room.game.GetStorySession.saveState.currentTimelinePosition = LookerEnums.lookerTimeline;
+        }
 
         public static void HI_W05_ctor(On.Watcher.WatcherRoomSpecificScript.HI_W05.orig_ctor orig, WatcherRoomSpecificScript.HI_W05 self, Room room)
         {
@@ -62,191 +146,6 @@ namespace Looker
             {
                 self.room.PlaySound(WatcherEnums.WatcherSoundID.Spinning_Top_Laugh_L);
             }
-        }
-        public static void KarmaMeter_Update(On.HUD.KarmaMeter.orig_Update orig, HUD.KarmaMeter self)
-        {
-            orig(self);
-            if (self.hud?.owner is Player player && player.room?.game.StoryCharacter == LookerEnums.looker && CWTs.PlayerCWT.TryGetData(player, out var data))
-            {
-                
-                if (!data.karmaMode && data.previousKarmaMode)
-                {
-                    self.karmaSprite.element = Futile.atlasManager.GetElementWithName(HUD.KarmaMeter.RippleSymbolSprite(small: true, 5));
-                    self.forceVisibleCounter = Math.Max(self.forceVisibleCounter, 120);
-                }
-                if (data.karmaMode && !data.previousKarmaMode)
-                {
-                    self.displayKarma.x = 9;
-                    self.displayKarma.y = 9;
-                    self.karmaSprite.element = Futile.atlasManager.GetElementWithName(HUD.KarmaMeter.KarmaSymbolSprite(small: true, self.displayKarma));
-                    self.forceVisibleCounter = Math.Max(self.forceVisibleCounter, 120);
-                }
-            }
-            
-        }
-
-        public static void VultureMaskGraphics_ctor_PhysicalObject_MaskType_int_string(On.MoreSlugcats.VultureMaskGraphics.orig_ctor_PhysicalObject_MaskType_int_string orig, VultureMaskGraphics self, PhysicalObject attached, VultureMask.MaskType type, int firstSprite, string overrideSprite)
-        {
-            orig(self, attached, type, firstSprite, overrideSprite);
-            if (self.attachedTo is VultureMask && (self.attachedTo as VultureMask).abstractPhysicalObject.ID == SpecialId)
-            {
-                self.maskType = VultureMask.MaskType.SCAVTEMPLAR;
-                self.glimmer = true;
-                self.ignoreDarkness = true;
-            }
-        }
-
-        public static void VultureMaskGraphics_ctor(On.MoreSlugcats.VultureMaskGraphics.orig_ctor_PhysicalObject_AbstractVultureMask_int orig, VultureMaskGraphics self, PhysicalObject attached, VultureMask.AbstractVultureMask abstractMask, int firstSprite)
-        {
-            orig(self, attached, abstractMask, firstSprite);
-            if (self.attachedTo is VultureMask && (self.attachedTo as VultureMask).abstractPhysicalObject.ID == SpecialId)
-            {
-                self.maskType = VultureMask.MaskType.SCAVTEMPLAR;
-                self.glimmer = true;
-                self.ignoreDarkness = true;
-            }
-        }
-
-        public static void VultureMaskGraphics_DrawSprites(On.MoreSlugcats.VultureMaskGraphics.orig_DrawSprites orig, VultureMaskGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
-        {
-            orig(self, sLeaser, rCam, timeStacker, camPos);
-            if (self.attachedTo is VultureMask && (self.attachedTo as VultureMask).abstractPhysicalObject.ID == SpecialId)
-            {
-                sLeaser.sprites[self.firstSprite].color = RainWorld.GoldRGB;
-                sLeaser.sprites[self.firstSprite].shader = Custom.rainWorld.Shaders["RippleBasicBothSides"];
-            }
-        }
-
-        public static void VultureMask_ctor(On.VultureMask.orig_ctor orig, VultureMask self, AbstractPhysicalObject abstractPhysicalObject, World world)
-        {
-            orig(self, abstractPhysicalObject, world);
-            if (self.abstractPhysicalObject.ID == SpecialId)
-            {
-                self.abstractPhysicalObject.rippleBothSides = true;
-                if (CWTs.VultureMaskCWT.TryGetData(self, out var data))
-                {
-                    data.isKarmaMask = true;
-                }
-                else Log.LogMessage("Couldnt grab CWT in Vulture Mask ctor!");
-            }
-        }
-
-        public static string SaveState_GetSaveStateDenToUse(On.SaveState.orig_GetSaveStateDenToUse orig, SaveState self)
-        {
-            string text = orig(self);
-            if (self.saveStateNumber == LookerEnums.looker)
-            {
-                if (warptodaemon)
-                {
-                    warptodaemon = false;
-                    SaveFileCode.SetBool(self, "PuzzleComplete", true);
-                    return "WRSA_WEAVER02";
-                }
-                string shelter = SaveFileCode.GetString(self, "OverrideShelter");
-                if (shelter != null && shelter != "SU_S04")
-                {
-                    SaveFileCode.SetString(self, "OverrideShelter", "SU_S04");
-                    return shelter;
-                }
-            }
-            return text;
-        }
-
-        public static void CheckMaskMechanics(Room room)
-        {
-            bool usingMask = false;
-            bool usingFlower = false;
-            for (int i = 0; i < room.physicalObjects.Length; i++)
-            {
-                foreach (PhysicalObject item in room.physicalObjects[i])
-                {
-                    if (item is VultureMask mask)
-                    {
-                        if (mask.abstractPhysicalObject.ID == SpecialId)
-                        {
-                            string newshelter = CleansedShelter(room, out bool successful);
-                            if (successful)
-                            {
-                                SaveFileCode.SetString(room.game.GetStorySession.saveState, "OverrideShelter", newshelter);
-                                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
-                                mask.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, mask.abstractPhysicalObject.pos.Vec2(), 1f, 1f);
-                                for (int j = 0; j < 20; j++)
-                                {
-                                    mask.room.AddObject(new Spark(mask.abstractPhysicalObject.pos.Vec2(), Custom.RNV() * (25f * UnityEngine.Random.value), RainWorld.GoldRGB, null, 70, 150));
-                                }
-                                mask.Destroy();
-                                return;
-                            }
-                        }
-                        else usingMask = true;
-                    }
-                    if (item is KarmaFlower karmaFlower)
-                    {
-                        usingFlower = true;
-                    }
-                }
-            }
-            if (CheckMechanics(room, "ridge", "WARF") && !OptionsMenu.constantShelters.Value)
-            {
-                SaveFileCode.SetString(room.game.GetStorySession.saveState, "OverrideShelter", RandomShelter());
-            }
-            if (usingFlower && usingMask)
-            {
-                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
-            }
-        }
-
-        public static string RandomShelter()
-        {
-            return (float)(UnityEngine.Random.value * 9) switch
-            {
-                (< 1) => "WARF_S01",
-                (< 2) => "WARF_S02",
-                (< 3) => "WARF_S03",
-                (< 4) => "WARF_S04",
-                (< 5) => "WARF_S06",
-                (< 6) => "WARF_S08",
-                (< 7) => "WARF_S14",
-                (< 8) => "WARF_S18",
-                _ => "WARF_S32",
-            };
-        }
-
-        public static string CleansedShelter(Room room, out bool successful)
-        {
-            string name = room.abstractRoom.name;
-            successful = true;
-            if (name.StartsWith("WSUR_S"))
-            {
-                return "SU_S" + name.Substring(6);
-            }
-            else if (name.StartsWith("WDSR_S"))
-            {
-                return "DS_S" + name.Substring(6);
-            }
-            else if (name.StartsWith("WGWR_S"))
-            {
-                return "GW_S" + name.Substring(6);
-            }
-            successful = false;
-            Log.LogMessage("Didn't warp");
-            return name;
-        }
-
-        public static void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
-        {
-            orig(self, abstractCreature, world);
-            if (world.game?.StoryCharacter == LookerEnums.looker)
-            {
-                if (SaveFileCode.GetBool(world.game.GetStorySession.saveState, "CreateMask"))
-                {
-                    VultureMask.AbstractVultureMask abstractVultureMask = new(world, null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), SpecialId, self.abstractCreature.ID.RandomSeed, false);
-                    self.room.abstractRoom.AddEntity(abstractVultureMask);
-                    abstractVultureMask.RealizeInRoom();
-                }
-                return;
-            }
-            
         }
 
         public static void ARKillRect_Update(On.ARKillRect.orig_Update orig, ARKillRect self, bool eu)
@@ -941,5 +840,7 @@ namespace Looker
                 return;
             }
         }
+
+        
     }
 }

@@ -38,6 +38,67 @@ namespace Looker
 {
     public static class LPlayer_Flower
     {
+        public static float Visibility_Bonus(Func<Player, float> orig, Player self)
+        {
+            if (PlayerCWT.TryGetData(self, out PlayerCWT.DataClass data) && data.fakingDeath > 0)
+            {
+                return -1f;
+            }
+            else
+            {
+                return orig(self);
+            }
+        }
+
+        public static bool CanSee_VoidSpawn(Func<SaveState, bool> orig, SaveState self)
+        {
+            return orig(self) || (self.saveStateNumber == LookerEnums.looker);
+        }
+
+        public static float PlayerRippleLevel(Func<Player, float> orig, Player self)
+        {
+            if (self?.SlugCatClass == LookerEnums.looker)
+            {
+                return 5f;
+            }
+            return orig(self);
+        }
+
+        public static float PlayerMaxRippleLevel(Func<Player, float> orig, Player self)
+        {
+            if (self?.SlugCatClass == LookerEnums.looker)
+            {
+                return 5f;
+            }
+            return orig(self);
+        }
+        public static float OverrideGravity(Func<Player, float> orig, Player self)
+        {
+            if (self?.SlugCatClass == LookerEnums.looker && PlayerCWT.TryGetData(self, out var data) && data.shouldOverrideGravity && self.room != null)
+            {
+                return data.overrideAirfriction;
+            }
+            return orig(self);
+        }
+
+        public static float OverrideAirFriction(Func<Player, float> orig, Player self)
+        {
+            if (self?.SlugCatClass == LookerEnums.looker && PlayerCWT.TryGetData(self, out var data) && data.shouldOverrideGravity && self.room != null)
+            {
+                return data.overrideGravity * self.room.gravity;
+            }
+            return orig(self);
+        }
+
+        public static void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
+        {
+            orig(self, abstractCreature, world);
+            if (self?.SlugCatClass != null && self.SlugCatClass == LookerEnums.looker)
+            {
+                self.glowing = OptionsMenu.enableGlow.Value;
+            }
+        }
+
         public static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
         {
             orig(self, eu);
@@ -262,8 +323,10 @@ namespace Looker
                 }
                 if (flag)
                 {
-                    VultureMask.AbstractVultureMask abstractVultureMask = new(newRoom.world, null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), SpecialId, self.abstractCreature.ID.RandomSeed, false);
+                    WorldCoordinate maskCoords = new(newRoom.abstractRoom.index, 1800, 360, -1);
+                    VultureMask.AbstractVultureMask abstractVultureMask = new(newRoom.world, null, maskCoords, SpecialId, self.abstractCreature.ID.RandomSeed, false);
                     self.room.abstractRoom.AddEntity(abstractVultureMask);
+                    
                     abstractVultureMask.RealizeInRoom();
                 }
             }
@@ -349,7 +412,7 @@ namespace Looker
 
             if (data.inShelter)
             {
-                LProgression.CheckMaskMechanics(newRoom);
+                KarmaMask.CheckMaskMechanics(newRoom);
             }
         }
 

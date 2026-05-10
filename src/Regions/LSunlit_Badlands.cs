@@ -33,8 +33,37 @@ using Looker.CWTs;
 
 namespace Looker.Regions
 {
-    internal class LSunlit_Badlands
+    public static class LSunlit_Badlands
     {
+        public static void LightSource_Update(On.LightSource.orig_Update orig, LightSource self, bool eu)
+        {
+            orig(self, eu);
+            if (!CheckMechanics(self?.room, "alley", "WSKB"))
+            {
+                return;
+            }
+            if (!self.noGameplayImpact && !self.slatedForDeletetion && self?.Pos != null && self.tiedToObject != null && self.tiedToObject is PhysicalObject)
+            {
+                if (self.room.PlayersInRoom != null && self.room.PlayersInRoom.Count > 0)
+                {
+                    foreach (Player player in self.room.PlayersInRoom)
+                    {
+                        if (player?.bodyChunks == null || player.bodyChunks.Length == 0 || !Custom.DistLess(player.mainBodyChunk.pos, self.Pos, 100))
+                        {
+                            continue;
+                        }
+                        if (PlayerCWT.TryGetData(player, out var data))
+                        {
+                            data.darknessImmunity = 120;
+                        }
+                        else
+                        {
+                            Log.LogMessage("Couldnt find playerCWT!");
+                        }
+                    }
+                }
+            }
+        }
         public static void RoomCamera_Update(On.RoomCamera.orig_Update orig, RoomCamera self)
         {
             orig(self);

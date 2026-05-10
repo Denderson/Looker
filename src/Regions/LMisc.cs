@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Looker.Plugin;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
+using Looker.CWTs;
 using Menu.Remix.MixedUI;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -15,26 +10,186 @@ using Music;
 using RWCustom;
 using SlugBase;
 using SlugBase.Features;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 using System.Security.Permissions;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 using Watcher;
+using static Looker.Plugin;
 using static SlugBase.Features.FeatureTypes;
 
 namespace Looker.Regions
 {
-    internal class LMisc
+    public static class LMisc
     {
+        public static void Lizard_ctor(On.Lizard.orig_ctor orig, Lizard self, AbstractCreature abstractCreature, World world)
+        {
+            Log.LogMessage("LIZARD CTOR!!");
+            if (world?.game?.StoryCharacter != LookerEnums.looker)
+            {
+                orig(self, abstractCreature, world);
+                return;
+            }
+            if (world.game.GetStorySession.saveState.GetBool(SaveFileCode.reachedThrone))
+            {
+                if (self?.LizardState != null)
+                {
+                    float randomValue = UnityEngine.Random.value;
+                    if (randomValue > 0.95f)
+                    {
+                        self.LizardState.rotType = LizardState.RotType.Full;
+                    }
+                    else if (randomValue > 0.85f)
+                    {
+                        self.LizardState.rotType = LizardState.RotType.Opossum;
+                    }
+                    else if (randomValue > 0.70f)
+                    {
+                        self.LizardState.rotType = LizardState.RotType.Slight;
+                    }
+                }
+                else
+                {
+                    Log.LogMessage("Couldnt grab self.LizardState!");
+                }
+            }
 
+            orig(self, abstractCreature, world);
+
+            Log.LogMessage("LOOKER LIZARD CTOR!!");
+            if (world?.region?.name != null)
+            {
+                string regionName = world.region.name.ToLowerInvariant();
+                if (regionName.Contains("wvwa"))
+                {
+                    self.effectColor = Custom.HSL2RGB(Custom.WrappedRandomVariation(0.87f, 0.1f, 0.6f), 1f, Custom.ClampedRandomVariation(0.5f, 0.15f, 0.1f));
+                }
+                if (regionName.Contains("warg") && (OptionsMenu.strongerLizardChance.Value == 1f || UnityEngine.Random.value < OptionsMenu.strongerLizardChance.Value))
+                {
+                    Log.LogMessage("Buffing The Surface lizards!!");
+                    if (OptionsMenu.lizardsCanLeap.Value && self.jumpModule == null) self.jumpModule = new LizardJumpModule(self);
+                    if (OptionsMenu.lizardsCanShield.Value && self.blizzardModule == null) self.blizzardModule = new LizardBlizzardModule(self);
+                }
+            }
+
+            if (self.spawnDataEvil == 0)
+            {
+                self.spawnDataEvil = 0.3f * OptionsMenu.spawnFileDifficulty.Value;
+            }
+        }
+
+        public static void BrokenAntiGravity_Update(On.AntiGravity.BrokenAntiGravity.orig_Update orig, AntiGravity.BrokenAntiGravity self)
+        {
+            orig(self);
+            if (CheckMechanics(self.game, "storage", "WARD") && OptionsMenu.normalGravity.Value)
+            {
+                self.counter = 10;
+                self.progress = 0f;
+                self.from = 0f;
+                self.to = 0f;
+            }
+        }
+
+        public static int RainCycle_GetDesiredCycleLength(On.RainCycle.orig_GetDesiredCycleLength orig, RainCycle self)
+        {
+            int value = orig(self);
+
+            if (self?.world?.game?.StoryCharacter != null)
+            {
+                if (self.world.game.StoryCharacter == LookerEnums.looker)
+                {
+                    if (self?.world?.region?.name != null && self.world.region.name == "WSKA")
+                    {
+                        value = (int)((float)value * 0.30);
+                    }
+                    else if (self?.world?.region?.name != null && self.world.region.name == "WRRA")
+                    {
+                        value = (int)((float)value * 0.50);
+                    }
+                }
+            }
+            else
+            {
+                Log.LogMessage("Couldnt find story character for rain cycle!");
+            }
+            return value;
+        }
+
+        public static void Player_LungUpdate(On.Player.orig_LungUpdate orig, Player self)
+        {
+            orig(self);
+            if (!CWTs.PlayerCWT.TryGetData(self, out var data)) return;
+            if (self.room != null && CheckMechanics(self.room, "salination", "WARB") && self.airInLungs <= 0.1f && !data.usedEmergencyBreath)
+            {
+                data.usedEmergencyBreath = true;
+                for (int i = 0; i < 10; i++)
+                {
+                    Bubble bubble = new(self.firstChunk.pos + Custom.RNV() * UnityEngine.Random.value * 6f, Custom.RNV() * 1.5f * Mathf.Lerp(6f, 16f, UnityEngine.Random.value) * Mathf.InverseLerp(0f, 0.45f, 0.5f), bottomBubble: false, fakeWaterBubble: false);
+                    self.room.AddObject(bubble);
+                    bubble.age = 600 - UnityEngine.Random.Range(20, UnityEngine.Random.Range(30, 80));
+                }
+                self.airInLungs = 1f;
+                self.lungsExhausted = false;
+            }
+        }
+
+        public static int LethalThunderStorm_GetLethalDelay(On.Watcher.LethalThunderStorm.orig_GetLethalDelay orig, LethalThunderStorm self, float amount)
+        {
+            int value = orig(self, amount);
+            if (self?.room != null && CheckMechanics(self.room, "stormy", "WSKC"))
+            {
+                return (int)(value / OptionsMenu.lightningSpawnSpeed.Value);
+            }
+            return value;
+        }
+
+        public static Vector2 StaticBuildup_GetBestTarget(On.Watcher.LightningMaker.StaticBuildup.orig_GetBestTarget orig, LightningMaker.StaticBuildup self)
+        {
+            Vector2 value = orig(self);
+            if (OptionsMenu.lessEvilLightnings.Value)
+            {
+                return value;
+            }
+            if (!CheckMechanics(self?.room, "stormy", "WSKC"))
+            {
+                return value;
+            }
+            if (self.room.lightningMaker == null)
+            {
+                return value;
+            }
+            foreach (PhysicalObject physicalObject in self.targets)
+            {
+                if (physicalObject != null && !self.IsTargetForbidden(physicalObject) && !self.room.lightningMaker.IsPosProtected(physicalObject.firstChunk.pos) && physicalObject is Player player && PlayerCWT.TryGetData(player, out var data))
+                {
+                    if (data.timesUntilTargetedByLightning > 0)
+                    {
+                        data.timesUntilTargetedByLightning--;
+                        if (data.timesUntilTargetedByLightning == 0)
+                        {
+                            player.eyesClosedTime = 200;
+                        }
+                        return value;
+                    }
+                    data.timesUntilTargetedByLightning = 2;
+                    return physicalObject.firstChunk.pos;
+                }
+            }
+            return value;
+        }
         public static void Player_AddFood(On.Player.orig_AddFood orig, Player self, int add)
         {
             orig(self, add);

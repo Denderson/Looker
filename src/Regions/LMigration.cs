@@ -1,19 +1,35 @@
-﻿using Mono.Cecil;
+﻿using Looker.CWTs;
+using Mono.Cecil;
+using RWCustom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Watcher;
-using RWCustom;
 using static Looker.Plugin;
 
 namespace Looker.Regions
 {
     public static class LMigration
     {
+        public static void Player_RippleSpawnInteractions(On.Player.orig_RippleSpawnInteractions orig, Player self)
+        {
+            orig(self);
+            if (self != null && self.warpPointCooldown <= 0 && self.standingInWarpPointProtectionTime <= 0 && self.room != null)
+            {
+                if (self?.room?.game?.StoryCharacter == LookerEnums.looker && PlayerCWT.TryGetData(self, out var data) && data.chaser != null && data.chaser.room == self.room)
+                {
+                    if (Vector2.Distance(self.mainBodyChunk.pos, data.chaser.firstChunk.pos) <= 50f && data.chaser.abstractPhysicalObject.rippleLayer == self.abstractCreature.rippleLayer)
+                    {
+                        self.rippleDeathIntensity += 0.015f;
+                    }
+                }
+            }
+        }
+
         public static void SpawnChaser(this Player self)
         {
             if (self?.room?.world == null)
