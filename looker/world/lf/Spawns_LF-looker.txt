@@ -1,0 +1,2 @@
+LF_A13W : 3-Mimic-{10}, 4-Mimic-{8}, 5-Eggbug
+LF_D04 : 3-CicadaA-3

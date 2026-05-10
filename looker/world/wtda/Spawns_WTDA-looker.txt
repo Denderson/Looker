@@ -1,0 +1,31 @@
+OFFSCREEN : 0-Scavenger-2-{Seed:12366}, 0-Scavenger-2-{Seed:3688}, 0-Scavenger-2-{Seed:9515}, 0-Scavenger-2-{Seed:66716}, 0-Scavenger-2-{Seed:8739}, 0-Scavenger-2-{Seed:5617}, 0-Scavenger-2-{Seed:11234}, 0-disciple-2-{Seed:1404}, 0-templar-3-{Seed:4026}, 0-RotLoach-1
+WTDA_A13 : 1-BigSpider-{Winter}, 1-Yeek-2-{Winter}
+WTDA_A14 : 2-Blizzard
+LINEAGE : WTDA_B02 : 3 : White-{Winter}-0.6, Red-{Winter}-0.8, Blizzard-0
+WTDA_B05 : 3-BigSpider-{Winter}-2
+WTDA_B06 : 2-Mimic-{10}, 2-Yeek-3-{Winter}
+WTDA_B07 : 3-Blizzard
+WTDA_B09 : 2-Cyan
+WTDA_B10 : 4-spitterspider
+WTDA_B11 : 2-ScavengerElite-3
+WTDA_Z01 : 2-Yeek-2-{Winter}, 2-Centipede
+WTDA_Z02 : 2-SmallCentipede, 2-Yeek-3-{Winter}
+LINEAGE : WTDA_Z02 : 2 : RedCentipede-0
+WTDA_Z03 : 3-White
+WTDA_Z04 : 3-Dropbug, 4-White-{Winter}
+LINEAGE : WTDA_Z04 : 4 : NONE-0.00001, RotLoach-1
+WTDA_Z05 : 3-SmallCentipede-2
+LINEAGE : WTDA_Z05 : 4 : SmallCentipede-0.9, RedCentipede-0
+WTDA_Z06 : 2-Yeek-4-{Winter}
+LINEAGE : WTDA_Z06 : 2 : Eggbug-1, BigSpider-{Winter}-1, SpitterSpider-{Winter}-0
+WTDA_Z08 : 2-SmallCentipede-2
+WTDA_Z09 : 2-MirosVulture, 2-BigSpider-2
+WTDA_Z10 : 2-SmallCentipede
+LINEAGE : WTDA_Z10 : 2 : RedCentipede-1, Yeek-1, RedCentipede-0
+LINEAGE : WTDA_Z13 : 4 : Mimic-{36}-1, Mimic-{40}-1, Mimic-{44}-1, Mimic-{48}-1, Mimic-{54}-1, TentaclePlant-0
+LINEAGE : WTDA_Z13 : 5 : Centipede-0.6, RedCentipede-0
+LINEAGE : WTDA_Z15 : 2 : Eggbug-10000, RedCentipede-0
+WTDA_Z16 : 3-SmallCentipede
+LINEAGE : WTDA_Z16 : 3 : Centipede-0.25, RedCentipede-0
+
+OFFSCREEN : 0-DrillCrab-3

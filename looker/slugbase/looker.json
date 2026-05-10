@@ -1,0 +1,37 @@
+{
+	"id": "looker",
+	"name": "The Looker",
+	"description": "An insider, accompanied and friendly. Ignoring but yes engaging. \nFrom close comes old perspectives, and old connections. A journey like others.",
+	"features": {
+		"color": "0a0a0a",
+		"custom_colors": [
+			{
+				"name": "Body",
+				"story": "0a0a0a",
+				"arena": [ "FFFFFF", "FFFF73", "FF7373", "0E0919" ]
+			},
+			{
+				"name": "Eyes",
+				"story": "ffffff",
+				"arena": [ "40A6D1", "4FBA42", "992999", "F4BFF1" ]
+			}
+		],
+		"food_min": 5,
+		"food_max": 9,
+		"diet": {
+			"base": "White",
+			"corpses": 0.5,
+			"plants": 0.75,
+			"meat": 0.75
+			},
+		"throw_skill": 1,
+		"weight": [1.12, 0.9],
+		"lung_capacity": 1.25,
+		"start_room": "WORA_DIAL",
+		"world_state": [ "looker", "Watcher" ],
+		"select_menu_scene": "Slugcat_looker",
+		"sleep_scene": "Sleep_looker",
+		"expedition_enabled": false,
+		"story_regions": ["-SU", "-HI", "-CC", "-DS", "-GW", "-SL", "-SH", "-UW", "-SS", "-SI", "-LF", "-SB", "-VS", "WARA", "WARB", "WARC", "WARD", "WARE", "WARF", "WARG", "WBLA", "WMPA", "WPGA", "WPTA", "WRFA", "WRFB", "WRRA", "WSKA", "WSKB", "WSKC", "WSKD", "WTDA", "WTDB", "WVWA", "WVWB"]
+	}
+}

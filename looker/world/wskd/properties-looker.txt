@@ -1,0 +1,9 @@
+corruptionEffectColor: 0.73,0.85,0.9
+corruptionEyeColor: 0.73,0.85,0.9
+overseersSpawnChance: 0
+overseersMin: 0
+overseersMax: 0
+playerGuideOverseerSpawnChance: 0.0
+proceduralMusicBank: wskd
+Subregion: Shrouded Coast
+Room Setting Templates: Outsidelooker, Insidelooker

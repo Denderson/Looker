@@ -1,10 +1,12 @@
-﻿{
-	"id": "nightcar",
-	"name": "The Nightcat",
-	"version": "0.1.0",
-	"authors": "",
-	"description": "A reimagination of The Watcher. Keeps the essence of the campaign while reworking mechanics, creatures and connections.",
-	"requirements": [ "slime-cubed.slugbase" ],
-	"requirements_names": [ "SlugBase" ],
-	"tags": [ "Custom Slugcat" ]
+{
+	"id": "invedwatcher",
+	"name": "The Looker",
+	"version": "0.5",
+	"hide_version": false,
+	"authors": "patoma, dendi",
+	"description": "Watcher's version of inv, with unique gimmicks and changed spawns in all of the regions included in this new DLC",
+	"requirements": ["slime-cubed.slugbase", "watcher", "lsfUtils", "regionkit", "crs", "fisobs"],
+	"requirements_names": ["SlugBase", "The Watcher", "RegionKit", "lsfUtils", "Custom Regions Support", "Fisobs"],
+	"priorities": ["dressmyslugcat", "nonescreatures", "lb-fgf-m4r-ik.modpack", "sequoia.luminouscode", "bebra.gregtech_lizard"],
+	"checksum_override_version": false
 }

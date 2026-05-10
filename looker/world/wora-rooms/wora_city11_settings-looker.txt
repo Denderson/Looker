@@ -1,0 +1,19 @@
+Template: NONE
+DangerType: Flood
+CeilingDrips: 0
+RainIntensity: 0.3586957
+RumbleIntensity: 0.1086956
+WaveSpeed: 0.5007656
+WaveLength: 0.9996172
+WaveAmplitude: 7.848503E-05
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.7608696
+Grime: 0
+Palette: 69
+EffectColorA: 15
+EffectColorB: 16
+Effects: WaterFluxMinLevel-0.173913-20-20, WaterFluxMaxLevel-0.173913-30-30, Darkness-0.2065217-40-40, 
+PlacedObjects: CustomDecal><29.62921><-32.04584><-8.960464~701~935.0513~742~979.8535~-10~44.80234~-199~0~1~0~rust2~0.3939779~1~0.4264433~1~0.2965818~1~0.5021963~1, CustomDecal><-8.94101><427.8836><-32.85504~-494~959.9415~-524~853.4115~15~-272.7965~-372~0~1~0~rust1~0.2619198~1~0.2619198~1~0.2619198~1~0.2619198~1, AirPocket><328.0269><-65.8018><446~84~30~30~Y~-42, DangleFruit><351.8939><325.389><0~0~2~3, 
+AmbientSounds: OMNI><RWTW_DustStorm_Deep.ogg><766.2655><531.0744><0.1956522><0.5891304, OMNI><RWTW_RotAmb_VanillaRot.ogg><767.0756><447.0602><0.1086956><1, SPOT><Basic Mech.ogg><746.8218><293.2158><0.1521739><1><456.8218><267.2158><-35.35534><-35.35534><0><0.1652175, SPOT><RWTW_DustStorm_Gusting.ogg><152.4395><410.4406><0.08695652><1><126.4395><561.4407><-18.35535><-21.35535><0><0.1, SPOT><waterGurgleLOOP1.wav><782.4189><122.2679><0.5><0.3934783><589.4189><65.26794><-135.3553><11.64465><0><0.2630436, 
+FadePalette: 19, 0.6413044

@@ -1,0 +1,4 @@
+[MERGE]
+globalCreatureFlags: IgnoreCycle
+Subregion: Signal Spires 2 electric boogaloo
+[ENDMERGE]

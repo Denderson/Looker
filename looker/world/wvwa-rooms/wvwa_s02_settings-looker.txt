@@ -1,0 +1,3 @@
+EffectColorA: 16
+EffectColorB: 17
+FadePalette: 35786, 1

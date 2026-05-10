@@ -1,0 +1,9 @@
+corruptionEffectColor: 0,0.03,0.19
+corruptionEyeColor: 0,0.03,0.19
+overseersSpawnChance: 0
+overseersMin: 0
+overseersMax: 0
+playerGuideOverseerSpawnChance: 0.0
+proceduralMusicBank: wskb
+Subregion: Moonbaked Alley
+Room Setting Templates: Outsidelooker, Insidelooker

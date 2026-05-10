@@ -1,0 +1,11 @@
+Template: wtda_settingstemplate_towerlooker
+DangerType: None
+WaveSpeed: 0.3571869
+WaveLength: 0.9285935
+WaveAmplitude: 6.933854E-05
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+EffectColorA: 11
+Effects: SkyAndLightBloom-0-20-20, LightBurn-0.3246546-30-30, 
+PlacedObjects: SlipperyZone><332.689><210.3155><100~50~15^18~0.1521739~False~False, 
+AmbientSounds: SPOT><AM_ENV-NatWind.ogg><725.6128><488.7071><0.2619204><0.7662491><453.929><746.707><-35.35534><-35.35534><0><0.5021966, SPOT><AM_IND-Utility02.ogg><873.942><284.0312><0.2727416><0.7857271><566.4164><473.0312><-35.35534><-35.35534><0><0.197397, 

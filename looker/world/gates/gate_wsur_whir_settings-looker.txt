@@ -1,0 +1,2 @@
+Palette: 466
+FadePalette: 467, 0.5

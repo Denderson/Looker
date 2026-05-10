@@ -1,0 +1,22 @@
+DangerType: Flood
+CeilingDrips: 0.5
+RainIntensity: 1
+RumbleIntensity: 1
+WaveSpeed: 0.75
+WaveLength: 0.5
+WaveAmplitude: 0
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.05434782
+Grime: 0
+BkgDroneVolume: 0.3
+BkgDroneNoThreatVolume: 1
+RandomItemDensity: 0.5
+RandomItemSpearChance: 0.2
+WaterReflectionAlpha: 1
+Palette: 80
+EffectColorA: 10
+EffectColorB: 0
+Effects: Fog-1-20-20, WaterGlowworm-1-30-30, WaterDepth-1-40-40, 
+AmbientSounds: OMNI><SO_NAT-WindTunnel.ogg><123.0602><17.06299><0.1086956><1, OMNI><SO_SFX-Drowning.ogg><335.5911><31.92798><0.2065217><1, OMNI><RWTW_AR_DripWorks.ogg><538.1361><18.85345><0.1521739><1, 
+FadePalette: 33, 0.9782609

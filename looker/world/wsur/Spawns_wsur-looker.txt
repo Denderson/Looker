@@ -1,0 +1,9 @@
+WSUR_A20 : 5-Daddy
+WSUR_B04 : 3-DropBug-2, 4-Dropbug-2
+WSUR_B08 : 3-Red-{RotType:2}, 4-Daddy
+LINEAGE : WSUR_A02 : 2 : ZoopLizard-{RotType:2}-0
+LINEAGE : WSUR_A06 : 3 : Red-{RotType:3}-0
+LINEAGE : WSUR_A17 : 2 : Red-{RotType:2}-0
+LINEAGE : WSUR_A20 : 4 : RedCentipede-0
+LINEAGE : WSUR_B07 : 2 : Cyan-{RotType:2}-0
+LINEAGE : WSUR_B12 : 3 : Red-{RotType:3}-0

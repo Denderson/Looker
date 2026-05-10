@@ -1,0 +1,27 @@
+corruptionEffectColor: 0.87,0.67,0.33
+corruptionEyeColor: 0.87,0.67,0.33
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+batsPerActiveSwarmRoom: 6
+overseersSpawnChance: 0.0
+overseersMin: 0
+overseersMax: 0
+locustRegion: true
+playerGuideOverseerSpawnChance: 0
+proceduralMusicBank: rwtw1
+Subregion: Worselands
+Room Setting Templates: BadlandsSurfacelooker,
+Room_Attr: Default: F03Crab-Forbidden,H01Crab-Forbidden,
+Room_Attr: WBLA_A09: IndigoLizard-Avoid,
+Room_Attr: WBLA_B02: DrillCrab-Forbidden,
+Room_Attr: WBLA_C01: DrillCrab-Forbidden,
+Room_Attr: WBLA_C05: DrillCrab-Forbidden,
+Room_Attr: WBLA_D01: DrillCrab-Forbidden,
+Room_Attr: WBLA_D03: MirosVulture-Avoid,
+Room_Attr: WBLA_E01: DrillCrab-Forbidden,
+Room_Attr: WBLA_F01: DrillCrab-Forbidden,
+Room_Attr: WBLA_F03: DrillCrab-Forbidden,F03Crab-Stay,
+Room_Attr: WBLA_F04: DrillCrab-Forbidden,
+Room_Attr: WBLA_H01: H01Crab-Stay,DrillCrab-Forbidden,

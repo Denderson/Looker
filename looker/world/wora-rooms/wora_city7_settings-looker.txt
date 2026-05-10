@@ -1,0 +1,21 @@
+Template: NONE
+DangerType: Sandstorm
+CeilingDrips: 0
+RainIntensity: 0.3586957
+RumbleIntensity: 0.1086956
+Clouds: 0.3586957
+Grime: 0
+Palette: 69
+TerrainLight: 0.2929051
+TerrainStainAmount: 0.9021739
+TerrainStainBrightness: 0.6304348
+TerrainStainHeight: 0.3152174
+TerrainWaves: 1
+TerrainEdgeRadius: 27.13358
+TerrainGooHeight: 0.04347826
+TerrainGrain: 1
+TerrainDepth: 3.152167
+TerrainPalette: outerrim
+PlacedObjects: TerrainHandle><221.5975><104.9354><-75.99561~52~40~0~35, TerrainHandle><492.6176><111.978><-40~0~40~0~49, TerrainHandle><633.9705><100.9595><-47.9649~11~40~0~17, TerrainHandle><353.3396><93.34244><-40~0~40~0~38, CustomDecal><-2.234482><-53.73285><-24.8902~714~746.8814~717~423.3089~-69~34~391.9103~0~1~0~rust2~0.09959279~1~0.2078111~1~0.2510983~1~0.5541093~1, CustomDecal><495.2693><-60.75404><-228.9897~942~443.2211~762~523.8653~-24~148~-9.999989~0~1~0~rust2~0.3484948~1~0.2402768~1~0.2402768~1~0.4026038~1, BlackSpot><179.9146><30.23862><-2~116~-466~216~-432~-25, BlackSpot><809.807><34.17755><18~109~433~129~392~-57, DeadTokenStalk><160.1123><345.73><-81~-32, DeadTokenStalk><164.4484><315.0996><-26~-46, RippleSpawnEgg><149.7933><321.3047><, RippleSpawnEgg><251.9487><327.5224><, RippleSpawnEgg><766.0292><383.8021><, 
+AmbientSounds: OMNI><RWTW_DustStorm_Deep.ogg><776.8547><506.3296><0.1521739><1, OMNI><RWTW_RotAmb_VanillaRot.ogg><781.8104><421.4407><0.1521739><1, SPOT><SO_IND-Boiler.ogg><768.6946><280.7961><0.1956522><1.41087><512.6946><365.7961><-42.35535><-40.35535><0><0.1869567, SPOT><RWTW_DustStorm_Gusting.ogg><556.587><199.1801><0.2282609><1><66.58704><160.1801><85.64465><-63.35535><0><0.154348, 
+FadePalette: 19, 0.6506938

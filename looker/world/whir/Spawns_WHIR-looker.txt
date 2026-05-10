@@ -1,0 +1,17 @@
+OFFSCREEN : 0-MirosVulture-3, 0-Scavenger-10, 0-templar-3
+WHIR_B12 : 2-AirplaneLizard-{RotType:3}, 3-SpitterSpider
+WHIR_A06 : 2-AirplaneLizard-{RotType:3}
+WHIR_C05 : 2-AirplaneLizard-{RotType:2}, 4-AirplaneLizard-{RotType:3}, 3-Daddy
+WHIR_B09 : 3-AirplaneLizard-{RotType:2}, 2-AirplaneLizard-{RotType:3}, 4-Daddy
+WHIR_B15 : 3-Small Centipede-3, 4-RedCentipede
+WHIR_B07 : 3-AirplaneLizard-{RotType:3}, 2-AirplaneLizard-{RotType:2}
+WHIR_C11 : 3-AirplaneLizard-{RotType:3}
+WHIR_C03 : 3-Daddy
+WHIR_B05 : 3-AirplaneLizard-{RotType:2}
+WHIR_A16 : 4-AirplaneLizard-{RotType:3}
+WHIR_B03 : 2-Daddy
+WHIR_C14 : 2-Daddy
+WHIR_C02 : 5-Daddy
+LINEAGE : WHIR_C01 : 4 : AirplaneLizard-{RotType:2}-0
+LINEAGE : WHIR_C01 : 5 : AirplaneLizard-{RotType:2}-0.8, AirplaneLizard-{RotType:3}-0
+LINEAGE : WHIR_B03 : 3 : NONE-0.05, AirplaneLizard-{RotType:3}-0

@@ -1,0 +1,10 @@
+Template: wtda_settingstemplate_tomblooker
+RainIntensity: 1
+WaveSpeed: 0.3444334
+WaveLength: 0.9222167
+WaveAmplitude: 2.01802E-08
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Effects: LightBurn-0.2921892-58.87262-114, 
+PlacedObjects: CustomDecal><335.3121><163.3114><-38.8287~285~576.6326~355~695.1099~51~559~256~0~1~0~yellowrust~0.2402762~1~0.2402762~1~0.2402762~1~0.2402762~1, CustomDecal><1145.515><127.1382><-37.8331~360~681.1714~355~739.9121~-12~-76.66177~-365~0~1~0~yellowrust~0.1537015~1~0.1537015~1~0.1537015~1~0.1537015~1, DeadTokenStalk><1029.896><339.5336><15.92972~71, DeadTokenStalk><1116.511><315.7091><-25.8858~90, SlipperyZone><-206.3159><-60.42191><100~50~121^40~0.1521739~False~False, 
+AmbientSounds: SPOT><AM_ENV-LightWind.ogg><769.7036><524.311><0.1537018><0.7272907><2184.086><510.311><-298.1957><-154.3553><0><1, 

@@ -1,0 +1,28 @@
+corruptionEffectColor: 0.96,0.69,0.31
+corruptionEyeColor: 0.96,0.69,0.31
+globalCreatureFlags: Ignorecycle
+batDepleteCyclesMin: 2
+batDepleteCyclesMax: 7
+batDepleteCyclesMaxIfLessThanTwoLeft: 3
+batDepleteCyclesMaxIfLessThanFiveLeft: 4
+batsPerActiveSwarmRoom: 5
+overseersSpawnChance: 0
+overseersMin: 0
+overseersMax: 0
+playerGuideOverseerSpawnChance: 0
+mapSkyLayers: 2
+proceduralMusicBank: wara
+Subregion: Shattered Terrace
+Subregion: Desalination, Fetid Glen, Turbulent Pump
+Subregion: Signal Spires, Sunbaked Alley, Torrid Desert, Verdant Waterways
+Subregion: The Surface, Badlands, Coral Caves, Torrential Railways, Stormy Coast
+Subregion: Cold Storage, Shrouded Coast, Desolate Tract, Heat Ducts
+Room_Attr: WARA_E08: Vulture-Forbidden,
+Room_Attr: WARA_P01: ScavengerTemplar-Stay,ScavengerDisciple-Stay,
+Room_Attr: WARA_P03: ScavengerTemplar-Like,ScavengerDisciple-Like,
+Room_Attr: WARA_P04: ScavengerTemplar-Stay,ScavengerDisciple-Stay,
+Room_Attr: WARA_P05: ScavengerTemplar-Like,ScavengerDisciple-Like,
+Room_Attr: WARA_P06: ScavengerTemplar-Stay,ScavengerDisciple-Stay,
+Room_Attr: WARA_P09: ScavengerTemplar-Avoid,ScavengerDisciple-Avoid,
+Room_Attr: WARA_P16: ScavengerTemplar-Stay,ScavengerDisciple-Stay,
+Room_Attr: WARA_S23: ScavengerTemplar-Forbidden,ScavengerDisciple-Forbidden,

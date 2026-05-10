@@ -1,0 +1,8 @@
+Template: wtda_settingstemplate_tomblooker
+RainIntensity: 1
+WaveSpeed: 0.5707984
+WaveLength: 0.9646008
+WaveAmplitude: 7.510319E-10
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+PlacedObjects: LightBeam><171.1592><79.4733><-213.06~653~60.90775~660~155.4905~317~-393.265~-93~0.1510982~0~0.1082184~1~None~0~0, LightBeam><636.9058><222.1764><-138.3894~510~51.94727~518~150.5125~63~-9.956055~-290~0.1510978~0~0.1082183~1~None~0~0, LightSource><194.5261><204.0455><0.1017887~Environment~0~100~203.9999~-169.3965~1~1~None~0~0, LightSource><154.9307><429.7183><0.1126105~Environment~14.93411~121~563~71.60254~1~1~None~0~0, LightSource><696.412><625.075><0.2532946~Environment~-96.57391~57~-352.2255~-703.3975~1~1~None~0~0, LightSource><698.418><284.6752><0.1017881~Environment~-34.84631~92~142.9604~-319.3975~1~1~None~0~0, LightSource><138.7479><627.7151><0.1234323~Environment~0~100~50~86.60254~1~1~None~0~0, SlipperyZone><15.94812><16.2222><100~50~47^35~0.1521739~False~False, 

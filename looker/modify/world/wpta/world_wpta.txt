@@ -1,0 +1,133 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WPTA_B02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_B03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_B08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_C01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_C02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_C03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_C04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_C05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_D01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_D02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_D03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_D04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_E01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_F01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WPTA_G01 :
+[ADDBEFORE_2](X-looker)
+[MERGE]
+CONDITIONAL LINKS
+{LookerRandom-25}looker : WPTA_A01 : WPTA_S01 : WPTA_SPRINKLES
+{!LookerElse}looker : WPTA_S01 : WPTA_A01 : WPTA_SPRINKLES
+{!LookerElse}looker : WPTA_SPRINKLES : 1 : WPTA_A01
+{!LookerElse}looker : WPTA_SPRINKLES : 2 : WPTA_S01
+END CONDITIONAL LINKS
+
+ROOMS
+WPTA_SPRINKLES : DISCONNECTED, DISCONNECTED
+END ROOMS
+
+CREATURES
+(looker){LookerRemix=3,#nonescreatures}OFFSCREEN : 0-MirosKing-5, 0-Elite-5
+(looker){LookerRemix=3,#!nonescreatures}OFFSCREEN : 0-MirosVulture-8, 0-Elite-5
+(looker){LookerRemix=3}WPTA_B02 : 3-Red-2
+(looker){LookerRemix-3}WPTA_C01 : 4-Red-5
+(looker){LookerRemix=3}WPTA_C02 : 3-Red-3
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WPTA_C03 : 2-Small Centipede-3, 2-RedHorror
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WPTA_C03 : 2-Small Centipede-3, 2-RedCentipede
+(looker){LookerRemix=3}WPTA_D01 : 4-Tube, 5-Tube-2, 6-Red
+(looker){LookerRemix=3}WPTA_D03 : 3-Tube-2, 5-Red-2
+(looker){LookerRemix=3}WPTA_F01 : 4-Red, 5-EggBug, 6-Red-2, 8-Tube-2
+
+
+(looker){LookerRemix=2,#nonescreatures}OFFSCREEN : 0-MirosKing, 0-MirosVulture-3, 0-Scavenger-4, 0-Elite-2
+(looker){LookerRemix=2,#!nonescreatures}OFFSCREEN : 0-MirosVulture-5, 0-Scavenger-3, 0-Elite-2
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WPTA_B02 : 3-HunterSeeker-2
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WPTA_B02 : 3-Cyan-2
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WPTA_C01 : 4-Yellow-2, 4-AlphaOrange-2, 4-Red-1
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WPTA_C01 : 4-Yellow-4, 4-Red-1
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WPTA_C02 : 3-Red-2, 4-HunterSeeker
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WPTA_C02 : 3-Red-2, 4-Cyan
+(looker){LookerRemix=2}WPTA_C03 : 2-Small Centipede-3, 2-RedCentipede-2
+(looker){LookerRemix=2}WPTA_D01 : 4-Tube, 5-Tube-2, 6-Cyan
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WPTA_D03 : 3-Tube-2, 5-HunterSeeker-2
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WPTA_D03 : 3-Tube-2, 5-Cyan-2
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WPTA_F01 : 4-HunterSeeker, 5-EggBug, 6-Red-2, 8-Tube-2
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WPTA_F01 : 4-Cyan, 5-EggBug, 6-Red-2, 8-Tube-2
+
+
+(looker){LookerRemix-2}WPTA_B03 : 6-DropBug-2
+(looker){LookerRemix-2}WPTA_B06 : 3-Red
+(looker){LookerRemix-2}WPTA_B08 : 2-Red-3
+(looker){LookerRemix-2}WPTA_C04 : 4-Red, 5-DropBug
+(looker){LookerRemix-2}WPTA_D04 : 2-Red
+(looker){LookerRemix-2}WPTA_E01 : 5-Red
+(looker){LookerRemix-2}WPTA_G01 : 4-Red, 5-Red-2
+
+
+(looker){LookerRemix=1}OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-Scavenger-5
+(looker){LookerRemix=1}WPTA_B02 : 3-Cyan-2
+(looker){LookerRemix=1}WPTA_B03 : 6-DropBug
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WPTA_B06 : 3-HunterSeeker
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WPTA_B06 : 3-White
+(looker){LookerRemix=1}WPTA_B08 : 2-Strawberry-3
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WPTA_C01 : 4-Yellow-3, 4-AlphaOrange, 4-Strawberry-1
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WPTA_C01 : 4-Yellow-4, 4-Strawberry-1
+(looker){LookerRemix=1}WPTA_C02 : 3-Red-2, 4-White
+(looker){LookerRemix=1}WPTA_C03 : 2-Small Centipede-3, 2-Centipede-2
+(looker){LookerRemix=1}WPTA_C04 : 4-Strawberry, 5-DropBug
+(looker){LookerRemix=1}WPTA_D01 : 4-Tube, 5-Tube-2, 6-Strawberry
+(looker){LookerRemix=1}WPTA_D03 : 3-Tube-2, 5-Cyan-2
+(looker){LookerRemix=1}WPTA_D04 : 2-Strawberry
+(looker){LookerRemix=1}WPTA_E01 : 5-Strawberry
+(looker){LookerRemix=1}WPTA_F01 : 4-White, 5-EggBug, 6-Strawberry-2, 8-Tube-2
+(looker){LookerRemix=1}WPTA_G01 : 4-Strawberry, 5-Strawberry-2
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Vulture-3, 0-KingVulture-1, 0-Scavenger-5
+(looker){LookerRemix=0}WPTA_B02 : 3-Yellow-2
+(looker){LookerRemix=0}WPTA_B03 : 6-DropBug
+(looker){LookerRemix=0}WPTA_B06 : 3-Cyan
+(looker){LookerRemix=0}WPTA_B08 : 2-Yellow-3
+(looker){LookerRemix=0}WPTA_C01 : 4-Yellow-3
+(looker){LookerRemix=0}WPTA_C02 : 3-Yellow-2, 4-Cyan
+(looker){LookerRemix=0}WPTA_C03 : 2-Small Centipede-3, 2-Centipede-{0.4}, 2-Centipede-{0.7}
+(looker){LookerRemix=0}WPTA_C04 : 4-Cyan, 5-DropBug
+(looker){LookerRemix=0}WPTA_D01 : 4-Tube, 5-Tube-2, 6-Strawberry
+(looker){LookerRemix=0}WPTA_D03 : 3-Tube-2, 5-Cyan-2
+(looker){LookerRemix=0}WPTA_D04 : 2-White
+(looker){LookerRemix=0}WPTA_E01 : 5-Strawberry
+(looker){LookerRemix=0}WPTA_F01 : 4-White, 5-EggBug, 6-Strawberry-2, 8-Tube-2
+(looker){LookerRemix=0}WPTA_G01 : 4-Cyan, 5-Strawberry-2
+
+
+(looker)WPTA_A05 : 3-EggBug
+(looker)WPTA_B04 : 5-Tube
+(looker)WPTA_C05 : 4-Tube
+(looker)WPTA_D02 : 3-EggBug
+(looker)WPTA_SPRINKLES : 2-Cyan-{Seed:4241,NamedAttr:Sprinkles,Mean:-1}
+
+(looker){LookerSkyWhales}OFFSCREEN : 0-skywhale-6
+(looker){LookerWeaver}WPTA_A02 : 2-WeaverLizard
+END CREATURES

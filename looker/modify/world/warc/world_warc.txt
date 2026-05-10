@@ -1,0 +1,225 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+
+[FINDLINESTART]WARC_A02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_A03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_A04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_A06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_A07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_A09 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARC_B02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_B13 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARC_C01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_C11 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARC_E01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E12 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_E14 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARC_F02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_F03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_F05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_F11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_F13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARC_F15 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]LINEAGE : WARC_A03 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARC_B08 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARC_B10 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARC_C06 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARC_F13 : 3 :
+[ADDBEFORE](X-looker)
+[MERGE]
+CREATURES
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Vulture-1, 0-disciple-4, 0-templar-4, 0-Scavenger-1
+(looker){LookerRemix=1}OFFSCREEN : 0-Vulture-2, 0-KingVulture, 0-disciple-3, 0-templar-3
+(looker){LookerRemix=2}OFFSCREEN : 0-Vulture-3, 0-KingVulture-2, 0-disciple-3, 0-templar-3
+(looker){LookerRemix>2}OFFSCREEN : 0-MirosVulture-2, 0-KingVulture-3, 0-templar-5
+
+(looker){LookerRemix=1}WARC_A02 : 2-Green
+(looker){LookerRemix>1}WARC_A02 : 2-Red
+
+(looker){LookerRemix<2}WARC_A03 : 2-Basilisk, 3-BigNeedleWorm, 4-SmallNeedleWorm-3
+(looker){LookerRemix>1}WARC_A03 : 2-Basilisk-{RotType:2}, 3-BigNeedleWorm, 4-SmallNeedleWorm-3
+
+(looker){LookerRemix<2}WARC_A04 : 4-Mimic, 5-EggBug, 6-Basilisk-1
+(looker){LookerRemix>1}WARC_A04 : 4-TentaclePlant, 5-TentaclePlant, 6-Basilisk-1
+
+(looker){LookerRemix<2}WARC_A05 : 3-Pink, 4-SmallNeedleWorm-2
+(looker){LookerRemix=2}WARC_A05 : 3-Pink, 4-SmallNeedleWorm-2, 5-Basilisk
+(looker){LookerRemix>2}WARC_A05 : 3-Red, 4-SmallNeedleWorm-2, 5-Basilisk
+
+(looker){LookerRemix=0}WARC_A06 : 6-BigNeedleWorm, 7-Basilisk, 8-Frog, 9-TentaclePlant
+(looker){LookerRemix<2}WARC_A06 : 6-BigNeedleWorm, 7-Mimic, 8-Frog, 9-TentaclePlant
+(looker){LookerRemix>1}WARC_A06 : 6-BigNeedleWorm, 7-TentaclePlant, 8-Frog-2, 9-TentaclePlant
+
+(looker){LookerRemix<2}WARC_A07 : 2-Basilisk-2, 3-BigNeedleWorm, 4-Frog
+(looker){LookerRemix>1}WARC_A07 : 2-Basilisk-2, 3-BigNeedleWorm, 4-Green-2
+
+(looker){LookerRemix=0}WARC_B02 : 2-BigNeedleWorm, 3-Basilisk, 4-EggBug
+(looker){LookerRemix>0}WARC_B02 : 2-Blue, 3-Basilisk, 4-EggBug
+
+(looker){LookerRemix=0}WARC_B03 : 5-SmallNeedleWorm, 6-Frog-2
+(looker){LookerRemix>0}WARC_B03 : 4-DropBug, 5-SmallNeedleWorm, 6-Frog-2
+
+(looker){LookerRemix=0}WARC_B05 : 2-BigNeedleWorm, 3-Blue, 4-BigSpider-2, 4-Mouse-2
+(looker){LookerRemix>0}WARC_B05 : 2-BigNeedleWorm, 3-Blue-2, 4-BigSpider-3, 4-Mouse-4
+
+(looker){LookerRemix=0}WARC_B06 : 2-BigSpider
+(looker){LookerRemix>0}WARC_B06 : 2-SpitterSpider
+
+(looker){LookerRemix<2}WARC_B09 : 5-Green, 6-Mouse
+(looker){LookerRemix>1}WARC_B09 : 5-Green, 6-Blue
+
+(looker){LookerRemix<2}WARC_B10 : 3-Mimic, 4-EggBug
+(looker){LookerRemix>1}WARC_B10 : 3-TentaclePlant, 4-CicadaB-2
+
+(looker){LookerRemix<3}WARC_B11 : 2-DropBug
+(looker){LookerRemix>2}WARC_B11 : 2-DropBug-5
+
+(looker){LookerRemix<3}WARC_B13 : 2-Green, 3-Mouse-2
+(looker){LookerRemix>2}WARC_B13 : 2-Basilisk, 3-DropBug-2
+
+(looker){LookerRemix<3}WARC_C02 : 2-Basilisk-{RotType:1}
+(looker){LookerRemix>2}WARC_C02 : 2-Cyan-{RotType:2}
+
+(looker){LookerRemix=0}WARC_C03 : 5-Centiwing, 6-Pink
+(looker){LookerRemix>0}WARC_C03 : 5-RedCentipede, 6-Pink
+
+(looker){LookerRemix<2}WARC_C04 : 3-Basilisk-{RotType:2}, 4-CicadaB-2
+(looker){LookerRemix>1}WARC_C04 : 3-Basilisk-{RotType:2}-2
+
+(looker){LookerRemix=0}WARC_C05 : 4-Basilisk-{RotType:2}
+(looker){LookerRemix=1}WARC_C05 : 2-Centiwing, 3-DropBug, 4-Basilisk-{RotType:2}
+(looker){LookerRemix>1}WARC_C05 : 2-Centiwing, 3-TentaclePlant, 4-Basilisk-{RotType:2}
+
+(looker){LookerRemix<2}WARC_C06 : 2-Basilisk-{RotType:2}
+(looker){LookerRemix>1}WARC_C06 : 2-Cyan-{RotType:2}
+
+(looker){LookerRemix<2}WARC_C09 : 3-Centiwing, 4-Basilisk-{RotType:2}
+(looker){LookerRemix>2}WARC_C09 : 3-Centiwing-2, 4-DropBug
+(looker){LookerRemix>2}WARC_C09 : 3-Centiwing-2, 4-DropBug-3
+
+(looker){LookerRemix>0}WARC_E02 : 3-Angler
+
+(looker){LookerRemix<3}WARC_E03 : 3-Frog, 4-Basilisk, 6-Angler
+(looker){LookerRemix>2}WARC_E03 : 3-Frog, 4-Basilisk, 6-Aquacenti
+
+(looker){LookerRemix=0}WARC_E04 : 2-Frog, 3-Frog, 4-Leech-6, 5-Leech-6, 6-Leech-6, 7-Leech-6
+
+(looker){LookerRemix<2}WARC_E05 : 2-BigSpider
+(looker){LookerRemix>1}WARC_E05 : 2-Salamander-2
+
+(looker){LookerRemix<2}WARC_E06 : 2-Frog
+(looker){LookerRemix>1}WARC_E06 : 2-Frog-3
+
+(looker){LookerRemix<2}WARC_E08 : 3-Leech-5
+(looker){LookerRemix>1}WARC_E08 : 3-Sea Leech-5
+
+(looker){LookerRemix=0}WARC_E10 : 3-Angler
+(looker){LookerRemix>0}WARC_E10 : 2-Frog, 3-Angler
+
+(looker){LookerRemix<3}WARC_E14 : 3-Leech-8
+(looker){LookerRemix>2}WARC_E14 : 3-Sea Leech-12
+
+(looker){LookerRemix=0}WARC_F03 : 2-BigSpider
+(looker){LookerRemix=1}WARC_F03 : 2-BigSpider-3
+(looker){LookerRemix>1}WARC_F03 : 2-SpitterSpider-2
+
+(looker){LookerRemix<2}WARC_F05 : 12-SpitterSpider
+(looker){LookerRemix>1}WARC_F05 : 12-SpitterSpider-2
+
+(looker){LookerRemix<2}WARC_F11 : 2-SpitterSpider
+(looker){LookerRemix>1}WARC_F11 : 2-SpitterSpider-2
+
+(looker){LookerRemix=0}WARC_F15 : 2-BigSpider
+(looker){LookerRemix>0}WARC_F15 : 2-RedCentipede
+
+(looker)WARC_F13 : 3-EggBug
+(looker)WARC_C06 : 3-CicadaB
+(looker)WARC_C11 : 2-CicadaB
+(looker)WARC_E13 : 2-Frog, 3-Angler
+(looker)WARC_F02 : 1-SmallNeedleWorm
+(looker)WARC_E01 : 5-Angler, 7-Angler
+(looker)WARC_A09 : 2-Frog, 3-Basilisk
+(looker)WARC_B08 : 2-Basilisk
+(looker)WARC_A03 : 5-Green
+(looker)WARC_B08 : 3-SpitterSpider
+(looker)WARC_B10 : 5-Pink
+(looker)WARC_C01 : 4-EggBug, 5-Basilisk-{RotType:1}, 6-CicadaA
+(looker)WARC_F13 : 3-BigNeedleWorm
+
+END CREATURES
+[ENDMERGE]

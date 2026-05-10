@@ -1,0 +1,43 @@
+[FINDLINESTART]WVWB_B01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWB_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWB_D02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWB_D03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWB_E02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WVWB_H01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[MERGE]
+CREATURES
+
+(looker){LookerRemix=0}WVWB_B01 : 2-Frog, 3-Frog
+(looker){LookerRemix=1}WVWB_B01 : 2-Frog, 3-Frog-2
+(looker){LookerRemix>1}WVWB_B01 : 2-Frog-2, 3-Frog-3
+
+(looker){LookerRemix=0}WVWB_B04 : 2-BigSpider, 3-Frog-2
+(looker){LookerRemix=1}WVWB_B04 : 2-SpitterSpider-2, 3-Frog-3
+(looker){LookerRemix>1}WVWB_B04 : 2-SpitterSpider-4, 3-Frog-3
+
+(looker){LookerRemix=0}WVWB_D02 : 3-SpitterSpider, 4-BigSpider-2
+(looker){LookerRemix=1}WVWB_D02 : 3-SpitterSpider-2, 4-BigSpider-3
+(looker){LookerRemix>1}WVWB_D02 : 3-SpitterSpider-3, 4-BigSpider-3
+
+(looker){LookerRemix=0}WVWB_E02 : 3-BigSpider, 4-Frog-2
+(looker){LookerRemix=1}WVWB_E02 : 3-BigSpider-2, 4-Frog-2
+(looker){LookerRemix>1}WVWB_E02 : 3-BigSpider-2, 4-Frog-3
+
+(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm}-2
+(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm|NamedAttr:TOPWhale}-3
+(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm|NamedAttr:MIDWhale}-3
+(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm|NamedAttr:BOTWhale}-3
+
+(looker)WVWB_D03 : 2-Frog
+(looker)WVWB_H01 : 4-Frog
+
+END CREATURES
+[ENDMERGE]

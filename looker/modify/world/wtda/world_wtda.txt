@@ -1,0 +1,111 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+
+[FINDLINESTART]WTDA_A13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_A14 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_B06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_B07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_B16 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_Z02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_Z04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_Z05 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WTDA_Z08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_Z10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDA_Z16 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]LINEAGE :
+[ADDBEFORE](X-looker)
+
+[MERGE]
+CREATURES
+
+(looker){LookerRemix<2}OFFSCREEN : 0-Scavenger-2-{Seed:12366}, 0-Scavenger-2-{Seed:3688}, 0-Scavenger-2-{Seed:9515}, 0-Scavenger-2-{Seed:66716}, 0-Scavenger-2-{Seed:8739}, 0-Scavenger-2-{Seed:5617}, 0-Scavenger-2-{Seed:11234}, 0-disciple-2-{Seed:1404}, 0-templar-3-{Seed:4026}
+(looker){LookerRemix=2}OFFSCREEN : 0-DrillCrab-4, 0-Scavenger-2-{Seed:12366}, 0-Scavenger-2-{Seed:3688}, 0-Scavenger-2-{Seed:9515}, 0-Scavenger-2-{Seed:66716}, 0-Scavenger-2-{Seed:8739}, 0-Scavenger-2-{Seed:5617}, 0-Scavenger-2-{Seed:11234}, 0-disciple-2-{Seed:1404}, 0-templar-3-{Seed:4026}, 0-RotLoach-1
+(looker){LookerRemix>2}OFFSCREEN : 0-DrillCrab-8, 0-Scavenger-2-{Seed:12366}, 0-Scavenger-2-{Seed:3688}, 0-Scavenger-2-{Seed:9515}, 0-Scavenger-2-{Seed:66716}, 0-Scavenger-2-{Seed:8739}, 0-Scavenger-2-{Seed:5617}, 0-Scavenger-2-{Seed:11234}, 0-disciple-2-{Seed:1404}, 0-templar-3-{Seed:4026}, 0-RotLoach-10, 0-MirosVulture-5
+
+
+(looker){LookerRemix=0}WTDA_A13 : 1-Dropbug, 1-Yeek-2
+(looker){LookerRemix=1}WTDA_A13 : 1-BigSpider, 1-Yeek-2
+(looker){LookerRemix=2}WTDA_A13 : 1-BigSpider-3, 1-Yeek-2
+(looker){LookerRemix=3}WTDA_A13 : 1-SpitterSpider-3
+
+(looker){LookerRemix<2}WTDA_A14 : 2-Blue
+(looker){LookerRemix>1}WTDA_A14 : 2-Blizzard
+
+(looker){LookerRemix=0}WTDA_B05 : 3-Dropbug
+(looker){LookerRemix=1}WTDA_B05 : 3-BigSpider-2
+(looker){LookerRemix>1}WTDA_B05 : 3-BigSpider-4
+
+(looker){LookerRemix<3}WTDA_B06 : 2-Mimic-{10}, 2-Yeek-3
+(looker){LookerRemix>2}WTDA_B06 : 2-Mimic-{10}
+
+(looker){LookerRemix=0}WTDA_B07 : 3-White
+(looker){LookerRemix>0}WTDA_B07 : 3-Blizzard
+
+(looker){LookerRemix>0}WTDA_B09 : 2-Cyan
+
+(looker){LookerRemix>1}WTDA_B10 : 4-SpitterSpider
+
+(looker){LookerRemix=2}WTDA_B11 : 2-ScavengerElite-3
+(looker){LookerRemix>2}WTDA_B11 : 2-templar-3
+
+(looker){LookerRemix=0}WTDA_B16 : 2-White, 4-SmallCentipede-2
+
+(looker){LookerRemix<2}WTDA_Z01 : 2-Yeek-2, 2-Centipede
+(looker){LookerRemix=2}WTDA_Z01 : 2-Yeek-2, 2-RedCentipede
+(looker){LookerRemix>2}WTDA_Z01 : 2-RedCentipede-5
+
+(looker){LookerRemix=0}WTDA_Z04 : 3-Dropbug, 4-White
+(looker){LookerRemix=1}WTDA_Z04 : 3-Dropbug, 4-White
+(looker){LookerRemix=2}WTDA_Z04 : 3-Dropbug-3, 4-Cyan-2
+(looker){LookerRemix=3}WTDA_Z04 : 3-Cyan-10
+
+(looker){LookerRemix=0}WTDA_Z05 : 3-SmallCentipede-2
+(looker){LookerRemix=1}WTDA_Z05 : 3-Centipede-2
+(looker){LookerRemix=2}WTDA_Z05 : 3-RedCentipede-2
+(looker){LookerRemix=3}WTDA_Z05 : 3-RedCentipede-8
+
+(looker){LookerRemix=0}WTDA_Z08 : 2-SmallCentipede-2
+
+(looker){LookerRemix=0}WTDA_Z10 : 2-Centipede
+(looker){LookerRemix>0}WTDA_Z10 : 2-RedCentipede
+
+(looker){LookerRemix<2}WTDA_Z13 : 4-Mimic-{14}
+(looker){LookerRemix>1}WTDA_Z13 : 4-TentaclePlant
+
+(looker){LookerRemix<3}WTDA_Z13 : 5-Centipede
+(looker){LookerRemix>2}WTDA_Z13 : 5-RedCentipede-2
+
+(looker){LookerRemix=0}WTDA_Z15 : 2-Eggbug
+(looker){LookerRemix>0}WTDA_Z15 : 2-RedLizard
+
+(looker){LookerRemix=0}WTDA_Z16 : 3-SmallCentipede
+(looker){LookerRemix>0}WTDA_Z16 : 3-Centipede
+
+(looker)WTDA_B02 : 3-Yellow-4
+(looker)WTDA_B16 : 3-RedCentipede
+(looker)WTDA_Z02 : 2-RedCentipede
+(looker)WTDA_Z04 : 4-Yellow-5
+(looker)WTDA_Z05 : 4-RedCentipede
+(looker)WTDA_Z06 : 2-Yellow-3
+(looker)WTDA_Z02 : 2-SmallCentipede, 2-Yeek-3
+(looker)WTDA_Z03 : 3-White
+(looker)WTDA_Z08 : 2-SmallCentipede-2
+(looker)WTDA_Z09 : 2-MirosVulture, 2-BigSpider-2
+
+END CREATURES
+[ENDMERGE]

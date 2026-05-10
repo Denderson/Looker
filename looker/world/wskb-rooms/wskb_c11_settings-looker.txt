@@ -1,0 +1,10 @@
+Template: wskb_settingstemplate_insidelooker
+WaveSpeed: 0.5015855
+WaveLength: 0.9992073
+WaveAmplitude: 1.058926E-08
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Grime: 0.1521739
+PlacedObjects: LightSource><480.2589><497.5502><0.8478261~EffectColor1~81~101~-865~-339.3975~1~0~None~0~0, LightSource><480.8368><498.6344><0.1413043~EffectColor1~76~74~-877~-365.3975~1~1~None~0~0, CustomDecal><53.15952><153.6784><51~343~875~372~902~-27~-459~70.99998~0~1~0~rust1~0.08695652~1~0.08695652~1~0.08695652~1~0.08695652~1, CustomDecal><336.448><408.4716><19~256~269~247~320~-34~-700~-167~0~1~0~rust1~0.2391304~1~0.2391304~1~0.2391304~1~0.2391304~1, LightSource><135.3508><369.1168><1~Environment~21~201~50~86.60254~1~0~None~0~0, LightSource><822.447><326.0346><1~Environment~-100~169~50~86.60254~1~0~None~0~0, LightSource><482.1672><334.6821><1~Environment~-115~231~50~86.60254~1~0~None~0~0, LightSource><294.0637><339.9273><1~Environment~-192~-17~50~86.60254~1~0~None~0~0, LightSource><642.0666><327.3297><1~Environment~230~-12~50~86.60254~1~0~None~0~0, 
+AmbientSounds: SPOT><am_ind-electrichum02.ogg><691.2629><201.0504><0.326087><0.4326087><480.2629><488.0504><-36.35535><-45.35535><0><0.2086958, 
+FadePalette: 8, 0

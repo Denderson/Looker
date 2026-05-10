@@ -1,0 +1,6 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+Grime: 0
+Palette: 102
+Effects: ZeroG-0.6521739-20-20, RoomWrap-1-198-149, 

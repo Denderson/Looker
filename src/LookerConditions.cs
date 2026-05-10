@@ -99,7 +99,7 @@ namespace Looker
                         }
                     case "lookerweaver":
                         {
-                            result = RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value));
+                            result = (RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value))) && SaveFileCode.LinkCount(game.GetStorySession.saveState) >= 5;
                             break;
                         }
                     default: return null;

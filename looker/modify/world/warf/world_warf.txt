@@ -1,0 +1,509 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+
+[FINDLINESTART]WARF_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_A08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_A09 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARF_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B12 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B14 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B16 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B18 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B24 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B25 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B27 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_B30 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARF_D01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D08 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARF_D11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D14 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D15 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D16 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D19 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARF_D21 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D23 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D24 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D29 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D30 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D32 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARF_D33 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]WARF_G03 :
+[ADDBEFORE_2](X-looker)
+
+[FINDLINESTART]LINEAGE : WARF_A01
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARF_A02
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARF_B27
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARF_B42
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARF_D24
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARF_D38
+[ADDBEFORE](X-looker)
+
+[MERGE]
+CONDITIONAL LINKS
+looker : WARF_A01 : WARF_A02 : WARF_A03
+
+looker : WARF_A02 : WARF_A03 : WARF_D21
+looker : WARF_A02 : WARF_A04 : WARF_B04
+looker : WARF_A02 : WARF_A01 : WARF_D13
+looker : WARF_A02 : WARF_A09 : WARF_D02
+
+looker : WARF_A03 : WARF_A06 : WARF_D07
+looker : WARF_A03 : WARF_A02 : WARF_A01
+
+looker : WARF_A04 : WARF_A02 : WARF_B20
+looker : WARF_A04 : WARF_A05 : WARF_D25
+
+looker : WARF_A05 : WARF_A04 : WARF_D09
+looker : WARF_A05 : WARF_A08 : WARF_D23
+
+looker : WARF_A06 : WARF_A07 : WARF_B12
+looker : WARF_A06 : WARF_A03 : WARF_D15
+
+looker : WARF_A07 : WARF_A06 : WARF_D03
+
+looker : WARF_A08 : WARF_A05 : WARF_B06
+looker : WARF_A08 : WARF_B01 : WARF_D03
+
+looker : WARF_A09 : WARF_A02 : WARF_B16
+
+
+looker : WARF_B01 : WARF_A08 : WARF_B03
+looker : WARF_B01 : WARF_B02 : WARF_D10
+
+looker : WARF_B02 : WARF_B01 : WARF_D09
+looker : WARF_B02 : WARF_B03 : WARF_C03
+
+looker : WARF_B03 : WARF_B02 : WARF_B01
+looker : WARF_B03 : WARF_B04 : WARF_B08
+
+looker : WARF_B04 : WARF_B03 : WARF_A02
+looker : WARF_B04 : WARF_B05 : WARF_D08
+
+looker : WARF_B05 : WARF_B06 : WARF_C06
+looker : WARF_B05 : WARF_B04 : WARF_D33
+looker : WARF_B05 : WARF_B25 : WARF_D31
+looker : WARF_B05 : WARF_B26 : WARF_D02
+
+looker : WARF_B06 : WARF_B07 : WARF_D34
+looker : WARF_B06 : WARF_B05 : WARF_A08
+
+looker : WARF_B07 : WARF_B30 : WARF_D26
+looker : WARF_B07 : WARF_B06 : WARF_D23
+
+looker : WARF_B08 : WARF_B09 : WARF_G01
+looker : WARF_B08 : WARF_B30 : WARF_B18
+looker : WARF_B08 : WARF_B25 : WARF_B03
+
+looker : WARF_B09 : WARF_B08 : WARF_D10
+looker : WARF_B09 : WARF_B10 : WARF_B34
+looker : WARF_B09 : WARF_C01 : WARF_D24
+
+looker : WARF_B10 : WARF_B11 : WARF_D08
+looker : WARF_B10 : WARF_B15 : WARF_B30
+looker : WARF_B10 : WARF_B27 : WARF_D07
+looker : WARF_B10 : WARF_B09 : WARF_D11
+
+looker : WARF_B11 : WARF_B10 : WARF_B24
+looker : WARF_B11 : WARF_B43 : WARF_D13
+looker : WARF_B11 : WARF_C05 : WARF_D18
+
+looker : WARF_B12 : WARF_B24 : WARF_A06
+
+looker : WARF_B13 : WARF_B24 : WARF_B22
+looker : WARF_B13 : WARF_B14 : WARF_D22
+looker : WARF_B13 : WARF_C03 : WARF_D02
+
+looker : WARF_B14 : WARF_B13 : WARF_D06
+looker : WARF_B14 : WARF_D01 : WARF_G02
+
+looker : WARF_B15 : WARF_B10 : WARF_D25
+looker : WARF_B15 : WARF_B16 : WARF_D19
+
+looker : WARF_B16 : WARF_B15 : WARF_D17
+looker : WARF_B16 : WARF_B17 : WARF_B18
+looker : WARF_B16 : WARF_D08 : WARF_A09
+
+looker : WARF_B17 : WARF_B18 : WARF_C06
+looker : WARF_B17 : WARF_B16 : WARF_B23
+
+looker : WARF_B18 : WARF_B19 : WARF_B08
+looker : WARF_B18 : WARF_B17 : WARF_B16
+looker : WARF_B18 : WARF_D18 : WARF_D05
+
+looker : WARF_B19 : WARF_B20 : WARF_D10
+looker : WARF_B19 : WARF_B18 : WARF_B23
+
+looker : WARF_B20 : WARF_B21 : WARF_A04
+looker : WARF_B20 : WARF_B28 : WARF_G03
+looker : WARF_B20 : WARF_B19 : WARF_D03
+looker : WARF_B20 : WARF_B27 : WARF_D23
+looker : WARF_B20 : WARF_D16 : WARF_D04
+
+looker : WARF_B21 : WARF_B20 : WARF_D11
+
+looker : WARF_B22 : WARF_B42 : WARF_D32
+looker : WARF_B22 : WARF_B23 : WARF_B13
+
+looker : WARF_B23 : WARF_B22 : WARF_B17
+looker : WARF_B23 : WARF_D02 : WARF_B19
+
+looker : WARF_B24 : WARF_B12 : WARF_B11
+looker : WARF_B24 : WARF_B28 : WARF_D03
+looker : WARF_B24 : WARF_B13 : WARF_G04
+
+looker : WARF_B25 : WARF_B08 : WARF_D29
+looker : WARF_B25 : WARF_B05 : WARF_B27
+
+looker : WARF_B26 : WARF_B05 : WARF_D06
+
+looker : WARF_B27 : WARF_B10 : WARF_B25
+looker : WARF_B27 : WARF_B20 : WARF_D05
+
+looker : WARF_B28 : WARF_B20 : WARF_D02
+looker : WARF_B28 : WARF_B24 : WARF_B42
+
+looker : WARF_B30 : WARF_B08 : WARF_B10
+looker : WARF_B30 : WARF_B07 : WARF_D23
+
+looker : WARF_B33 : WARF_G02 : WARF_D35
+
+looker : WARF_B34 : WARF_G02 : WARF_B09
+looker : WARF_B34 : WARF_G03 : WARF_D02
+
+looker : WARF_B42 : WARF_B43 : WARF_D30
+looker : WARF_B42 : WARF_B22 : WARF_B28
+
+looker : WARF_B43 : WARF_B11 : WARF_D14
+looker : WARF_B43 : WARF_B42 : WARF_C04
+
+
+looker : WARF_C01 : WARF_C05 : WARF_D18
+looker : WARF_C01 : WARF_B09 : WARF_D10
+looker : WARF_C01 : WARF_C02 : WARF_D11
+
+looker : WARF_C02 : WARF_C01 : WARF_D10
+looker : WARF_C02 : WARF_C03 : WARF_C05
+looker : WARF_C02 : WARF_C04 : WARF_D15
+
+looker : WARF_C03 : WARF_B13 : WARF_D17
+looker : WARF_C03 : WARF_C07 : WARF_B02
+looker : WARF_C03 : WARF_C02 : WARF_D35
+
+looker : WARF_C04 : WARF_C02 : WARF_B43
+looker : WARF_C04 : WARF_D25 : WARF_D16
+
+looker : WARF_C05 : WARF_B11 : WARF_D21
+looker : WARF_C05 : WARF_C01 : WARF_C02
+
+looker : WARF_C06 : WARF_D18 : WARF_B17
+looker : WARF_C06 : WARF_D16 : WARF_B05
+
+looker : WARF_C07 : WARF_C03 : WARF_D12
+
+
+looker : WARF_D01 : WARF_B14 : WARF_D04
+looker : WARF_D01 : WARF_D02 : WARF_D16
+
+looker : WARF_D02 : WARF_B23 : WARF_D25
+looker : WARF_D02 : WARF_D11 : WARF_B28
+looker : WARF_D02 : WARF_D03 : WARF_B05
+looker : WARF_D02 : WARF_D01 : WARF_A02
+looker : WARF_D02 : WARF_D15 : WARF_B13
+looker : WARF_D02 : WARF_D05 : WARF_B34
+
+looker : WARF_D03 : WARF_D18 : WARF_B20
+looker : WARF_D03 : WARF_D19 : WARF_A07
+looker : WARF_D03 : WARF_D02 : WARF_D23
+looker : WARF_D03 : WARF_D07 : WARF_A08
+looker : WARF_D03 : WARF_D04 : WARF_B24
+
+looker : WARF_D04 : WARF_D03 : WARF_B20
+looker : WARF_D04 : WARF_D29 : WARF_G02
+looker : WARF_D04 : WARF_D14 : WARF_D16
+looker : WARF_D04 : WARF_D05 : WARF_D33
+looker : WARF_D04 : WARF_D06 : WARF_D01
+
+looker : WARF_D05 : WARF_D02 : WARF_B18
+looker : WARF_D05 : WARF_D22 : WARF_D14
+looker : WARF_D05 : WARF_D09 : WARF_D13
+looker : WARF_D05 : WARF_D04 : WARF_B27
+
+looker : WARF_D06 : WARF_D24 : WARF_B26
+looker : WARF_D06 : WARF_D04 : WARF_B14
+looker : WARF_D06 : WARF_D23 : WARF_D19
+
+looker : WARF_D07 : WARF_D08 : WARF_B10
+looker : WARF_D07 : WARF_D03 : WARF_A03
+
+looker : WARF_D08 : WARF_B16 : WARF_B04
+looker : WARF_D08 : WARF_D30 : WARF_D13
+looker : WARF_D08 : WARF_D07 : WARF_B10
+
+looker : WARF_D09 : WARF_D10 : WARF_B02
+looker : WARF_D09 : WARF_D05 : WARF_A05
+
+looker : WARF_D10 : WARF_D11 : WARF_C02
+looker : WARF_D10 : WARF_D29 : WARF_B19
+looker : WARF_D10 : WARF_D12 : WARF_D18
+looker : WARF_D10 : WARF_G01 : WARF_B01
+looker : WARF_D10 : WARF_D13 : WARF_B09
+looker : WARF_D10 : WARF_D09 : WARF_C01
+
+looker : WARF_D11 : WARF_D12 : WARF_B21
+looker : WARF_D11 : WARF_D02 : WARF_C01
+looker : WARF_D11 : WARF_D10 : WARF_B10
+
+looker : WARF_D12 : WARF_D11 : WARF_C07
+looker : WARF_D12 : WARF_D10 : WARF_D21
+
+looker : WARF_D13 : WARF_D17 : WARF_B11
+looker : WARF_D13 : WARF_D21 : WARF_D08
+looker : WARF_D13 : WARF_D10 : WARF_D05
+looker : WARF_D13 : WARF_D14 : WARF_A02
+
+looker : WARF_D14 : WARF_D15 : WARF_D05
+looker : WARF_D14 : WARF_D13 : WARF_B43
+looker : WARF_D14 : WARF_D04 : WARF_D32
+
+looker : WARF_D15 : WARF_D16 : WARF_A06
+looker : WARF_D15 : WARF_D02 : WARF_C02
+looker : WARF_D15 : WARF_D17 : WARF_D24
+looker : WARF_D15 : WARF_D14 : WARF_D18
+
+looker : WARF_D16 : WARF_B20 : WARF_D04
+looker : WARF_D16 : WARF_C06 : WARF_D30
+looker : WARF_D16 : WARF_D33 : WARF_D01
+looker : WARF_D16 : WARF_D15 : WARF_C04
+
+looker : WARF_D17 : WARF_D35 : WARF_D34
+looker : WARF_D17 : WARF_D15 : WARF_C03
+looker : WARF_D17 : WARF_D13 : WARF_B16
+
+looker : WARF_D18 : WARF_B18 : WARF_D15
+looker : WARF_D18 : WARF_D19 : WARF_B11
+looker : WARF_D18 : WARF_C06 : WARF_D10
+looker : WARF_D18 : WARF_D03 : WARF_C01
+
+looker : WARF_D19 : WARF_D18 : WARF_D06
+looker : WARF_D19 : WARF_D03 : WARF_B15
+
+looker : WARF_D21 : WARF_D13 : WARF_A02
+looker : WARF_D21 : WARF_D23 : WARF_C05
+looker : WARF_D21 : WARF_D22 : WARF_D12
+
+looker : WARF_D22 : WARF_D21 : WARF_G01
+looker : WARF_D22 : WARF_D05 : WARF_D33
+looker : WARF_D22 : WARF_D23 : WARF_B13
+
+looker : WARF_D23 : WARF_D21 : WARF_D03
+looker : WARF_D23 : WARF_D24 : WARF_A05
+looker : WARF_D23 : WARF_D22 : WARF_B20
+looker : WARF_D23 : WARF_D26 : WARF_B30
+looker : WARF_D23 : WARF_D06 : WARF_B07
+
+looker : WARF_D24 : WARF_D25 : WARF_B09
+looker : WARF_D24 : WARF_D23 : WARF_D15
+looker : WARF_D24 : WARF_D06 : WARF_G02
+
+looker : WARF_D25 : WARF_C04 : WARF_A04
+looker : WARF_D25 : WARF_D32 : WARF_D02
+looker : WARF_D25 : WARF_D24 : WARF_B15
+
+looker : WARF_D26 : WARF_D23 : WARF_B07
+
+looker : WARF_D29 : WARF_D10 : WARF_G03
+looker : WARF_D29 : WARF_D04 : WARF_B25
+
+looker : WARF_D30 : WARF_D08 : WARF_D16
+looker : WARF_D30 : WARF_D31 : WARF_B42
+
+looker : WARF_D31 : WARF_D30 : WARF_B05
+
+looker : WARF_D32 : WARF_D33 : WARF_D14
+looker : WARF_D32 : WARF_D25 : WARF_B22
+
+looker : WARF_D33 : WARF_D16 : WARF_D04
+looker : WARF_D33 : WARF_D32 : WARF_B05
+looker : WARF_D33 : WARF_D34 : WARF_D22
+
+looker : WARF_D34 : WARF_D33 : WARF_D17
+looker : WARF_D34 : WARF_D35 : WARF_B06
+
+looker : WARF_D35 : WARF_D17 : WARF_C03
+looker : WARF_D35 : WARF_D34 : WARF_B33
+
+
+looker : WARF_G01 : WARF_G02 : WARF_B08
+looker : WARF_G01 : WARF_D10 : WARF_D22
+
+looker : WARF_G02 : WARF_B33 : WARF_D24
+looker : WARF_G02 : WARF_G01 : WARF_D04
+looker : WARF_G02 : WARF_B34 : WARF_B14
+
+looker : WARF_G03 : WARF_B34 : WARF_D29
+looker : WARF_G03 : WARF_G04 : WARF_B20
+
+looker : WARF_G04 : WARF_G03 : WARF_B24
+END CONDITIONAL LINKS
+
+CREATURES
+(looker){LookerRemix=3}OFFSCREEN : 0-KingVulture-3, MirosVulture-3, 0-Scavenger-30
+(looker){LookerRemix=3}WARF_A08 : 2-SpitterSpider-5
+(looker){LookerRemix=3}WARF_B05 : 5-RedCentipede-2
+(looker){LookerRemix=3}WARF_B09 : 3-bigmoth, 5-Cyan-10
+(looker){LookerRemix=3}WARF_B14 : 6-Blue-10
+(looker){LookerRemix=3}WARF_B24 : 3-SpitterSpider-5
+(looker){LookerRemix=3}WARF_B25 : 3-SpitterSpider-5
+(looker){LookerRemix=3}WARF_D02 : 6-Red, 8-Red, 9-Cyan-4
+(looker){LookerRemix=3}WARF_D03 : 5-RedCentipede-2
+(looker){LookerRemix=3}WARF_D06 : 6-Cyan-5, 7-Cyan-5
+(looker){LookerRemix=3}WARF_D21 : 5-Red
+(looker){LookerRemix=3}WARF_D23 : 5-RedCentipede-2
+(looker){LookerRemix=3}WARF_D32 : 2-Red
+(looker){LookerRemix=3}WARF_G03 : 5-Cyan-2, 6-Cyan-2
+
+
+(looker){LookerRemix<3}WARF_A08 : 2-bigmoth-3
+(looker){LookerRemix<3}WARF_B24 : 3-Blue
+(looker){LookerRemix<3}WARF_D03 : 5-TentaclePlant
+
+
+(looker){LookerRemix=2}OFFSCREEN : 0-KingVulture-3, 0-Scavenger-20
+(looker){LookerRemix=2}WARF_B05 : 5-Dropbug-4
+(looker){LookerRemix=2}WARF_B09 : 3-bigmoth, 5-Cyan-2
+(looker){LookerRemix=2}WARF_B14 : 6-Blue-5
+(looker){LookerRemix=2}WARF_B25 : 3-Cyan-2
+(looker){LookerRemix=2}WARF_D02 : 6-Red, 8-Green, 9-Cyan
+(looker){LookerRemix=2}WARF_D06 : 6-Cyan-2, 7-Cyan-2
+(looker){LookerRemix=2}WARF_D21 : 5-Green-3
+(looker){LookerRemix=2}WARF_D23 : 5-Cyan-2
+(looker){LookerRemix=2}WARF_D32 : 2-Green-2
+(looker){LookerRemix=2}WARF_G03 : 5-Cyan, 6-Blue-2
+
+
+(looker){LookerRemix-2}WARF_A09 : 1-Cyan-2
+(looker){LookerRemix-2}WARF_B11 : 4-Red
+(looker){LookerRemix-2}WARF_B12 : 2-bigmoth-4
+(looker){LookerRemix-2}WARF_B16 : 3-RedCentipede, 4-Dropbug
+(looker){LookerRemix-2}WARF_B27 : 3-bigmoth-7
+(looker){LookerRemix-2}WARF_D05 : 4-Red
+(looker){LookerRemix-2}WARF_D08 : 3-Red, 5-Cyan-2
+(looker){LookerRemix-2}WARF_D15 : 4-Green-{Winter}, 5-Red
+(looker){LookerRemix-2}WARF_D24 : 3-Pink-3, 4-Blue-4
+
+
+(looker){LookerRemix<2}WARF_B11 : 4-bigmoth
+(looker){LookerRemix<2}WARF_B12 : 2-bigmoth
+
+
+(looker){LookerRemix=1}OFFSCREEN : 0-Vulture-3, 0-Scavenger-12
+(looker){LookerRemix=1}WARF_A09 : 1-Cyan
+(looker){LookerRemix=1}WARF_B05 : 5-Dropbug
+(looker){LookerRemix=1}WARF_B09 : 3-bigmoth-2, 5-Cyan
+(looker){LookerRemix=1}WARF_B14 : 6-Blue-3
+(looker){LookerRemix=1}WARF_B16 : 3-White, 4-Dropbug
+(looker){LookerRemix=1}WARF_B25 : 3-Cyan
+(looker){LookerRemix=1}WARF_B27 : 3-bigmoth-3
+(looker){LookerRemix=1}WARF_D02 : 6-Pink, 8-Green, 9-Blue
+(looker){LookerRemix=1}WARF_D05 : 4-Green
+(looker){LookerRemix=1}WARF_D06 : 6-Blue-2, 7-Blue-2
+(looker){LookerRemix=1}WARF_D08 : 3-Red, 5-Blue-2
+(looker){LookerRemix=1}WARF_D15 : 4-Green, 5-Pink
+(looker){LookerRemix=1}WARF_D21 : 5-Green
+(looker){LookerRemix=1}WARF_D23 : 5-Blue-2
+(looker){LookerRemix=1}WARF_D24 : 3-Pink-2, 4-Blue-2
+(looker){LookerRemix=1}WARF_D32 : 2-Green
+(looker){LookerRemix=1}WARF_G03 : 5-Green, 6-Pink-2
+
+
+(looker){LookerRemix-1}WARF_B18 : 3-White, 4-Red
+(looker){LookerRemix-1}WARF_D16 : 4-BigSpider-4
+(looker){LookerRemix-1}WARF_D29 : 4-Green-2
+(looker){LookerRemix-1}WARF_D30 : 3-TentaclePlant
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Vulture-1, 0-Scavenger-12
+(looker){LookerRemix=0}WARF_A09 : 1-Blue
+(looker){LookerRemix=0}WARF_B05 : 5-White
+(looker){LookerRemix=0}WARF_B09 : 3-bigmoth-2, 5-Blue
+(looker){LookerRemix=0}WARF_B14 : 6-Blue
+(looker){LookerRemix=0}WARF_B16 : 3-White, 4-Eggbug
+(looker){LookerRemix=0}WARF_B18 : 3-White, 4-Green-{Winter}
+(looker){LookerRemix=0}WARF_B25 : 3-Blue
+(looker){LookerRemix=0}WARF_B27 : 3-bigmoth
+(looker){LookerRemix=0}WARF_D02 : 6-Pink, 8-Green-{Winter}, 9-Blue
+(looker){LookerRemix=0}WARF_D05 : 4-Pink
+(looker){LookerRemix=0}WARF_D06 : 6-Blue, 7-Pink
+(looker){LookerRemix=0}WARF_D08 : 3-Pink, 5-Blue
+(looker){LookerRemix=0}WARF_D15 : 4-Green-{Winter}, 5-Pink
+(looker){LookerRemix=0}WARF_D16 : 4-Pink
+(looker){LookerRemix=0}WARF_D21 : 5-Green-{Winter}
+(looker){LookerRemix=0}WARF_D23 : 5-Blue
+(looker){LookerRemix=0}WARF_D24 : 3-Pink, 4-Blue
+(looker){LookerRemix=0}WARF_D29 : 3-Eggbug-2, 4-Green-{Winter}-2
+(looker){LookerRemix=0}WARF_D30 : 3-Blue
+(looker){LookerRemix=0}WARF_D32 : 2-Green-{Winter}
+(looker){LookerRemix=0}WARF_G03 : 5-Green-{Winter}, 6-Pink
+
+
+(looker)WARF_A01 : 2-Blue
+(looker)WARF_A02 : 4-Blue
+(looker)WARF_B27 : 4-Blue
+(looker)WARF_B42 : 2-Blue
+(looker)WARF_D24 : 6-Blue
+(looker)WARF_D38 : 2-Pink
+(looker)WARF_D11 : 4-PoleMimic-{14}
+(looker)WARF_D01 : 2-TentaclePlant
+(looker)WARF_A05 : 2-bigmoth-2
+(looker)WARF_D14 : 3-Dropbug
+(looker)WARF_D19 : 2-Dropbug
+END CREATURES
+[ENDMERGE]

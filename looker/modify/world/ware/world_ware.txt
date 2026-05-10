@@ -1,0 +1,88 @@
+[FINDLINESTART]WARE_I13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_I15 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H21 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H12 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H15 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H23 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WARE_H24 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WARE_H16 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WARE_H16 : 3 :
+[ADDBEFORE](X-looker)
+
+
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}WARE_H06 : 3-FlameLizard-2
+(looker){LookerRemix=3}WARE_H04 : 3-Eggbug, 4-FlameLizard, 5-BigNeedleWorm, 6-SmallNeedleWorm-3
+(looker){LookerRemix=3}WARE_H12 : 2-FlameLizard, 3-RedCentipede
+(looker){LookerRemix=3}WARE_H02 : 7-FlameLizard-2
+(looker){LookerRemix=3}WARE_H10 : 4-PoleMimic-{12}, 5-RedCentipede
+(looker){LookerRemix=3}WARE_H23 : 3-FlameLizard-2, 3-Eggbug
+(looker){LookerRemix=3}WARE_H24 : 2-FlameLizard-2, 3-RedCentipede
+
+
+(looker){LookerRemix<3}WARE_H04 : 3-Eggbug, 4-Yellow, 5-BigNeedleWorm, 6-SmallNeedleWorm-3
+(looker){LookerRemix<3}WARE_H23 : 3-Yellow-2, 3-Eggbug
+(looker){LookerRemix<3}WARE_H10 : 4-PoleMimic-{12}, 5-Centipede
+
+
+(looker){LookerRemix=2}WARE_H06 : 3-Yellow, 3-FlameLizard
+(looker){LookerRemix=2}WARE_H12 : 2-FlameLizard, 3-Centipede-{0.6}
+(looker){LookerRemix=2}WARE_H02 : 7-Yellow, 7-FlameLizard
+(looker){LookerRemix=2}WARE_H24 : 2-FlameLizard-2, 3-Centipede-{0.5}
+
+
+(looker){LookerRemix-2}WARE_I15 : 2-FlameLizard
+(looker){LookerRemix-2}WARE_H15 : 2-RedCentipede
+(looker){LookerRemix-2}WARE_H16 : 2-RedCentipede, 3-RedCentipede
+
+
+(looker){LookerRemix<2}WARE_I15 : 2-Cyan
+(looker){LookerRemix<2}WARE_H06 : 3-Yellow-2
+(looker){LookerRemix<2}WARE_H12 : 2-Yellow, 3-Centipede-{0.3}
+(looker){LookerRemix<2}WARE_H02 : 7-Yellow-2
+(looker){LookerRemix<2}WARE_H15 : 2-Centipede-{0.4}
+
+
+(looker){LookerRemix=1}WARE_H24 : 2-Yellow, 2-FlameLizard, 3-Centipede-{0.3}
+(looker){LookerRemix=1}WARE_H16 : 2-Centipede-{0.4}, 3-RedCentipede
+
+
+(looker){LookerRemix-1}WARE_I13 : 1-FlameLizard
+(looker){LookerRemix-1}WARE_H11 : 2-FlameLizard
+(looker){LookerRemix-1}WARE_H21 : 1-BigNeedleWorm, 3-FlameLizard-2
+
+
+(looker){LookerRemix=0}WARE_I13 : 1-Cyan
+(looker){LookerRemix=0}WARE_H11 : 2-Yellow
+(looker){LookerRemix=0}WARE_H21 : 1-BigNeedleWorm, 3-Yellow-2
+(looker){LookerRemix=0}WARE_H24 : 2-Yellow, 3-Centipede-{0.3}
+(looker){LookerRemix=0}WARE_H16 : 2-Centipede-{0.4}, 3-Centipede-{0.8}
+
+
+(looker)WARE_H07 : 4-BigNeedleWorm-2
+
+(looker){LookerWeaver}WARE_H06 : 3-WeaverLizard
+(looker){LookerWeaver}WARE_H11 : 2-WeaverLizard
+END CREATURES
+[ENDMERGE]

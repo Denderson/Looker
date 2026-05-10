@@ -1,0 +1,172 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKC_A03 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKC_A04 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKC_A06 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKC_A07 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKC_A10 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A12 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A14 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A15 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A16 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKC_A17 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKC_A18 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A20 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A23 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A25 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKC_A30 :
+[ADDBEFORE_2](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}OFFSCREEN : 0-Elite-7, 0-templar-3, 0-disciple
+(looker){LookerRemix=3}WSKC_A02 : 3-Dropbug
+(looker){LookerRemix=3,#bebra.gregtech_lizard}WSKC_A04 : 3-GregTechLizard, 4-GregTechLizard, 5-Mimic-{9}
+(looker){LookerRemix=3,#!bebra.gregtech_lizard}WSKC_A04 : 3-Red, 4-Red, 5-Mimic-{9}
+(looker){LookerRemix=3,#sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A06 : 3-Teuthicada-6, 4-GregTechLizard, 5-GregTechLizard
+(looker){LookerRemix=3,#!sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A06 : 3-CicadaB-6, 4-GregTechLizard, 5-GregTechLizard
+(looker){LookerRemix=3,#sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A06 : 3-Teuthicada-6, 4-Red, 5-Red
+(looker){LookerRemix=3,#!sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A06 : 3-CicadaB-6, 4-Red, 5-Red
+(looker){LookerRemix=3,#bebra.gregtech_lizard}WSKC_A07 : 2-GregTechLizard, 3-GregTechLizard, 4-GregTechLizard
+(looker){LookerRemix=3,#!bebra.gregtech_lizard}WSKC_A07 : 2-Red, 3-Red, 4-Red
+(looker){LookerRemix=3,#sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A08 : 3-GregTechLizard, 2-Teuthicada-3
+(looker){LookerRemix=3,#!sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A08 : 3-GregTechLizard, 2-CicadaB-3
+(looker){LookerRemix=3,#sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A08 : 3-Red, 2-Teuthicada-3
+(looker){LookerRemix=3,#!sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A08 : 3-Red, 2-CicadaB-3
+(looker){LookerRemix=3,#sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A12 : 2-GregTechLizard, 3-Teuthicada-3
+(looker){LookerRemix=3,#!sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A12 : 2-GregTechLizard, 3-CicadaB-3
+(looker){LookerRemix=3,#sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A12 : 2-Red, 3-Teuthicada-3
+(looker){LookerRemix=3,#!sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A12 : 2-Red, 3-CicadaB-3
+(looker){LookerRemix=3}WSKC_A14 : 3-Red, 4-Snail-3
+(looker){LookerRemix=3}WSKC_A16 : 2-Snail-3, 3-Snail-2, 4-Red
+(looker){LookerRemix=3,#sequoia.luminouscode}WSKC_A23 : 2-Red, 3-Teuthicada-2, 4-Red, 5-Teuthicada-3, 6-Red
+(looker){LookerRemix=3,#!sequoia.luminouscode}WSKC_A23 : 2-Red, 3-Teuthicada-2, 4-Red, 5-Teuthicada-3, 6-Red
+(looker){LookerRemix=3}WSKC_A30 : 2-Dropbug
+
+
+(looker){LookerRemix<3}WSKC_A02 : 3-Eggbug
+(looker){LookerRemix<3}WSKC_A30 : 2-Eggbug
+
+
+(looker){LookerRemix=2}OFFSCREEN : 0-Scavenger-4, 0-Elite-3, 0-templar-2
+(looker){LookerRemix=2,#bebra.gregtech_lizard}WSKC_A04 : 3-GregTechLizard, 4-Red, 5-Mimic-{9}
+(looker){LookerRemix=2,#!bebra.gregtech_lizard}WSKC_A04 : 3-Pink, 4-Red, 5-Mimic-{9}
+(looker){LookerRemix=2,#sequoia.luminouscode}WSKC_A06 : 3-CicadaB-3, 3-Teuthicada, 4-Red, 5-Cyan
+(looker){LookerRemix=2,#!sequoia.luminouscode}WSKC_A06 : 3-CicadaB-6, 4-Red, 5-Cyan
+(looker){LookerRemix=2,#bebra.gregtech_lizard}WSKC_A07 : 2-GregTechLizard, 3-Red, 4-GregTechLizard
+(looker){LookerRemix=2,#!bebra.gregtech_lizard}WSKC_A07 : 2-Red, 3-Red, 4-Pink
+(looker){LookerRemix=2,#sequoia.luminouscode}WSKC_A08 : 3-Red, 2-CicadaB-2, 2-Teuthicada
+(looker){LookerRemix=2,#!sequoia.luminouscode}WSKC_A08 : 3-Red, 2-CicadaB-3
+(looker){LookerRemix=2,#sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A12 : 2-GregTechLizard, 3-CicadaB, 3-Teuthicada-2
+(looker){LookerRemix=2,#sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A12 : 2-Pink-2, 3-CicadaB, 3-Teuthicada-2
+(looker){LookerRemix=2,#!sequoia.luminouscode,#bebra.gregtech_lizard}WSKC_A12 : 2-GregTechLizard, 3-CicadaB-3
+(looker){LookerRemix=2,#!sequoia.luminouscode,#!bebra.gregtech_lizard}WSKC_A12 : 2-Pink-2, 3-CicadaB-3
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKC_A14 : 3-WaterSpitter, 4-Snail-3
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKC_A14 : 3-Eel, 4-Snail-3
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKC_A16 : 2-Snail-3, 3-Snail-2, 4-WaterSpitter
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WSKC_A16 : 2-Snail-3, 3-Snail-2, 4-Eel
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack,#bebra.gregtech_lizard,#sequoia.luminouscode}WSKC_A23 : 2-HunterSeeker, 3-Teuthicada-2, 4-Red, 5-CicadaB-3, 6-GregTechLizard
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack,#!bebra.gregtech_lizard,#sequoia.luminouscode}WSKC_A23 : 2-HunterSeeker, 3-Teuthicada-2, 4-Red, 5-CicadaB-3, 6-Pink
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack,#bebra.gregtech_lizard,#sequoia.luminouscode}WSKC_A23 : 2-Cyan, 3-Teuthicada-2, 4-Red, 5-CicadaB-3, 6-GregTechLizard
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack,#bebra.gregtech_lizard,#!sequoia.luminouscode}WSKC_A23 : 2-HunterSeeker, 3-CicadaB-2, 4-Red, 5-CicadaB-3, 6-GregTechLizard
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack,#!bebra.gregtech_lizard,#sequoia.luminouscode}WSKC_A23 : 2-Cyan, 3-Teuthicada-2, 4-Red, 5-CicadaB-3, 6-Pink
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack,#bebra.gregtech_lizard,#!sequoia.luminouscode}WSKC_A23 : 2-Cyan, 3-CicadaB-2, 4-Red, 5-CicadaB-3, 6-GregTechLizard
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack,#!bebra.gregtech_lizard,#!sequoia.luminouscode}WSKC_A23 : 2-HunterSeeker, 3-CicadaB-2, 4-Red, 5-CicadaB-3, 6-Pink
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack,#!bebra.gregtech_lizard,#!sequoia.luminouscode}WSKC_A23 : 2-Cyan, 3-CicadaB-2, 4-Red, 5-CicadaB-3, 6-Pink
+
+
+(looker){LookerRemix-2}WSKC_A10 : 2-Red
+(looker){LookerRemix-2}WSKC_A03 : 2-Red
+(looker){LookerRemix-2,#sequoia.luminouscode}WSKC_A11 : 3-Teuthicada-2
+(looker){LookerRemix-2,#!sequoia.luminouscode}WSKC_A11 : 3-CicadaB-2
+(looker){LookerRemix-2}WSKC_A15 : 3-Red, 4-Snail-2
+(looker){LookerRemix-2}WSKC_A20 : 2-Red, 4-Dropbug
+(looker){LookerRemix-2,#sequoia.luminouscode}WSKC_A25 : 2-Teuthicada-2, 1-Snail-2
+(looker){LookerRemix-2,#!sequoia.luminouscode}WSKC_A25 : 2-CicadaB-2, 1-Snail-2
+
+
+(looker){LookerRemix<2}WSKC_A03 : 2-Blue
+
+
+(looker){LookerRemix=1}OFFSCREEN : 0-Scavenger-6, 0-Elite, 0-templar-1
+(looker){LookerRemix=1,#bebra.gregtech_lizard}WSKC_A04 : 3-GregTechLizard, 4-Red, 5-Mimic-{9}
+(looker){LookerRemix=1,#!bebra.gregtech_lizard}WSKC_A04 : 3-Pink, 4-Red, 5-Mimic-{9}
+(looker){LookerRemix=1,#sequoia.luminouscode}WSKC_A06 : 3-CicadaB-5, 3-Teuthicada, 4-Cyan, 5-White
+(looker){LookerRemix=1,#!sequoia.luminouscode}WSKC_A06 : 3-CicadaB-6, 4-Cyan, 5-White
+(looker){LookerRemix=1,#bebra.gregtech_lizard}WSKC_A07 : 2-Pink, 3-Pink, 4-GregTechLizard
+(looker){LookerRemix=1,#!bebra.gregtech_lizard}WSKC_A07 : 2-Pink, 3-Pink, 4-Pink
+(looker){LookerRemix=1}WSKC_A08 : 3-Blue, 2-CicadaB-3
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKC_A10 : 2-WaterSpitter
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKC_A10 : 2-Green
+(looker){LookerRemix=1}WSKC_A11 : 3-CicadaB-2
+(looker){LookerRemix=1,#sequoia.luminouscode}WSKC_A12 : 2-Pink, 3-CicadaB-2, 3-Teuthicada
+(looker){LookerRemix=1,#!sequoia.luminouscode}WSKC_A12 : 2-Pink, 3-CicadaB-3
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKC_A14 : 3-WaterSpitter, 4-Snail-3
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKC_A14 : 3-Salamander, 4-Snail-3
+(looker){LookerRemix=1}WSKC_A15 : 3-Salamander, 4-Snail-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKC_A16 : 2-Snail-3, 3-Snail-2, 4-WaterSpitter
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKC_A16 : 2-Snail-3, 3-Snail-2, 4-Salamander
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKC_A20 : 2-HunterSeeker, 4-Eggbug
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack,LookerRandom-60}WSKC_A20 : 2-White, 4-Eggbug
+(looker){LookerElse,LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKC_A20 : 2-Cyan, 4-Eggbug
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack,#bebra.gregtech_lizard}WSKC_A23 : 2-HunterSeeker, 3-CicadaB-2, 4-Blue, 5-CicadaB-3, 6-GregTechLizard
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack,#!bebra.gregtech_lizard}WSKC_A23 : 2-HunterSeeker, 3-CicadaB-2, 4-Blue, 5-CicadaB-3, 6-Pink
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack,#bebra.gregtech_lizard}WSKC_A23 : 2-White, 3-CicadaB-2, 4-Blue, 5-CicadaB-3, 6-GregTechLizard
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack,#!bebra.gregtech_lizard}WSKC_A23 : 2-White, 3-CicadaB-2, 4-Blue, 5-CicadaB-3, 6-Pink
+(looker){LookerRemix=1}WSKC_A25 : 2-CicadaB-2, 1-Snail-2
+
+
+(looker){LookerRemix-1}WSKC_A17 : 6-Red
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Scavenger-7, 0-templar-1
+(looker){LookerRemix=0}WSKC_A04 : 3-Pink, 4-Pink, 5-Mimic-{9}
+(looker){LookerRemix=0}WSKC_A06 : 3-CicadaB-6, 4-Blue, 5-Blue
+(looker){LookerRemix=0}WSKC_A07 : 2-Pink, 3-Pink, 4-Pink
+(looker){LookerRemix=0}WSKC_A08 : 3-Blue, 2-CicadaB-3
+(looker){LookerRemix=0}WSKC_A10 : 2-Green
+(looker){LookerRemix=0}WSKC_A11 : 3-CicadaB-2
+(looker){LookerRemix=0}WSKC_A12 : 2-Pink, 3-CicadaB-3
+(looker){LookerRemix=0}WSKC_A14 : 3-Salamander, 4-Snail-3
+(looker){LookerRemix=0}WSKC_A15 : 3-Salamander, 4-Snail-2
+(looker){LookerRemix=0}WSKC_A16 : 2-Snail-3, 3-Snail-2, 4-Salamander
+(looker){LookerRemix=0}WSKC_A17 : 6-Pink
+(looker){LookerRemix=0}WSKC_A20 : 2-Blue, 4-Eggbug
+(looker){LookerRemix=0}WSKC_A23 : 2-White, 3-CicadaB-2, 4-Blue, 5-CicadaB-3, 6-Pink
+(looker){LookerRemix=0}WSKC_A25 : 2-CicadaB-2, 1-Snail-2
+
+
+(looker)WSKC_A09 : 3-Snail-5
+(looker)WSKC_A18 : 3-Mimic-{9}, 4-Snail-2
+
+(looker){LookerWeaver}WSKC_A06 : 4-WeaverLizard
+(looker){LookerWeaver}WSKC_A20 : 4-WeaverLizard
+END CREATURES
+[ENDMERGE]

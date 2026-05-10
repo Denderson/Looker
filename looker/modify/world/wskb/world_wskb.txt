@@ -1,0 +1,181 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_C01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_C03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_C16 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_C03 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_C05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_C07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_C08 : 2 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_C09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_C09 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_C10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_C13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_C17 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_C15 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_C15 : 1 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_C18 :2
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_N01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N01 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N01 : 5 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_N03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N03 : 4 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N03 : 5 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N03 : 7 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N03 : 8 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_N05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N05 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_N06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N06 : 6 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N06 : 4 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N07 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N08 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_N10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_N11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_N12 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_N13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N13 : 1 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_N14 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKB_N15 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKB_N15 : 5 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKB_N16 :
+[ADDBEFORE_2](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}WSKB_C05 : 4-Lantern Mouse-2, 5-Red
+(looker){LookerRemix=3}WSKB_C17 : 3-Red, 4-Leech-5, 5-Leech-5
+(looker){LookerRemix=3}WSKB_C18 : 1-SpitterSpider, 1-Spider-10, 1-Lantern Mouse
+(looker){LookerRemix=3}WSKB_N01 : 2-LanternMouse-2, 3-Dropbug, 4-Spider-12, 4-SpitterSpider-2, 5-Red-2
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKB_N03 : 4-Red, 5-RedHorror, 6-LanternMouse-2, 7-SmallCentipede-5, 7-RedCentipede, 8-RedCentipede
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKB_N03 : 4-Red, 5-Centiwing, 6-LanternMouse-2, 7-SmallCentipede-5, 7-RedCentipede, 8-RedCentipede
+(looker){LookerRemix=3}WSKB_N05 : 2-SmallCentipede-2, 3-Red
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKB_N06 : 4-SpitterSpider, 5-LanternMouse-2, 6-RedHorror
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKB_N06 : 4-SpitterSpider, 5-LanternMouse-2, 6-Centiwing
+(looker){LookerRemix=3}WSKB_N10 : 3-RaspberryLizard, 4-RaspberryLizard, 5-RaspberryLizard, 6-RaspberryLizard
+(looker){LookerRemix=3}WSKB_N11 : 2-LanternMouse-2, 3-RaspberryLizard-3
+(looker){LookerRemix=3}WSKB_N15 : 3-Leech-4, 4-Leech-4, 5-SmallCentipede-3, 5-RedCentipede
+(looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKB_N16 : 3-RedHorror
+(looker){LookerRemix=3,#!lb-fgf-m4r-ik.modpack}WSKB_N16 : 3-Centiwing
+
+
+(looker){LookerRemix=2}WSKB_C05 : 4-Lantern Mouse-2, 5-Cyan
+(looker){LookerRemix=2}WSKB_C17 : 3-Black, 4-Leech-5, 5-Leech-5
+(looker){LookerRemix=2}WSKB_C18 : 1-BigSpider, 1-Spider-10, 1-Lantern Mouse
+(looker){LookerRemix=2,LookerRandom-40}WSKB_N01 : 2-LanternMouse-2, 3-Eggbug, 4-Spider-12, 4-SpitterSpider, 5-Black-2
+(looker){LookerElse,LookerRemix=2}WSKB_N01 : 2-LanternMouse-2, 3-Dropbug, 4-Spider-12, 4-SpitterSpider, 5-Black-2
+(looker){LookerRemix=2}WSKB_N03 : 4-Red, 5-Centiwing, 6-LanternMouse-2, 7-SmallCentipede-5, 7-RedCentipede, 8-Centipede
+(looker){LookerRemix=2}WSKB_N05 : 2-SmallCentipede-2, 3-Cyan
+(looker){LookerRemix=2}WSKB_N06 : 4-SpitterSpider, 5-LanternMouse-2, 6-Centiwing
+(looker){LookerRemix=2}WSKB_N10 : 3-Yellow, 4-RaspberryLizard, 5-Yellow, 6-RaspberryLizard
+(looker){LookerRemix=2}WSKB_N11 : 2-LanternMouse-2, 3-Yellow-2, 3-RaspberryLizard
+(looker){LookerRemix=2}WSKB_N15 : 3-Leech-4, 4-Leech-4, 5-SmallCentipede-3, 5-RedCentipede
+(looker){LookerRemix=2}WSKB_N16 : 3-Centiwing
+
+
+(looker){LookerRemix-2}WSKB_C03 : 2-SmallCentipede-2, 2-RedCentipede
+(looker){LookerRemix-2}WSKB_C09 : 3-SmallCentipede-4, 3-RedCentipede
+(looker){LookerRemix-2}WSKB_C15 : 1-SmallCentipede-2, 1-RedCentipede, 2-SpitterSpider, 2-Spider-20
+(looker){LookerRemix-2}WSKB_N07 : 3-RedCentipede
+(looker){LookerRemix-2}WSKB_N08 : 3-Red
+
+
+(looker){LookerRemix=1}WSKB_C03 : 2-SmallCentipede-2, 2-Centipede
+(looker){LookerRemix=1}WSKB_C05 : 4-Lantern Mouse-2, 5-Black
+(looker){LookerRemix=1}WSKB_C09 : 3-SmallCentipede-4, 3-Centipede
+(looker){LookerRemix=1}WSKB_C15 : 1-SmallCentipede-2, 1-Centipede, 2-SpitterSpider, 2-Spider-20
+(looker){LookerRemix=1}WSKB_C17 : 3-Black, 4-Leech-5, 5-Leech-5
+(looker){LookerRemix=1}WSKB_C18 : 1-BigSpider, 1-Spider-10, 1-Lantern Mouse
+(looker){LookerRemix=1,LookerRandom-75}WSKB_N01 : 2-LanternMouse-2, 3-Eggbug, 4-Spider-12, 4-SpitterSpider, 5-Black-2
+(looker){LookerElse,LookerRemix=1}WSKB_N01 : 2-LanternMouse-2, 3-Dropbug, 4-Spider-12, 4-SpitterSpider, 5-Black-2
+(looker){LookerRemix=1}WSKB_N03 : 4-Black, 5-Centiwing, 6-LanternMouse-2, 7-SmallCentipede-5, 7-Centipede, 8-Centipede
+(looker){LookerRemix=1}WSKB_N05 : 2-SmallCentipede-2, 3-Blue
+(looker){LookerRemix=1}WSKB_N06 : 4-BigSpider, 5-LanternMouse-2, 6-Centiwing
+(looker){LookerRemix=1}WSKB_N07 : 3-Centipede
+(looker){LookerRemix=1}WSKB_N08 : 3-White
+(looker){LookerRemix=1}WSKB_N10 : 3-Yellow, 4-Yellow, 5-Yellow, 6-RaspberryLizard
+(looker){LookerRemix=1}WSKB_N11 : 2-LanternMouse-2, 3-Yellow-3
+(looker){LookerRemix=1}WSKB_N15 : 3-Leech-4, 4-Leech-4, 5-SmallCentipede-3, 5-Centipede
+(looker){LookerRemix=1}WSKB_N16 : 3-Centiwing
+
+
+(looker){LookerRemix-1}OFFSCREEN : 0-Scavenger-9, 0-MirosVulture
+(looker){LookerRemix-1}WSKB_C01 : 4-Dropbug
+(looker){LookerRemix-1}WSKB_C07 : 1-Lantern Mouse-2
+(looker){LookerRemix-1,LookerRandom-80}WSKB_C08 : 2-Lantern Mouse-{Seed:9645}, 2-Eggbug
+(looker){LookerElse,LookerRemix-1}WSKB_C08 : 2-Lantern Mouse-{Seed:9645}, 2-Dropbug
+(looker){LookerRemix-1}WSKB_C16 : 2-Lantern Mouse-2
+(looker){LookerRemix-1}WSKB_N13 : 1-LanternMouse-2
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Scavenger-9
+(looker){LookerRemix=0}WSKB_C01 : 4-Dropbug
+(looker){LookerRemix=0}WSKB_C03 : 3-SmallCentipede-2, 3-Centipede
+(looker){LookerRemix=0}WSKB_C16 : 3-Eggbug
+(looker){LookerRemix=0}WSKB_C05 : 4-CicadaA-3, 5-Cyan
+(looker){LookerRemix=0}WSKB_C07 : 1-CicadaA-2
+(looker){LookerRemix=0}WSKB_C08 : 2-Eggbug
+(looker){LookerRemix=0}WSKB_C09 : 3-SmallCentipede-4, 3-Centipede
+(looker){LookerRemix=0}WSKB_C17 : 3-Pink, 4-Leech-5, 5-Leech-5
+(looker){LookerRemix=0}WSKB_C15 : 1-SmallCentipede-2, 1-Centipede, 2-Needle, 2-SmallNeedle-2
+(looker){LookerRemix=0}WSKB_C18 : 1-Needle, 1-SmallNeedle-2
+(looker){LookerRemix=0}WSKB_N01 : 2-CicadaA-2, 3-Eggbug, 4-Needle, 4-SmallNeedle-2, 5-Pink
+(looker){LookerRemix=0}WSKB_N03 : 4-Pink, 5-Centiwing, 6-SmallNeedle-2, 7-SmallCentipede-5, 7-Centipede, 8-Centipede
+(looker){LookerRemix=0}WSKB_N05 : 2-SmallCentipede-2, 3-Pink
+(looker){LookerRemix=0}WSKB_N06 : 4-Needle, 5-CicadaA-2, 6-Centiwing
+(looker){LookerRemix=0}WSKB_N07 : 3-Centipede
+(looker){LookerRemix=0}WSKB_N08 : 3-White
+(looker){LookerRemix=0}WSKB_N10 : 3-Yellow, 4-Yellow, 5-Yellow, 6-Yellow
+(looker){LookerRemix=0}WSKB_N11 : 2-CicadaA-2, 3-Yellow-2
+(looker){LookerRemix=0,LookerRandom-99}WSKB_N13 : 1-CicadaA-2
+(looker){LookerElse,LookerRemix=0}WSKB_N13 : 1-CicadaA, 1-CicadaB
+(looker){LookerRemix=0}WSKB_N15 : 3-Leech-4, 4-Leech-4, 5-SmallCentipede-3, 5-Centipede
+(looker){LookerRemix=0}WSKB_N16 : 3-Centiwing
+
+
+(looker)WSKB_C10 : 2-Snail-2, 3-Leech-4
+(looker)WSKB_C13 : 2-Snail-3, 3-Leech-6
+(looker)WSKB_N12 : 3-SmallCentipede-2
+(looker)WSKB_N14 : 2-Leech-3, 3-Leech-3
+
+(looker){LookerWeaver}WSKB_C05 : 4-WeaverLizard
+(looker){LookerWeaver}WSKB_N03 : 4-WeaverLizard
+END CREATURES
+[ENDMERGE]

@@ -1,0 +1,4 @@
+DangerType: Flood
+Effects: Sentient Rot Spores-0-40-40, 
+PlacedObjects: PlayerPushback><258.0894><347.8692><356~0, Corruption><261.9609><339.9461><80~-3, Corruption><274><329><80~-3, Corruption><197><311><80~-3, Corruption><264><379><80~-3, Corruption><243><281><80~-3, Corruption><193><358><80~-3, 
+FadePalette: 10, 0.2934783

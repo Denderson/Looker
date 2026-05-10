@@ -1,0 +1,31 @@
+Template: NONE
+DangerType: FloodAndRain
+CeilingDrips: 0
+RumbleIntensity: 0.1086956
+WaveSpeed: 0.5002343
+WaveLength: 0.9998828
+WaveAmplitude: 0.04812603
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2065217
+Grime: 0
+Palette: 69
+EffectColorB: 16
+TerrainLight: 0.2385572
+TerrainStainAmount: 1
+TerrainStainBrightness: 0.1304348
+TerrainStainHeight: 0.3043478
+TerrainWaves: 0
+TerrainEdgeRadius: 93.47826
+TerrainGooHeight: 0.2065217
+TerrainGrain: 1
+TerrainDepth: -0.1287645
+TerrainSkyFade: 1
+TerrainPalette: test_dirt
+Effects: SandPuffs-1-20-74, SurfaceSandstorm-0-317-47, FlowerWind-0,0,0-302.0614-126.5772, Outer Rim View-0.2065217-20-20, WaterFluxMinLevel-0.25-30-30, WaterFluxMaxLevel-0.25-40-40, 
+PlacedObjects: TerrainHandle><1897.98><289.051><-113~-51~69~87~140, TerrainHandle><1542.577><185.6331><-91~-65~92~-24~125, TerrainHandle><1742.323><230.0927><-98~-48~76~-7~118, TerrainHandle><143.1999><295.2429><-98~102~120~-43~142, TerrainHandle><446.1752><215.6861><-125~12~121~-135~139, TerrainHandle><-85.15344><416.1283><-85~10~74~-38~137, TerrainHandle><2043.619><484.0354><-28~-77~43~17~77, NoSpearStickZone><1962.402><441.2006><19~146, PlayerPushback><-147.905><522.4986><178~-4, NoSpearStickZone><91.01208><335.0746><0~100, ReliableSpear><1235.7><141.3187><, ReliableSpear><1199.839><133.9461><, ReliableSpear><1161.95><130.1275><, TerrainSunOffset><1247.8><320.8773><-32~-3, CustomDecal><519.1887><62.80881><-40~423~1071~526~990~-51~-117~363~0~1~0~rustb2~0.5~0.3695652~0.5~0.3695652~0.5~0.3695652~0.5~0.3695652, ReliableSpear><656.1665><158.7645><, ReliableSpear><678.1295><148.2154><, SlimeMold><1116.584><223.9316><0~0~2~3, SlimeMold><1136.49><124.9497><0~0~2~3, CosmeticSlimeMold2><1211.074><161.0946><-2~133, ExitSymbolHidden><638.1798><175.9372><, TerrainHandle><683.205><65.48149><-97~6~120~-89~20, TerrainHandle><1394.532><85.78909><-76~-87~60~25~20, BlinkingFlower><981.8558><471.9197><, BlinkingFlower><872.5514><223.8067><, PlacedFrog><1029.105><126.5801><, PlacedFrog><960.9045><112.1758><, 
+AmbientSounds: OMNI><AM_ENV-Woods.ogg><100.6666><22.31824><0><1, OMNI><AM_ENV-WindGrass.ogg><-30.43576><331.6759><0.7065217><1, 
+FadePalette: 2, 0.8586956, 0.7934783
+TerrainFadePalette: treemoss, 0.6086956, 0.5
+WetTerrain: OFF
+MorePalette0: 473, 0.4021739, 0.3043478

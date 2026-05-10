@@ -1,0 +1,37 @@
+OFFSCREEN : 0-MirosVulture-4, 0-Scavenger-5, 0-Templar-4
+CC_C05 : 3-Snail-2-{PreCycle}
+
+CC_A07 : 2-DropBug
+CC_C03 : 7-Garbage Worm-3, 5-SpitterSpider
+CC_B14 : 2-BigNeedleWorm, 2-SmallNeedleWorm-4
+
+CC_B04 : 3-WeaverLizard, 4-BigNeedleWorm, 4-SmallNeedleWorm-2, 3-Snail-2-{PreCycle}
+CC_B05 : 2-DropBug, 3-WeaverLizard, 4-BigNeedleWorm, 4-SmallNeedleWorm-2, 4-TentaclePlant-{PreCycle}
+CC_B11 : 3-SpitterSpider-2
+
+CC_B01 : 2-WeaverLizard, 3-White, 3-Snail-3-{PreCycle}
+CC_F01 : 4-WeaverLizard-2, 4-Snail-3-{PreCycle}
+CC_B08 : 3-White, 2-WeaverLizard, 3-Cyan-2-{PreCycle}
+
+CC_A15 : 4-WeaverLizard-2
+CC_C11 : 4-WeaverLizard
+CC_C04 : 3-BigNeedleWorm, 3-SmallNeedleWorm-3, 3-TentaclePlant-{PreCycle}
+CC_C08 : 3-WeaverLizard
+CC_C07 : 2-Snail-3-{PreCycle}
+
+LINEAGE : CC_C07 : 2 : White-0.5, Blue-0.5, CicadaB-0
+LINEAGE : CC_C07 : 3 : WeaverLizard-0
+LINEAGE : CC_A15 : 3 : Mimic-{13}-0.5, Mimic-{16}-0.5, Mimic-{21}-0.5, TentaclePlant-0
+LINEAGE : CC_F01 : 3 : WeaverLizard-0
+LINEAGE : CC_SHAFT02 : 3 : NONE-0.3, SpitterSpider-0
+LINEAGE : CC_SUMP01 : 4 : MotherSpider-0.1, White-0.2, TentaclePlant-0
+LINEAGE : CC_A07 : 2 : WeaverLizard-0
+LINEAGE : CC_C11 : 3 : SpitterSpider-0
+LINEAGE : CC_B08 : 2 : WeaverLizard-0
+LINEAGE : CC_B08 : 4 : DropBug-0
+LINEAGE : CC_B01 : 2 : WeaverLizard-0
+LINEAGE : CC_C08 : 4 : WeaverLizard-0
+LINEAGE : CC_C05 : 3 : WeaverLizard-0
+
+CC_SHAFT01x : 9-Garbage Worm-3, 2-Eel-{PreCycle}
+CC_SUMP03 : 4-Mimic-{18}, 7-SpitterSpider-2, 8-Mimic-{14}, 12-Snail-5, 13-Eel

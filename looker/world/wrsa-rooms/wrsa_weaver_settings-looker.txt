@@ -1,0 +1,9 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RandomItemDensity: 0
+Palette: 3
+Effects: Bloom-0.4891304-20-20, 
+PlacedObjects: WeaverSpot><318.9946><648.6989><0~-460, ARKillRect><150.2366><87.54868><310~585, 
+AmbientSounds: OMNI><AM_WIN-NiceWnd.ogg><148.886><50.97833><0.3043477><1, OMNI><RWTW_PlateTree_A1.ogg><0><0><0.2><1, OMNI><RWTW_PlateTree_B1.ogg><0><0><0.35><1, OMNI><RWTW_PlateTree_A1.ogg><0><0><0.2><1, OMNI><RWTW_PlateTree_B1.ogg><0><0><0.35><1, 
+RoomSpecificScriptActive: ON

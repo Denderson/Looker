@@ -1,0 +1,154 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WRFA_A01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_A06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_A07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_A08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_A21 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_B02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_B03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_C02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_C04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_C05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_E01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_E02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_F01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_F02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_H01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_C03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_F05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_D06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_I01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_B09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_F06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WRFA_SK02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WRFA_D06 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WRFA_A04 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WRFA_F02 :
+[ADDBEFORE](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3,#nonescreatures}OFFSCREEN : 0-Leviathan-2, 0-KingMiros-2, 0-MirosVulture, 0-Scavenger-6
+(looker){LookerRemix=3,#!nonescreatures}OFFSCREEN : 0-Leviathan-2, 0-MirosVulture-3, 0-Scavenger-6
+(looker){LookerRemix=3}WRFA_A08 : 2-Red
+(looker){LookerRemix=3}WRFA_B04 : 2-TentaclePlant, 4-Red
+(looker){LookerRemix=3}WRFA_C02 : 4-RaspberryLizard-{AlternateForm}-5, 5-Barnacle-4, 7-SeaLeech-4, 6-SeaLeech-2, 8-SeaLeech-2
+(looker){LookerRemix=3}WRFA_C04 : 3-Red, 4-TentaclePlant
+(looker){LookerRemix=3}WRFA_E02 : 3-Red, 5-Red
+(looker){LookerRemix=3}WRFA_H01 : 3-Red, 6-TentaclePlant, 5-TentaclePlant, 2-Cicada-2
+(looker){LookerRemix=3}WRFA_I01 : 5-Tardigrade-3, 6-JetFish-3, 5-Red-2
+(looker){LookerRemix=3}WRFA_C03 : 3-Barnacle-3, 4-RaspberryLizard-{AlternateForm}-4
+
+
+(looker){LookerRemix<3}WRFA_A08 : 2-Pink
+
+
+(looker){LookerRemix=2}OFFSCREEN : 0-Leviathan-2, 0-KingVulture-2, 0-MirosVulture, 0-Scavenger-6
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WRFA_B04 : 2-TentaclePlant, 4-HunterSeeker
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WRFA_B04 : 2-TentaclePlant, 4-Cyan
+(looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WRFA_C02 : 4-polliwog-4, 4-RaspberryLizard-{AlternateForm}, 5-Barnacle-4, 7-SeaLeech-4, 6-SeaLeech-2, 8-SeaLeech-2
+(looker){LookerRemix=2,#!lb-fgf-m4r-ik.modpack}WRFA_C02 : 4-Peach-4, 4-RaspberryLizard-{AlternateForm}, 5-Barnacle-4, 7-SeaLeech-4, 6-SeaLeech-2, 8-SeaLeech-2
+(looker){LookerRemix=2}WRFA_C04 : 3-Eel, 4-TentaclePlant
+(looker){LookerRemix=2}WRFA_E02 : 3-Red, 5-Eel
+(looker){LookerRemix=2}WRFA_H01 : 3-Eel, 6-TentaclePlant, 5-TentaclePlant, 2-Cicada-2
+(looker){LookerRemix=2}WRFA_C03 : 3-Barnacle-3, 4-Peach-3, 4-RaspberryLizard-{AlternateForm}
+(looker){LookerRemix=2}WRFA_I01 : 5-Tardigrade-3, 6-JetFish-3, 5-Eel-2
+
+
+(looker){LookerRemix-2}WRFA_A05 : 1-Barnacle-4
+(looker){LookerRemix-2}WRFA_A06 : 4-Red
+(looker){LookerRemix-2}WRFA_A21 : 1-Barnacle-3
+(looker){LookerRemix-2}WRFA_F01 : 5-Red, 2-Barnacle-5
+(looker){LookerRemix-2}WRFA_F02 : 10-SeaLeech-3, 5-Cicada-3, 8-Red, 9-Barnacle-2
+(looker){LookerRemix-2}WRFA_D06 : 3-Tardigrade-2, 3-Eel
+(looker){LookerRemic-2}WRFA_A04 : 3-Red
+
+
+(looker){LookerRemix<2}WRFA_B04 : 2-TentaclePlant, 4-Blue
+(looker){LookerRemix<2}WRFA_H01 : 3-Salamander, 6-TentaclePlant, 5-TentaclePlant, 2-Cicada-2
+
+
+(looker){LookerRemix=1}OFFSCREEN : 0-Leviathan-2, 0-Vulture-2, 0-KingVulture, 0-Scavenger-6
+(looker){LookerRemix=1}WRFA_A05 : 1-Barnacle-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFA_A06 : 4-HunterSeeker
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFA_A06 : 4-White
+(looker){LookerRemix=1}WRFA_A21 : 1-Barnacle-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFA_C02 : 4-polliwog-5, 5-Barnacle-4, 7-SeaLeech-4, 6-SeaLeech-2, 8-SeaLeech-2
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFA_C02 : 4-Peach-5, 5-Barnacle-4, 7-SeaLeech-4, 6-SeaLeech-2, 8-SeaLeech-2
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack,LookerRandom-25}WRFA_C04 : 3-MoleSalamander, 4-TentaclePlant
+(looker){LookerElse,LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFA_C04 : 3-polliwog-2, 4-TentaclePlant
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFA_C04 : 3-Salamander, 4-TentaclePlant
+(looker){LookerRemix=1}WRFA_E02 : 3-Salamander, 5-Eel
+(looker){LookerRemix=1}WRFA_F01 : 5-Eel, 2-Barnacle-5
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFA_F02 : 10-SeaLeech-3, 5-Cicada-2, 8-HunterSeeker, 9-Barnacle-2
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFA_F02 : 10-SeaLeech-3, 5-Cicada-3, 8-White, 9-Barnacle-2
+(looker){LookerRemix=1}WRFA_C03 : 3-Barnacle-3, 4-Peach-4
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFA_I01 : 5-Tardigrade-3, 6-JetFish-3, 5-MoleSalamander-2
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFA_I01 : 5-Tardigrade-3, 6-JetFish-3, 5-Salamander-2
+(looker){LookerRemix=1}WRFA_D06 : 3-Tardigrade-2, 3-Salamander
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WRFA_A04 : 3-HunterSeeker
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WRFA_A04 : 3-Cyan
+
+
+(looker){LookerRemix-1}WRFA_B09 : 2-Barnacle-2
+(looker){LookerRemix-1}WRFA_SK02 : 2-Red
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Leviathan-1, 0-Vulture, 0-Scavenger-6
+(looker){LookerRemix=0}WRFA_A05 : 1-Snail-2
+(looker){LookerRemix=0}WRFA_A06 : 4-BlueLizard
+(looker){LookerRemix=0}WRFA_A21 : 1-Snail-2
+(looker){LookerRemix=0}WRFA_C02 : 4-Peach-3, 5-Barnacle-4, 7-SeaLeech-4, 6-SeaLeech-2, 8-SeaLeech-2
+(looker){LookerRemix=0}WRFA_C04 : 3-Salamander, 4-TentaclePlant
+(looker){LookerRemix=0}WRFA_E02 : 3-Salamander, 5-Salamander
+(looker){LookerRemix=0}WRFA_F01 : 5-Salamander, 2-Barnacle-5
+(looker){LookerRemix=0}WRFA_F02 : 10-SeaLeech-3, 5-Cicada-3, 8-Pink, 9-Snail-2
+(looker){LookerRemix=0}WRFA_C03 : 3-Snail-3, 4-Peach-3
+(looker){LookerRemix=0}WRFA_D06 : 3-Tardigrade-2, 3-Blue
+(looker){LookerRemix=0}WRFA_I01 : 5-Tardigrade-3, 6-JetFish-3, 5-Salamander
+(looker){LookerRemix=0}WRFA_B09 : 2-Snail-2
+(looker){LookerRemix=0}WRFA_SK02 : 2-PinkLizard
+(looker){LookerRemix=0}WRFA_A04 : 3-PinkLizard
+
+
+(looker)WRFA_A01 : 3-SeaLeech-5
+(looker)WRFA_A07 : 1-Cicada-2
+(looker)WRFA_B02 : 7-SeaLeech-5, 4-Barnacle-2, 5-Snail-3
+(looker)WRFA_B03 : 3-TentaclePlant
+(looker)WRFA_C05 : 7-SeaLeech-3, 8-SeaLeech-6, 6-SeaLeech-4, 3-Snail-3, 4-Barnacle-4, 5-Snail-2
+(looker)WRFA_E01 : 7-TentaclePlant
+(looker)WRFA_F05 : 3-Cicada-2, 5-TentaclePlant
+(looker)WRFA_F06 : 4-Tardigrade-10, 4-Tardigrade-{Slayer}, 5-Angler
+
+(looker){LookerWeaver}WRFA_C04 : 5-WeaverLizard
+(looker){LookerWeaver}WRFA_F02 : 6-WeaverLizard
+(looker){LookerWeaver}WRFA_F05 : 2-WeaverLizard
+END CREATURES

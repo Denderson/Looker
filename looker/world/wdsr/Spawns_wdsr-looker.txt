@@ -1,0 +1,9 @@
+WDSR_B04 : 2-Salamander-{RotType:2}
+WDSR_C04_👀 : 2-TentaclePlant
+WDSR_A07 : 2-Eel-{RotType:3}
+WDSR_B01 : 4-Salamander-{RotType:2}, 5-Snail-3
+WDSR_B07 : 3-DropBug-3, 4-Red-{RotType:2}-2, 5-Snail, 6-Snail
+WDSR_A14 : 2-Salamander-{RotType:3}
+WDSR_A16 : 3-Snail-2
+WDSR_A25 : 3-Snail-2, 5-Snail-2
+LINEAGE : Red-{RotType:2}-0

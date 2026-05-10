@@ -1,0 +1,21 @@
+Template: NONE
+DangerType: Sandstorm
+Clouds: 0.09782609
+Grime: 0
+Palette: 46
+TerrainLight: 0.1298616
+TerrainStainAmount: 0.3074022
+TerrainStainBrightness: 1
+TerrainStainHeight: 0.7619205
+TerrainWaves: 0.2597245
+TerrainEdgeRadius: 200
+TerrainGooHeight: 0.1558971
+TerrainGrain: 0
+TerrainDepth: -0.4548514
+TerrainPalette: outerrim
+Effects: LightBurn-0.05410916-20-20, 
+PlacedObjects: TerrainHandle><5060.146><1145.057><-40~0~40~0~20, TerrainHandle><4912.698><1131.676><-40~0~40~0~100, TerrainHandle><4301.597><1010.945><-141.552~-2~177.3939~7~54, TerrainHandle><5238.969><1372.568><-352.6208~-16~109.6926~6~45, TerrainHandle><4640.365><1030.137><-73.85065~3~133.5871~-1~81, TerrainHandle><4039.869><995.3234><-209.2532~-28~260.0293~-1~86, TerrainHandle><2997.755><1002.058><-76.83749~5~269.0205~-42~81, TerrainHandle><2773.564><1060.704><-86.78479~11~107.7013~-18~75, TerrainHandle><3542.47><839.9265><-321.7569~5~316.7789~-6~79, TerrainHandle><1787.775><543.1273><-401.3734~-288~181.3983~106~89, TerrainHandle><2524.41><1019.323><-218.1654~-155~203.3324~49~102, TerrainHandle><2263.32><811.9147><-86.48608~-92~95.87262~47~90, TerrainHandle><1087.814><191.3877><-195.3148~-15~354.2914~138~110, TerrainHandle><325.8256><147.9991><-71.85944~0~125.6223~-13~79, TerrainHandle><708.9705><115.046><-129.6047~0~149.5168~0~72, TerrainHandle><35.74707><202.8833><-40~0~40~0~20, TerrainHandle><-185.2013><440.7176><-40~0~323.7482~1~40, TerrainHandle><132.5435><213.4263><-40~0~106.7057~0~59, NoSpearStickZone><4939.58><1316.426><0~100, NoSpearStickZone><116.2776><433.203><0~100, 
+AmbientSounds: OMNI><AM_WIN-SubWnd.ogg><763.2039><489.0104><0.2402762><0.5324971, 
+Triggers: Spot<tA>event<tB>MusicEvent<eA>songName<eB>RW_159 - Roadkill<eA>vol<eB>0.3<eA>prio<eB>0.5<eA>mxThrt<eB>1<eA>loop<eB>0<eA>droneTol<eB>0<eA>rooms<eB>-1<eA>rest<eB>-1<eA>fadeIn<eB>0<eA>oneSongPerCycle<eB>0<eA>stopAtDeath<eB>0<eA>stopAtGate<eB>0<tA>multiUse<tB>0<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>548.4968<tB>415.3465<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>3458.497<tB>1086.346<tA>handlePos<tB>-328.3553<tB>292.6447, 
+FadePalette: 473, 0.2065217, 0.3152174, 0.3804348, 0.2065217, 0.326087, 0.5326087, 0.7173913
+TerrainFadePalette: treemoss, 0, 0, 0.4021739, 0.2065217, 0.3369565, 0.5543478, 0.6739131

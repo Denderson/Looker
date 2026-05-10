@@ -1,0 +1,45 @@
+OFFSCREEN : 0-Scavenger-6, 0-Templar-4, 0-MirosVulture-3
+
+SU_B11 : 4-CicadaB, 5-CicadaA, 8-TentaclePlant-{PreCycle}
+SU_B02 : 7-RedCentipede, 8-RedCentipede-2
+SU_B06 : 4-WeaverLizard-{PreCycle}, 6-CicadaB, 7-CicadaB
+SU_A07 : 4-WeaverLizard
+LINEAGE : SU_A30 : 2 : NONE-0.3, EggBug-0
+LINEAGE : SU_A31 : 3 : NONE-0.1, Small Centipede-1.0, Centipede-{0.3}-1.0, Centipede-{0.5}-1.0, Centipede-{0.7}-0
+
+SU_B07 : 3-WeaverLizard, 3-TentaclePlant-{PreCycle}
+SU_C02 : 2-Centiwing-2, 5-WeaverLizard
+SU_A30 : 2-DropBug
+SU_A17 : 2-WeaverLizard
+SU_CAVE01 : 4-Eel-{PreCycle}
+SU_B04 : 3-DropBug-2, 4-DropBug, 5-DropBug, 5-Salamander-2-{PreCycle}
+
+SU_A10 : 2-TentaclePlant, 3-WeaverLizard
+
+SU_B09 : 4-DropBug-2
+SU_A20 : 6-RedCentipede-5
+SU_B05 : 4-WeaverLizard
+SU_B01 : 6-TentaclePlant
+SU_A32 : 2-DropBug
+SU_B08 : 3-WeaverLizard
+SU_A13 : 4-DropBug, 3-CicadaB
+
+
+SU_A06 : 3-WeaverLizard
+SU_A02 : 3-Strawberry
+SU_A31 : 3-RedCentipede
+SU_A40 : 2-Cyan-3
+
+LINEAGE : SU_A06 : 4 : WeaverLizard-0
+LINEAGE : SU_A06 : 3 : SpitterSpider-0
+LINEAGE : SU_B08 : 2 : WeaverLizard-0
+LINEAGE : SU_B12 : 3 : WeaverLizard-0
+LINEAGE : SU_A40 : 2 : Cyan-0
+LINEAGE : SU_B07 : 2 : Cyan-0
+LINEAGE : SU_C02 : 4 : Cyan-0
+LINEAGE : SU_A04 : 4 : Cyan-0
+LINEAGE : SU_B11 : 6 : Cyan-0
+LINEAGE : SU_B11 : 7 : Cyan-0
+LINEAGE : SU_B06 : 4 : Cyan-0
+LINEAGE : SU_B06 : 5 : Cyan-0
+LINEAGE : SU_A04 : 5 : TentaclePlant-0

@@ -1,0 +1,6 @@
+EffectColorA: 16
+EffectColorB: 17
+Effects: LethalWater-1-82-87, 
+PlacedObjects: WaterCycleTop><487.2166><318.1238><, WaterCycleBottom><491.1346><-13.00445><, FluxWaterfall><720><580><3~0.8344952~D~0~0, FluxWaterfall><460><660><3~0.8344945~D~0~0, FluxWaterfall><140><580><3~0.8623684~D~0~0, FluxDrain><120><20><5~0.5~D~0~0, FluxDrain><400><20><9~0.5~D~0~0, FluxDrain><700><40><5~0.5~D~0~0, CustomDecal><74.22617><46.07765><-27.35419~671.3148~840.965~667.0433~833.2715~-11.10567~-343~-178~0~1~0~blackrust1~0.2491295~1~0.2491295~1~0.2491295~1~0.2491295~1, CorruptionTube><358.1251><229.0939><181~181, CorruptionTube><608.3977><120.6348><-185~263, Corruption><425.3716><30.09663><7~125, Corruption><451.8966><401.864><21~41, Corruption><525.9431><417.8083><-1~32, Corruption><494.173><429.3504><-2~19, CorruptionTube><105.5838><129.8887><111~254, Corruption><237.3047><384.793><5~47, Corruption><589.8517><525.0778><-30~20, Corruption><195.1983><52.47414><4~65, 
+AmbientSounds: SPOT><RWTW_AmbSubBubble.ogg><728.5202><278.9707><0.2955866><0.7825794><475.0859><83.19984><-213.1576><16.75589><0><0.2486639, 
+FadePalette: 35786, 1

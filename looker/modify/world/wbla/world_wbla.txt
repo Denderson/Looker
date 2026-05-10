@@ -1,0 +1,96 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WBLA_A05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_B01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_B02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_C02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_D02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_E01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_F02 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_F03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_F04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_H01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WBLA_J01 :
+[ADDBEFORE_2](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3,#nonescreatures}OFFSCREEN : 0-KingMiros-2, 0-MirosVulture, 0-Elite-15, 0-DrillCrab-6
+(looker){LookerRemix=3,#!nonescreatures}OFFSCREEN : 0-MirosVulture-3, 0-Elite-15, 0-DrillCrab-6
+(looker){LookerRemix=3}WBLA_A05 : 3-Red
+(looker){LookerRemix=3}WBLA_B01 : 4-Red
+(looker){LookerRemix=3}WBLA_B02 : 3-Red
+(looker){LookerRemix=3}WBLA_B04 : 3-Red 
+(looker){LookerRemix=3}WBLA_B05 : 3-Red-2
+(looker){LookerRemix=3}WBLA_C02 : 3-Red-2
+(looker){LookerRemix=3}WBLA_D02 : 4-Red, 5-Red
+(looker){LookerRemix=3}WBLA_E01 : 2-Red
+(looker){LookerRemix=3}WBLA_F03 : 4-Red
+(looker){LookerRemix=3}WBLA_F04 : 4-Red, 6-Red-2
+(looker){LookerRemix=3}WBLA_H01 : 2-Red
+(looker){LookerRemix=3}WBLA_J01 : 4-Red
+
+
+(looker){LookerRemix<3}WBLA_A05 : 3-Black
+(looker){LookerRemix<3}WBLA_B02 : 3-Caramel
+(looker){LookerRemix<3}WBLA_C02 : 3-Black-2
+(looker){LookerRemix<3}WBLA_E01 : 2-Caramel
+
+
+(looker){LookerRemix=2}OFFSCREEN : 0-KingVulture-2, 0-Vulture, 0-Scavenger-9, 0-Elite-6, 0-DrillCrab-6
+(looker){LookerRemix=2}WBLA_B01 : 4-Cyan
+(looker){LookerRemix=2}WBLA_B04 : 3-Blue
+(looker){LookerRemix=2}WBLA_B05 : 3-Red, 3-Caramel
+(looker){LookerRemix=2}WBLA_D02 : 4-Cyan, 5-Red
+(looker){LookerRemix=2}WBLA_F03 : 4-Black
+(looker){LookerRemix=2}WBLA_F04 : 4-Red, 6-Black-2
+(looker){LookerRemix=2}WBLA_H01 : 2-Caramel
+(looker){LookerRemix=2}WBLA_J01 : 4-Cyan
+
+
+(looker){LookerRemix-2}WBLA_F02 : 3-Red
+
+
+(looker){LookerRemix<2}WBLA_B01 : 4-Blue
+
+
+(looker){LookerRemix=1}OFFSCREEN : 0-Vulture-2, 0-Scavenger-12, 0-Elite-3, 0-DrillCrab-6
+(looker){LookerRemix=1}WBLA_B04 : 3-Blue
+(looker){LookerRemix=1}WBLA_B05 : 3-Caramel-2
+(looker){LookerRemix=1}WBLA_D02 : 4-Cyan, 5-Caramel
+(looker){LookerRemix=1}WBLA_F02 : 3-Caramel
+(looker){LookerRemix=1}WBLA_F03 : 4-Black
+(looker){LookerRemix=1}WBLA_F04 : 4-Red, 6-Black-2
+(looker){LookerRemix=1}WBLA_H01 : 2-Caramel
+(looker){LookerRemix=1}WBLA_J01 : 4-Blue
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Vulture-2, 0-Scavenger-15, 0-DrillCrab-6,  0-DrillCrab-{NamedAttr:H01Crab}
+(looker){LookerRemix=0}WBLA_B04 : 3-Indigo
+(looker){LookerRemix=0}WBLA_B05 : 3-Indigo-2
+(looker){LookerRemix=0}WBLA_D02 : 4-Blue, 5-Caramel
+(looker){LookerRemix=0}WBLA_F02 : 3-Indigo
+(looker){LookerRemix=0}WBLA_F03 : 4-Indigo
+(looker){LookerRemix=0}WBLA_F04 : 4-Blue, 6-Black-2
+(looker){LookerRemix=0}WBLA_H01 : 2-Indigo
+(looker){LookerRemix=0}WBLA_J01 : 4-Indigo
+
+
+(looker)OFFSCREEN : 0-DrillCrab-{NamedAttr:H01Crab}
+
+(looker){LookerWeaver}WBLA_C03 : 3-WeaverLizard
+END CREATURES
+[ENDMERGE]

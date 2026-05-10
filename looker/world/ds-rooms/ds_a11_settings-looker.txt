@@ -1,0 +1,16 @@
+Template: NONE
+DangerType: Flood
+CeilingDrips: 0
+WaveSpeed: 0.51
+WaveLength: 1
+WaveAmplitude: 0.0001
+SecondWaveLength: 1
+SecondWaveAmplitude: 0.0001
+Palette: 4
+EffectColorA: 2
+EffectColorB: 6
+Effects: RockFlea-0.1847826-20-20, 
+PlacedObjects: WaterNut><836.1641><304.8856><-63~210~2~3, WaterNut><813.889><292.5836><-16~-193~2~3, WaterNut><792.6992><284.2326><-18~-153~2~3, KarmaFlower><157.6602><460.1198><0~0~5~7, CustomDecal><-23.94189><-31.69138><0~758.5121~1219.737~762.1295~1225.163~10.85235~0~0~0~1~0~Rust3~1~1~0.5108696~1~0.7717391~1~0~1, InsectGroup><463.9266><252.564><-78~50~45~144~TinyDragonFly~0.07608695, WarpPoint><610.9937><396.0501><0~0~NULL~looker~WDSR~wdsr_a11~610~396~9657bac2-5d54-45e5-ac75-5ba65f518b7d~WatcherOnly~0~6~8~4~8~4~4~4~7~150~150~-1~0~0~false~false~false~false~false~0~-1~false, 
+AmbientSounds: SPOT><SO_WAT-OpenFlow.ogg><745.8894><472.9166><0.3043478><1><378.8894><163.9166><-126.3553><158.6447><0><0.4586958, SPOT><SO_WAT-OpenFlow.ogg><747.7115><361.0537><0.2934783><1.03913><701.7115><140.0537><-172.3553><-74.35535><0><0.5130436, SPOT><SO_WAT-RunningWater.ogg><748.6017><596.6722><0.3804348><1><549.6017><139.6722><-130.3553><-47.35535><0><0.6326088, 
+FadePalette: 8, 0.1630435
+WetTerrain: OFF

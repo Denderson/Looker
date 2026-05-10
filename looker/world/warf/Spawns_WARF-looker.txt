@@ -1,0 +1,46 @@
+OFFSCREEN : 0-KingVulture-2, 0-Scavenger-12
+
+WARF_A05 : 2-bigmoth-2
+WARF_A08 : 2-bigmoth-3
+WARF_A09 : 1-White
+
+WARF_B05 : 5-White
+WARF_B09 : 3-bigmoth-2, 5-Blue
+WARF_B11 : 4-bigmoth
+WARF_B12 : 2-bigmoth
+WARF_B14 : 6-Cyan
+WARF_B16 : 3-White, 4-Eggbug
+WARF_B18 : 3-White, 4-Green-{Winter}
+WARF_B24 : 3-Blue
+WARF_B25 : 3-Blue
+WARF_B27 : 3-bigmoth
+WARF_B30 : 2-bigmoth-2
+
+WARF_D01 : 2-Pink
+WARF_D02 : 6-Pink, 8-Caramel-{Winter}, 9-Cyan
+WARF_D03 : 5-Dropbug
+WARF_D05 : 4-Red
+WARF_D06 : 6-Blue, 7-Blue
+WARF_D08 : 3-Pink, 5-Blue
+
+WARF_D11 : 4-PoleMimic-{14}
+WARF_D14 : 3-Dropbug
+WARF_D15 : 4-Caramel-{Winter}, 5-Pink
+WARF_D16 : 4-Pink
+WARF_D19 : 2-Dropbug
+
+WARF_D21 : 5-White
+WARF_D23 : 5-Blue
+WARF_D24 : 3-Pink, 4-Red
+WARF_D29 : 3-Eggbug-2, 4-Green-{Winter}-2
+WARF_D30 : 3-Cyan
+WARF_D32 : 2-Green-{Winter}
+WARF_D33 : 3-Dropbug
+
+WARF_G03 : 5-White, 6-Pink
+
+LINEAGE : WARF_A01 : 2 : Blue-0.4, White-0.2, Blizzard-0
+LINEAGE : WARF_A02 : 4 : Blue-0.8, White-0.6, Red-0
+LINEAGE : WARF_B27 : 4 : Blue-0.4, White-0.2, Blizzard-0
+LINEAGE : WARF_B42 : 2 : Blue-0.8, Salamander-0
+LINEAGE : WARF_D24 : 6 : Blue-0.3, White-0.7, Red-0

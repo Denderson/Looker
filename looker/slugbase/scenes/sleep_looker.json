@@ -1,0 +1,19 @@
+{
+	"id": "Sleep_looker",
+	"scene_folder": "scenes/sleep screen - looker",
+	"images": [
+    	    {"name": "sleep screen - looker - flat", "pos": [0, 0], "depth": -1.0, "flatmode": true},
+		{ "name": "sleep - 7", "pos": [692, 290], "depth": 8.1, "shader": "Normal" },
+		{ "name": "sleep - 6", "pos": [691, 313], "depth": 7, "shader": "Normal" },
+		{ "name": "sleep - 5", "pos": [697, 88], "depth": 6.1, "shader": "Normal" },
+		{ "name": "sleep - 4", "pos": [629, -73], "depth": 5.5, "shader": "Normal" },
+		{ "name": "sleep - 3b", "pos": [795, 229], "depth": 5, "shader": "Normal" },
+		{ "name": "sleep - 3", "pos": [761, 363], "depth": 5, "shader": "Normal" },
+		{ "name": "sleep - 2 - looker", "pos": [790, 108], "depth": 4.4, "shader": "Basic" },
+		{ "name": "sleep - 1", "pos": [617, 79], "depth": 4, "shader": "Normal" }
+	],
+	"idle_depths": [ 3.6 ],
+	"select_menu_pos": [0, 0],
+	"slugcat_depth": 3.6
+}
+

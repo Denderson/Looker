@@ -1,0 +1,145 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_A26 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B01 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B02 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B05 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B05 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B06 :
+[[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B06 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B07 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B08 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B08 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B10 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B11 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B12 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B13 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B24 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B25 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B28 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B29 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B30 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B31 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B32 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B33 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B33 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B33 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WSKD_B34 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WSKD_B35 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B35 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WSKD_B38 : 3 :
+[ADDBEFORE](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}OFFSCREEN : 0-Elite-7, 0-disciple-2, 0-templar-3, 0-MirosVulture-3, 0-MothGrub-6
+(looker){LookerRemix=3}WSKD_B05 : 2-Mouse, 3-AirplaneLizard
+(looker){LookerRemix=3}WSKD_B34 : 2-CicadaA-3, 3-AirplaneLizard, 4-Mimic-{14}
+
+
+(looker){LookerRemix=2}OFFSCREEN : 0-Scavenger-4, 0-Elite-3, 0-disciple-1, 0-templar-2, 0-KingVulture, 0-Vulture-1, 0-MothGrub-6
+(looker){LookerRemix=2,LookerRandom-70}WSKD_B05 : 2-Mouse, 3-Strawberry
+(looker){LookerElse,LookerRemix=2}WSKD_B05 : 2-Mouse, 3-Pink
+(looker){LookerRemix=2}WSKD_B34 : 2-CicadaA-3, 3-Strawberry, 4-Mimic-{14}
+
+
+(looker){LookerRemix-2}WSKD_B01 : 2-AirplaneLizard
+(looker){LookerRemix-2}WSKD_B02 : 3-AirplaneLizard
+(looker){LookerRemix-2}WSKD_B06 : 4-AirplaneLizard, 5-Dropbug
+(looker){LookerRemix-2}WSKD_B08 : 3-Mouse-2, 4-AirplaneLizard
+(looker){LookerRemix-2}WSKD_B31 : 3-AirplaneLizard
+(looker){LookerRemix-2}WSKD_B33 : 4-CicadaA-3, 5-AirplaneLizard 6-BigMoth, 7-AirplaneLizard
+(looker){LookerRemix-2}WSKD_B35 : 2-BigMoth, 3-AirplaneLizard, 4-CicadaA-2
+
+
+(looker){LookerRemix<2}WSKD_B02 : 3-Pink
+
+
+(looker){LookerRemix=1}OFFSCREEN : 0-Scavenger-6, 0-Elite, 0-disciple-1, 0-templar-1, 0-Vulture, 0-MothGrub-6
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKD_B01 : 2-silverlizard
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKD_B01 : 2-Green
+(looker){LookerRemix=1}WSKD_B05 : 2-Mouse, 3-Pink
+(looker){LookerRemix=1}WSKD_B06 : 4-AirplaneLizard, 5-Eggbug
+(looker){LookerRemix=1}WSKD_B08 : 3-Mouse-2, 4-Strawberry
+(looker){LookerRemix=1,LookerRandom-80}WSKD_B31 : 3-Strawberry
+(looker){LookerElse,LookerRemix=1}WSKD_B31 : 3-White
+(looker){LookerRemix=1}WSKD_B33 : 4-CicadaA-3, 5-Cyan, 6-BigMoth, 7-AirplaneLizard
+(looker){LookerRemix=1}WSKD_B34 : 2-CicadaA-3, 3-White, 4-Mimic-{14}
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack,LookerRandom-65}WSKD_B35 : 2-BigMoth, 3-HunterSeeker, 4-CicadaA-2
+(looker){LookerElse,LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKD_B35 : 2-BigMoth, 3-White, 4-CicadaA-2
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKD_B35 : 2-BigMoth, 3-White, 4-CicadaA-2
+
+
+(looker){LookerRemix-1}WSKD_B03 : 5-AirplaneLizard
+(looker){LookerRemix-1}WSKD_B13 : 3-AirplaneLizard, 4-Eggbug, 5-CicadaA-2
+(looker){LookerRemix-1}WSKD_B30 : 4-AirplaneLizard, 5-Dropbug
+(looker){LookerRemix-1}WSKD_B38 : 3-AirplaneLizard
+
+
+(looker){LookerRemix=0}OFFSCREEN : 0-Scavenger-7, 0-disciple-1, 0-templar-1, 0-Vulture, 0-MothGrub-6
+(looker){LookerRemix=0}WSKD_B01 : 2-BigMoth
+(looker){LookerRemix=0}WSKD_B03 : 5-BigMoth
+(looker){LookerRemix=0}WSKD_B05 : 2-Mouse, 3-Pink
+(looker){LookerRemix=0}WSKD_B06 : 4-Blue, 5-Eggbug
+(looker){LookerRemix=0}WSKD_B08 : 3-Mouse-2, 4-Pink
+(looker){LookerRemix=0}WSKD_B13 : 3-White, 4-Eggbug, 5-CicadaA-2
+(looker){LookerRemix=0}WSKD_B30 : 4-Cyan, 5-Eggbug
+(looker){LookerRemix=0}WSKD_B31 : 3-White
+(looker){LookerRemix=0}WSKD_B33 : 4-CicadaA-3, 5-Cyan, 6-BigMoth, 7-Pink
+(looker){LookerRemix=0}WSKD_B34 : 2-CicadaA-3, 3-White, 4-Mimic-{14}
+(looker){LookerRemix=0}WSKD_B35 : 2-BigMoth, 3-White, 4-CicadaA-2
+(looker){LookerRemix=0}WSKD_B38 : 3-Pink
+
+
+(looker)WSKD_A26 : 2-Mouse-2
+(looker)WSKD_B04 : 3-Dropbug
+(looker)WSKD_B07 : 3-BigMoth
+(looker)WSKD_B09 : 3-CicadaA-2
+(looker)WSKD_B10 : 3-CicadaA-2, 4-BigMoth
+(looker)WSKD_B11 : 4-Mouse-3
+(looker)WSKD_B12 : 2-CicadaA-3, 3-CicadaA-2
+(looker)WSKD_B24 : 3-Mouse-2
+(looker)WSKD_B25 : 2-BigMoth
+(looker)WSKD_B28 : 3-BigMoth, 4-AirplaneLizard
+(looker)WSKD_B29 : 3-Mouse-2
+(looker)WSKD_B32 : 2-Dropbug
+
+(looker){LookerWeaver}WSKD_B10 : 3-WeaverLizard
+(looker){LookerWeaver}WSKD_B35 : 2-WeaverLizard
+
+END CREATURES
+[ENDMERGE]

@@ -1,0 +1,155 @@
+[FINDLINESTART]OFFSCREEN :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A03 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDB_A04 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDB_A06 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDB_A09 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A10 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A13 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A13 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A16 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A17 : 5 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A17 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A19 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A22 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A25 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A27 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A28 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A28 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A29 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]WTDB_A30 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A32 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A33 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A35 :
+[ADDBEFORE_2](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A35 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A37 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A38 : 4 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A38 : 3 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]LINEAGE : WTDB_A40 :
+[ADDBEFORE](X-looker)
+[FINDLINESTART]WTDB_A40 :
+[ADDBEFORE_2](X-looker)
+[MERGE]
+CREATURES
+(looker){LookerRemix=3}WTDB_A03 : 1-Dropbug
+(looker){LookerRemix=3}WTDB_A04 : 2-Red
+(looker){LookerRemix=3}WTDB_A10 : 3-Red
+(looker){LookerRemix=3}WTDB_A13 : 2-Dropbug-2, 3-Red, 4-Red
+(looker){LookerRemix=3}WTDB_A16 : 2-SmallCentipede, 2-RedCentipede
+(looker){LookerRemix=3}WTDB_A17 : 4-Dropbug, 5-Red
+(looker){LookerRemix=3}WTDB_A28 : 2-RedCentipede-2, 2-RedCentipede
+(looker){LookerRemix=3}WTDB_A29 : 4-Red
+(looker){LookerRemix=3}WTDB_A30 : 2-RedCentipede-2
+(looker){LookerRemix=3}WTDB_A31 : 3-Red
+(looker){LookerRemix=3}WTDB_A32 : 4-Dropbug
+(looker){LookerRemix=3}WTDB_A33 : 3-Red
+(looker){LookerRemix=3}WTDB_A35 : 2-SmallCentipede, 2-RedCentipede
+(looker){LookerRemix=3}WTDB_A37 : 2-Red
+(looker){LookerRemix=3}WTDB_A38 : 3-Dropbug, 4-Red
+(looker){LookerRemix=3}WTDB_A40 : 3-Red, 4-RedCentipede-3
+
+
+(looker){LookerRemix<3}WTDB_A03 : 1-Eggbug
+(looker){LookerRemix<3}WTDB_A29 : 4-Green
+(looker){LookerRemix<3}WTDB_A30 : 2-SmallCentipede-2
+(looker){LookerRemix<3}WTDB_A32 : 4-Eggbug
+
+
+(looker){LookerRemix=2,LookerRandom-60}WTDB_A04 : 2-Cyan
+(looker){LookerElse,LookerRemix=2}WTDB_A04 : 2-White
+(looker){LookerRemix=2}WTDB_A10 : 3-Black
+(looker){LookerRemix=2}WTDB_A13 : 2-Eggbug-2, 3-Red, 4-White
+(looker){LookerRemix=2}WTDB_A16 : 2-SmallCentipede, 2-Centipede-{0.4}
+(looker){LookerRemix=2}WTDB_A17 : 4-Eggbug, 5-Black
+(looker){LookerRemix=2}WTDB_A28 : 2-Centipede-2, 2-RedCentipede
+(looker){LookerRemix=2}WTDB_A31 : 3-Cyan
+(looker){LookerRemix=2}WTDB_A33 : 3-Black
+(looker){LookerRemix=2}WTDB_A35 : 2-SmallCentipede, 2-Centipede-{0.9}
+(looker){LookerRemix=2,LookerRandom-50}WTDB_A37 : 2-White
+(looker){LookerElse,LookerRemix=2}WTDB_A37 : 2-Cyan
+(looker){LookerRemix=2}WTDB_A38 : 3-Centipede, 4-Black
+(looker){LookerRemix=2}WTDB_A40 : 3-Red, 4-SmallCentipede-3
+
+
+(looker){LookerRemix-2}WTDB_A09 : 2-Red
+(looker){LookerRemix-2}WTDB_A19 : 2-RedCentipede
+(looker){LookerRemix-2}WTDB_A25 : 5-Red
+(looker){LookerRemix-2}WTDB_A27 : 2-Red
+
+
+(looker){LookerRemix<2}WTDB_A09 : 2-Green
+(looker){LookerRemix<2}WTDB_A19 : 2-Centipede
+(looker){LookerRemix<2}WTDB_A25 : 5-Green
+
+
+(looker){LookerRemix=1,LookerRandom-40}WTDB_A04 : 2-White
+(looker){LookeElse,LookerRemix=1}WTDB_A04 : 2-Blue
+(looker){LookerRemix=1}WTDB_A10 : 3-Green
+(looker){LookerRemix=1}WTDB_A13 : 2-Eggbug-2, 3-Green, 4-Blue
+(looker){LookerRemix=1}WTDB_A16 : 2-SmallCentipede-2
+(looker){LookerRemix=1}WTDB_A17 : 4-Eggbug, 5-Black
+(looker){LookerRemix=1}WTDB_A27 : 2-Cyan
+(looker){LookerRemix=1}WTDB_A28 : 2-SmallCentipede-2, 2-RedCentipede
+(looker){LookerRemix=1}WTDB_A31 : 3-White
+(looker){LookerRemix=1}WTDB_A33 : 3-Green
+(looker){LookerRemix=1}WTDB_A35 : 2-SmallCentipede, 2-Centipede-{0.6}
+(looker){LookerRemix=1}WTDB_A37 : 2-Blue
+(looker){LookerRemix=1}WTDB_A38 : 3-Eggbug, 4-Black
+(looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WTDB_A40 : 3-HunterSeeker, 4-SmallCentipede-3
+(looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack,LookerRandom-50}WTDB_A40 : 3-White, 4-SmallCentipede-3
+(looker){LookerELse,LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WTDB_A40 : 3-Cyan, 4-SmallCentipede-3
+
+
+(looker){LookerRemix-1}WTDB_A22 : 4-Red
+(looker){LookerRemix-1}WTDB_A06 : 3-Red
+
+
+
+(looker){LookerRemix=0}WTDB_A03 : 1-Eggbug
+(looker){LookerRemix=0}WTDB_A04 : 2-Blue
+(looker){LookerRemix=0}WTDB_A06 : 3-Green
+(looker){LookerRemix=0}WTDB_A10 : 3-Green
+(looker){LookerRemix=0}WTDB_A13 : 2-Eggbug-2, 3-Green, 4-Blue
+(looker){LookerRemix=0}WTDB_A16 : 2-SmallCentipede-2
+(looker){LookerRemix=0}WTDB_A17 : 4-Eggbug, 5-Green
+(looker){LookerRemix=0}WTDB_A22 : 4-Green
+(looker){LookerRemix=0}WTDB_A27 : 2-White
+(looker){LookerRemix=0}WTDB_A28 : 2-SmallCentipede-2, 2-Centipede
+(looker){LookerRemix=0}WTDB_A31 : 3-Blue
+(looker){LookerRemix=0}WTDB_A33 : 3-Green
+(looker){LookerRemix=0}WTDB_A35 : 2-SmallCentipede, 2-SmallCentipede
+(looker){LookerRemix=0}WTDB_A37 : 2-Blue
+(looker){LookerRemix=0}WTDB_A38 : 3-Eggbug, 4-Green
+(looker){LookerRemix=0}WTDB_A40 : 3-White, 4-SmallCentipede-3
+
+
+(looker)OFFSCREEN : 0-Loach-4, 0-Loach-2-{NamedAttr:A22Loach}
+END CREATURES
+[ENDMERGE]

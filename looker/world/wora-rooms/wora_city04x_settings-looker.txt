@@ -1,0 +1,17 @@
+Template: NONE
+DangerType: FloodAndRain
+CeilingDrips: 0
+RainIntensity: 0.8043478
+RumbleIntensity: 0.1086956
+WaveSpeed: 0.500704
+WaveLength: 0.999648
+WaveAmplitude: 0.04828818
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.07608695
+Grime: 0.06521739
+Palette: 69
+Effects: WaterFluxMinLevel-0.3043478-20-20, WaterFluxMaxLevel-0.3043478-30-30, 
+PlacedObjects: CustomDecal><2473.288><168.8213><-24~641~678~681~638~-121~-462~5~0~1~0~rustb2~0.2934783~0.9130435~0.2934783~0.9130435~0.2934783~0.9130435~0.2934783~0.9130435, LightSource><1631.352><645.2966><0.7608696~Environment~-367~-178~-360~-313.3974~1~0~None~0~0, LightSource><700.5608><645.1898><0.5~Environment~-290~-121~14~-193.3975~1~0~None~0~0, RippleSpawnEgg><1801.191><316.3088><, RippleSpawnEgg><1629.05><290.49><, RippleSpawnEgg><1710.434><288.5793><, CustomDecal><1746.699><157.2719><-2~78~83~80~75~-3~153~-351~0~1~0~aroombetween~0.6086956~0~0.6086956~0~0.6086956~0~0.6086956~0, ClimbablePoleV><3114.161><618.1318><0^9, ARKillRect><3014.936><743.0713><94~16, ExitSymbolHidden><3015.845><114.4769><, 
+AmbientSounds: OMNI><RWTW_RotAmb_VanillaRot.ogg><785.9382><549.5574><0.06521739><1, OMNI><RWTW_DustStorm_Deep.ogg><783.3204><478.963><0.1304348><0.7065217, OMNI><waterGurgleLOOP3.wav><781.4106><278.0058><0.173913><0.55, OMNI><SO_WAT-ProperDrips.ogg><779.3081><352.1813><0.2934783><0.5304348, OMNI><AM_ENV-LightWind.ogg><589.3724><506.721><0.2173913><0.8043478, 
+FadePalette: 19, 0.6086956, 0.6304348, 0.7173913
