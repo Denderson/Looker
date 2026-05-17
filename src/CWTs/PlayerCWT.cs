@@ -62,6 +62,9 @@ namespace Looker.CWTs
 
             public string oldRoom = string.Empty;
             public string oldRegion = string.Empty;
+
+            public bool shouldSpawnCopies = false;
+            public int delayUntilCopies = -1;
         }
     }
 }

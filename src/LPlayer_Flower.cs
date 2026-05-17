@@ -282,21 +282,33 @@ namespace Looker
 
             if (CheckMechanics(newRoom, "migration", "WMPA"))
             {
-                if (newRoom.abstractRoom.name == data.oldChaserRoom)
+                if (OptionsMenu.legacyChaser.Value)
                 {
-                    data.timeUntilChaser = 40;
+                    if (newRoom.abstractRoom.name == data.oldChaserRoom)
+                    {
+                        data.timeUntilChaser = 40;
+                    }
+                    else
+                    {
+                        data.timeUntilChaser = 80;
+                    }
+                    data.chaserpos = pos;
+                    data.oldChaserRoom = newRoom.abstractRoom.name;
+                    Vector2 vector = Custom.IntVector2ToVector2(newRoom.ShorcutEntranceHoleDirection(pos));
+                    for (int i = 0; i < self.bodyChunks.Length; i++)
+                    {
+                        self.bodyChunks[i].vel = vector * 35f;
+                    }
                 }
                 else
                 {
-                    data.timeUntilChaser = 80;
+                    data.shouldSpawnCopies = true;
+                    data.delayUntilCopies = 40;
                 }
-                data.chaserpos = pos;
-                data.oldChaserRoom = newRoom.abstractRoom.name;
-                Vector2 vector = Custom.IntVector2ToVector2(newRoom.ShorcutEntranceHoleDirection(pos));
-                for (int i = 0; i < self.bodyChunks.Length; i++)
-                {
-                    self.bodyChunks[i].vel = vector * 35f;
-                }
+            }
+            else
+            {
+                data.shouldSpawnCopies = false;
             }
             if (roomName.StartsWith("WARA") && CheckMechanics(self.room, "signal", "WPTA"))
             {

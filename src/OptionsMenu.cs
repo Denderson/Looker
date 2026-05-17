@@ -151,6 +151,7 @@ namespace Looker
             controlAnnouncement = config.Bind("looker_controlAnnouncement", false, new ConfigurableInfo("Get informed on current randomised controls whenever you exit a pipe"));
 
             moreJetfish = config.Bind("looker_moreJetfish", false, new ConfigurableInfo("Spawn a jetfish each time you exit a pipe"));
+            legacyChaser = config.Bind("looker_legacyChaser", false, new ConfigurableInfo("Replaces current Migration Path mechanic with its old one"));
 
             colorfulOgscules = config.Bind("looker_colorfulOgscules", false, new ConfigurableInfo("Ogscules inherit color from the base creature or item"));
 
@@ -272,6 +273,9 @@ namespace Looker
 
                 Label("More jetfish", 0, 5, new Color(0.42f, 0.7f, 0.65f)),
                 CheckBox(moreJetfish, 0, 5, new Color(0.42f, 0.7f, 0.65f)),
+
+                Label("Legacy chaser", 1, 5, new Color(0.42f, 0.7f, 0.65f)),
+                CheckBox(legacyChaser, 1, 5, new Color(0.42f, 0.7f, 0.65f)),
             };
             Tabs[2].AddItems(UIArrayElements);
 
@@ -351,6 +355,7 @@ namespace Looker
             emergencyBreath, // desalination
             stableMovement, controlAnnouncement, // fetid glen
             moreJetfish, // turbulent pump
+            legacyChaser,
             colorfulOgscules, //pillar grove
 
 
