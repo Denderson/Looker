@@ -197,8 +197,10 @@ namespace Looker
                     return "WRSA_WEAVER02";
                 }
                 string shelter = SaveFileCode.GetString(self, "OverrideShelter");
+                Log.LogMessage("Checking for overriding shelter!");
                 if (shelter != null && shelter != "SU_S04")
                 {
+                    Log.LogMessage("Shelter override starting:" + shelter);
                     SaveFileCode.SetString(self, "OverrideShelter", "SU_S04");
                     return shelter;
                 }
@@ -221,6 +223,7 @@ namespace Looker
                             string newshelter = CleansedShelter(room, out bool successful);
                             if (successful)
                             {
+                                Log.LogMessage("Mask triggered successfully!");
                                 SaveFileCode.SetString(room.game.GetStorySession.saveState, "OverrideShelter", newshelter);
                                 SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
                                 mask.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, mask.abstractPhysicalObject.pos.Vec2(), 1f, 1f);

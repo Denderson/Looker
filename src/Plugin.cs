@@ -107,7 +107,7 @@ namespace Looker
 
         public static bool CheckMechanics(RainWorldGame game, string originalRegionName, string originalRegionAcronym)
         {
-            if (game?.world?.name == null || game.cameras != null || game.cameras.Length > 0 || game.cameras[0].room != null || game.StoryCharacter != LookerEnums.looker || OptionsMenu.devMode.Value)
+            if (game?.world?.name == null || game.cameras == null || game.cameras.Length > 0 || game.cameras[0].room != null || game.StoryCharacter != LookerEnums.looker || OptionsMenu.devMode.Value)
             {
                 return false;
             }
@@ -313,6 +313,12 @@ namespace Looker
 
                     On.Player.RippleSpawnInteractions += LMigration.Player_RippleSpawnInteractions;
                     IL.Menu.IntroRoll.ctor += IntroRoll_ctor;
+                }
+
+                // new migration
+                {
+                    On.Player.Update += LCopies.Player_Update;
+                    On.PlayerGraphics.DrawSprites += LCopies.PlayerGraphics_DrawSprites;
                 }
 
                 // manual hooks
