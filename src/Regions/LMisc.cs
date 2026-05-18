@@ -113,7 +113,7 @@ namespace Looker.Regions
                 {
                     if (self?.world?.region?.name != null && self.world.region.name == "WSKA")
                     {
-                        value = (int)((float)value * 0.30);
+                        value = (int)((float)value * (0.35 * OptionsMenu.rainTimerMult.Value));
                     }
                     else if (self?.world?.region?.name != null && self.world.region.name == "WRRA")
                     {

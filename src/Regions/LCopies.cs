@@ -8,10 +8,9 @@ namespace Looker.Regions
 {
     public static class LCopies
     {
-        private const int CopyCount = 3;
-        private const int DelayStep = 80;
-        private const int MaxFrames = DelayStep * CopyCount + 5;
         private const float KillDistance = 3f;
+        private static bool CopyContact = false;
+        private static int CopyContactTimer = 0;
 
         private static readonly ConditionalWeakTable<Player, Data> playerData = new();
 
@@ -72,7 +71,14 @@ namespace Looker.Regions
                 data.timeUntilChaser--;
                 return false;
             }
-            return player?.room != null && CheckMechanics(player.room, "migration", "WMPA") && !player.dead && !player.inShortcut && player.bodyChunks != null && player.bodyChunks.Length > 0;
+            if (CopyContact)
+            {
+                if (CopyContactTimer > 0){CopyContactTimer--;}
+                if (CopyContactTimer == 0){CopyContact = false;}
+                return false;
+            }
+
+                return player?.room != null && CheckMechanics(player.room, "migration", "WMPA") && !player.dead && !player.inShortcut && player.bodyChunks != null && player.bodyChunks.Length > 0;
         }
 
         private class Data
@@ -107,14 +113,14 @@ namespace Looker.Regions
 
             public void CheckCollision(Player player)
             {
-                if (bodyFrames.Count <= DelayStep)
+                if (bodyFrames.Count <= (OptionsMenu.copyDelay.Value + 20))
                 {
                     return;
                 }
 
-                for (int i = 1; i <= CopyCount; i++)
+                for (int i = 1; i <= OptionsMenu.copyAmount.Value; i++)
                 {
-                    BodyFrame frame = GetDelayed(bodyFrames, DelayStep * i);
+                    BodyFrame frame = GetDelayed(bodyFrames, (OptionsMenu.copyDelay.Value + 20) * i);
                     if (frame.room != player.room)
                     {
                         continue;
@@ -126,7 +132,17 @@ namespace Looker.Regions
                         {
                             if (RWCustom.Custom.DistLess(player.bodyChunks[j].pos, frame.positions[k], KillDistance))
                             {
-                                player.Die();
+                                if (!OptionsMenu.weakerCopies.Value)
+                                {
+                                    player.Die();
+                                }
+                                else if (PlayerCWT.TryGetData(player, out var data) && player.dangerGraspTime == 0)
+                                {
+                                    player.SuperHardSetPosition(data.oldPipePosition);
+                                    CopyContact = true;
+                                    CopyContactTimer = 240;
+                                    player.Stun(30);
+                                }
                                 return;
                             }
                         }
@@ -138,9 +154,9 @@ namespace Looker.Regions
             {
                 EnsureSpriteSets(source.sprites.Length);
 
-                for (int i = 0; i < CopyCount; i++)
+                for (int i = 0; i < OptionsMenu.copyAmount.Value; i++)
                 {
-                    SpriteFrame frame = GetDelayed(spriteFrames, DelayStep * (i + 1));
+                    SpriteFrame frame = GetDelayed(spriteFrames, (OptionsMenu.copyDelay.Value + 20) * (i + 1));
                     DrawSet(copySprites[i], frame, source, rCam, camPos);
                 }
             }
@@ -205,7 +221,7 @@ namespace Looker.Regions
 
             private void EnsureSpriteSets(int spriteCount)
             {
-                while (copySprites.Count < CopyCount)
+                while (copySprites.Count < OptionsMenu.copyAmount.Value)
                 {
                     copySprites.Add(new FSprite[spriteCount]);
                 }
@@ -242,7 +258,7 @@ namespace Looker.Regions
 
             private static void Trim<T>(List<T> frames)
             {
-                while (frames.Count > MaxFrames)
+                while (frames.Count > (OptionsMenu.copyDelay.Value + 20) * OptionsMenu.copyAmount.Value + 5)
                 {
                     frames.RemoveAt(0);
                 }

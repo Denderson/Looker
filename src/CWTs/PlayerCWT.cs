@@ -65,6 +65,7 @@ namespace Looker.CWTs
 
             public bool shouldSpawnCopies = false;
             public int delayUntilCopies = -1;
+            public UnityEngine.Vector2 oldPipePosition = new();
         }
     }
 }

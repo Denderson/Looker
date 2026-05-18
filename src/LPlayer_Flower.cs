@@ -302,8 +302,9 @@ namespace Looker
                 }
                 else
                 {
+                    data.oldPipePosition = self.mainBodyChunk.pos;
                     data.shouldSpawnCopies = true;
-                    data.delayUntilCopies = 40;
+                    data.delayUntilCopies = (OptionsMenu.copyDelay.Value + 20) / 2;
                 }
             }
             else
