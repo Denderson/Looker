@@ -64,8 +64,11 @@ namespace Looker.CWTs
             public string oldRegion = string.Empty;
 
             public bool shouldSpawnCopies = false;
+<<<<<<< Updated upstream
             public int delayUntilCopies = -1;
             public UnityEngine.Vector2 oldPipePosition = new();
+=======
+>>>>>>> Stashed changes
         }
     }
 }

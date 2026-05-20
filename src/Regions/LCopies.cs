@@ -66,6 +66,7 @@ namespace Looker.Regions
             {
                 return false;
             }
+<<<<<<< Updated upstream
             if (data.timeUntilChaser > 0)
             {
                 data.timeUntilChaser--;
@@ -79,6 +80,9 @@ namespace Looker.Regions
             }
 
                 return player?.room != null && CheckMechanics(player.room, "migration", "WMPA") && !player.dead && !player.inShortcut && player.bodyChunks != null && player.bodyChunks.Length > 0;
+=======
+            return player?.room != null && CheckMechanics(player.room, "migration", "WMPA") && !player.dead && !player.inShortcut && player.bodyChunks != null && player.bodyChunks.Length > 0;
+>>>>>>> Stashed changes
         }
 
         private class Data
@@ -120,7 +124,16 @@ namespace Looker.Regions
 
                 for (int i = 1; i <= OptionsMenu.copyAmount.Value; i++)
                 {
+<<<<<<< Updated upstream
                     BodyFrame frame = GetDelayed(bodyFrames, (OptionsMenu.copyDelay.Value + 20) * i);
+=======
+                    int delay = DelayStep * i;
+                    if (bodyFrames.Count <= delay + 1)
+                    {
+                        continue;
+                    }
+                    BodyFrame frame = GetDelayed(bodyFrames, delay);
+>>>>>>> Stashed changes
                     if (frame.room != player.room)
                     {
                         continue;
@@ -130,7 +143,8 @@ namespace Looker.Regions
                     {
                         for (int k = 0; k < frame.positions.Length; k++)
                         {
-                            if (RWCustom.Custom.DistLess(player.bodyChunks[j].pos, frame.positions[k], KillDistance))
+                            float killDistance = player.bodyChunks[j].rad + 6f;
+                            if (RWCustom.Custom.DistLess(player.bodyChunks[j].pos, frame.positions[k], killDistance))
                             {
                                 if (!OptionsMenu.weakerCopies.Value && !CheckEasyMode(player.room))
                                 {
@@ -156,8 +170,30 @@ namespace Looker.Regions
 
                 for (int i = 0; i < OptionsMenu.copyAmount.Value; i++)
                 {
+<<<<<<< Updated upstream
                     SpriteFrame frame = GetDelayed(spriteFrames, (OptionsMenu.copyDelay.Value + 20) * (i + 1));
+=======
+                    int delay = DelayStep * (i + 1);
+                    if (spriteFrames.Count <= delay)
+                    {
+                        HideSet(copySprites[i]);
+                        continue;
+                    }
+
+                    SpriteFrame frame = GetDelayed(spriteFrames, delay);
+>>>>>>> Stashed changes
                     DrawSet(copySprites[i], frame, source, rCam, camPos);
+                }
+            }
+
+            private static void HideSet(FSprite[] sprites)
+            {
+                for (int i = 0; i < sprites.Length; i++)
+                {
+                    if (sprites[i] != null)
+                    {
+                        sprites[i].isVisible = false;
+                    }
                 }
             }
 

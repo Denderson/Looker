@@ -304,7 +304,10 @@ namespace Looker
                 {
                     data.oldPipePosition = self.mainBodyChunk.pos;
                     data.shouldSpawnCopies = true;
+<<<<<<< Updated upstream
                     data.delayUntilCopies = (OptionsMenu.copyDelay.Value + 20) / 2;
+=======
+>>>>>>> Stashed changes
                 }
             }
             else
