@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Looker.CWTs
 {
@@ -64,11 +64,10 @@ namespace Looker.CWTs
             public string oldRegion = string.Empty;
 
             public bool shouldSpawnCopies = false;
-<<<<<<< Updated upstream
             public int delayUntilCopies = -1;
-            public UnityEngine.Vector2 oldPipePosition = new();
-=======
->>>>>>> Stashed changes
+            public Vector2 oldPipePosition = new();
+
+            public int acidShieldTimer = 80;
         }
     }
 }

@@ -277,7 +277,8 @@ namespace Looker
                     On.Room.InitializeSentientRotPresenceInRoom += LMisc.Room_InitializeSentientRotPresenceInRoom;
 
                     On.RainCycle.GetDesiredCycleLength += LMisc.RainCycle_GetDesiredCycleLength;
-                    //On.Creature.Update += LMisc.Creature_Update;
+
+                    IL.Creature.Update += LMisc.Creature_Update;
                 }
 
                 // arg ending
@@ -373,6 +374,7 @@ namespace Looker
                 Logger.LogError(e);
             }
         }
+
         public static void IntroRoll_ctor(ILContext il)
         {
             ILCursor c = new(il);

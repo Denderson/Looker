@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using RWCustom;
 using SlugBase;
 using SlugBase.Features;
+using Smoke;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -101,6 +102,12 @@ namespace Looker
 
         public static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
         {
+            bool wasInWater = false;
+            if (self != null)
+            {
+                wasInWater = self.submerged;
+            }
+
             orig(self, eu);
 
             if (self?.room == null || self.inShortcut) return;
@@ -176,6 +183,32 @@ namespace Looker
 
             if (self.room.game?.StoryCharacter == LookerEnums.looker)
             {
+                if (CheckMechanics(self.room, "waterways", "WVWA") && (CheckEasyMode(self.room) || OptionsMenu.acidProtection.Value))
+                {
+                    if (self.Submersion > 0)
+                    {
+                        if (!wasInWater && self.mainBodyChunk != null)
+                        {
+                            self.mainBodyChunk.vel.y = 50f;
+                            self.room.AddObject(new Smolder(self.room, self.firstChunk.pos, self.firstChunk, null));
+                            data.acidShieldTimer -= 70;
+                        }
+                        data.acidShieldTimer--;
+                    }
+                    else if (data.acidShieldTimer < 80)
+                    {
+                        data.acidShieldTimer++;
+                        if (UnityEngine.Random.value < 0.25f)
+                        {
+                            self.room.AddObject(new Explosion.ExplosionSmoke(self.mainBodyChunk.pos, Custom.RNV() * (2f * UnityEngine.Random.value), 1f));
+                        }
+                        if (UnityEngine.Random.value < 0.5f)
+                        {
+                            self.room.AddObject(new Spark(self.mainBodyChunk.pos, Custom.RNV(), Color.white, null, 4, 8));
+                        }
+                    }
+                }
+
                 if (data.timeUntilChaser > 0)
                 {
                     data.timeUntilChaser--;
@@ -304,10 +337,7 @@ namespace Looker
                 {
                     data.oldPipePosition = self.mainBodyChunk.pos;
                     data.shouldSpawnCopies = true;
-<<<<<<< Updated upstream
                     data.delayUntilCopies = (OptionsMenu.copyDelay.Value + 20) / 2;
-=======
->>>>>>> Stashed changes
                 }
             }
             else
