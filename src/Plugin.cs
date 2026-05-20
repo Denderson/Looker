@@ -115,6 +115,19 @@ namespace Looker
                 (game.world.name == "WARA" && game.cameras[0].room.abstractRoom?.subregionName != null && game.cameras[0].room.abstractRoom.subregionName.ToLowerInvariant().Contains(originalRegionName));
         }
 
+        public static bool CheckEasyMode(Room room)
+        {
+            if (room?.world?.region?.name == null || room.game?.StoryCharacter != LookerEnums.looker || !OptionsMenu.easierFinale.Value)
+            {
+                return false;
+            }
+            if (room.world.region.name == "WARA")
+            {
+                return true;
+            }
+                return false;
+        }
+
         private void LoadResources(RainWorld rainWorld)
         {
 
@@ -264,6 +277,7 @@ namespace Looker
                     On.Room.InitializeSentientRotPresenceInRoom += LMisc.Room_InitializeSentientRotPresenceInRoom;
 
                     On.RainCycle.GetDesiredCycleLength += LMisc.RainCycle_GetDesiredCycleLength;
+                    //On.Creature.Update += LMisc.Creature_Update;
                 }
 
                 // arg ending

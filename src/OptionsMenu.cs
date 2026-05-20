@@ -141,7 +141,7 @@ namespace Looker
             //wmpa
             weakerCopies = config.Bind("looker_weakerCopies", false, new ConfigurableInfo("Touching the copies teleports you instead of killing you"));
             legacyChaser = config.Bind("looker_legacyChaser", false, new ConfigurableInfo("Replaces current Migration Path mechanic with its old one"));
-            copyAmount = config.Bind("looker_copyAmount", 3, new ConfigurableInfo("Determines the amount of slugcat copies that will appear"));
+            copyAmount = config.Bind("looker_copyAmount", 5, new ConfigurableInfo("Determines the amount of slugcat copies that will appear"));
             copyDelay = config.Bind("looker_copyDelay", 50, new ConfigurableInfo("Changes the distance that copies will keep from you and each other"));
 
             //wpga
@@ -183,6 +183,12 @@ namespace Looker
             legacyMelons = config.Bind("looker_legacyMelons", false, new ConfigurableInfo("Makes melons FAR more difficult and chaotic"));
             melonCooldown = config.Bind("looker_melonCooldown", 1f, new ConfigurableInfo("Multiplies the melon cooldown between leaps"));
 
+            //wvwa
+            acidProtection = config.Bind("looker_acidProtection", false, new ConfigurableInfo("Acid doesn't kill when touched for a brief moment"));
+
+            //wara
+            easierFinale = config.Bind("looker_easierFinale", false, new ConfigurableInfo("Tones down all mechanics during the finale sequence"));
+
             //debug
             difficultyChosen = config.Bind("looker_difficultyChosen", false, new ConfigurableInfo("Setup for the difficulty selection menu"));
             metSliver = config.Bind("looker_metSliver", false, new ConfigurableInfo("Setup for WSSR gimmick"));
@@ -194,7 +200,7 @@ namespace Looker
 
             base.Initialize();
 
-            Tabs = new[] { new OpTab(this, "General"), new OpTab(this, "Mechanics 1"), new OpTab(this, "Mechanics 2"), new OpTab(this, "Mechanics 3"), new OpTab(this, "Credits"), new OpTab(this, "Debug"){colorButton = unfinishedColor} };
+            Tabs = new[] { new OpTab(this, "General"), new OpTab(this, "Mechanics 1"), new OpTab(this, "Mechanics 2"), new OpTab(this, "Mechanics 3"), new OpTab(this, "Mechanics 4"), new OpTab(this, "Credits"), new OpTab(this, "Debug"){colorButton = unfinishedColor} };
 
             // Tab 1
             UIelement[] UIArrayElements = new UIelement[]
@@ -324,11 +330,25 @@ namespace Looker
                 Label("Legacy melons", 1, 3, new Color(0.69f, 0.7f, 0.67f)),
                 CheckBox(legacyMelons, 1, 3, new Color(0.69f, 0.7f, 0.67f)),
                 SliderLabel("Melon cooldown", 3, new Color(0.69f, 0.7f, 0.67f)),
-                LookerFloatSlider(melonCooldown, 3, 3, new Color(0.69f, 0.7f, 0.67f))
+                LookerFloatSlider(melonCooldown, 3, 3, new Color(0.69f, 0.7f, 0.67f)),
+
+                Label("Acid protection", 0, 4, unfinishedColor), //new Color(0.59f, 0.65f, 0.42f)
+                CheckBox(acidProtection, 0, 4, unfinishedColor) //new Color(0.59f, 0.65f, 0.42f)
             };
             Tabs[3].AddItems(UIArrayElements);
 
-            // Tab 5
+            //Tab 5
+            UIArrayElements = new UIelement[]
+            {
+                new OpLabel(0, 550, "Mechanics", true), new OpLabel(110, 550, "(red means not implemented yet)", true){color = unfinishedColor},
+
+                Label("Easier finale", 0, 0, new Color(0.93f, 0.82f, 0.57f)),
+                CheckBox(easierFinale, 0, 0, new Color(0.93f, 0.82f, 0.57f)),
+            };
+
+
+            Tabs[4].AddItems(UIArrayElements);
+            // Tab 6
             UIArrayElements = new UIelement[]
             {
                 new OpLabel(0, 550, "Thanks to our playtesters!", true),
@@ -356,9 +376,9 @@ namespace Looker
                 CreditsLabel("Meme for pearl writing and Playtesting", 0, 2),
                 CreditsLabel("hamborgirl :3 for the thumbnail and ending arts", 0, 2) 
             };
-            Tabs[4].AddItems(UIArrayElements);
+            Tabs[5].AddItems(UIArrayElements);
 
-            // Tab 6
+            // Tab 7
             UIArrayElements = new UIelement[]
             {
                 new OpLabel(0, 550, "Debug", true){color = unfinishedColor}, new OpLabel(160, 550, "(for debugging purposes obviously)", true){color = unfinishedColor},
@@ -372,7 +392,7 @@ namespace Looker
                 Label("Reached Sliver", 0, 2, unfinishedColor),
                 CheckBox(metSliver, 0, 2, unfinishedColor)
             };
-            Tabs[5].AddItems(UIArrayElements);
+            Tabs[6].AddItems(UIArrayElements);
         }
 
         public static Configurable<bool>
@@ -395,7 +415,8 @@ namespace Looker
             weakerDarkness, resetDarkness, //sunbaked alley
             smallerLightnings, lessEvilLightnings, //stormy coast
             bouncierMelons, legacyMelons, //desolate tract
-                           //shattered terrace
+            acidProtection, //verdant waterways
+            easierFinale, //shattered terrace
 
             difficultyChosen, metSliver, devMode; //debug
 

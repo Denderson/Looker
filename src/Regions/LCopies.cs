@@ -132,7 +132,7 @@ namespace Looker.Regions
                         {
                             if (RWCustom.Custom.DistLess(player.bodyChunks[j].pos, frame.positions[k], KillDistance))
                             {
-                                if (!OptionsMenu.weakerCopies.Value)
+                                if (!OptionsMenu.weakerCopies.Value && !CheckEasyMode(player.room))
                                 {
                                     player.Die();
                                 }

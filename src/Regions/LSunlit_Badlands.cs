@@ -71,11 +71,23 @@ namespace Looker.Regions
             {
                 if (retractDarkness)
                 {
-                    darknessProgress = Math.Max(0f, darknessProgress - (0.0075f * OptionsMenu.darknessSpeed.Value));
+                    if (CheckEasyMode(self.room))
+                    {
+                        darknessProgress = Math.Max(0f, darknessProgress - (0.0075f * Math.Min(OptionsMenu.darknessSpeed.Value, 0.7f)));
+                    }
+                    else
+                    {
+                        darknessProgress = Math.Max(0f, darknessProgress - (0.0075f * OptionsMenu.darknessSpeed.Value));
+                    }
+                }
+                else if (CheckEasyMode(self.room))
+                {
+                    darknessProgress = Math.Min(1f, darknessProgress + (0.0010f * Math.Min(OptionsMenu.darknessSpeed.Value, 0.7f) * (OptionsMenu.resetDarkness.Value ? 2 : 1)));
                 }
                 else
                 {
                     darknessProgress = Math.Min(1f, darknessProgress + (0.0010f * OptionsMenu.darknessSpeed.Value * (OptionsMenu.resetDarkness.Value ? 2 : 1)));
+
                 }
                 self.sofBlackFade = darknessProgress;
                 self.effect_darkness = darknessProgress;

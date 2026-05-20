@@ -53,7 +53,7 @@ namespace Looker.Regions
                     otherObject.bodyChunks[k].vel += Custom.RNV() * 6f * UnityEngine.Random.value;
                     otherObject.bodyChunks[k].pos += Custom.RNV() * 6f * UnityEngine.Random.value;
                 }
-                if (OptionsMenu.weakerBarnacles.Value)
+                if (OptionsMenu.weakerBarnacles.Value || CheckEasyMode(self.room))
                 {
                     creature.LoseAllGrasps();
                     creature.Stun(120);

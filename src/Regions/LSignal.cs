@@ -43,7 +43,7 @@ namespace Looker.Regions
             {
                 if (player.realizedCreature != null && player.realizedCreature is Player)
                 {
-                    if (OptionsMenu.weakerBroadcast.Value)
+                    if (OptionsMenu.weakerBroadcast.Value || CheckEasyMode(self.room))
                     {
                         player.realizedCreature.Stun(300);
                         player.realizedCreature.room.AddObject(new ExplosionSpikes(player.realizedCreature.room, player.realizedCreature.firstChunk.pos, 14, 30f, 12f, 7f, 170f, Color.black));
@@ -96,7 +96,8 @@ namespace Looker.Regions
             PhysicalObject grabbed = self.grasps[grasp].grabbed;
             if (grabbed is VultureGrub && self?.room?.game?.StoryCharacter == LookerEnums.looker && CWTs.PlayerCWT.TryGetData(self, out var data))
             {
-                data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value);
+                if (CheckEasyMode(self.room) && 1.5f > OptionsMenu.broadcastingLeniencyTimer.Value) { data.signalLeniency = (int)(400 * 1.5f); }
+                else { data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value); }
             }
             orig(self, grasp, eu);
         }

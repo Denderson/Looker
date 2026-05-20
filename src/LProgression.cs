@@ -227,23 +227,50 @@ namespace Looker
         public static void SetToEasy()
         {
             OptionsMenu.spawnFileDifficulty.Value = 1;
-
             OptionsMenu.checkpointWarps.Value = true;
             OptionsMenu.enableGlow.Value = true;
+            OptionsMenu.ripplespaceDuration.Value = 1.5f;
+
+
+            OptionsMenu.emergencyBreath.Value = true;
+            OptionsMenu.breathZoneSize.Value = 1.5f;
+
+            OptionsMenu.controlAnnouncement.Value = true;
 
             OptionsMenu.constantShelters.Value = true;
 
-            
-            OptionsMenu.weakerDarkness.Value = true;
-            OptionsMenu.weakerBarnacles.Value = true;
-            OptionsMenu.weakerBroadcast.Value = true;
-            
             OptionsMenu.lizardsCanLeap.Value = false;
+            OptionsMenu.strongerLizardChance.Value = 50;
+
+            OptionsMenu.weakerCopies.Value = true;
+            OptionsMenu.copyAmount.Value = 3;
+            OptionsMenu.copyDelay.Value = 70;
+
+            OptionsMenu.colorfulOgscules.Value = true;
+
+            OptionsMenu.weakerBroadcast.Value = true;
+            OptionsMenu.broadcastingLeniencyTimer.Value = 1.5f;
+
+            OptionsMenu.weakerBarnacles.Value = true;
+            OptionsMenu.barnacleRate.Value = 0.7f;
+
+            OptionsMenu.moreJetfish.Value = true;
+
+            OptionsMenu.noFrogStacking.Value = true;
+            OptionsMenu.halvedPoison.Value = true;
+
+            OptionsMenu.rainTimerMult.Value = 1.5f;
+
+            OptionsMenu.weakerDarkness.Value = true;
+            OptionsMenu.darknessSpeed.Value = 0.7f;
+            
+            OptionsMenu.lessEvilLightnings.Value = true;
+            OptionsMenu.lightningSpawnSpeed.Value = 0.7f;
 
             OptionsMenu.melonCooldown.Value = 1.5f;
-            OptionsMenu.barnacleRate.Value = 0.7f;
-            OptionsMenu.darknessSpeed.Value = 0.7f;
-            OptionsMenu.ripplespaceDuration.Value = 1.5f;
+
+            OptionsMenu.easierFinale.Value = true;
+
 
             OptionsMenu.difficultyChosen.Value = true;
             optionsMenuInstance.config.Save();
@@ -252,23 +279,50 @@ namespace Looker
         public static void SetToMedium()
         {
             OptionsMenu.spawnFileDifficulty.Value = 2;
-
             OptionsMenu.checkpointWarps.Value = true;
             OptionsMenu.enableGlow.Value = false;
+            OptionsMenu.ripplespaceDuration.Value = 1f;
+
+
+            OptionsMenu.emergencyBreath.Value = false;
+            OptionsMenu.breathZoneSize.Value = 1f;
+
+            OptionsMenu.controlAnnouncement.Value = false;
 
             OptionsMenu.constantShelters.Value = false;
 
+            OptionsMenu.lizardsCanLeap.Value = true;
+            OptionsMenu.strongerLizardChance.Value = 80;
+
+            OptionsMenu.weakerCopies.Value = false;
+            OptionsMenu.copyAmount.Value = 5;
+            OptionsMenu.copyDelay.Value = 50;
+
+            OptionsMenu.colorfulOgscules.Value = false;
+
+            OptionsMenu.weakerBroadcast.Value = false;
+            OptionsMenu.broadcastingLeniencyTimer.Value = 1f;
+
+            OptionsMenu.weakerBarnacles.Value = false;
+            OptionsMenu.barnacleRate.Value = 1f;
+
+            OptionsMenu.moreJetfish.Value = false;
+
+            OptionsMenu.noFrogStacking.Value = false;
+            OptionsMenu.halvedPoison.Value = false;
+
+            OptionsMenu.rainTimerMult.Value = 1f;
 
             OptionsMenu.weakerDarkness.Value = false;
-            OptionsMenu.weakerBarnacles.Value = false;
-            OptionsMenu.weakerBroadcast.Value = false;
+            OptionsMenu.darknessSpeed.Value = 1f;
 
-            OptionsMenu.lizardsCanLeap.Value = true;
+            OptionsMenu.lessEvilLightnings.Value = false;
+            OptionsMenu.lightningSpawnSpeed.Value = 1f;
 
             OptionsMenu.melonCooldown.Value = 1f;
-            OptionsMenu.barnacleRate.Value = 1f;
-            OptionsMenu.darknessSpeed.Value = 1f;
-            OptionsMenu.ripplespaceDuration.Value = 1f;
+
+            OptionsMenu.easierFinale.Value = false;
+
 
             OptionsMenu.difficultyChosen.Value = true;
             optionsMenuInstance.config.Save();
@@ -277,22 +331,50 @@ namespace Looker
         public static void SetToHard()
         {
             OptionsMenu.spawnFileDifficulty.Value = 3;
-
             OptionsMenu.checkpointWarps.Value = false;
             OptionsMenu.enableGlow.Value = false;
+            OptionsMenu.ripplespaceDuration.Value = 0.7f;
+
+
+            OptionsMenu.emergencyBreath.Value = false;
+            OptionsMenu.breathZoneSize.Value = 0.7f;
+
+            OptionsMenu.controlAnnouncement.Value = false;
 
             OptionsMenu.constantShelters.Value = false;
 
-            OptionsMenu.weakerDarkness.Value = false;
-            OptionsMenu.weakerBarnacles.Value = false;
-            OptionsMenu.weakerBroadcast.Value = false;
-
             OptionsMenu.lizardsCanLeap.Value = true;
+            OptionsMenu.strongerLizardChance.Value = 100;
+
+            OptionsMenu.weakerCopies.Value = false;
+            OptionsMenu.copyAmount.Value = 8;
+            OptionsMenu.copyDelay.Value = 30;
+
+            OptionsMenu.colorfulOgscules.Value = false;
+
+            OptionsMenu.weakerBroadcast.Value = false;
+            OptionsMenu.broadcastingLeniencyTimer.Value = 0.7f;
+
+            OptionsMenu.weakerBarnacles.Value = false;
+            OptionsMenu.barnacleRate.Value = 1.5f;
+
+            OptionsMenu.moreJetfish.Value = false;
+
+            OptionsMenu.noFrogStacking.Value = false;
+            OptionsMenu.halvedPoison.Value = false;
+
+            OptionsMenu.rainTimerMult.Value = 0.7f;
+
+            OptionsMenu.weakerDarkness.Value = false;
+            OptionsMenu.darknessSpeed.Value = 1.5f;
+
+            OptionsMenu.lessEvilLightnings.Value = false;
+            OptionsMenu.lightningSpawnSpeed.Value = 1.5f;
 
             OptionsMenu.melonCooldown.Value = 0.7f;
-            OptionsMenu.barnacleRate.Value = 2f;
-            OptionsMenu.darknessSpeed.Value = 1.5f;
-            OptionsMenu.ripplespaceDuration.Value = 1f;
+
+            OptionsMenu.easierFinale.Value = false;
+
 
             OptionsMenu.difficultyChosen.Value = true;
             optionsMenuInstance.config.Save();

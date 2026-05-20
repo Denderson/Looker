@@ -216,7 +216,7 @@ namespace Looker
                     self.slowMovementStun = 40;
                     if (darknessProgress >= 1 && data.darknessImmunity <= 0)
                     {
-                        if (!OptionsMenu.weakerDarkness.Value && !self.dead)
+                        if (!OptionsMenu.weakerDarkness.Value && !CheckEasyMode(self.room) && !self.dead)
                         {
                             self.Die();
                         }
@@ -370,7 +370,8 @@ namespace Looker
             if (CheckMechanics(self.room, "signal", "WPTA") && enteredNewRoom && data.inShelter)
             {
                 data.inShelter = false;
-                data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value);
+                if (CheckEasyMode(self.room)) { data.signalLeniency = (int)(400 * Math.Max(OptionsMenu.broadcastingLeniencyTimer.Value, 1.5f)); }
+                else { data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value); }
                 AbstractCreature abstractCreature = new(newRoom.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.VultureGrub), null, self.abstractCreature.pos, newRoom.game.GetNewID())
                 {
                     saveCreature = false
@@ -393,7 +394,7 @@ namespace Looker
                     data.reverseVertical = UnityEngine.Random.value > 0.5;
                 }
                 data.controlOffset = (int)(UnityEngine.Random.value * 100) % 3;
-                if (OptionsMenu.controlAnnouncement.Value)
+                if (OptionsMenu.controlAnnouncement.Value || CheckEasyMode(self.room))
                 {
                     string announcement = string.Empty;
                     if (data.reverseHorizontal)
