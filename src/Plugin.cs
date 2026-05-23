@@ -302,7 +302,6 @@ namespace Looker
                     On.SSOracleBehavior.NewAction += NothingToSeeHere.SSOracleBehavior_NewAction;
                     On.SSOracleBehavior.PebblesConversation.AddEvents += NothingToSeeHere.PebblesConversation_AddEvents;
                     On.SSOracleBehavior.SpecialEvent += NothingToSeeHere.SSOracleBehavior_SpecialEvent;
-                    On.Oracle.ctor += NothingToSeeHere.Oracle_ctor;
                     On.Room.ReadyForAI += NothingToSeeHere.Room_ReadyForAI;
 
                     On.SLOracleBehaviorHasMark.NameForPlayer += NothingToSeeHere.SLOracleBehaviorHasMark_NameForPlayer;

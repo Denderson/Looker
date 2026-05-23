@@ -219,7 +219,17 @@ namespace Looker.Regions
             }
             if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && OptionsMenu.metSliver.Value)
             {
-                NukeRoom(self);
+                if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && OptionsMenu.metSliver.Value)
+                {
+                    if (self.syncTicker > 40)
+                    {
+                        NukeRoom(self);
+                    }
+                }
+                else if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && !OptionsMenu.metSliver.Value)
+                {
+                    self.syncTicker = 0;
+                }
             }
         }
 

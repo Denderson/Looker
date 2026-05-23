@@ -88,8 +88,7 @@ namespace Looker
                         }
                     case "lookersliver":
                         {
-                            result = false;
-                            //result = OptionsMenu.metSliver.Value;
+                            result = OptionsMenu.metSliver.Value;
                             break;
                         }
                     case "lookeraltability":
