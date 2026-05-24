@@ -1,0 +1,2 @@
+DangerType: FloodAndRain
+Effects: WaterFluxMinLevel-0.2826087-266-42, WaterFluxMaxLevel-0.2826087-273-97, EvilWater-1-60-60, 

@@ -103,6 +103,23 @@ namespace Looker.Regions
             }
         }
 
+        public static void Inspector_InitiateGraphicsModule(On.MoreSlugcats.Inspector.orig_InitiateGraphicsModule orig, Inspector self)
+        {
+            if (self.ownerIterator == -1)
+            {
+                if (CheckMechanics(self.room, "storage", "WARD")) { self.ownerIterator = 752; }
+            }
+            orig(self);
+        }
+
+        public static Color On_Inspector_get_OwneriteratorColor(Func<Inspector, Color> orig, Inspector self)
+        {
+            if (self.ownerIterator == 752) { return new Color(0.59f, 0.38f, 1f); }
+            return orig(self);
+        }
+
+
+
         public static int RainCycle_GetDesiredCycleLength(On.RainCycle.orig_GetDesiredCycleLength orig, RainCycle self)
         {
             int value = orig(self);
