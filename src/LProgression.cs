@@ -671,9 +671,13 @@ namespace Looker
                     {
                         tutorial = "You are now officially on life support by vulture grub signal"; tutorial2 = "Getting the signal to end will result in death"; break;
                     }
+                case "WGWR":
+                    {
+                        tutorial = "The water here is infested"; tutorial2 = "Staying in it for too long will result in death"; break;
+                    }
                 case "WARA":
                     {
-                        tutorial = "This is the final stretch."; tutorial2 = "Good luck!"; break;
+                        tutorial = "This is the final stretch"; tutorial2 = "Good luck!"; break;
                     }
                 case "LINK1":
                     {

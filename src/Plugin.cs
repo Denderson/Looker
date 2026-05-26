@@ -13,9 +13,11 @@ using RWCustom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Permissions;
 using UnityEngine;
+using MoreSlugcats;
 using Watcher;
 
 #pragma warning disable CS0618
@@ -264,6 +266,12 @@ namespace Looker
                     On.Watcher.LightningMaker.StaticBuildup.GetBestTarget += LMisc.StaticBuildup_GetBestTarget;
 
                     On.AntiGravity.BrokenAntiGravity.Update += LMisc.BrokenAntiGravity_Update;
+                    On.MoreSlugcats.Inspector.InitiateGraphicsModule += LMisc.Inspector_InitiateGraphicsModule;
+                    MethodBase method = typeof(Inspector).GetMethod("get_OwneriteratorColor", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    Func<Func<Inspector, Color>, Inspector, Color> to;
+                    to = new Func<Func<Inspector, Color>, Inspector, Color>(LMisc.On_Inspector_get_OwneriteratorColor);
+                    new Hook(method, to);
+
 
                     On.Room.Loaded += LMisc.Room_Loaded;
                     On.Lizard.ctor += LMisc.Lizard_ctor;
