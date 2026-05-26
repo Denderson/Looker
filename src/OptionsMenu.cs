@@ -126,6 +126,7 @@ namespace Looker
 
             //ward
             normalGravity = config.Bind("looker_normalGravity", false, new ConfigurableInfo("Disables periodical zero gravity"));
+            nonLethalBorders = config.Bind("looker_nonLethalBorders", false, new ConfigurableInfo("Screen borders will push you back instead of killing you"));
 
             //ware
 
@@ -245,7 +246,8 @@ namespace Looker
 
                 Label("Normal gravity", 0, 2, new Color(0.49f, 0.33f, 0.79f)),
                 CheckBox(normalGravity, 0, 2, new Color(0.49f, 0.33f, 0.79f)),
-
+                Label("Non lethal borders", 1, 2, new Color(0.49f, 0.33f, 0.79f)),
+                CheckBox(nonLethalBorders, 1, 2, new Color(0.49f, 0.33f, 0.79f)),
 
 
                 Label("Constant Shelters", 0, 4, new Color(0.58f, 0.65f, 0.78f)),
@@ -332,8 +334,8 @@ namespace Looker
                 SliderLabel("Melon cooldown", 3, new Color(0.69f, 0.7f, 0.67f)),
                 LookerFloatSlider(melonCooldown, 3, 3, new Color(0.69f, 0.7f, 0.67f)),
 
-                Label("Acid protection", 0, 4, unfinishedColor), //new Color(0.59f, 0.65f, 0.42f)
-                CheckBox(acidProtection, 0, 4, unfinishedColor) //new Color(0.59f, 0.65f, 0.42f)
+                Label("Acid protection", 0, 4, new Color(0.59f, 0.65f, 0.42f)),
+                CheckBox(acidProtection, 0, 4, new Color(0.59f, 0.65f, 0.42f))
             };
             Tabs[3].AddItems(UIArrayElements);
 
@@ -401,7 +403,7 @@ namespace Looker
 
             emergencyBreath, //desalination
             stableMovement, controlAnnouncement, //fetid glen
-            normalGravity, //cold storage
+            normalGravity, nonLethalBorders, //cold storage
                            //heat ducts
             constantShelters, //aether ridge
             lizardsCanLeap, lizardsCanShield, //the surface

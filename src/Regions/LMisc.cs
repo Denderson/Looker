@@ -73,8 +73,8 @@ namespace Looker.Regions
             float camWidth = camera.sSize.x;
             float camHeight = camera.sSize.y;
 
-            float left = cameraPos.x - oobMargin;
-            float right = cameraPos.x + camWidth + oobMargin;
+            float left = cameraPos.x - oobMargin + 20;
+            float right = cameraPos.x + camWidth + oobMargin - 20;
             float bottom = cameraPos.y - oobMargin;
             float top = cameraPos.y + camHeight + oobMargin;
 
@@ -92,13 +92,11 @@ namespace Looker.Regions
             }
 
             // Check vertical OOB
-            /*if (playerPos.y < bottom)
+            if (playerPos.y < bottom && self.gravity == 0f)
             {
-                // idk if player should bounce off deathpits, disabled for now
                 pushDir.y = cameraPos.y + oobInnerMargin - playerPos.y;
             }
-            else */
-            if (playerPos.y > top)
+            else if (playerPos.y > top)
             {
                 pushDir.y = (cameraPos.y + camHeight - oobInnerMargin) - playerPos.y;
             }
@@ -117,7 +115,7 @@ namespace Looker.Regions
             }
             data.oobTimer = 0;
 
-            if (OptionsMenu.spawnFileDifficulty.Value > 2)
+            if (!OptionsMenu.nonLethalBorders.Value && !CheckEasyMode(self.room) && self.gravity == 0)
             {
                 self.Die();
                 self.room.AddObject(new ZapCoil.ZapFlash(self.firstChunk.pos, 2f));

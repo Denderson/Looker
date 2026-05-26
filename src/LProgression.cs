@@ -237,6 +237,8 @@ namespace Looker
 
             OptionsMenu.controlAnnouncement.Value = true;
 
+            OptionsMenu.nonLethalBorders.Value = true;
+
             OptionsMenu.constantShelters.Value = true;
 
             OptionsMenu.lizardsCanLeap.Value = false;
@@ -289,6 +291,8 @@ namespace Looker
 
             OptionsMenu.controlAnnouncement.Value = false;
 
+            OptionsMenu.nonLethalBorders.Value = false;
+
             OptionsMenu.constantShelters.Value = false;
 
             OptionsMenu.lizardsCanLeap.Value = true;
@@ -340,6 +344,8 @@ namespace Looker
             OptionsMenu.breathZoneSize.Value = 0.7f;
 
             OptionsMenu.controlAnnouncement.Value = false;
+
+            OptionsMenu.nonLethalBorders.Value = false;
 
             OptionsMenu.constantShelters.Value = false;
 
