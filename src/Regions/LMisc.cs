@@ -35,6 +35,116 @@ namespace Looker.Regions
 {
     public static class LMisc
     {
+        // How much the player is pushed back toward the camera area
+        private const float oobPushStrength = 10f;
+
+        // How far outside the camera bounds before push kicks in
+        private const float oobMargin = 0f;
+
+        // How far into the camera bounds is the Player pushed
+        private const float oobInnerMargin = 20f;
+
+        // How long does player need to be out of bounds before the push (if set to zero, weird stuff when going through screens)
+        public const int oobRequirement = 10;
+
+
+        public static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            orig(self, eu);
+
+            if (!PlayerCWT.TryGetData(self, out var data))
+            {
+                return;
+            }
+
+            if (!CheckMechanics(self?.room, "storage", "WARD"))
+            {
+                return;
+            }
+
+            RoomCamera camera = FindCameraForRoom(self.room);
+            if (camera == null)
+            {
+                return;
+            }
+
+            Vector2 cameraPos = camera.pos;
+
+            float camWidth = camera.sSize.x;
+            float camHeight = camera.sSize.y;
+
+            float left = cameraPos.x - oobMargin;
+            float right = cameraPos.x + camWidth + oobMargin;
+            float bottom = cameraPos.y - oobMargin;
+            float top = cameraPos.y + camHeight + oobMargin;
+
+            Vector2 playerPos = self.mainBodyChunk.pos;
+            Vector2 pushDir = Vector2.zero;
+
+            // Check horizontal OOB
+            if (playerPos.x < left)
+            {
+                pushDir.x = cameraPos.x + oobInnerMargin - playerPos.x;
+            }
+            else if (playerPos.x > right)
+            {
+                pushDir.x = (cameraPos.x + camWidth - oobInnerMargin) - playerPos.x;
+            }
+
+            // Check vertical OOB
+            /*if (playerPos.y < bottom)
+            {
+                // idk if player should bounce off deathpits, disabled for now
+                pushDir.y = cameraPos.y + oobInnerMargin - playerPos.y;
+            }
+            else */
+            if (playerPos.y > top)
+            {
+                pushDir.y = (cameraPos.y + camHeight - oobInnerMargin) - playerPos.y;
+            }
+
+            // Check if any collision happened, dont run code afterwards if not
+            if (pushDir == Vector2.zero)
+            {
+                data.oobTimer = 0;
+                return;
+            }
+
+            if (data.oobTimer < oobRequirement)
+            {
+                data.oobTimer++;
+                return;
+            }
+            data.oobTimer = 0;
+
+            if (OptionsMenu.spawnFileDifficulty.Value > 2)
+            {
+                self.Die();
+                self.room.AddObject(new ZapCoil.ZapFlash(self.firstChunk.pos, 2f));
+                self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1f);
+            }
+
+            Vector2 force = pushDir.normalized * oobPushStrength;
+            foreach (BodyChunk chunk in self.bodyChunks)
+            {
+                chunk.vel += force;
+            }
+        }
+
+        private static RoomCamera FindCameraForRoom(Room room)
+        {
+            if (room?.game == null) return null;
+
+            foreach (RoomCamera cam in room.game.cameras)
+            {
+                if (cam.room == room)
+                {
+                    return cam;
+                }
+            }
+            return null;
+        }
+
         public static void Lizard_ctor(On.Lizard.orig_ctor orig, Lizard self, AbstractCreature abstractCreature, World world)
         {
             Log.LogMessage("LIZARD CTOR!!");

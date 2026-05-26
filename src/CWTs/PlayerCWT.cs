@@ -36,9 +36,6 @@ namespace Looker.CWTs
             public bool reverseVertical = false;
             public int controlOffset = -1;
 
-            public bool startingRipple = false;
-            public int rippleTimer = -1;
-
             public int signalLeniency = -1;
 
             public int darknessImmunity = -1;
@@ -68,6 +65,8 @@ namespace Looker.CWTs
             public Vector2 oldPipePosition = new();
 
             public int acidShieldTimer = 80;
+
+            public int oobTimer = 0;
         }
     }
 }

@@ -105,10 +105,7 @@ namespace Looker
             orig(self, nextAction);
         }
 
-        public static string SLOracleBehaviorHasMark_NameForPlayer(
-            On.SLOracleBehaviorHasMark.orig_NameForPlayer orig,
-            SLOracleBehaviorHasMark self,
-            bool capitalized)
+        public static string SLOracleBehaviorHasMark_NameForPlayer(On.SLOracleBehaviorHasMark.orig_NameForPlayer orig, SLOracleBehaviorHasMark self, bool capitalized)
         {
             string text = orig(self, capitalized);
             if (self.oracle.room.game.StoryCharacter == LookerEnums.looker)

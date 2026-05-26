@@ -324,6 +324,7 @@ namespace Looker
                 // unorganised
                 {
                     On.SaveState.LoadGame += SaveFileCode.SaveState_LoadGame;
+                    On.Player.Update += LMisc.Player_Update;
 
                     On.Player.RippleSpawnInteractions += LMigration.Player_RippleSpawnInteractions;
                     IL.Menu.IntroRoll.ctor += IntroRoll_ctor;
