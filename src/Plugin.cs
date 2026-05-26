@@ -366,6 +366,7 @@ namespace Looker
                     new Hook(typeof(Oracle).GetProperty(nameof(Oracle.Alive)).GetGetMethod(), typeof(NothingToSeeHere).GetMethod(nameof(NothingToSeeHere.Is_Alive)));
 
                     new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.UsesWarpMap)).GetGetMethod(), typeof(LProgression).GetMethod(nameof(LProgression.UsesWarpMap)));
+
                 }
 
                 if (isInit)
