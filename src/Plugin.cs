@@ -24,6 +24,7 @@ using Watcher;
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 #pragma warning restore CS0618
 
+
 namespace Looker
 {
     [BepInDependency("lsfUtils")]
