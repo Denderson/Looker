@@ -83,10 +83,10 @@ namespace Looker
             return new OpLabel(200 * x, 500 - _creditsY * 25, text);
         }
 
-        private static OpLabel BigLabel(string text, float y, bool isUnfinished = false)
+        private static OpLabel RegionLabel(string text, float y, Color labelColor)
         {
             OpLabel label = new(410, 480 - y * 80, text, true);
-            if (isUnfinished) label.color = new Color(0.85f, 0.35f, 0.4f);
+            label.color = labelColor;
             return label;
         }
 
@@ -126,6 +126,7 @@ namespace Looker
 
             //ward
             normalGravity = config.Bind("looker_normalGravity", false, new ConfigurableInfo("Disables periodical zero gravity"));
+            nonLethalBorders = config.Bind("looker_nonLethalBorders", false, new ConfigurableInfo("Screen borders will push you back instead of killing you"));
 
             //ware
 
@@ -206,7 +207,7 @@ namespace Looker
             UIelement[] UIArrayElements = new UIelement[]
             {
                 new OpLabel(0, 550, "General options", true), new OpLabel(160, 550, "(red means not implemeted yet)", true){color = unfinishedColor},
-
+                
                 Label("Different ability", 0, 0),
                 CheckBox(differentAbility, 0, 0),
 
@@ -233,30 +234,35 @@ namespace Looker
             {
                 new OpLabel(0, 550, "Mechanics", true), new OpLabel(110, 550, "(red means not implemented yet)", true){color = unfinishedColor},
 
-                Label("Emergency breath", 0, 0, new Color (0.42f, 0.56f, 0.7f)),
-                CheckBox(emergencyBreath, 0, 0, new Color (0.42f, 0.56f, 0.7f)),
-                SliderLabel("Breath zone size multiplier", 0, new Color (0.42f, 0.56f, 0.7f)),
-                LookerFloatSlider(breathZoneSize, 0, 2, new Color (0.42f, 0.56f, 0.7f)),
+                RegionLabel("Desalination", 0, new Color(0.42f, 0.56f, 0.7f)),
+                Label("Emergency breath", 0, 0, new Color(0.42f, 0.56f, 0.7f)),
+                CheckBox(emergencyBreath, 0, 0, new Color(0.42f, 0.56f, 0.7f)),
+                SliderLabel("Breath zone size multiplier", 0, new Color(0.42f, 0.56f, 0.7f)),
+                LookerFloatSlider(breathZoneSize, 0, 2, new Color(0.42f, 0.56f, 0.7f)),
 
+                RegionLabel("Fetid Glen", 1, new Color(0.78f, 0.47f, 0.25f)),
                 Label("Stable movement", 0, 1, new Color(0.78f, 0.47f, 0.25f)),
                 CheckBox(stableMovement, 0, 1, new Color(0.78f, 0.47f, 0.25f)),
                 Label("Control announcement", 1, 1, new Color(0.78f, 0.47f, 0.25f)),
                 CheckBox(controlAnnouncement, 1, 1, new Color(0.78f, 0.47f, 0.25f)),
 
+                RegionLabel("Cold Storage", 2, new Color(0.49f, 0.33f, 0.79f)),
                 Label("Normal gravity", 0, 2, new Color(0.49f, 0.33f, 0.79f)),
                 CheckBox(normalGravity, 0, 2, new Color(0.49f, 0.33f, 0.79f)),
+                Label("Non lethal borders", 1, 2, new Color(0.49f, 0.33f, 0.79f)),
+                CheckBox(nonLethalBorders, 1, 2, new Color(0.49f, 0.33f, 0.79f)),
 
+                RegionLabel("Aether Ridge", 3, new Color(0.58f, 0.65f, 0.78f)),
+                Label("Constant Shelters", 0, 3, new Color(0.58f, 0.65f, 0.78f)),
+                CheckBox(constantShelters, 0, 3, new Color(0.58f, 0.65f, 0.78f)),
 
-
-                Label("Constant Shelters", 0, 4, new Color(0.58f, 0.65f, 0.78f)),
-                CheckBox(constantShelters, 0, 4, new Color(0.58f, 0.65f, 0.78f)),
-
-                Label("Lizards can leap", 0, 5, new Color(0.62f, 0.5f, 0.47f)),
-                CheckBox(lizardsCanLeap, 0, 5, new Color(0.62f, 0.5f, 0.47f)),
-                Label("Lizards can shield", 1, 5, new Color(0.62f, 0.5f, 0.47f)),
-                CheckBox(lizardsCanShield, 1, 5, new Color(0.62f, 0.5f, 0.47f)),
-                SliderLabel("Stronger lizard chance", 5, new Color(0.62f, 0.5f, 0.47f)),
-                new OpSlider(strongerLizardChance, new Vector2(0, 60), 100){min = 0, max = 100, description = OptionsMenu.strongerLizardChance.info.description, colorEdge = new Color(0.62f, 0.5f, 0.47f), colorLine = new Color(0.62f, 0.5f, 0.47f)},
+                RegionLabel("The Surface", 4, new Color(0.62f, 0.5f, 0.47f)),
+                Label("Lizards can leap", 0, 4, new Color(0.62f, 0.5f, 0.47f)),
+                CheckBox(lizardsCanLeap, 0, 4, new Color(0.62f, 0.5f, 0.47f)),
+                Label("Lizards can shield", 1, 4, new Color(0.62f, 0.5f, 0.47f)),
+                CheckBox(lizardsCanShield, 1, 4, new Color(0.62f, 0.5f, 0.47f)),
+                SliderLabel("Stronger lizard chance", 4, new Color(0.62f, 0.5f, 0.47f)),
+                new OpSlider(strongerLizardChance, new Vector2(0, 140), 100){min = 0, max = 100, description = OptionsMenu.strongerLizardChance.info.description, colorEdge = new Color(0.62f, 0.5f, 0.47f), colorLine = new Color(0.62f, 0.5f, 0.47f)},
             };
             Tabs[1].AddItems(UIArrayElements);
 
@@ -265,18 +271,21 @@ namespace Looker
             {
                 new OpLabel(0, 550, "Mechanics", true), new OpLabel(110, 550, "(red means not implemented yet)", true){color = unfinishedColor},
 
+                RegionLabel("Migration Path", 0, new Color(0.7f, 0.55f, 0.53f)),
                 Label("Weaker copies", 0, 0, new Color(0.7f, 0.55f, 0.53f)),
                 CheckBox(weakerCopies, 0, 0, new Color(0.7f, 0.55f, 0.53f)),
                 Label("Legacy chaser", 1, 0, new Color(0.7f, 0.55f, 0.53f)),
                 CheckBox(legacyChaser, 1, 0, new Color(0.7f, 0.55f, 0.53f)),
                 SliderLabel("Copy amount", 0, new Color(0.7f, 0.55f, 0.53f)),
                 new OpSlider(copyAmount, new Vector2(0, 460), 100){min = 1, max = 10, description = OptionsMenu.copyAmount.info.description, colorEdge = new Color(0.7f, 0.55f, 0.53f), colorLine = new Color(0.7f, 0.55f, 0.53f)},
-                new OpLabel(350, 460, "Copy delay"){color =  new Color(0.7f, 0.55f, 0.53f)},
-                new OpSlider(copyDelay, new Vector2(240, 460), 100){min = 0, max = 100, description = OptionsMenu.copyDelay.info.description, colorEdge = new Color(0.7f, 0.55f, 0.53f), colorLine = new Color(0.7f, 0.55f, 0.53f)},
+                new OpLabel(300, 460, "Copy delay"){color =  new Color(0.7f, 0.55f, 0.53f)},
+                new OpSlider(copyDelay, new Vector2(190, 460), 100){min = 0, max = 100, description = OptionsMenu.copyDelay.info.description, colorEdge = new Color(0.7f, 0.55f, 0.53f), colorLine = new Color(0.7f, 0.55f, 0.53f)},
 
+                RegionLabel("Pillar Grove", 1, new Color(0.28f, 0.85f, 0.66f)),
                 Label("Colorful ogscules", 0, 1, new Color(0.28f, 0.85f, 0.66f)),
                 CheckBox(colorfulOgscules, 0, 1, new Color(0.28f, 0.85f, 0.66f)),
 
+                RegionLabel("Signal Spires", 2, new Color(0.89f, 0.51f, 0.69f)),
                 Label("Weaker broadcast", 0, 2, new Color(0.89f, 0.51f, 0.69f)),
                 CheckBox(weakerBroadcast, 0, 2, new Color(0.89f, 0.51f, 0.69f)),
                 Label("Alternate broadcast", 1, 2, new Color(0.89f, 0.51f, 0.69f)),
@@ -284,6 +293,7 @@ namespace Looker
                 SliderLabel("Broadcast leniency", 2, new Color(0.89f, 0.51f, 0.69f)),
                 LookerFloatSlider(broadcastingLeniencyTimer, 2, 5, new Color(0.89f, 0.51f, 0.69f)),
 
+                RegionLabel("Coral Caves", 3, new Color(0.38f, 0.7f, 0.89f)),
                 Label("Weaker barnacles", 0, 3, new Color(0.38f, 0.7f, 0.89f)),
                 CheckBox(weakerBarnacles, 0, 3, new Color(0.38f, 0.7f, 0.89f)),
                 Label("Barnacle cap", 1, 3, new Color(0.38f, 0.7f, 0.89f)),
@@ -291,9 +301,11 @@ namespace Looker
                 SliderLabel("Barnacle spawn rate", 3, new Color(0.38f, 0.7f, 0.89f)),
                 LookerFloatSlider(barnacleRate, 3, 3, new Color(0.38f, 0.7f, 0.89f)),
 
+                RegionLabel("Turbulent Pump", 4, new Color(0.42f, 0.7f, 0.65f)),
                 Label("More jetfish", 0, 4, new Color(0.42f, 0.7f, 0.65f)),
                 CheckBox(moreJetfish, 0, 4, new Color(0.42f, 0.7f, 0.65f)),
 
+                RegionLabel("Rusted Wrecks", 5, new Color(0.7f, 0.42f, 0.4f)),
                 Label("No frog stacking", 0, 5, new Color(0.7f, 0.42f, 0.4f)),
                 CheckBox(noFrogStacking, 0, 5, new Color(0.7f, 0.42f, 0.4f)),
                 Label("Halved poison", 1, 5, new Color(0.7f, 0.42f, 0.4f)),
@@ -308,9 +320,11 @@ namespace Looker
             {
                 new OpLabel(0, 550, "Mechanics", true), new OpLabel(110, 550, "(red means not implemented yet)", true){color = unfinishedColor},
 
+                RegionLabel("Torrential Railways", 0, new Color(0.62f, 0.66f, 0.7f)),
                 SliderLabel("Rain timer multiplier", 0, new Color(0.62f, 0.66f, 0.7f)),
                 LookerFloatSlider(rainTimerMult, 0, 2, new Color(0.62f, 0.66f, 0.7f)),
 
+                RegionLabel("Sunbaked Alley", 1, new Color(0.95f, 0.72f, 0.74f)),
                 Label("Weaker darkness", 0, 1, new Color(0.95f, 0.72f, 0.74f)),
                 CheckBox(weakerDarkness, 0, 1, new Color(0.95f, 0.72f, 0.74f)),
                 Label("Reset darkness on shortcut", 1, 1, new Color(0.95f, 0.72f, 0.74f)),
@@ -318,6 +332,7 @@ namespace Looker
                 SliderLabel("Darkness speed", 1, new Color(0.95f, 0.72f, 0.74f)),
                 LookerFloatSlider(darknessSpeed, 1, 3, new Color(0.95f, 0.72f, 0.74f)),
 
+                RegionLabel("Stormy Coast", 2, new Color(0.62f, 0.62f, 0.7f)),
                 Label("Smaller lightnings", 0, 2, new Color(0.62f, 0.62f, 0.7f)),
                 CheckBox(smallerLightnings, 0, 2, new Color(0.62f, 0.62f, 0.7f)),
                 Label("Less evil lightnings", 1, 2, new Color(0.62f, 0.62f, 0.7f)),
@@ -325,6 +340,7 @@ namespace Looker
                 SliderLabel("Lightning spawn rate", 2, new Color(0.62f, 0.62f, 0.7f)),
                 LookerFloatSlider(lightningSpawnSpeed, 2, 3, new Color(0.62f, 0.62f, 0.7f)),
 
+                RegionLabel("Desolate Tract", 3, new Color(0.69f, 0.7f, 0.67f)),
                 Label("Bouncier melons", 0, 3, new Color(0.69f, 0.7f, 0.67f)),
                 CheckBox(bouncierMelons, 0, 3, new Color(0.69f, 0.7f, 0.67f)),
                 Label("Legacy melons", 1, 3, new Color(0.69f, 0.7f, 0.67f)),
@@ -332,8 +348,9 @@ namespace Looker
                 SliderLabel("Melon cooldown", 3, new Color(0.69f, 0.7f, 0.67f)),
                 LookerFloatSlider(melonCooldown, 3, 3, new Color(0.69f, 0.7f, 0.67f)),
 
-                Label("Acid protection", 0, 4, unfinishedColor), //new Color(0.59f, 0.65f, 0.42f)
-                CheckBox(acidProtection, 0, 4, unfinishedColor) //new Color(0.59f, 0.65f, 0.42f)
+                RegionLabel("Verdant Waterways", 4, new Color(0.59f, 0.65f, 0.42f)),
+                Label("Acid protection", 0, 4, new Color(0.59f, 0.65f, 0.42f)),
+                CheckBox(acidProtection, 0, 4, new Color(0.59f, 0.65f, 0.42f))
             };
             Tabs[3].AddItems(UIArrayElements);
 
@@ -342,6 +359,7 @@ namespace Looker
             {
                 new OpLabel(0, 550, "Mechanics", true), new OpLabel(110, 550, "(red means not implemented yet)", true){color = unfinishedColor},
 
+                RegionLabel("Shattered Terrace", 0, new Color(0.93f, 0.82f, 0.57f)),
                 Label("Easier finale", 0, 0, new Color(0.93f, 0.82f, 0.57f)),
                 CheckBox(easierFinale, 0, 0, new Color(0.93f, 0.82f, 0.57f)),
             };
@@ -401,7 +419,7 @@ namespace Looker
 
             emergencyBreath, //desalination
             stableMovement, controlAnnouncement, //fetid glen
-            normalGravity, //cold storage
+            normalGravity, nonLethalBorders, //cold storage
                            //heat ducts
             constantShelters, //aether ridge
             lizardsCanLeap, lizardsCanShield, //the surface
