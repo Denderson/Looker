@@ -103,18 +103,40 @@ namespace Looker
             {
                 return false;
             }
-            return (room.world.region.name == originalRegionAcronym) ||
-                (room.world.region.name == "WARA" && room.abstractRoom.subregionName != null && room.abstractRoom.subregionName.ToLowerInvariant().Contains(originalRegionName));
+
+            string regionName = room.world.region.name;
+            string subregionName = room.abstractRoom.subregionName?.ToLowerInvariant();
+
+            return (regionName == originalRegionAcronym) ||
+                (regionName == "WARA" && subregionName != null && subregionName.Contains(originalRegionName));
         }
 
         public static bool CheckMechanics(RainWorldGame game, string originalRegionName, string originalRegionAcronym)
         {
-            if (game?.world?.name == null || game.cameras == null || game.cameras.Length > 0 || game.cameras[0].room != null || game.StoryCharacter != LookerEnums.looker || OptionsMenu.devMode.Value)
+            if (game?.world?.name == null || game.cameras == null || game.cameras.Length == 0 || game.cameras[0].room == null || game.StoryCharacter != LookerEnums.looker || OptionsMenu.devMode.Value)
             {
                 return false;
             }
-            return (game.world.name == originalRegionAcronym) ||
-                (game.world.name == "WARA" && game.cameras[0].room.abstractRoom?.subregionName != null && game.cameras[0].room.abstractRoom.subregionName.ToLowerInvariant().Contains(originalRegionName));
+
+            string regionName = game.world.region.name;
+            string subregionName = game.cameras[0].room.abstractRoom?.subregionName?.ToLowerInvariant();
+
+            return (regionName == originalRegionAcronym) ||
+                (regionName == "WARA" && subregionName != null && subregionName.Contains(originalRegionName));
+        }
+
+        public static bool CheckMechanics(AbstractRoom abstractRoom, string originalRegionName, string originalRegionAcronym)
+        {
+            if (abstractRoom?.world?.game == null || abstractRoom.world.game.StoryCharacter != LookerEnums.looker || abstractRoom.shelter || OptionsMenu.devMode.Value)
+            {
+                return false;
+            }
+
+            string regionName = abstractRoom.world.region.name;
+            string subregionName = abstractRoom.subregionName?.ToLowerInvariant();
+
+            return (regionName == originalRegionAcronym) ||
+                (regionName == "WARA" && subregionName != null && subregionName.Contains(originalRegionName));
         }
 
         public static bool CheckEasyMode(Room room)
@@ -127,7 +149,7 @@ namespace Looker
             {
                 return true;
             }
-                return false;
+            return false;
         }
 
         private void LoadResources(RainWorld rainWorld)
@@ -317,10 +339,12 @@ namespace Looker
 
                 // pillar grove
                 {
-                    On.RoomCamera.SpriteLeaser.Update += LGrove.SpriteLeaser_Update;
                     On.ItemSymbol.ColorForItem += LGrove.ItemSymbol_ColorForItem;
                     On.ItemSymbol.SpriteNameForItem += LGrove.ItemSymbol_SpriteNameForItem;
                     On.ItemSymbol.SymbolDataFromItem += LGrove.ItemSymbol_SymbolDataFromItem;
+                    On.RoomCamera.SpriteLeaser.Update += LGrove.SpriteLeaser_Update;
+                    On.GraphicsModule.DrawSprites += LGrove.GraphicsModule_DrawSprites;
+                    On.ComplexGraphicsModule.GraphicsSubModule.DrawSprites += LGrove.GraphicsSubModule_DrawSprites;
                 }
 
                 // world setup

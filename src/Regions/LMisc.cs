@@ -147,7 +147,6 @@ namespace Looker.Regions
 
         public static void Lizard_ctor(On.Lizard.orig_ctor orig, Lizard self, AbstractCreature abstractCreature, World world)
         {
-            Log.LogMessage("LIZARD CTOR!!");
             if (world?.game?.StoryCharacter != LookerEnums.looker)
             {
                 orig(self, abstractCreature, world);
@@ -171,15 +170,9 @@ namespace Looker.Regions
                         self.LizardState.rotType = LizardState.RotType.Slight;
                     }
                 }
-                else
-                {
-                    Log.LogMessage("Couldnt grab self.LizardState!");
-                }
             }
 
             orig(self, abstractCreature, world);
-
-            Log.LogMessage("LOOKER LIZARD CTOR!!");
             if (world?.region?.name != null)
             {
                 string regionName = world.region.name.ToLowerInvariant();
@@ -189,7 +182,6 @@ namespace Looker.Regions
                 }
                 if (regionName.Contains("warg") && (OptionsMenu.strongerLizardChance.Value == 1f || UnityEngine.Random.value < OptionsMenu.strongerLizardChance.Value))
                 {
-                    Log.LogMessage("Buffing The Surface lizards!!");
                     if ((OptionsMenu.lizardsCanLeap.Value || CheckEasyMode(self.room)) && self.jumpModule == null) self.jumpModule = new LizardJumpModule(self);
                     if (OptionsMenu.lizardsCanShield.Value && self.blizzardModule == null) self.blizzardModule = new LizardBlizzardModule(self);
                 }

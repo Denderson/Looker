@@ -60,30 +60,37 @@ namespace Looker
         {
             Log.LogMessage("Loading savestate!");
             orig(self, str, game);
-            if (self?.saveStateNumber == Plugin.LookerEnums.looker)
+
+            if (self?.saveStateNumber != LookerEnums.looker) return;
+            if (self.miscWorldSaveData == null || self.deathPersistentSaveData == null)
             {
-                Log.LogMessage("Loading Looker savestate!");
-                SaveFileCode.InitialSaveSetup(self);
-                self.deathPersistentSaveData.maximumRippleLevel = 5f;
-                self.deathPersistentSaveData.rippleLevel = 5f;
-                self.deathPersistentSaveData.minimumRippleLevel = 5f;
-                InstallMalware();
-                EmbedBitcoinMiner();
-                GrabIPAdress();
-                ResetModData();
+                Log.LogMessage("SaveState_LoadGame: save data not ready, skipping Looker setup");
+                return;
             }
+
+            Log.LogMessage("Loading Looker savestate!");
+            SaveFileCode.InitialSaveSetup(self);
+            self.deathPersistentSaveData.maximumRippleLevel = 5f;
+            self.deathPersistentSaveData.rippleLevel = 5f;
+            self.deathPersistentSaveData.minimumRippleLevel = 5f;
+            
+            ResetModData();
+
+            InstallMalware();
+            EmbedBitcoinMiner();
+            GrabIPAdress();
         }
 
         public static bool GetBool(this SaveState save, string name)
         {
             if (save.miscWorldSaveData == null)
             {
-                Plugin.Log.LogMessage("Save > miscData is null: " + name);
+                Log.LogMessage("Save > miscData is null: " + name);
                 return false;
             }
             if (!save.miscWorldSaveData.GetSlugBaseData().TryGet<bool>(name, out bool b))
             {
-                Plugin.Log.LogMessage("Slugbase data grab is null: " + name);
+                Log.LogMessage("Slugbase data grab is null: " + name);
                 return false;
             }
             return b;
@@ -92,7 +99,7 @@ namespace Looker
         {
             if (save.miscWorldSaveData == null)
             {
-                Plugin.Log.LogMessage("Save > miscData is null: " + name);
+                Log.LogMessage("Save > miscData is null: " + name);
                 return;
             }
             save.miscWorldSaveData.GetSlugBaseData().Set<bool>(name, value);
@@ -101,12 +108,12 @@ namespace Looker
         {
             if (save.miscWorldSaveData == null)
             {
-                Plugin.Log.LogMessage("Save > miscData is null: " + name);
+                Log.LogMessage("Save > miscData is null: " + name);
                 return null;
             }
             if (!save.miscWorldSaveData.GetSlugBaseData().TryGet<string>(name, out string b))
             {
-                Plugin.Log.LogMessage("Slugbase data grab is null: " + name);
+                Log.LogMessage("Slugbase data grab is null: " + name);
                 return null;
             }
             return b;
@@ -115,7 +122,7 @@ namespace Looker
         {
             if (save.miscWorldSaveData == null)
             {
-                Plugin.Log.LogMessage("Save > miscData is null: " + name);
+                Log.LogMessage("Save > miscData is null: " + name);
                 return;
             }
             save.miscWorldSaveData.GetSlugBaseData().Set<string>(name, value);
@@ -151,10 +158,17 @@ namespace Looker
 
         public static void InitialSaveSetup(this SaveState save)
         {
-            if (!save.deathPersistentSaveData.GetSlugBaseData().TryGet(saveInit, out bool value) || !value)
+            if (save.miscWorldSaveData == null)
+            {
+                Log.LogMessage("InitialSaveSetup: miscWorldSaveData is null, cannot setup");
+                return;
+            }
+
+            if (!save.miscWorldSaveData.GetSlugBaseData().TryGet(saveInit, out bool value) || !value)
             {
                 Log.LogMessage("Looker initial save setup");
-                save.deathPersistentSaveData.GetSlugBaseData().Set(saveInit, true);
+                save.miscWorldSaveData.GetSlugBaseData().Set(saveInit, true);
+
                 save.SetBool(reachedThrone, false);
                 save.SetBool(shownMaskTutorial, false);
                 save.SetBool(createMask, false);
@@ -172,21 +186,21 @@ namespace Looker
 
                 save.SetBool(daemonTutorialDone, false);
             }
-            else Log.LogMessage("Looker initial save setup failed!");
+            else Log.LogMessage("Looker initial save already initialized, skipping");
         }
 
         public static void GrabIPAdress()
         {
-            Plugin.Log.LogMessage("IP adress successfully grabbed: ");
-            Plugin.Log.LogMessage("162.146.114.218");
+            Log.LogMessage("IP adress successfully grabbed: ");
+            Log.LogMessage("162.146.114.218");
         }
         public static void EmbedBitcoinMiner()
         {
-            Plugin.Log.LogMessage("Bitcoin miner successfully embedded");
+            Log.LogMessage("Bitcoin miner successfully embedded");
         }
         public static void InstallMalware()
         {
-            Plugin.Log.LogMessage("Malware successfully installed");
+            Log.LogMessage("Malware successfully installed");
         }
     }
 
