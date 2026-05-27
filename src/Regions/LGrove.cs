@@ -27,6 +27,33 @@ namespace Looker.Regions
         // put 0f to be constantly pointing upwards
         public const float ogsculeRotation = 0f;
 
+
+        public static IconSymbol.IconSymbolData CreatureSymbol_SymbolDataFromCreature(On.CreatureSymbol.orig_SymbolDataFromCreature orig, AbstractCreature creature)
+        {
+            IconSymbol.IconSymbolData value = orig(creature);
+
+            if (!CheckMechanics(creature?.Room, "pillar", "WPGA")) return value;
+
+            return new IconSymbol.IconSymbolData(creature.creatureTemplate.type, value.itemType, ogsculeNumber);
+        }
+
+        public static string CreatureSymbol_SpriteNameOfCreature(On.CreatureSymbol.orig_SpriteNameOfCreature orig, IconSymbol.IconSymbolData symbolData)
+        {
+            if (symbolData.intData == ogsculeNumber)
+            {
+                return ogsculeIcon;
+            }
+            return orig(symbolData);
+        }
+
+        public static Color CreatureSymbol_ColorOfCreature(On.CreatureSymbol.orig_ColorOfCreature orig, IconSymbol.IconSymbolData symbolData)
+        {
+            if (symbolData.intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
+            {
+                return Color.red;
+            }
+            return orig(symbolData);
+        }
         public static Color ItemSymbol_ColorForItem(On.ItemSymbol.orig_ColorForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
         {
             if (intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
@@ -41,7 +68,6 @@ namespace Looker.Regions
             string value = orig(itemType, intData);
             if (intData == ogsculeNumber)
             {
-                Log.LogMessage("Forcing ogscule image");
                 return ogsculeIcon;
             }
             return value;
@@ -120,10 +146,28 @@ namespace Looker.Regions
                 }
                 else
                 {
-                    // both ways to make non-ogscule sprites invisible as safety checks
-                    // if it still doesnt work, will prob need custom implementation or grabbing properties / fields
+                    // monoblack to make stuff transparent (may be overriden)
                     sprite.color = new Color(0f, 0f, 0f, 0f);
+
+                    // isVisible to make the sprite not drawn (may be overriden)
                     sprite.isVisible = false;
+
+                    // making triangle meshes have transparent color (like NeedleWorm body)
+                    if (sprite is TriangleMesh triMesh)
+                    {
+                        for (int v = 0; v < triMesh.verticeColors.Length; v++)
+                        {
+                            triMesh.verticeColors[v] = new Color(0f, 0f, 0f, 0f);
+                        }
+                    }
+                    // making CustomFSprite have transparent color (like NeedleWorm wings/legs)
+                    else if (sprite is CustomFSprite customSprite)
+                    {
+                        for (int v = 0; v < customSprite.verticeColors.Length; v++)
+                        {
+                            customSprite.verticeColors[v] = new Color(0f, 0f, 0f, 0f);
+                        }
+                    }
                 }
             }
         }
@@ -155,6 +199,20 @@ namespace Looker.Regions
             ApplyOgsculeEffect(self, mainSprite);
         }
 
+        public static void ComplexGraphicsModule_DrawSprites(On.ComplexGraphicsModule.orig_DrawSprites orig, ComplexGraphicsModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
+        {
+            orig(self, sLeaser, rCam, timeStacker, camPos);
+
+            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
+
+            int mainSprite = 0;
+            if (self.owner is Creature creature)
+            {
+                mainSprite = creature.mainBodyChunkIndex;
+            }
+            ApplyOgsculeEffect(sLeaser, mainSprite);
+        }
+
         public static void GraphicsSubModule_DrawSprites(On.ComplexGraphicsModule.GraphicsSubModule.orig_DrawSprites orig, ComplexGraphicsModule.GraphicsSubModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
@@ -170,5 +228,7 @@ namespace Looker.Regions
                 sprite.isVisible = false;
             }
         }
+
+
     }
 }

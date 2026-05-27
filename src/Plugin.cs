@@ -345,7 +345,11 @@ namespace Looker
                     On.ItemSymbol.SymbolDataFromItem += LGrove.ItemSymbol_SymbolDataFromItem;
                     On.RoomCamera.SpriteLeaser.Update += LGrove.SpriteLeaser_Update;
                     On.GraphicsModule.DrawSprites += LGrove.GraphicsModule_DrawSprites;
+                    On.ComplexGraphicsModule.DrawSprites += LGrove.ComplexGraphicsModule_DrawSprites;
                     On.ComplexGraphicsModule.GraphicsSubModule.DrawSprites += LGrove.GraphicsSubModule_DrawSprites;
+                    On.CreatureSymbol.SymbolDataFromCreature += LGrove.CreatureSymbol_SymbolDataFromCreature;
+                    On.CreatureSymbol.SpriteNameOfCreature += LGrove.CreatureSymbol_SpriteNameOfCreature;
+                    On.CreatureSymbol.ColorOfCreature += LGrove.CreatureSymbol_ColorOfCreature;
                 }
 
                 // world setup
