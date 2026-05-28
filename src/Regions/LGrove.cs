@@ -8,32 +8,28 @@ using RWCustom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using UnityEngine;
 using Watcher;
 using static Looker.Plugin;
 using LizardCosmetics;
+using static Looker.CWTs.SLeaserCWT;
 
 namespace Looker.Regions
 {
     public static class LGrove
     {
-        // the icon ID, cannot use numbers that other mods or vanilla uses or it will break
+        // The icon ID, must not collide with vanilla or other mods
         public const int ogsculeNumber = 9000;
 
-        // size of the ingame ogscule
+        // Size of the in-game ogscule sprite
         public const float ogsculeSize = 40f;
-
-        // put 0f to be constantly pointing upwards
-        public const float ogsculeRotation = 0f;
-
 
         public static IconSymbol.IconSymbolData CreatureSymbol_SymbolDataFromCreature(On.CreatureSymbol.orig_SymbolDataFromCreature orig, AbstractCreature creature)
         {
             IconSymbol.IconSymbolData value = orig(creature);
-
             if (!CheckMechanics(creature?.Room, "pillar", "WPGA")) return value;
-
             return new IconSymbol.IconSymbolData(creature.creatureTemplate.type, value.itemType, ogsculeNumber);
         }
 
@@ -45,24 +41,6 @@ namespace Looker.Regions
             }
             return orig(symbolData);
         }
-
-        public static Color CreatureSymbol_ColorOfCreature(On.CreatureSymbol.orig_ColorOfCreature orig, IconSymbol.IconSymbolData symbolData)
-        {
-            if (symbolData.intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
-            {
-                return Color.red;
-            }
-            return orig(symbolData);
-        }
-        public static Color ItemSymbol_ColorForItem(On.ItemSymbol.orig_ColorForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
-        {
-            if (intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
-            {
-                return Color.red;
-            }
-            return orig(itemType, intData);
-        }
-
         public static string ItemSymbol_SpriteNameForItem(On.ItemSymbol.orig_SpriteNameForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
         {
             string value = orig(itemType, intData);
@@ -73,53 +51,78 @@ namespace Looker.Regions
             return value;
         }
 
+        public static Color CreatureSymbol_ColorOfCreature(On.CreatureSymbol.orig_ColorOfCreature orig, IconSymbol.IconSymbolData symbolData)
+        {
+            if (symbolData.intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
+            {
+                return Color.red;
+            }
+            return orig(symbolData);
+        }
+
+        public static Color ItemSymbol_ColorForItem(On.ItemSymbol.orig_ColorForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
+        {
+            if (intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
+            {
+                return Color.red;
+            }
+            return orig(itemType, intData);
+        }
+
         public static IconSymbol.IconSymbolData? ItemSymbol_SymbolDataFromItem(On.ItemSymbol.orig_SymbolDataFromItem orig, AbstractPhysicalObject item)
         {
             IconSymbol.IconSymbolData? value = orig(item);
-
             if (!CheckMechanics(item?.Room, "pillar", "WPGA")) return value;
-
             return new IconSymbol.IconSymbolData(CreatureTemplate.Type.StandardGroundCreature, item.type, ogsculeNumber);
         }
-
-        public static bool ShouldApplyOgsculeEffect(IDrawable obj, out int mainSprite)
+        public static bool TryGetOgsculeMainSprite(IDrawable obj, out int mainSprite)
         {
             mainSprite = -1;
             if (obj == null) return false;
-            if (obj is ComplexGraphicsModule.GraphicsSubModule)
+
+            if (obj is GraphicsModule module)
             {
-                return true;
+                if (module.owner is Creature creature)
+                {
+                    if (module is ScavengerGraphics scavGraphics)
+                    {
+                        Log.LogMessage("Scav override!");
+                        mainSprite = scavGraphics.HeadSprite;
+                        return true;
+                    }
+                    if (module is VultureGraphics vultureGraphics)
+                    {
+                        mainSprite = vultureGraphics.HeadSprite;
+                        return true;
+                    }
+                    mainSprite = creature.mainBodyChunkIndex;
+                    if (mainSprite == -1) mainSprite = 0;
+                    return true;
+                }
+                else if (module.owner is PhysicalObject)
+                {
+                    mainSprite = 0;
+                    return true;
+                }
+                return false;
             }
+
             if (obj is PhysicalObject)
             {
                 mainSprite = 0;
                 return true;
             }
-            if (obj is GraphicsModule module)
-            {
-                mainSprite = 0;
-                if (module.owner?.bodyChunks != null && module.owner.bodyChunks.Length > 0)
-                {
-                    if (module.owner is Creature)
-                    {
-                        mainSprite = (module.owner as Creature).mainBodyChunkIndex;
-                    }
-                }
-                return true;
-            }
-            if (obj is LightSource light && light.tiedToObject is Creature)
-            {
-                return true;
-            }
-            if (obj is LizardBubble)
-            {
-                return true;
-            }
+
+            if (obj is LightSource light && light.tiedToObject is Creature) return true;
+            if (obj is LizardBubble) return true;
+
             return false;
         }
 
         public static void ApplyOgsculeEffect(RoomCamera.SpriteLeaser sLeaser, int mainSprite)
         {
+            if (sLeaser?.sprites == null) return;
+
             for (int i = 0; i < sLeaser.sprites.Length; i++)
             {
                 var sprite = sLeaser.sprites[i];
@@ -127,41 +130,29 @@ namespace Looker.Regions
 
                 if (i == mainSprite)
                 {
-                    if (sprite.element?.name != ogsculeSprite)
-                    {
-                        sprite.SetElementByName(ogsculeSprite);
-                    }
+                    if (sprite.element?.name != ogsculeSprite) sprite.SetElementByName(ogsculeSprite);
 
-                    // set stats even if not overriding, to make sure it properly updates every tick
                     sprite.height = ogsculeSize;
                     sprite.width = ogsculeSize;
-                    sprite.rotation = ogsculeRotation;
+                    sprite.rotation = 0f;
+                    sprite.isVisible = true;
                     sprite.MoveToFront();
 
-                    // in case colour isnt set every frame, it will just be set by the vanilla code instead
-                    if (!OptionsMenu.colorfulOgscules.Value)
-                    {
-                        sprite.color = Color.red;
-                    }
+                    if (!OptionsMenu.colorfulOgscules.Value) sprite.color = Color.red;
                 }
                 else
                 {
-                    // monoblack to make stuff transparent (may be overriden)
+                    sprite.isVisible = false;
                     sprite.color = new Color(0f, 0f, 0f, 0f);
 
-                    // isVisible to make the sprite not drawn (may be overriden)
-                    sprite.isVisible = false;
-
-                    // making triangle meshes have transparent color (like NeedleWorm body)
-                    if (sprite is TriangleMesh triMesh)
+                    if (sprite is TriangleMesh triMesh && triMesh.verticeColors != null)
                     {
                         for (int v = 0; v < triMesh.verticeColors.Length; v++)
                         {
                             triMesh.verticeColors[v] = new Color(0f, 0f, 0f, 0f);
                         }
                     }
-                    // making CustomFSprite have transparent color (like NeedleWorm wings/legs)
-                    else if (sprite is CustomFSprite customSprite)
+                    else if (sprite is CustomFSprite customSprite && customSprite.verticeColors != null)
                     {
                         for (int v = 0; v < customSprite.verticeColors.Length; v++)
                         {
@@ -172,45 +163,26 @@ namespace Looker.Regions
             }
         }
 
+        private static void MarkDirty(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, IDrawable obj)
+        {
+            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
+            if (!TryGetOgsculeMainSprite(obj, out int mainSprite)) return;
+
+            if (!sleaserCWT.TryGetValue(sLeaser, out var data)) return;
+            data.ogsculeSprite = mainSprite;
+            data.dirty = true;
+        }
+
         public static void GraphicsModule_DrawSprites(On.GraphicsModule.orig_DrawSprites orig, GraphicsModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
-
-            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
-
-            int mainSprite = 0;
-            if (self.owner is Creature creature)
-            {
-                mainSprite = creature.mainBodyChunkIndex;
-            }
-            ApplyOgsculeEffect(sLeaser, mainSprite);
-        }
-
-        public static void SpriteLeaser_Update(On.RoomCamera.SpriteLeaser.orig_Update orig, RoomCamera.SpriteLeaser self, float timeStacker, RoomCamera rCam, Vector2 camPos)
-        {
-            orig(self, timeStacker, rCam, camPos);
-
-            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
-
-            // Creatures are handled by GraphicsModule_DrawSprites to avoid being overwritten
-            if (self?.drawableObject is GraphicsModule) return;
-            if (!ShouldApplyOgsculeEffect(self?.drawableObject, out int mainSprite)) return;
-
-            ApplyOgsculeEffect(self, mainSprite);
+            MarkDirty(sLeaser, rCam, self);
         }
 
         public static void ComplexGraphicsModule_DrawSprites(On.ComplexGraphicsModule.orig_DrawSprites orig, ComplexGraphicsModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
-
-            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
-
-            int mainSprite = 0;
-            if (self.owner is Creature creature)
-            {
-                mainSprite = creature.mainBodyChunkIndex;
-            }
-            ApplyOgsculeEffect(sLeaser, mainSprite);
+            MarkDirty(sLeaser, rCam, self);
         }
 
         public static void GraphicsSubModule_DrawSprites(On.ComplexGraphicsModule.GraphicsSubModule.orig_DrawSprites orig, ComplexGraphicsModule.GraphicsSubModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -218,17 +190,38 @@ namespace Looker.Regions
             orig(self, sLeaser, rCam, timeStacker, camPos);
 
             if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
+            if (self.owner == null) return;
 
-            // Hide all sprites (arms, legs, tails), no main sprite to turn into ogscule here
-            for (int i = 0; i < sLeaser.sprites.Length; i++)
-            {
-                FSprite sprite = sLeaser.sprites[i];
-                if (sprite == null) continue;
-                sprite.color = new Color(0f, 0f, 0f, 0f);
-                sprite.isVisible = false;
-            }
+            if (!TryGetOgsculeMainSprite(self.owner, out int mainSprite)) return;
+
+            if (!sleaserCWT.TryGetValue(sLeaser, out var data)) return;
+            data.ogsculeSprite = mainSprite;
+            data.dirty = true;
         }
 
+        public static void SpriteLeaser_Update(On.RoomCamera.SpriteLeaser.orig_Update orig, RoomCamera.SpriteLeaser self, float timeStacker, RoomCamera rCam, Vector2 camPos)
+        {
+            orig(self, timeStacker, rCam, camPos);
 
+            if (self?.drawableObject is GraphicsModule) return;
+            MarkDirty(self, rCam, self?.drawableObject);
+        }
+
+        public static void RoomCamera_DrawUpdate(On.RoomCamera.orig_DrawUpdate orig, RoomCamera self, float timeStacker, float timeSpeed)
+        {
+            orig(self, timeStacker, timeSpeed);
+
+            if (!CheckMechanics(self?.room, "pillar", "WPGA")) return;
+            if (self.spriteLeasers == null) return;
+
+            foreach (var sLeaser in self.spriteLeasers)
+            {
+                if (sLeaser == null) continue;
+                if (!SLeaserCWT.TryGetData(sLeaser, out var state)) continue;
+                if (!state.dirty) continue;
+                ApplyOgsculeEffect(sLeaser, state.ogsculeSprite);
+                state.dirty = false;
+            }
+        }
     }
 }

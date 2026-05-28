@@ -350,6 +350,7 @@ namespace Looker
                     On.CreatureSymbol.SymbolDataFromCreature += LGrove.CreatureSymbol_SymbolDataFromCreature;
                     On.CreatureSymbol.SpriteNameOfCreature += LGrove.CreatureSymbol_SpriteNameOfCreature;
                     On.CreatureSymbol.ColorOfCreature += LGrove.CreatureSymbol_ColorOfCreature;
+                    On.RoomCamera.DrawUpdate += LGrove.RoomCamera_DrawUpdate;
                 }
 
                 // world setup
