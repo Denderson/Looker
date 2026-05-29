@@ -14,7 +14,6 @@ using UnityEngine;
 using Watcher;
 using static Looker.Plugin;
 using LizardCosmetics;
-using static Looker.CWTs.SLeaserCWT;
 
 namespace Looker.Regions
 {
@@ -75,8 +74,9 @@ namespace Looker.Regions
             if (!CheckMechanics(item?.Room, "pillar", "WPGA")) return value;
             return new IconSymbol.IconSymbolData(CreatureTemplate.Type.StandardGroundCreature, item.type, ogsculeNumber);
         }
-        public static bool TryGetOgsculeMainSprite(IDrawable obj, out int mainSprite)
+        public static bool TryGetOgsculeMainSprite(IDrawable obj, out int mainSprite, out Color? overrideColor)
         {
+            overrideColor = null;
             mainSprite = -1;
             if (obj == null) return false;
 
@@ -95,11 +95,17 @@ namespace Looker.Regions
                         mainSprite = vultureGraphics.HeadSprite;
                         return true;
                     }
+                    if (module is LizardGraphics lizardGraphics)
+                    {
+                        mainSprite = lizardGraphics.SpriteHeadStart;
+                        overrideColor = lizardGraphics.effectColor;
+                        return true;
+                    }
                     mainSprite = creature.mainBodyChunkIndex;
                     if (mainSprite == -1) mainSprite = 0;
                     return true;
                 }
-                else if (module.owner is PhysicalObject)
+                else if (module.owner is not null)
                 {
                     mainSprite = 0;
                     return true;
@@ -119,7 +125,7 @@ namespace Looker.Regions
             return false;
         }
 
-        public static void ApplyOgsculeEffect(RoomCamera.SpriteLeaser sLeaser, int mainSprite)
+        public static void ApplyOgsculeEffect(RoomCamera.SpriteLeaser sLeaser, int mainSprite, Color? overrideColor = null)
         {
             if (sLeaser?.sprites == null) return;
 
@@ -138,7 +144,14 @@ namespace Looker.Regions
                     sprite.isVisible = true;
                     sprite.MoveToFront();
 
-                    if (!OptionsMenu.colorfulOgscules.Value) sprite.color = Color.red;
+                    if (!OptionsMenu.colorfulOgscules.Value)
+                    {
+                        sprite.color = Color.red;
+                    }
+                    else if (overrideColor != null)
+                    {
+                        sprite.color = overrideColor.Value;
+                    }
                 }
                 else
                 {
@@ -166,11 +179,12 @@ namespace Looker.Regions
         private static void MarkDirty(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, IDrawable obj)
         {
             if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
-            if (!TryGetOgsculeMainSprite(obj, out int mainSprite)) return;
+            if (!TryGetOgsculeMainSprite(obj, out int mainSprite, out Color? overrideColor)) return;
 
-            if (!sleaserCWT.TryGetValue(sLeaser, out var data)) return;
+            if (!SLeaserCWT.TryGetData(sLeaser, out var data)) return;
             data.ogsculeSprite = mainSprite;
             data.dirty = true;
+            data.overrideColor = overrideColor;
         }
 
         public static void GraphicsModule_DrawSprites(On.GraphicsModule.orig_DrawSprites orig, GraphicsModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
@@ -192,11 +206,12 @@ namespace Looker.Regions
             if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
             if (self.owner == null) return;
 
-            if (!TryGetOgsculeMainSprite(self.owner, out int mainSprite)) return;
+            if (!TryGetOgsculeMainSprite(self.owner, out int mainSprite, out Color? overrideColor)) return;
 
-            if (!sleaserCWT.TryGetValue(sLeaser, out var data)) return;
+            if (!SLeaserCWT.TryGetData(sLeaser, out var data)) return;
             data.ogsculeSprite = mainSprite;
             data.dirty = true;
+            data.overrideColor = overrideColor;
         }
 
         public static void SpriteLeaser_Update(On.RoomCamera.SpriteLeaser.orig_Update orig, RoomCamera.SpriteLeaser self, float timeStacker, RoomCamera rCam, Vector2 camPos)

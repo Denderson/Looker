@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Looker.CWTs
 {
@@ -26,6 +27,7 @@ namespace Looker.CWTs
         {
             public int ogsculeSprite = -1;
             public bool dirty = false;
+            public Color? overrideColor = null;
         }
     }
 }
