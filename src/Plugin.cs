@@ -19,6 +19,7 @@ using System.Security.Permissions;
 using UnityEngine;
 using MoreSlugcats;
 using Watcher;
+using Looker.CustomEvents;
 
 #pragma warning disable CS0618
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -173,8 +174,6 @@ namespace Looker
                     On.Player.Update += LPlayer_Flower.Player_Update;
                     On.Player.Die += LPlayer_Flower.Player_Die;
                     On.Player.SpitOutOfShortCut += LPlayer_Flower.Player_SpitOutOfShortCut;
-
-                    On.PlayerGraphics.InitiateSprites += LPlayer_Flower.PlayerGraphics_InitiateSprites;
 
                     On.Room.MaterializeRippleSpawn += LPlayer_Flower.Room_MaterializeRippleSpawn;
                     On.DaddyCorruption.SentientRotMode += LMisc.DaddyCorruption_SentientRotMode;
@@ -404,6 +403,7 @@ namespace Looker
                 isInit = true;
 
                 WorldLoader.Preprocessing.preprocessorConditions.Add(LookerConditionsClass.LookerConditions);
+                LookerEvents.RegisterLookerEvents();
 
                 Logger.LogMessage("LOOKER HOOKS SUCESS");
             }

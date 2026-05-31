@@ -39,6 +39,9 @@
       <Reference Include="HOOKS-Assembly-CSharp">
         <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\HOOKS-Assembly-CSharp.dll</HintPath>
       </Reference>
+      <Reference Include="lsfUtils">
+        <HintPath>..\..\Stardust-Famine\lsfutils\bin\Debug\net48\lsfUtils.dll</HintPath>
+      </Reference>
       <Reference Include="Mono.Cecil">
         <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Mono.Cecil.dll</HintPath>
       </Reference>

@@ -471,20 +471,6 @@ namespace Looker
             }
         }
 
-        public static void PlayerGraphics_InitiateSprites(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
-        {
-            orig(self, sLeaser, rCam);
-            if (self.player?.SlugCatClass == LookerEnums.looker)
-            {
-                sLeaser.sprites[0].shader = Custom.rainWorld.Shaders["PlayerCamoMaskBeforePlayer"];
-                for (int i = 1; i < 10; i++)
-                {
-                    sLeaser.sprites[i].shader = Custom.rainWorld.Shaders["RippleBasicBothSides"];
-                }
-                sLeaser.sprites[11].shader = Custom.rainWorld.Shaders["RippleBasicBothSides"];
-            }
-        }
-
         public static void Room_MaterializeRippleSpawn(On.Room.orig_MaterializeRippleSpawn orig, Room self, Vector2 spawnPos, Room.RippleSpawnSource source)
         {
             if (!self.game.IsStorySession || self.game.StoryCharacter != LookerEnums.looker)
