@@ -520,8 +520,8 @@ namespace Looker.Regions
         {
             if (self.saveStateNumber == LookerEnums.looker)
             {
-                self.respawnCreatures = new List<int> { };
-                self.waitRespawnCreatures = new List<int> { };
+                self.respawnCreatures = [];
+                self.waitRespawnCreatures = [];
             }
             return orig(self);
         }

@@ -219,42 +219,6 @@ namespace Looker
                         data.chaserpos = new IntVector2();
                     }
                 }
-
-                data.previousKarmaMode = data.karmaMode;
-                if (self.grasps.Length != 0)
-                {
-                    bool flag = false;
-                    for (int i = 0; i < self.grasps.Length; i++)
-                    {
-                        if (self.grasps[i]?.grabbed is VultureMask && (self.grasps[i].grabbed as VultureMask).abstractPhysicalObject.ID == SpecialId)
-                        {
-                            data.karmaMode = true;
-                            flag = true;
-                        }
-                        if (!flag) data.karmaMode = false;
-                    }
-                }
-                if (data.darknessImmunity > 0)
-                {
-                    retractDarkness = true;
-                    data.darknessImmunity--;
-                }
-                else
-                {
-                    retractDarkness = false;
-                }
-                if (darknessProgress > 0.8)
-                {
-                    self.eyesClosedTime = 10;
-                    self.slowMovementStun = 40;
-                    if (darknessProgress >= 1 && data.darknessImmunity <= 0)
-                    {
-                        if (!OptionsMenu.weakerDarkness.Value && !CheckEasyMode(self.room) && !self.dead)
-                        {
-                            self.Die();
-                        }
-                    }
-                }
             }
         }
 

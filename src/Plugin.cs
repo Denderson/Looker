@@ -20,6 +20,8 @@ using UnityEngine;
 using MoreSlugcats;
 using Watcher;
 using Looker.CustomEvents;
+using lsfUtils;
+using lsfUtils.CWTs;
 
 #pragma warning disable CS0618
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -99,6 +101,22 @@ namespace Looker
         public static readonly Color BoxWormColor = new(0.63f, 0.5f, 0.5f);
         public static readonly EntityID SpecialId = new(1, -50);
 
+        public static string GetRegionName(Region region)
+        {
+            if (region == null)
+            {
+                return null;
+            }
+            if (RegionCWT.TryGetCustomRegionParams(region, out var data))
+            {
+                if (data.LookerMechanicOverride != null)
+                {
+                    return data.LookerMechanicOverride;
+                }
+            }
+            return region.name;
+        }
+
         public static bool CheckMechanics(Room room, string originalRegionName, string originalRegionAcronym)
         {
             if (room?.world?.region?.name == null || room.game?.StoryCharacter != LookerEnums.looker || room.abstractRoom.shelter || room.AnyWarpPointBeingActivated || OptionsMenu.devMode.Value)
@@ -106,7 +124,7 @@ namespace Looker
                 return false;
             }
 
-            string regionName = room.world.region.name;
+            string regionName = GetRegionName(room.world.region);
             string subregionName = room.abstractRoom.subregionName?.ToLowerInvariant();
 
             return (regionName == originalRegionAcronym) ||
@@ -120,7 +138,7 @@ namespace Looker
                 return false;
             }
 
-            string regionName = game.world.region.name;
+            string regionName = GetRegionName(game.world.region);
             string subregionName = game.cameras[0].room.abstractRoom?.subregionName?.ToLowerInvariant();
 
             return (regionName == originalRegionAcronym) ||
@@ -134,7 +152,7 @@ namespace Looker
                 return false;
             }
 
-            string regionName = abstractRoom.world.region.name;
+            string regionName = GetRegionName(abstractRoom.world.region);
             string subregionName = abstractRoom.subregionName?.ToLowerInvariant();
 
             return (regionName == originalRegionAcronym) ||
@@ -210,23 +228,11 @@ namespace Looker
 
                 // mask and aether ridge mechanics
                 {
-                    On.HUD.KarmaMeter.ctor += KarmaMask.KarmaMeter_ctor;
-
-                    On.VultureMask.ctor += KarmaMask.VultureMask_ctor;
-                    On.MoreSlugcats.VultureMaskGraphics.DrawSprites += KarmaMask.VultureMaskGraphics_DrawSprites;
-                    On.MoreSlugcats.VultureMaskGraphics.ctor_PhysicalObject_AbstractVultureMask_int += KarmaMask.VultureMaskGraphics_ctor;
-                    On.MoreSlugcats.VultureMaskGraphics.ctor_PhysicalObject_MaskType_int_string += KarmaMask.VultureMaskGraphics_ctor_PhysicalObject_MaskType_int_string;
-
-                    On.VultureMask.Update += KarmaMask.VultureMask_Update;
-
-                    On.HUD.KarmaMeter.Update += KarmaMask.KarmaMeter_Update;
-
                     On.SaveState.GetSaveStateDenToUse += KarmaMask.SaveState_GetSaveStateDenToUse;
                     On.Player.ctor += KarmaMask.Player_ctor;
 
-                    On.ItemSymbol.SymbolDataFromItem += KarmaMask.ItemSymbol_SymbolDataFromItem;
-                    On.ItemSymbol.SpriteNameForItem += KarmaMask.ItemSymbol_SpriteNameForItem;
-                    On.ItemSymbol.ColorForItem += KarmaMask.ItemSymbol_ColorForItem;
+                    On.HUD.KarmaMeter.ctor += KarmaMask.KarmaMeter_ctor;
+
                 }
 
                 // signal spires mechanics
@@ -236,19 +242,6 @@ namespace Looker
                     On.VultureGrub.Act += LSignal.VultureGrub_Act;
                     On.Player.ThrowObject += LSignal.Player_ThrowObject;
                     On.VultureGrub.Violence += LSignal.VultureGrub_Violence;
-                }
-
-                // sunlit port and badlands mechanics
-
-                {
-                    On.RoomCamera.Update += LSunlit_Badlands.RoomCamera_Update;
-
-                    On.Lantern.Update += LSunlit_Badlands.Lantern_Update;
-                    On.LanternStick.Update += LSunlit_Badlands.LanternStick_Update;
-
-                    On.ScavengerAbstractAI.InitGearUp += LSunlit_Badlands.ScavengerAbstractAI_InitGearUp;
-
-                    On.LightSource.Update += LSunlit_Badlands.LightSource_Update;
                 }
 
                 // coral caves and migration path mechanics
