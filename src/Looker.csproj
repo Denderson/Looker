@@ -25,62 +25,62 @@
         <Delete Files="@(RemovePlugins)" />
         <Copy SourceFiles="@(CopyPlugins)" DestinationFolder="../mod/newest/plugins/" />
     </Target>
-    
-    <ItemGroup>
-      <Reference Include="Assembly-CSharp-firstpass">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Assembly-CSharp-firstpass.dll</HintPath>
-      </Reference>
-      <Reference Include="BepInEx">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\BepInEx.dll</HintPath>
-      </Reference>
-      <Reference Include="Fisobs">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Fisobs.dll</HintPath>
-      </Reference>
-      <Reference Include="HOOKS-Assembly-CSharp">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\HOOKS-Assembly-CSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="lsfUtils">
-        <HintPath>..\..\Stardust-Famine\lsfutils\bin\Debug\net48\lsfUtils.dll</HintPath>
-      </Reference>
-      <Reference Include="Mono.Cecil">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Mono.Cecil.dll</HintPath>
-      </Reference>
-      <Reference Include="MonoMod.Common">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\MonoMod.Common.dll</HintPath>
-      </Reference>
-      <Reference Include="MonoMod.RuntimeDetour">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\MonoMod.RuntimeDetour.dll</HintPath>
-      </Reference>
-      <Reference Include="MonoMod.Utils">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\MonoMod.Utils.dll</HintPath>
-      </Reference>
-      <Reference Include="Newtonsoft.Json">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Newtonsoft.Json.dll</HintPath>
-      </Reference>
-      <Reference Include="Pom">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Pom.dll</HintPath>
-      </Reference>
-      <Reference Include="Assembly-CSharp">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\PUBLIC-Assembly-CSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="SlugBase">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\SlugBase.dll</HintPath>
-      </Reference>
-      <Reference Include="Unity.Mathematics">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Unity.Mathematics.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.CoreModule">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.CoreModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.InputLegacyModule">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.InputLegacyModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.InputModule">
-        <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.InputModule.dll</HintPath>
-      </Reference>
-    </ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp-firstpass">
+		  <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInEx">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\BepInEx.dll</HintPath>
+		</Reference>
+		<Reference Include="Fisobs">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Fisobs.dll</HintPath>
+		</Reference>
+		<Reference Include="HOOKS-Assembly-CSharp">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\HOOKS-Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="lsfUtils">
+			<HintPath>..\..\Stardust-Famine\lsfutils\bin\Debug\net48\lsfUtils.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Cecil">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Mono.Cecil.dll</HintPath>
+		</Reference>
+		<Reference Include="MonoMod.Common">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\MonoMod.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="MonoMod.RuntimeDetour">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\MonoMod.RuntimeDetour.dll</HintPath>
+		</Reference>
+		<Reference Include="MonoMod.Utils">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\MonoMod.Utils.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="Pom">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Pom.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+		  <HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\PUBLIC-Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="SlugBase">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\SlugBase.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Mathematics">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Unity.Mathematics.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.InputLegacyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputModule">
+			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\UnityEngine.InputModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
     
 </Project>

@@ -230,6 +230,54 @@ namespace Looker
                 self.blink = 0;
             }
         }
+        public static string PlayerGraphics_DefaultFaceSprite_float_int(On.PlayerGraphics.orig_DefaultFaceSprite_float_int orig, PlayerGraphics self, float eyeScale, int imgIndex)
+        {
+            if (self?.player != null && self.player.SlugCatClass == LookerEnums.looker )
+            {
+                if (self.RenderAsPup)
+                {
+                    return self._cachedFaceSpriteNames[0, 4, imgIndex];
+                }
+                else if (self.blink == 0)
+                {
+                    return self._cachedFaceSpriteNames[2, 0, imgIndex];
+                }
+                else
+                {
+                    return self._cachedFaceSpriteNames[2, 1, imgIndex];
+
+                }
+            }
+            else return
+            orig(self, eyeScale, imgIndex);
+        }
+        public static void PlayerGraphics_InitCachedSpriteNames(On.PlayerGraphics.orig_InitCachedSpriteNames orig, PlayerGraphics self)
+        {
+            self._cachedFaceSpriteNames = new AGCachedStrings3Dim(new string[]
+            {
+            "Face",
+            "PFace",
+            "LookerFace"
+            }, new string[]
+            {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+            }, 9);
+            self._cachedHeads = new AGCachedStrings2Dim(new string[]
+            {
+            "HeadA",
+            "HeadB",
+            "HeadC"
+            }, 18);
+            self._cachedPlayerArms = new AGCachedStrings("PlayerArm", 13);
+            self._cachedLegsA = new AGCachedStrings("LegsA", 31);
+            self._cachedLegsACrawling = new AGCachedStrings("LegsACrawling", 31);
+            self._cachedLegsAClimbing = new AGCachedStrings("LegsAClimbing", 31);
+            self._cachedLegsAOnPole = new AGCachedStrings("LegsAOnPole", 31);
+        }
         public static void Player_Die(On.Player.orig_Die orig, Player self)
         {
             bool wasDead = self.dead;
@@ -429,9 +477,17 @@ namespace Looker
         public static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
-            if (sLeaser?.sprites is { Length: > 9 } && self?.player?.SlugCatClass == LookerEnums.looker && PlayerCWT.TryGetData(self?.player, out PlayerCWT.DataClass data) && data.fakingDeath > 0)
+            if (sLeaser?.sprites is { Length: > 9 } && self?.player?.SlugCatClass == LookerEnums.looker)
             {
-                sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("FaceDead");
+                if ((PlayerCWT.TryGetData(self?.player, out PlayerCWT.DataClass data) && data.fakingDeath > 0) || self.player.dead)
+
+                {
+                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("LookerFaceDead");
+                }
+                else if (!self.player.Consious)
+                {
+                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("LookerFaceStunned");
+                }
             }
         }
 

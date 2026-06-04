@@ -207,7 +207,8 @@ namespace Looker
 
                     On.PlayerGraphics.DrawSprites += LPlayer_Flower.PlayerGraphics_DrawSprites;
                     On.PlayerGraphics.Update += LPlayer_Flower.PlayerGraphics_Update;
-
+                    On.PlayerGraphics.DefaultFaceSprite_float_int += LPlayer_Flower.PlayerGraphics_DefaultFaceSprite_float_int;
+                    On.PlayerGraphics.InitCachedSpriteNames += LPlayer_Flower.PlayerGraphics_InitCachedSpriteNames;
                     
                 }
 
@@ -466,6 +467,7 @@ namespace Looker
             Futile.atlasManager.LoadImage(lookerRippleSmall);
             Futile.atlasManager.LoadImage(templarMaskIcon);
             Futile.atlasManager.LoadImage(lookerIntroRoll);
+            Futile.atlasManager.LoadAtlas("atlases/LookerFace");
         }
     }
 }
