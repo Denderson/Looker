@@ -278,6 +278,28 @@ namespace Looker
             self._cachedLegsAClimbing = new AGCachedStrings("LegsAClimbing", 31);
             self._cachedLegsAOnPole = new AGCachedStrings("LegsAOnPole", 31);
         }
+
+        public static string JollyPlayerSelector_GetPupButtonOffName(On.JollyCoop.JollyMenu.JollyPlayerSelector.orig_GetPupButtonOffName orig, JollyCoop.JollyMenu.JollyPlayerSelector self)
+        {
+            if (self.JollyOptions(self.index).PlayerClass != null && self.JollyOptions(self.index).PlayerClass.value.Equals("looker"))
+            {
+                return "looker_pup_off";
+            }
+            else return
+            orig(self);
+        }
+
+        public static void SymbolButtonToggle_LoadIcon(On.JollyCoop.JollyMenu.SymbolButtonToggle.orig_LoadIcon orig, JollyCoop.JollyMenu.SymbolButtonToggle self)
+        {
+            if (self.symbolNameOff.Contains("looker") && self.isToggled)
+            {
+                self.symbol.fileName = "looker_pup_on";
+            }
+            else { orig.Invoke(self); }
+           
+        }
+
+
         public static void Player_Die(On.Player.orig_Die orig, Player self)
         {
             bool wasDead = self.dead;
@@ -356,37 +378,16 @@ namespace Looker
             {
                 data.shouldSpawnCopies = false;
             }
-            if (roomName.StartsWith("WARA") && CheckMechanics(self.room, "signal", "WPTA"))
+            if (roomName.StartsWith("WARA") && CheckMechanics(self.room, "signal", "WPTA") && Plugin.delayedTutorial != null)
             {
                 Plugin.delayedTutorial = "WPTA";
             }
 
-            if (roomName.StartsWith("WORA_THRONE"))
+            if (roomName == "WORA_AI")
             {
                 SaveFileCode.SetBool(self.room.game.GetStorySession.saveState, "ReachedThrone", true);
             }
 
-            if (roomName == "WORA_AI")
-            {
-                bool flag = true;
-                for (int i = 0; i < newRoom.physicalObjects.Length; i++)
-                {
-                    for (int j = 0; j < newRoom.physicalObjects[i].Count; j++)
-                    {
-                        if (newRoom.physicalObjects[i][j] is VultureMask)
-                        {
-                            flag = false;
-                        }
-                    }
-                }
-                if (flag)
-                {
-                    Log.LogMessage("Spawning karma mask!");
-                    VultureMask.AbstractVultureMask abstractVultureMask = new(newRoom.world, null, newRoom.GetWorldCoordinate(new Vector2(1050f, 400f)), SpecialId, self.abstractCreature.ID.RandomSeed, false);
-                    self.room.abstractRoom.AddEntity(abstractVultureMask);
-                    abstractVultureMask.RealizeInRoom();
-                }
-            }
 
             if (Plugin.delayedTutorial != null)
             {
@@ -470,7 +471,7 @@ namespace Looker
 
             if (data.inShelter)
             {
-                KarmaMask.CheckMaskMechanics(newRoom);
+                LMask.CheckMaskMechanics(newRoom);
             }
         }
 

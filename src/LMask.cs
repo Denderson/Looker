@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using static Looker.Plugin;
+using lsfUtils;
+using lsfUtils.Items.KarmaMask;
 
 namespace Looker
 {
-    public static class KarmaMask
+    public static class LMask
     {
         public static bool RippleLadderMode(Func<Menu.KarmaLadderScreen, bool> orig, Menu.KarmaLadderScreen self)
         {
@@ -78,24 +80,21 @@ namespace Looker
             {
                 foreach (PhysicalObject item in room.physicalObjects[i])
                 {
-                    if (item is VultureMask mask)
+                    if (item is KarmaMask mask)
                     {
-                        if (mask.abstractPhysicalObject.ID == SpecialId)
+                        string newshelter = CleansedShelter(room, out bool successful);
+                        if (successful)
                         {
-                            string newshelter = CleansedShelter(room, out bool successful);
-                            if (successful)
+                            Log.LogMessage("Mask triggered successfully!");
+                            SaveFileCode.SetString(room.game.GetStorySession.saveState, "OverrideShelter", newshelter);
+                            SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
+                            mask.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, mask.abstractPhysicalObject.pos.Vec2(), 1f, 1f);
+                            for (int j = 0; j < 20; j++)
                             {
-                                Log.LogMessage("Mask triggered successfully!");
-                                SaveFileCode.SetString(room.game.GetStorySession.saveState, "OverrideShelter", newshelter);
-                                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
-                                mask.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, mask.abstractPhysicalObject.pos.Vec2(), 1f, 1f);
-                                for (int j = 0; j < 20; j++)
-                                {
-                                    mask.room.AddObject(new Spark(mask.abstractPhysicalObject.pos.Vec2(), Custom.RNV() * (25f * UnityEngine.Random.value), RainWorld.GoldRGB, null, 70, 150));
-                                }
-                                mask.Destroy();
-                                return;
+                                mask.room.AddObject(new Spark(mask.abstractPhysicalObject.pos.Vec2(), Custom.RNV() * (25f * UnityEngine.Random.value), RainWorld.GoldRGB, null, 70, 150));
                             }
+                            mask.Destroy();
+                            return;
                         }
                         else usingMask = true;
                     }
@@ -159,9 +158,9 @@ namespace Looker
             {
                 if (SaveFileCode.GetBool(world.game.GetStorySession.saveState, "CreateMask"))
                 {
-                    VultureMask.AbstractVultureMask abstractVultureMask = new(world, null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), SpecialId, self.abstractCreature.ID.RandomSeed, false);
-                    self.room.abstractRoom.AddEntity(abstractVultureMask);
-                    abstractVultureMask.RealizeInRoom();
+                    KarmaMask.AbstractVultureMask abstractKarmaMask = new(world, null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), self.abstractCreature.ID, 0, false);
+                    self.room.abstractRoom.AddEntity(abstractKarmaMask);
+                    abstractKarmaMask.RealizeInRoom();
                 }
                 return;
             }

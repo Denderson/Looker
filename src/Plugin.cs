@@ -43,7 +43,6 @@ namespace Looker
         public const string ogsculeIcon = "atlases/ogsculeIcon";
         public const string lookerRippleSmall = "atlases/lookerRippleSmall";
         public const string lookerRippleBig = "atlases/lookerRippleBig";
-        public const string templarMaskIcon = "atlases/templarMaskIcon";
         public const string lookerIntroRoll = "illustrations/intro_roll_c_looker";
 
         public static int MaxRippleDuration()
@@ -209,7 +208,9 @@ namespace Looker
                     On.PlayerGraphics.Update += LPlayer_Flower.PlayerGraphics_Update;
                     On.PlayerGraphics.DefaultFaceSprite_float_int += LPlayer_Flower.PlayerGraphics_DefaultFaceSprite_float_int;
                     On.PlayerGraphics.InitCachedSpriteNames += LPlayer_Flower.PlayerGraphics_InitCachedSpriteNames;
-                    
+
+                    On.JollyCoop.JollyMenu.JollyPlayerSelector.GetPupButtonOffName += LPlayer_Flower.JollyPlayerSelector_GetPupButtonOffName;
+                    On.JollyCoop.JollyMenu.SymbolButtonToggle.LoadIcon += LPlayer_Flower.SymbolButtonToggle_LoadIcon;
                 }
 
                 // progression
@@ -229,10 +230,10 @@ namespace Looker
 
                 // mask and aether ridge mechanics
                 {
-                    On.SaveState.GetSaveStateDenToUse += KarmaMask.SaveState_GetSaveStateDenToUse;
-                    On.Player.ctor += KarmaMask.Player_ctor;
+                    On.SaveState.GetSaveStateDenToUse += LMask.SaveState_GetSaveStateDenToUse;
+                    On.Player.ctor += LMask.Player_ctor;
 
-                    On.HUD.KarmaMeter.ctor += KarmaMask.KarmaMeter_ctor;
+                    On.HUD.KarmaMeter.ctor += LMask.KarmaMeter_ctor;
 
                 }
 
@@ -369,11 +370,11 @@ namespace Looker
 
                 // manual hooks
                 {
-                    new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.RippleLadderMode)).GetGetMethod(), typeof(KarmaMask).GetMethod(nameof(KarmaMask.RippleLadderMode)));
+                    new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.RippleLadderMode)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.RippleLadderMode)));
 
-                    new Hook(typeof(RegionGate).GetProperty(nameof(RegionGate.MeetRequirement))!.GetGetMethod(), typeof(KarmaMask).GetMethod(nameof(KarmaMask.Meet_Requirement)));
+                    new Hook(typeof(RegionGate).GetProperty(nameof(RegionGate.MeetRequirement))!.GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Meet_Requirement)));
 
-                    new Hook(typeof(Player).GetProperty(nameof(Player.OutsideWatcherCampaign)).GetGetMethod(), typeof(KarmaMask).GetMethod(nameof(KarmaMask.Outside_Watcher)));
+                    new Hook(typeof(Player).GetProperty(nameof(Player.OutsideWatcherCampaign)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Outside_Watcher)));
 
                     new Hook(typeof(Player).GetProperty(nameof(Player.rippleLevel)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.PlayerRippleLevel)));
                     new Hook(typeof(Player).GetProperty(nameof(Player.maxRippleLevel)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.PlayerMaxRippleLevel)));
@@ -465,7 +466,6 @@ namespace Looker
             Futile.atlasManager.LoadImage(ogsculeIcon);
             Futile.atlasManager.LoadImage(lookerRippleBig);
             Futile.atlasManager.LoadImage(lookerRippleSmall);
-            Futile.atlasManager.LoadImage(templarMaskIcon);
             Futile.atlasManager.LoadImage(lookerIntroRoll);
             Futile.atlasManager.LoadAtlas("atlases/LookerFace");
         }
