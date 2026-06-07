@@ -154,17 +154,16 @@ namespace Looker
         public static void Player_ctor(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
         {
             orig(self, abstractCreature, world);
-            if (world.game?.StoryCharacter == LookerEnums.looker)
+            if (world?.game?.StoryCharacter == LookerEnums.looker)
             {
                 if (SaveFileCode.GetBool(world.game.GetStorySession.saveState, "CreateMask"))
                 {
-                    KarmaMask.AbstractVultureMask abstractKarmaMask = new(world, null, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), self.abstractCreature.ID, 0, false);
+                    KarmaMaskAbstract abstractKarmaMask = new(world, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), self.abstractCreature.ID, -1, -1, null);
                     self.room.abstractRoom.AddEntity(abstractKarmaMask);
                     abstractKarmaMask.RealizeInRoom();
                 }
                 return;
             }
-
         }
     }
 }
