@@ -372,7 +372,7 @@ namespace Looker
                 {
                     new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.RippleLadderMode)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.RippleLadderMode)));
 
-                    new Hook(typeof(RegionGate).GetProperty(nameof(RegionGate.MeetRequirement))!.GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Meet_Requirement)));
+                    //new Hook(typeof(RegionGate).GetProperty(nameof(RegionGate.MeetRequirement))!.GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Meet_Requirement)));
 
                     new Hook(typeof(Player).GetProperty(nameof(Player.OutsideWatcherCampaign)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Outside_Watcher)));
 

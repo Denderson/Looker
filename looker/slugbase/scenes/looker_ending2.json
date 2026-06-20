@@ -1,0 +1,16 @@
+{
+	"id": "looker_ending2",
+	"scene_folder": "scenes/ending 2",
+	"images": [
+    	    {"name": "mask - flat", "pos": [0, 100], "depth": -1.0, "flatmode": true},
+		{ "name": "mask - 6", "pos": [0, 100], "depth": 5.7, "shader": "Basic" },
+		{ "name": "mask - 5", "pos": [0, 100], "depth": 4.2, "shader": "Basic" },
+		{ "name": "mask - 4", "pos": [0, 100], "depth": 2.9, "shader": "Basic" },
+		{ "name": "mask - 3", "pos": [0, 100], "depth": 2.2, "shader": "Basic" },
+		{ "name": "mask - 2 - looker", "pos": [0, 100], "depth": 2.1, "shader": "Basic" },
+		{ "name": "mask - 1", "pos": [0, 100], "depth": 1.9, "shader": "Basic" }
+	],
+	"idle_depths": [ 2.1 ],
+	"select_menu_pos": [0, 0],
+	"slugcat_depth": 2.1
+}

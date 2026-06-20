@@ -1,0 +1,6 @@
+DangerType: Flood
+Clouds: 0.07608695
+Grime: 0.1956522
+BkgDroneVolume: 0.2769565
+PlacedObjects: RottenDangleFruit><197.1321><403.1501><-294~60~2~3, RottenDangleFruit><164.9713><360.8021><-258~17~2~3, RottenDangleFruit><236.397><394.6143><-338~153~2~3, DeadTokenStalk><487.6984><410.0998><-11~72, DeadTokenStalk><427.8035><407.0367><-8~73, PassiveCorruption><761.868><260.4003><19~94~102.9999~98~7~15~0.8~0.3~0.55~0.05~0.15~0.1130437~0.2~Default~Dot~Passive~2~0~1, PassiveCorruption><467.0969><254.9249><59~131~-602~-216~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, PassiveCorruption><183.8048><362.0577><-5~117~-386~-136~7~15~0.8~0.3~0.55~0.05~0.15~0.1673912~0.2~Default~Dot~Passive~2~0~1, 
+AmbientSounds: SPOT><AM_ENV-LightWind.ogg><755.9447><514.7042><0.2717391><1><376.9447><380.7042><-102.3553><-32.35535><0><0.1978262, 

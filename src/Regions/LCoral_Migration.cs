@@ -29,7 +29,6 @@ using UnityEngine;
 using UnityEngine.Playables;
 using Watcher;
 using static SlugBase.Features.FeatureTypes;
-
 namespace Looker.Regions
 {
     public static class LCoral_Migration
@@ -128,6 +127,7 @@ namespace Looker.Regions
                 }
 
             }
+
             if (CheckMechanics(self, "rusted", "WRRA") && self.world.rainCycle.TimeUntilRain < 400)
             {
                 if (self.syncTicker % (int)(40f / OptionsMenu.frogRainSpeed.Value) != 1)

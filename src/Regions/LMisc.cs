@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using IL;
 using Looker.CWTs;
 using Menu.Remix.MixedUI;
 using Mono.Cecil.Cil;
@@ -7,6 +8,7 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MoreSlugcats;
 using Music;
+using On;
 using RWCustom;
 using SlugBase;
 using SlugBase.Features;
@@ -422,7 +424,6 @@ namespace Looker.Regions
                 orig(self);
                 self.stun = 15;
                 self.input[0].x = 0;
-                self.input[0].y = 0;
                 self.input[0].analogueDir *= 0f;
                 self.input[0].jmp = false;
                 self.input[0].thrw = false;
@@ -575,8 +576,21 @@ namespace Looker.Regions
                 {
                     SpinningTop.SpawnBackupWarpPoint(self, self.roomSettings.placedObjects[i]);
                 }
+                if (self.roomSettings.placedObjects[i].type == WatcherEnums.PlacedObjectType.WeaverSpot && self.roomSettings.placedObjects[i].active)
+                {
+                    Vector2 spawnPosition = self.roomSettings.placedObjects[i].pos;
+                    //if ((RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(self.game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value))) && SaveFileCode.LinkCount(self.game.GetStorySession.saveState) >= 5)
+                    //{
+                    AbstractCreature abstractCreature = new(self.world, StaticWorld.GetCreatureTemplate(lsfUtils.Enums.CreatureTemplateType.WeaverLizard), null, self.GetWorldCoordinate(spawnPosition), self.game.GetNewID()); 
+                        self.abstractRoom.AddEntity(abstractCreature);
+                        abstractCreature.RealizeInRoom();
+                        self.AddObject(new ShockWave(spawnPosition, 400f, 0.25f, 15, false));
+                        self.PlaySound(WatcherEnums.WatcherSoundID.Templar_Shield_Explode);
+                        Log.LogMessage("Weaver Lizard spawned");
+                    //}
+                }
             }
-
+            
         }
 
         public static void Room_InitializeSentientRotPresenceInRoom(On.Room.orig_InitializeSentientRotPresenceInRoom orig, Room self, float amount)

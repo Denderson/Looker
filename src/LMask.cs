@@ -23,14 +23,14 @@ namespace Looker
             return orig(self);
         }
 
-        public static bool Meet_Requirement(Func<RegionGate, bool> orig, RegionGate self)
+        /*public static bool Meet_Requirement(Func<RegionGate, bool> orig, RegionGate self)
         {
             if (self?.room?.game?.StoryCharacter == LookerEnums.looker)
             {
                 return false;
             }
             return orig(self);
-        }
+        }*/
 
         public static bool Outside_Watcher(Func<Player, bool> orig, Player self)
         {

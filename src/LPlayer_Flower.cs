@@ -115,70 +115,65 @@ namespace Looker
 
             if (self.SlugCatClass == LookerEnums.looker && self.input != null && self.input.Length > 2)
             {
-                // faking death ability
-                if (!OptionsMenu.differentAbility.Value)
+            // faking death ability
+                if (data.fakingDeath > 0)
                 {
-                    if (data.fakingDeath > 0)
-                    {
-                        data.fakingDeath--;
-                    }
-                    if (self.input[0].spec && self.stun < 20)
-                    {
-                        data.fakingDeath = 15;
-                    }
+                    data.fakingDeath--;
+                }
+                if (self.input[0].spec && self.input[0].y < 0 && self.stun < 20)
+                {
+                    data.fakingDeath = 15;
                 }
 
-                // float ability
-                else
+            // float ability
+                // check if player currently wants to float
+                if (self.Consious && self.input[0].spec && self.input[0].y == 0 && data.floatRemaining > 0)
                 {
-                    // check if player currently wants to float
-                    if (self.Consious && self.input[0].spec && data.floatRemaining > 0)
+                    data.floatRemaining--;
+                    // check if player just started floating
+                    if (!data.currentlyFloating)
                     {
-                        data.floatRemaining--;
-                        // check if player just started floating
-                        if (!data.currentlyFloating)
-                        {
-                            self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, 120, 1f, 0.7f));
-                            for (int i = 0; i < self.bodyChunks.Length; i++)
-                            {
-                                if (self.bodyChunks[i].vel.y < 0)
-                                {
-                                    self.bodyChunks[i].vel.y *= 0.1f;
-                                }
-                            }
-                        }
-                        data.currentlyFloating = true;
-                    }
-                    else
-                    {
-                        data.currentlyFloating = false;
-                        if (self.canJump > 0)
-                        {
-                            data.floatRemaining = Math.Min(data.floatRemaining + 2, 60);
-                        }
-                    }
-                    if (data.currentlyFloating)
-                    {
-                        data.timeInFloat++;
-                        self.gravity = 0.3f;
+                        self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, 120, 1f, 0.7f));
                         for (int i = 0; i < self.bodyChunks.Length; i++)
                         {
-                            if (self.bodyChunks[i].vel.y < 8)
+                            if (self.bodyChunks[i].vel.y < 0)
                             {
-                                self.bodyChunks[i].vel.y += Mathf.Min(0.25f * Mathf.Pow(data.timeInFloat, 0.7f), 1.1f);
+                                self.bodyChunks[i].vel.y *= 0.1f;
                             }
                         }
                     }
-                    else
+                data.currentlyFloating = true;
+                }
+                else
+                {
+                    data.currentlyFloating = false;
+                    if (self.canJump > 0)
                     {
-                        self.airFriction = 0.999f;
-                    }
-                    if ((!data.currentlyFloating && data.timeInFloat > 0) || (data.currentlyFloating && data.floatRemaining == 0))
-                    {
-                        self.Stun(data.timeInFloat * 2);
-                        data.timeInFloat = 0;
+                        data.floatRemaining = Math.Min(data.floatRemaining + 2, 60);
                     }
                 }
+                if (data.currentlyFloating)
+                {
+                    data.timeInFloat++;
+                    self.gravity = 0.3f;
+                    for (int i = 0; i < self.bodyChunks.Length; i++)
+                    {
+                        if (self.bodyChunks[i].vel.y < 8)
+                        {
+                            self.bodyChunks[i].vel.y += Mathf.Min(0.25f * Mathf.Pow(data.timeInFloat, 0.7f), 1.1f);
+                        }
+                    }
+                }
+                else
+                {
+                    self.airFriction = 0.999f;
+                }
+                if ((!data.currentlyFloating && data.timeInFloat > 0) || (data.currentlyFloating && data.floatRemaining == 0))
+                {
+                    self.Stun(data.timeInFloat * 2);
+                    data.timeInFloat = 0;
+                }
+                
             }
 
             if (self.room.game?.StoryCharacter == LookerEnums.looker)
