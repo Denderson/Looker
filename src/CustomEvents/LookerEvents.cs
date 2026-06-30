@@ -35,7 +35,9 @@ namespace Looker.CustomEvents
             player.freezeControls = true;
             if (timer == 0)
             {
-                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "BathEnding", true);
+                SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.bathEnding, true);
+                SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "BathEnding");
+                //endingToTrigger = LookerEnums.looker_ending1;
             }
             return;
         }
@@ -59,7 +61,9 @@ namespace Looker.CustomEvents
             player.freezeControls = true;
             if (timer == 0)
             {
-                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "MaskEnding", true);
+                SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.maskEnding, true);
+                SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "MaskEnding");
+                //endingToTrigger = LookerEnums.looker_ending2;
             }
             return;
         }
@@ -83,7 +87,9 @@ namespace Looker.CustomEvents
             player.freezeControls = true;
             if (timer == 0)
             {
-                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "LinkEnding", true);
+                SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.linkEnding, true);
+                SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "LinkEnding");
+                //endingToTrigger = LookerEnums.looker_ending3;
             }
             return;
         }
@@ -111,7 +117,9 @@ namespace Looker.CustomEvents
             }
             if (timer == 0)
             {
-                SaveFileCode.SetBool(room.game.GetStorySession.saveState, "PuzzleEnding", true);
+                SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.puzzleEnding, true);
+                SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "PuzzleEnding");
+                //endingToTrigger = LookerEnums.looker_ending4;
             }
             return;
         }

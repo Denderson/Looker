@@ -51,6 +51,7 @@ namespace Looker
         public const string linkEnding = prefix + "LinkEnding";
         public const string puzzleEnding = prefix + "PuzzleEnding";
         public const string daemonTutorialDone = prefix + "DaemonTutorial";
+        public const string lastEndingDone = prefix + "LastEndingDone";
 
         public const string overrideShelter = prefix + "OverrideShelter";
         public const string regions = prefix + "Regions";
@@ -179,6 +180,7 @@ namespace Looker
                 save.SetBool(maskEnding, false);
                 save.SetBool(linkEnding, false);
                 save.SetBool(puzzleEnding, false);
+                save.SetString(lastEndingDone, "None");
 
                 save.SetString(overrideShelter, "SU_S04");
                 save.SetString(regions, "WORA");

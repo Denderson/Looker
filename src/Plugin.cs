@@ -58,12 +58,16 @@ namespace Looker
         {
             public static void RegisterValues()
             {
-                vineboom = new SoundID("vineboom", true);
-                looker = new SlugcatStats.Name("looker");
-                lookerTimeline = new SlugcatStats.Timeline("looker");
-                meetLooker = new SSOracleBehavior.Action("meetLooker", true);
-                lookerConversation = new Conversation.ID("lookerConversation", true);
-                lookerSubBehaviour = new SSOracleBehavior.SubBehavior.SubBehavID("lookerSubBehaviour", true);
+                vineboom = new(nameof(vineboom), true);
+                looker = new(nameof(looker), true);
+                lookerTimeline = new(nameof(lookerTimeline), true);
+                meetLooker = new(nameof(meetLooker), true);
+                lookerConversation = new(nameof(lookerConversation), true);
+                lookerSubBehaviour = new(nameof(lookerSubBehaviour), true);
+                looker_ending1 = new(nameof(looker_ending1), true);
+                looker_ending2 = new(nameof(looker_ending2), true);
+                looker_ending3 = new(nameof(looker_ending3), true);
+                looker_ending4 = new(nameof(looker_ending4), true);
             }
             public static void UnregisterValues()
             {
@@ -72,17 +76,25 @@ namespace Looker
                 Unregister(meetLooker);
                 Unregister(lookerConversation);
                 Unregister(lookerSubBehaviour);
+                Unregister(looker_ending1);
+                Unregister(looker_ending2);
+                Unregister(looker_ending3);
+                Unregister(looker_ending4);
             }
             private static void Unregister<T>(ExtEnum<T> extEnum) where T : ExtEnum<T>
             {
                 extEnum?.Unregister();
             }
             public static SoundID vineboom;
-            public static SSOracleBehavior.Action meetLooker;
-            public static SSOracleBehavior.SubBehavior.SubBehavID lookerSubBehaviour;
-            public static Conversation.ID lookerConversation;
             public static SlugcatStats.Name looker;
             public static SlugcatStats.Timeline lookerTimeline;
+            public static SSOracleBehavior.Action meetLooker;
+            public static Conversation.ID lookerConversation;
+            public static SSOracleBehavior.SubBehavior.SubBehavID lookerSubBehaviour;
+            public static Menu.MenuScene.SceneID looker_ending1;
+            public static Menu.MenuScene.SceneID looker_ending2;
+            public static Menu.MenuScene.SceneID looker_ending3;
+            public static Menu.MenuScene.SceneID looker_ending4;
         }
 
         public static OptionsMenu optionsMenuInstance;
@@ -99,6 +111,7 @@ namespace Looker
 
         public static readonly Color BoxWormColor = new(0.63f, 0.5f, 0.5f);
         public static readonly EntityID SpecialId = new(1, -50);
+        public static SlideShow.SlideShowID endingToTrigger = null;
 
         public static string GetRegionName(Region region)
         {
@@ -368,6 +381,8 @@ namespace Looker
                     On.PlayerGraphics.DrawSprites += LCopies.PlayerGraphics_DrawSprites;
                 }
 
+                On.Menu.MenuScene.BuildScene += MenuScene_BuildScene;
+
                 // manual hooks
                 {
                     new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.RippleLadderMode)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.RippleLadderMode)));
@@ -406,6 +421,35 @@ namespace Looker
             {
                 Logger.LogMessage("Looker hooks failed!!!");
                 Logger.LogError(e);
+            }
+        }
+
+        public static void MenuScene_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, MenuScene self)
+        {
+            if (self.owner is SlugcatSelectMenu.SlugcatPageContinue page && page.slugcatNumber == LookerEnums.looker)
+            {
+                SaveState save = Custom.rainWorld.progression.GetOrInitiateSaveState(page.slugcatNumber, null, self.menu.manager.menuSetup, false);
+                switch (save.GetString(SaveFileCode.lastEndingDone))
+                {
+                    case "BathEnding": self.sceneID = LookerEnums.looker_ending1; break;
+                    case "MaskEnding": self.sceneID = LookerEnums.looker_ending2; break;
+                    case "LinkEnding": self.sceneID = LookerEnums.looker_ending3; break;
+                    case "PuzzleEnding": self.sceneID = LookerEnums.looker_ending4; break;
+                    default: break;
+                }
+            }
+            orig(self);
+        }
+
+        public static void RainWorldGame_GoToRedsGameOver(On.RainWorldGame.orig_GoToRedsGameOver orig, RainWorldGame self)
+        {
+            orig(self);
+            if (self?.StoryCharacter == LookerEnums.looker)
+            {
+                self.manager.statsAfterCredits = true;
+                self.manager.nextSlideshow = endingToTrigger;
+                self.manager.RequestMainProcessSwitch(ProcessManager.ProcessID.SlideShow);
+                return;
             }
         }
 
