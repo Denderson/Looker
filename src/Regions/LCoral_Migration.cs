@@ -68,16 +68,11 @@ namespace Looker.Regions
         }
         public static void Room_Update(On.Room.orig_Update orig, Room self)
         {
-            if (self != null) orig(self);
-            if (self?.abstractRoom == null || self.PlayersInRoom == null && self.PlayersInRoom.Count() <= 0)
-            {
-                return;
-            }
+            orig(self);
+            if (self?.game == null) return;
+            if (self.game.GamePaused) return;
+            if (!self.game.processActive) return;
             int num = 0;
-            if (self.abstractRoom.name == "WORA_AI")
-            {
-                self.game.cameras[0].hud.karmaMeter.forceVisibleCounter = Mathf.Max(self.game.cameras[0].hud.karmaMeter.forceVisibleCounter, 200);
-            }
             if (CheckMechanics(self, "caves", "WRFA"))
             {
                 if (self.syncTicker % (int)(200f / OptionsMenu.barnacleRate.Value) != 1)

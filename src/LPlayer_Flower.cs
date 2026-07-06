@@ -457,7 +457,7 @@ namespace Looker
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
                     Vector2 vector = Custom.IntVector2ToVector2(newRoom.ShorcutEntranceHoleDirection(pos));
-                    self.bodyChunks[i].vel = vector * 10f;
+                    self.bodyChunks[i].vel = vector * 25f;
                 }
             }
             

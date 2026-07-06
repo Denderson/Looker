@@ -306,8 +306,6 @@ namespace Looker
                     On.Room.Loaded += LMisc.Room_Loaded;
                     On.Lizard.ctor += LMisc.Lizard_ctor;
 
-                    On.Watcher.WarpPoint.ChooseDynamicWarpTarget += LMisc.WarpPoint_ChooseDynamicWarpTarget;
-
                     On.SaveState.SaveToString += LMisc.SaveState_SaveToString;
                     On.WorldLoader.GeneratePopulation += LMisc.WorldLoader_GeneratePopulation;
 
@@ -317,6 +315,8 @@ namespace Looker
                     On.RainCycle.GetDesiredCycleLength += LMisc.RainCycle_GetDesiredCycleLength;
 
                     IL.Creature.Update += LMisc.Creature_Update;
+
+                    On.Watcher.LightningMaker.Strike += LMisc.LightningMaker_Strike;
                 }
 
                 // arg ending

@@ -67,6 +67,9 @@ namespace Looker.CWTs
             public int acidShieldTimer = 80;
 
             public int oobTimer = 0;
+
+            public bool evilLightningWarning = false;
+            public int evilLightningSparks = 0;
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Looker
                         {
                             Log.LogMessage("Mask triggered successfully!");
                             SaveFileCode.SetString(room.game.GetStorySession.saveState, "OverrideShelter", newshelter);
-                            SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
+                            //SaveFileCode.SetBool(room.game.GetStorySession.saveState, "CreateMask", true);
                             mask.room.PlaySound(SoundID.SS_AI_Give_The_Mark_Boom, mask.abstractPhysicalObject.pos.Vec2(), 1f, 1f);
                             for (int j = 0; j < 20; j++)
                             {

@@ -54,80 +54,107 @@ namespace Looker.Regions
         {
             orig(self, eu);
 
-            if (!PlayerCWT.TryGetData(self, out var data))
+            if (self?.room == null) return;
+            if (!PlayerCWT.TryGetData(self, out var data)) return;
+
+            if (CheckMechanics(self.room, "storage", "WARD"))
             {
-                return;
-            }
+                RoomCamera camera = FindCameraForRoom(self.room);
+                if (camera == null)
+                {
+                    return;
+                }
 
-            if (!CheckMechanics(self?.room, "storage", "WARD"))
-            {
-                return;
-            }
+                Vector2 cameraPos = camera.pos;
 
-            RoomCamera camera = FindCameraForRoom(self.room);
-            if (camera == null)
-            {
-                return;
-            }
+                float camWidth = camera.sSize.x;
+                float camHeight = camera.sSize.y;
 
-            Vector2 cameraPos = camera.pos;
+                float left = cameraPos.x - oobMargin + 20;
+                float right = cameraPos.x + camWidth + oobMargin - 20;
+                float bottom = cameraPos.y - oobMargin;
+                float top = cameraPos.y + camHeight + oobMargin;
 
-            float camWidth = camera.sSize.x;
-            float camHeight = camera.sSize.y;
+                Vector2 playerPos = self.mainBodyChunk.pos;
+                Vector2 pushDir = Vector2.zero;
 
-            float left = cameraPos.x - oobMargin + 20;
-            float right = cameraPos.x + camWidth + oobMargin - 20;
-            float bottom = cameraPos.y - oobMargin;
-            float top = cameraPos.y + camHeight + oobMargin;
+                // Check horizontal OOB
+                if (playerPos.x < left)
+                {
+                    pushDir.x = cameraPos.x + oobInnerMargin - playerPos.x;
+                }
+                else if (playerPos.x > right)
+                {
+                    pushDir.x = (cameraPos.x + camWidth - oobInnerMargin) - playerPos.x;
+                }
 
-            Vector2 playerPos = self.mainBodyChunk.pos;
-            Vector2 pushDir = Vector2.zero;
+                // Check vertical OOB
+                if (playerPos.y < bottom && self.gravity == 0f)
+                {
+                    pushDir.y = cameraPos.y + oobInnerMargin - playerPos.y;
+                }
+                else if (playerPos.y > top)
+                {
+                    pushDir.y = (cameraPos.y + camHeight - oobInnerMargin) - playerPos.y;
+                }
 
-            // Check horizontal OOB
-            if (playerPos.x < left)
-            {
-                pushDir.x = cameraPos.x + oobInnerMargin - playerPos.x;
-            }
-            else if (playerPos.x > right)
-            {
-                pushDir.x = (cameraPos.x + camWidth - oobInnerMargin) - playerPos.x;
-            }
+                // Check if any collision happened, dont run code afterwards if not
+                if (pushDir == Vector2.zero)
+                {
+                    data.oobTimer = 0;
+                    return;
+                }
 
-            // Check vertical OOB
-            if (playerPos.y < bottom && self.gravity == 0f)
-            {
-                pushDir.y = cameraPos.y + oobInnerMargin - playerPos.y;
-            }
-            else if (playerPos.y > top)
-            {
-                pushDir.y = (cameraPos.y + camHeight - oobInnerMargin) - playerPos.y;
-            }
-
-            // Check if any collision happened, dont run code afterwards if not
-            if (pushDir == Vector2.zero)
-            {
+                if (data.oobTimer < oobRequirement)
+                {
+                    data.oobTimer++;
+                    return;
+                }
                 data.oobTimer = 0;
-                return;
+
+                if (!OptionsMenu.nonLethalBorders.Value && !CheckEasyMode(self.room) && self.gravity == 0)
+                {
+                    self.Die();
+                    self.room.AddObject(new ZapCoil.ZapFlash(self.firstChunk.pos, 2f));
+                    self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1f);
+                }
+
+                Vector2 force = pushDir.normalized * oobPushStrength;
+                foreach (BodyChunk chunk in self.bodyChunks)
+                {
+                    chunk.vel += force;
+                }
             }
 
-            if (data.oobTimer < oobRequirement)
+            if (CheckMechanics(self.room, "stormy", "WSKC"))
             {
-                data.oobTimer++;
-                return;
-            }
-            data.oobTimer = 0;
+                Color lightningColor = new Color(0.7f, 0.7f, 1f); // TODO make it dynamic
+                if (data.evilLightningWarning)
+                {
+                    if (UnityEngine.Random.value < 0.04f && self.bodyChunks.Length > 0)
+                    {
+                        int chunkIndex = UnityEngine.Random.Range(0, self.bodyChunks.Length);
+                        BodyChunk chunk = self.bodyChunks[chunkIndex];
+                        self.room.AddObject(new Spark(chunk.pos + Custom.RNV() * chunk.rad, Custom.RNV() * 3f, lightningColor, null, 6, 14));
+                    }
+                }
+                if (data.evilLightningSparks > 0)
+                {
+                    data.evilLightningSparks--;
+                    float urgency = 1f - Mathf.Clamp01((float)data.evilLightningSparks / (float)Mathf.Max(1, self.eyesClosedTime));
+                    float chance = Mathf.Lerp(0.08f, 0.6f, urgency);
 
-            if (!OptionsMenu.nonLethalBorders.Value && !CheckEasyMode(self.room) && self.gravity == 0)
-            {
-                self.Die();
-                self.room.AddObject(new ZapCoil.ZapFlash(self.firstChunk.pos, 2f));
-                self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1f);
-            }
-
-            Vector2 force = pushDir.normalized * oobPushStrength;
-            foreach (BodyChunk chunk in self.bodyChunks)
-            {
-                chunk.vel += force;
+                    if (UnityEngine.Random.value < chance && self.bodyChunks.Length > 0)
+                    {
+                        int sparkCount = 1 + (int)(urgency * 2f);
+                        for (int i = 0; i < sparkCount; i++)
+                        {
+                            int chunkIndex = UnityEngine.Random.Range(0, self.bodyChunks.Length);
+                            BodyChunk chunk = self.bodyChunks[chunkIndex];
+                            self.room.AddObject(new Spark(chunk.pos + Custom.RNV() * chunk.rad, Custom.RNV() * Mathf.Lerp(4f, 12f, urgency), Color.Lerp(lightningColor, Color.white, urgency), null, 8, 20));
+                        }
+                    }
+                }
             }
         }
 
@@ -279,37 +306,55 @@ namespace Looker.Regions
         public static Vector2 StaticBuildup_GetBestTarget(On.Watcher.LightningMaker.StaticBuildup.orig_GetBestTarget orig, LightningMaker.StaticBuildup self)
         {
             Vector2 value = orig(self);
-            if (OptionsMenu.lessEvilLightnings.Value || CheckEasyMode(self.room))
-            {
-                return value;
-            }
-            if (!CheckMechanics(self?.room, "stormy", "WSKC"))
-            {
-                return value;
-            }
-            if (self.room.lightningMaker == null)
-            {
-                return value;
-            }
+            if (OptionsMenu.lessEvilLightnings.Value || CheckEasyMode(self.room)) return value;
+            if (!CheckMechanics(self?.room, "stormy", "WSKC")) return value;
+            if (self.room.lightningMaker == null) return value;
+
+            IntVector2 buildupTile = self.room.GetTilePosition(self.pos);
             foreach (PhysicalObject physicalObject in self.targets)
             {
                 if (physicalObject != null && !self.IsTargetForbidden(physicalObject) && !self.room.lightningMaker.IsPosProtected(physicalObject.firstChunk.pos) && physicalObject is Player player && PlayerCWT.TryGetData(player, out var data))
                 {
+                    IntVector2 targetTile = self.room.GetTilePosition(physicalObject.firstChunk.pos);
+                    if (!self.room.RayTraceTilesForTerrain(buildupTile.x, buildupTile.y, targetTile.x, targetTile.y))
+                    {
+                        continue;
+                    }
+
                     if (data.timesUntilTargetedByLightning > 0)
                     {
                         data.timesUntilTargetedByLightning--;
                         if (data.timesUntilTargetedByLightning == 0)
                         {
-                            player.eyesClosedTime = 200;
+                            data.evilLightningWarning = true;
                         }
                         return value;
                     }
-                    data.timesUntilTargetedByLightning = 2;
+                    data.timesUntilTargetedByLightning = 3;
                     return physicalObject.firstChunk.pos;
                 }
             }
             return value;
         }
+
+        public static void LightningMaker_Strike(On.Watcher.LightningMaker.orig_Strike orig, LightningMaker self, Vector2 pos, float branchingChance, float size, float effectRadius, float killRadius, int delayFrames)
+        {
+            if (self?.room?.abstractRoom != null && (!self.IsPosProtected(pos) || killRadius == 0f))
+            {
+                foreach (AbstractCreature ac in self.room.abstractRoom.creatures)
+                {
+                    if (ac?.realizedCreature is Player player && PlayerCWT.TryGetData(player, out var data) && data.evilLightningWarning)
+                    {
+                        data.evilLightningWarning = false;
+                        int totalDelay = delayFrames + 4;
+                        player.eyesClosedTime = totalDelay;
+                        data.evilLightningSparks = totalDelay;
+                    }
+                }
+            }
+            orig(self, pos, branchingChance, size, effectRadius, killRadius, delayFrames);
+        }
+
         public static void Player_AddFood(On.Player.orig_AddFood orig, Player self, int add)
         {
             orig(self, add);
@@ -506,15 +551,6 @@ namespace Looker.Regions
         public static bool DaddyCorruption_SentientRotMode(On.DaddyCorruption.orig_SentientRotMode orig, Room rm)
         {
             return orig(rm) || (rm.world?.game?.StoryCharacter == LookerEnums.looker);
-        }
-
-        public static string WarpPoint_ChooseDynamicWarpTarget(On.Watcher.WarpPoint.orig_ChooseDynamicWarpTarget orig, World world, string oldRoom, string targetRegion, bool badWarp, bool spreadingRot, bool playerCreated)
-        {
-            if (world.game?.StoryCharacter == LookerEnums.looker && playerCreated)
-            {
-                return "wrsa_l01";
-            }
-            return orig(world, oldRoom, targetRegion, badWarp, spreadingRot, playerCreated);
         }
 
         public static string SaveState_SaveToString(On.SaveState.orig_SaveToString orig, SaveState self)

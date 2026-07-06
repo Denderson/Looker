@@ -645,7 +645,7 @@ namespace Looker
             {
                 room.AddObject(new WatcherRoomSpecificScript.WRSA_L01(room));
             }
-            if (name == "WORA_DIAL" && room.abstractRoom.firstTimeRealized && room.game.GetStorySession.saveState.denPosition == "WORA_DIAL")
+            if (name == "WORA_DIAL" && room.abstractRoom.firstTimeRealized && room.game.GetStorySession.saveState.denPosition == "WORA_DIAL" && room.game.session is StoryGameSession && (room.game.session as StoryGameSession).saveState.cycleNumber <= 1)
             {
                 room.AddObject(new WatcherRoomSpecificScript. HI_W05(room));
             }
@@ -955,7 +955,5 @@ namespace Looker
                 return;
             }
         }
-
-        
     }
 }
