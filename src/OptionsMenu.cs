@@ -108,7 +108,7 @@ namespace Looker
         public OptionsMenu(Plugin plugin)
         {
             //general
-            differentAbility = config.Bind("looker_differentAbility", false, new ConfigurableInfo("Replaces usual Looker ability with Watchers float"));
+            randomSelectScreen = config.Bind("looker_drandomSelectScreen", false, new ConfigurableInfo("Changes the select screen art to a random one from all obtained endings"));
             enableGlow = config.Bind("looker_enableGlow", false, new ConfigurableInfo("Makes Looker have neuron glow effect"));
             checkpointWarps = config.Bind("looker_saveFromPortal", false, new ConfigurableInfo("Each portal entry counts as a hibernation"));
             spawnFileDifficulty = config.Bind("looker_spawnFileDifficulty", 2, new ConfigurableInfo("Decides how hard the creature spawns should be. 2 by default"));
@@ -206,28 +206,36 @@ namespace Looker
             Color desalinationColor = new(0.42f, 0.56f, 0.7f);
             Color fetidGlenColor = new(0.78f, 0.47f, 0.25f);
             Color coldStorageColor = new(0.49f, 0.33f, 0.79f);
+            //Color heatDuctsColor = new(f,f,f);
             Color aetherRidgeColor = new(0.58f, 0.65f, 0.78f);
             Color theSurfaceColor = new(0.62f, 0.5f, 0.47f);
-            Color migrationPathColor = new Color(0.7f, 0.55f, 0.53f);
-            Color pillarGroveColor = new Color(0.28f, 0.85f, 0.66f);
-            Color signalSpiresColor = new Color(0.89f, 0.51f, 0.69f);
+            //Color badlandsColor = new(f,f,f);
+            Color migrationPathColor = new(0.7f, 0.55f, 0.53f);
+            Color pillarGroveColor = new(0.28f, 0.85f, 0.66f);
+            Color signalSpiresColor = new(0.89f, 0.51f, 0.69f);
             Color coralCavesColor = new(0.38f, 0.7f, 0.89f);
             Color turbulentPumpColor = new(0.42f, 0.7f, 0.65f);
             Color rustedWrecksColor = new(0.7f, 0.42f, 0.4f);
             Color torrentialRailwaysColor = new(0.62f, 0.66f, 0.7f);
             Color sunbakedAlleyColor = new(0.95f, 0.72f, 0.74f);
             Color stormyCoastColor = new(0.62f, 0.62f, 0.7f);
+            //Color shroudedStacksColor = new(f,f,f);
+            //Color torridDesertColor = new(f,f,f);
             Color desolateTractColor = new(0.69f, 0.7f, 0.67f);
             Color verdantWaterwaysColor = new(0.59f, 0.65f, 0.42f);
+            //Color fracturedGatewaysColor = new(f,f,f);
             Color shatteredTerraceColor = new(0.93f, 0.82f, 0.57f);
+            //Color ancientUrbanColor = new(f,f,f);
+            //Color rottenRegionColor = RainWorld.RippleGold;
+            //Color outerRimColor = new(f,f,f);
 
             // Tab 1
             UIelement[] UIArrayElements =
             [
                 new OpLabel(0, 550, "General options", true), new OpLabel(160, 550, "(red means not implemeted yet)", true){color = unfinishedColor},
 
-                Label("Different ability", 0, 0),
-                CheckBox(differentAbility, 0, 0),
+                Label("Random select screen", 0, 0, unfinishedColor),
+                CheckBox(randomSelectScreen, 0, 0, unfinishedColor),
 
                 Label("Neuron glow", 0, 1),
                 CheckBox(enableGlow, 0, 1),
@@ -431,7 +439,7 @@ namespace Looker
 
         public static Configurable<bool>
 
-            differentAbility, checkpointWarps, deathExplosion, enableGlow, //general
+            randomSelectScreen, checkpointWarps, deathExplosion, enableGlow, //general
 
             emergencyBreath, //desalination
             stableMovement, controlAnnouncement, //fetid glen

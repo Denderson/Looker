@@ -1,2 +1,7 @@
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04983094
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
 Palette: 99
 FadePalette: 8, 0.08361186, 0.08361186

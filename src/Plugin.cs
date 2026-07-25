@@ -59,15 +59,15 @@ namespace Looker
             public static void RegisterValues()
             {
                 vineboom = new(nameof(vineboom), true);
-                looker = new(nameof(looker), true);
-                lookerTimeline = new(nameof(lookerTimeline), true);
+                looker = new SlugcatStats.Name("looker");
+                lookerTimeline = new SlugcatStats.Timeline("looker");
                 meetLooker = new(nameof(meetLooker), true);
                 lookerConversation = new(nameof(lookerConversation), true);
                 lookerSubBehaviour = new(nameof(lookerSubBehaviour), true);
-                looker_ending1 = new(nameof(looker_ending1), true);
-                looker_ending2 = new(nameof(looker_ending2), true);
-                looker_ending3 = new(nameof(looker_ending3), true);
-                looker_ending4 = new(nameof(looker_ending4), true);
+                looker_ending1 = new MenuScene.SceneID("looker_ending1");
+                looker_ending2 = new MenuScene.SceneID("looker_ending2");
+                looker_ending3 = new MenuScene.SceneID("looker_ending3");
+                looker_ending4 = new MenuScene.SceneID("looker_ending4");
             }
             public static void UnregisterValues()
             {

@@ -166,7 +166,5 @@ CREATURES
 (looker)WSKC_A09 : 3-Snail-5
 (looker)WSKC_A18 : 3-Mimic-{9}, 4-Snail-2
 
-(looker){LookerWeaver}WSKC_A06 : 4-WeaverLizard
-(looker){LookerWeaver}WSKC_A20 : 4-WeaverLizard
 END CREATURES
 [ENDMERGE]

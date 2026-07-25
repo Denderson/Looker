@@ -3,7 +3,7 @@ corruptionEffectColor: 0.61,0.28,0.89
 corruptionEyeColor: 0.61,0.28,0.89
 overseersMin: 0
 overseersMax: 0
-waterColorOverride: 0, 0, 0
+waterColorOverride: 0.59, 0.27, 0.74
 playerGuideOverseerSpawnChance: 0
 proceduralMusicBank: rwtw4
 albinos: true

@@ -107,7 +107,6 @@ CREATURES
 (looker){LookerRemix-1}WSKD_B03 : 5-AirplaneLizard
 (looker){LookerRemix-1}WSKD_B13 : 3-AirplaneLizard, 4-Eggbug, 5-CicadaA-2
 (looker){LookerRemix-1}WSKD_B30 : 4-AirplaneLizard, 5-Dropbug
-(looker){LookerRemix-1}WSKD_B38 : 3-AirplaneLizard
 
 
 (looker){LookerRemix=0}OFFSCREEN : 0-Scavenger-7, 0-disciple-1, 0-templar-1, 0-Vulture, 0-MothGrub-6
@@ -122,7 +121,6 @@ CREATURES
 (looker){LookerRemix=0}WSKD_B33 : 4-CicadaA-3, 5-Cyan, 6-BigMoth, 7-Pink
 (looker){LookerRemix=0}WSKD_B34 : 2-CicadaA-3, 3-White, 4-Mimic-{14}
 (looker){LookerRemix=0}WSKD_B35 : 2-BigMoth, 3-White, 4-CicadaA-2
-(looker){LookerRemix=0}WSKD_B38 : 3-Pink
 
 
 (looker)WSKD_A26 : 2-Mouse-2
@@ -137,9 +135,8 @@ CREATURES
 (looker)WSKD_B28 : 3-BigMoth, 4-AirplaneLizard
 (looker)WSKD_B29 : 3-Mouse-2
 (looker)WSKD_B32 : 2-Dropbug
+(looker)WSKD_B38 : 3-AirplaneLizard
 
-(looker){LookerWeaver}WSKD_B10 : 3-WeaverLizard
-(looker){LookerWeaver}WSKD_B35 : 2-WeaverLizard
 
 END CREATURES
 [ENDMERGE]

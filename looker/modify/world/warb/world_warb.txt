@@ -64,14 +64,10 @@ CREATURES
 
 (looker){LookerRemix=0}WARB_F03 : 6-Barnacle-6, 7-Salamander, 8-Angler-2
 (looker){LookerRemix=0}WARB_F04 : 3-Blue
-
 (looker){LookerRemix=0}WARB_F11 : 2-Salamander-2
-
 (looker){LookerRemix=0}WARB_F14 : 2-Salamander
 (looker){LookerRemix=0}WARB_F16 : 3-Salamander
-
 (looker){LookerRemix=0}WARB_F18 : 3-Salamander
-
 (looker){LookerRemix=0}WARB_G26 : 3-Pink
 (looker){LookerRemix=0}WARB_J01 : 5-Blue, 6-Salamander
 (looker){LookerRemix=0}WARB_J04 : 2-Salamander
@@ -83,7 +79,5 @@ CREATURES
 (looker)WARB_F17 : 3-Barnacle-5
 (looker)WARB_F24 : 1-Barnacle-4
 
-(looker){LookerWeaver}WARB_F03 : 7-WeaverLizard
-(looker){LookerWeaver}WARB_F16 : 3-WeaverLizard
 END CREATURES
 [ENDMERGE]

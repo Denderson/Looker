@@ -96,7 +96,10 @@ namespace Looker
                             mask.Destroy();
                             return;
                         }
-                        else usingMask = true;
+                    }
+                    if (item is VultureMask vulturemask && item is not KarmaMask karmamask)
+                    {
+                        usingMask = true;
                     }
                     if (item is KarmaFlower karmaFlower)
                     {
@@ -161,6 +164,7 @@ namespace Looker
                     KarmaMaskAbstract abstractKarmaMask = new(world, self.room.GetWorldCoordinate(self.mainBodyChunk.pos), self.abstractCreature.ID, -1, -1, null);
                     self.room.abstractRoom.AddEntity(abstractKarmaMask);
                     abstractKarmaMask.RealizeInRoom();
+                    SaveFileCode.SetBool(world.game.GetStorySession.saveState, "CreateMask", false);
                 }
                 return;
             }

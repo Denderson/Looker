@@ -91,16 +91,6 @@ namespace Looker
                             result = OptionsMenu.metSliver.Value;
                             break;
                         }
-                    case "lookeraltability":
-                        {
-                            result = OptionsMenu.differentAbility.Value;
-                            break;
-                        }
-                    case "lookerweaver":
-                        {
-                            result = (RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value))) && SaveFileCode.LinkCount(game.GetStorySession.saveState) >= 5;
-                            break;
-                        }
                     default: return null;
                 }
             }
@@ -127,11 +117,6 @@ namespace Looker
                     case "lookerwarp":
                         {
                             value = SaveFileCode.LinkCount(game.GetStorySession.saveState);
-                            break;
-                        }
-                    case "lookerdynamic":
-                        {
-                            value = (int)(game.GetStorySession.saveState.deathPersistentSaveData.howWellIsPlayerDoing * 100f) + 100;
                             break;
                         }
                     default: return null;

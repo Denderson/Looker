@@ -232,8 +232,8 @@ CREATURES
 
 (looker){LookerRemix-1}WRRA_D05 : 2-CicadaB-3, 3-SeaLeech-7, 4-SeaLeech-6, 5-SeaLeech-6, 6-Red-{Mean-0.4}, 7-CicadaB-4
 
-(looker){LookerRemix=1}WRRA_L01 : 7-CicadaB-8, 8-Red, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Red, 13-SeaLeech-4, 14-SeaLeech-3
-(looker){LookerRemix=1}WRRA_L01 : 7-CicadaB-8, 8-Cyan, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Red, 13-SeaLeech-4, 14-SeaLeech-3
+(looker){LookerRemix=3}WRRA_L01 : 7-CicadaB-8, 8-Red, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Red, 13-SeaLeech-4, 14-SeaLeech-3
+(looker){LookerRemix=2}WRRA_L01 : 7-CicadaB-8, 8-Cyan, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Red, 13-SeaLeech-4, 14-SeaLeech-3
 (looker){LookerRemix<2}WRRA_L01 : 7-CicadaB-8, 8-White, 9-Dropbug, 10-BigNeedle, 10-SmallNeedle-2, 11-SmallCentipede-2, 12-Green, 13-SeaLeech-4, 14-SeaLeech-3
 
 

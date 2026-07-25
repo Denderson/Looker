@@ -615,15 +615,17 @@ namespace Looker.Regions
                     if (self.roomSettings.placedObjects[i].type == WatcherEnums.PlacedObjectType.WeaverSpot && self.roomSettings.placedObjects[i].active)
                     {
                         Vector2 spawnPosition = self.roomSettings.placedObjects[i].pos;
-                        //if ((RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(self.game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value))) && SaveFileCode.LinkCount(self.game.GetStorySession.saveState) >= 5)
+                        Log.LogMessage("Let's go gambling!");
+                        if ((RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(self.game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value))) && SaveFileCode.LinkCount(self.game.GetStorySession.saveState) >= 5)
                         {
                             AbstractCreature abstractCreature = new(self.world, StaticWorld.GetCreatureTemplate(lsfUtils.Enums.CreatureTemplateType.WeaverLizard), null, self.GetWorldCoordinate(spawnPosition), self.game.GetNewID());
                             self.abstractRoom.AddEntity(abstractCreature);
                             abstractCreature.RealizeInRoom();
                             self.AddObject(new ShockWave(spawnPosition, 400f, 0.25f, 15, false));
                             self.PlaySound(WatcherEnums.WatcherSoundID.Templar_Shield_Explode);
-                            Log.LogMessage("Weaver Lizard spawned");
+                            Log.LogMessage("I can't stop winning!");
                         }
+                        else Log.LogMessage("Aw dangit.");
                     }
                 }
             }
