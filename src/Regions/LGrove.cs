@@ -168,12 +168,14 @@ namespace Looker.Regions
         public static void GraphicsModule_DrawSprites(On.GraphicsModule.orig_DrawSprites orig, GraphicsModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
+            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
             MarkDirty(sLeaser, rCam, self);
         }
 
         public static void ComplexGraphicsModule_DrawSprites(On.ComplexGraphicsModule.orig_DrawSprites orig, ComplexGraphicsModule self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
+            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
             MarkDirty(sLeaser, rCam, self);
         }
 
@@ -196,6 +198,7 @@ namespace Looker.Regions
             orig(self, timeStacker, rCam, camPos);
 
             if (self?.drawableObject is GraphicsModule) return;
+            if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
             MarkDirty(self, rCam, self?.drawableObject);
         }
 
