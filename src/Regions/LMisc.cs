@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
-using IL;
 using Looker.CWTs;
 using Menu.Remix.MixedUI;
 using Mono.Cecil.Cil;
@@ -8,7 +7,6 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MoreSlugcats;
 using Music;
-using On;
 using RWCustom;
 using SlugBase;
 using SlugBase.Features;

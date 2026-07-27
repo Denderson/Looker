@@ -1,27 +1,29 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using LizardCosmetics;
+using Looker.CustomEvents;
 using Looker.CWTs;
 using Looker.Regions;
+using lsfUtils;
+using lsfUtils.CWTs;
 using Menu;
 using Menu.Remix.MixedUI;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
+using MoreSlugcats;
 using Newtonsoft.Json.Linq;
 using RWCustom;
+using SlugBase.SaveData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Permissions;
 using UnityEngine;
-using MoreSlugcats;
 using Watcher;
-using Looker.CustomEvents;
-using lsfUtils;
-using lsfUtils.CWTs;
 
 #pragma warning disable CS0618
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -91,10 +93,13 @@ namespace Looker
             public static SSOracleBehavior.Action meetLooker;
             public static Conversation.ID lookerConversation;
             public static SSOracleBehavior.SubBehavior.SubBehavID lookerSubBehaviour;
+
             public static Menu.MenuScene.SceneID looker_ending1;
             public static Menu.MenuScene.SceneID looker_ending2;
             public static Menu.MenuScene.SceneID looker_ending3;
             public static Menu.MenuScene.SceneID looker_ending4;
+
+
         }
 
         public static OptionsMenu optionsMenuInstance;
@@ -370,6 +375,7 @@ namespace Looker
                 {
                     On.SaveState.LoadGame += SaveFileCode.SaveState_LoadGame;
                     On.Player.Update += LMisc.Player_Update;
+                    On.Menu.SlugcatSelectMenu.SlugcatPage.AddImage += SlugcatPage_AddImage;
 
                     On.Player.RippleSpawnInteractions += LMigration.Player_RippleSpawnInteractions;
                     IL.Menu.IntroRoll.ctor += IntroRoll_ctor;
@@ -381,7 +387,7 @@ namespace Looker
                     On.PlayerGraphics.DrawSprites += LCopies.PlayerGraphics_DrawSprites;
                 }
 
-                On.Menu.MenuScene.BuildScene += MenuScene_BuildScene;
+                On.Menu.MenuScene.ctor += MenuScene_ctor;
 
                 // manual hooks
                 {
@@ -424,21 +430,158 @@ namespace Looker
             }
         }
 
-        public static void MenuScene_BuildScene(On.Menu.MenuScene.orig_BuildScene orig, MenuScene self)
+        public static void MenuScene_ctor(On.Menu.MenuScene.orig_ctor orig, MenuScene self, Menu.Menu menu, MenuObject owner, MenuScene.SceneID sceneID)
         {
-            if (self.owner is SlugcatSelectMenu.SlugcatPageContinue page && page.slugcatNumber == LookerEnums.looker)
+            orig(self, menu, owner, sceneID);
+
+            if (sceneID == LookerEnums.looker_ending1) BuildBathEnding(self);
+            else if (sceneID == LookerEnums.looker_ending2) BuildMaskEnding(self);
+            else if (sceneID == LookerEnums.looker_ending3) BuildLinkEnding(self);
+            else if (sceneID == LookerEnums.looker_ending4) BuildPuzzleEnding(self);
+        }
+
+        public static void BuildBathEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 1";
+
+            if (self.flatMode)
             {
-                SaveState save = Custom.rainWorld.progression.GetOrInitiateSaveState(page.slugcatNumber, null, self.menu.manager.menuSetup, false);
-                switch (save.GetString(SaveFileCode.lastEndingDone))
-                {
-                    case "BathEnding": self.sceneID = LookerEnums.looker_ending1; break;
-                    case "MaskEnding": self.sceneID = LookerEnums.looker_ending2; break;
-                    case "LinkEnding": self.sceneID = LookerEnums.looker_ending3; break;
-                    case "PuzzleEnding": self.sceneID = LookerEnums.looker_ending4; break;
-                    default: break;
-                }
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "bath - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
             }
-            orig(self);
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "bath - 3", new Vector2(0f, 100f), 3.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "bath - 2 - looker", new Vector2(0f, 100f), 2.3f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "bath - 1", new Vector2(0f, 100f), 1f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.3f);
+            }
+        }
+
+        public static void BuildMaskEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 2";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "mask - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 6", new Vector2(0f, 100f), 5.7f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 5", new Vector2(0f, 100f), 4.2f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 4", new Vector2(0f, 100f), 2.9f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 3", new Vector2(0f, 100f), 2.2f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 2 - looker", new Vector2(0f, 100f), 2.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 1", new Vector2(0f, 100f), 1.9f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.1f);
+            }
+        }
+
+        public static void BuildLinkEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 3";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "link - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 8", new Vector2(0f, 100f), 4.5f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 7", new Vector2(0f, 100f), 0.8f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 6", new Vector2(0f, 100f), 2.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 5", new Vector2(0f, 100f), 3.9f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 4 - looker", new Vector2(0f, 100f), 4f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 3", new Vector2(0f, 100f), 4.3f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 2", new Vector2(0f, 100f), 1.3f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 1", new Vector2(0f, 100f), 4.3f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.7f);
+            }
+        }
+
+        public static void BuildPuzzleEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 4";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "tree - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 5", new Vector2(0f, 100f), 4.6f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 4", new Vector2(0f, 100f), 3.5f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 3", new Vector2(0f, 100f), 3.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 2 - looker", new Vector2(0f, 100f), 2.9f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 1", new Vector2(0f, 100f), 2.6f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.9f);
+            }
+        }
+
+        public static readonly ConditionalWeakTable<SlugcatSelectMenu.SlugcatPage, LookerSceneHolder> customSceneTracker = new();
+        public class LookerSceneHolder { public InteractiveMenuScene scene; }
+        public static void SlugcatPage_AddImage(On.Menu.SlugcatSelectMenu.SlugcatPage.orig_AddImage orig, SlugcatSelectMenu.SlugcatPage self, bool ascended)
+        {
+            orig(self, ascended);
+
+            if (self.slugcatNumber != LookerEnums.looker) return;
+            if (self is not SlugcatSelectMenu.SlugcatPageContinue) return;
+
+            var holder = customSceneTracker.GetOrCreateValue(self);
+
+            if (holder.scene != null)
+            {
+                holder.scene.RemoveSprites();
+                self.RemoveSubObject(holder.scene);
+                holder.scene = null;
+            }
+
+            self.slugcatImage.RemoveSprites();
+            self.RemoveSubObject(self.slugcatImage);
+
+            var data = self?.menu?.manager?.rainWorld?.progression?.miscProgressionData?.GetSlugBaseData();
+            if (data == null)
+            {
+                Log.LogMessage("Data in addimage is null!");
+            }
+
+            List<MenuScene.SceneID> completedEndings = [];
+
+            //if (data.TryGet<int>("lookerEndingBath", out int endingBath) || endingBath < 1)
+            completedEndings.Add(LookerEnums.looker_ending1);
+            //if (data.TryGet<int>("lookerEndingMask", out int endingMask) || endingMask < 1)
+            completedEndings.Add(LookerEnums.looker_ending2);
+            //if (data.TryGet<int>("lookerEndingLink", out int endingLink) || endingLink < 1)
+            completedEndings.Add(LookerEnums.looker_ending3);
+            //if (data.TryGet<int>("lookerEndingPuzzle", out int endingPuzzle) || endingPuzzle < 1)
+            completedEndings.Add(LookerEnums.looker_ending4);
+
+            if (completedEndings.Count == 0) return;
+
+            MenuScene.SceneID chosenScene = completedEndings[UnityEngine.Random.Range(0, completedEndings.Count)];
+
+            self.slugcatImage = new InteractiveMenuScene(self.menu, self, chosenScene);
+            self.subObjects.Add(self.slugcatImage);
+            holder.scene = self.slugcatImage;
+
+            self.sceneOffset = new Vector2(-10f, 100f);
+            self.sceneOffset.x -= (1366f - self.menu.manager.rainWorld.options.ScreenSize.x) / 2f;
+            if (chosenScene == LookerEnums.looker_ending1) self.slugcatDepth = 2.3f;
+            else if (chosenScene == LookerEnums.looker_ending2) self.slugcatDepth = 2.1f;
+            else if (chosenScene == LookerEnums.looker_ending3) self.slugcatDepth = 2.7f;
+            else if (chosenScene == LookerEnums.looker_ending4) self.slugcatDepth = 2.9f;
         }
 
         public static void RainWorldGame_GoToRedsGameOver(On.RainWorldGame.orig_GoToRedsGameOver orig, RainWorldGame self)
@@ -449,6 +592,7 @@ namespace Looker
                 self.manager.statsAfterCredits = true;
                 self.manager.nextSlideshow = endingToTrigger;
                 self.manager.RequestMainProcessSwitch(ProcessManager.ProcessID.SlideShow);
+                // TODO when slideshows exist
                 return;
             }
         }

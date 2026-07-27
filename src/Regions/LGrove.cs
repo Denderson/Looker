@@ -19,11 +19,10 @@ namespace Looker.Regions
 {
     public static class LGrove
     {
-        // The icon ID, must not collide with vanilla or other mods
         public const int ogsculeNumber = 9000;
-
-        // Size of the in-game ogscule sprite
         public const float ogsculeSize = 40f;
+
+        private static bool insideDrawUpdate = false;
 
         public static IconSymbol.IconSymbolData CreatureSymbol_SymbolDataFromCreature(On.CreatureSymbol.orig_SymbolDataFromCreature orig, AbstractCreature creature)
         {
@@ -34,37 +33,26 @@ namespace Looker.Regions
 
         public static string CreatureSymbol_SpriteNameOfCreature(On.CreatureSymbol.orig_SpriteNameOfCreature orig, IconSymbol.IconSymbolData symbolData)
         {
-            if (symbolData.intData == ogsculeNumber)
-            {
-                return ogsculeIcon;
-            }
+            if (symbolData.intData == ogsculeNumber) return ogsculeIcon;
             return orig(symbolData);
         }
+
         public static string ItemSymbol_SpriteNameForItem(On.ItemSymbol.orig_SpriteNameForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
         {
             string value = orig(itemType, intData);
-            if (intData == ogsculeNumber)
-            {
-                return ogsculeIcon;
-            }
+            if (intData == ogsculeNumber) return ogsculeIcon;
             return value;
         }
 
         public static Color CreatureSymbol_ColorOfCreature(On.CreatureSymbol.orig_ColorOfCreature orig, IconSymbol.IconSymbolData symbolData)
         {
-            if (symbolData.intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
-            {
-                return Color.red;
-            }
+            if (symbolData.intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value) return Color.red;
             return orig(symbolData);
         }
 
         public static Color ItemSymbol_ColorForItem(On.ItemSymbol.orig_ColorForItem orig, AbstractPhysicalObject.AbstractObjectType itemType, int intData)
         {
-            if (intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value)
-            {
-                return Color.red;
-            }
+            if (intData == ogsculeNumber && !OptionsMenu.colorfulOgscules.Value) return Color.red;
             return orig(itemType, intData);
         }
 
@@ -74,6 +62,7 @@ namespace Looker.Regions
             if (!CheckMechanics(item?.Room, "pillar", "WPGA")) return value;
             return new IconSymbol.IconSymbolData(CreatureTemplate.Type.StandardGroundCreature, item.type, ogsculeNumber);
         }
+
         public static bool TryGetOgsculeMainSprite(IDrawable obj, out int mainSprite, out Color? overrideColor)
         {
             overrideColor = null;
@@ -137,7 +126,6 @@ namespace Looker.Regions
                 if (i == mainSprite)
                 {
                     if (sprite.element?.name != ogsculeSprite) sprite.SetElementByName(ogsculeSprite);
-
                     sprite.height = ogsculeSize;
                     sprite.width = ogsculeSize;
                     sprite.rotation = 0f;
@@ -145,13 +133,9 @@ namespace Looker.Regions
                     sprite.MoveToFront();
 
                     if (!OptionsMenu.colorfulOgscules.Value)
-                    {
                         sprite.color = Color.red;
-                    }
                     else if (overrideColor != null)
-                    {
                         sprite.color = overrideColor.Value;
-                    }
                 }
                 else
                 {
@@ -161,16 +145,12 @@ namespace Looker.Regions
                     if (sprite is TriangleMesh triMesh && triMesh.verticeColors != null)
                     {
                         for (int v = 0; v < triMesh.verticeColors.Length; v++)
-                        {
                             triMesh.verticeColors[v] = new Color(0f, 0f, 0f, 0f);
-                        }
                     }
                     else if (sprite is CustomFSprite customSprite && customSprite.verticeColors != null)
                     {
                         for (int v = 0; v < customSprite.verticeColors.Length; v++)
-                        {
                             customSprite.verticeColors[v] = new Color(0f, 0f, 0f, 0f);
-                        }
                     }
                 }
             }
@@ -180,8 +160,8 @@ namespace Looker.Regions
         {
             if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
             if (!TryGetOgsculeMainSprite(obj, out int mainSprite, out Color? overrideColor)) return;
-
             if (!SLeaserCWT.TryGetData(sLeaser, out var data)) return;
+
             data.ogsculeSprite = mainSprite;
             data.dirty = true;
             data.overrideColor = overrideColor;
@@ -205,10 +185,9 @@ namespace Looker.Regions
 
             if (!CheckMechanics(rCam?.room, "pillar", "WPGA")) return;
             if (self.owner == null) return;
-
             if (!TryGetOgsculeMainSprite(self.owner, out int mainSprite, out Color? overrideColor)) return;
-
             if (!SLeaserCWT.TryGetData(sLeaser, out var data)) return;
+
             data.ogsculeSprite = mainSprite;
             data.dirty = true;
             data.overrideColor = overrideColor;
@@ -216,7 +195,10 @@ namespace Looker.Regions
 
         public static void SpriteLeaser_Update(On.RoomCamera.SpriteLeaser.orig_Update orig, RoomCamera.SpriteLeaser self, float timeStacker, RoomCamera rCam, Vector2 camPos)
         {
-            orig(self, timeStacker, rCam, camPos);
+            if (!insideDrawUpdate)
+            {
+                orig(self, timeStacker, rCam, camPos);
+            }
 
             if (self?.drawableObject is GraphicsModule) return;
             MarkDirty(self, rCam, self?.drawableObject);
@@ -224,7 +206,15 @@ namespace Looker.Regions
 
         public static void RoomCamera_DrawUpdate(On.RoomCamera.orig_DrawUpdate orig, RoomCamera self, float timeStacker, float timeSpeed)
         {
-            orig(self, timeStacker, timeSpeed);
+            insideDrawUpdate = true;
+            try
+            {
+                orig(self, timeStacker, timeSpeed);
+            }
+            finally
+            {
+                insideDrawUpdate = false;
+            }
 
             if (!CheckMechanics(self?.room, "pillar", "WPGA")) return;
             if (self.spriteLeasers == null) return;
@@ -232,9 +222,13 @@ namespace Looker.Regions
             foreach (var sLeaser in self.spriteLeasers)
             {
                 if (sLeaser == null) continue;
+
+                if (sLeaser.drawableObject is not GraphicsModule) MarkDirty(sLeaser, self, sLeaser.drawableObject);
+
                 if (!SLeaserCWT.TryGetData(sLeaser, out var state)) continue;
                 if (!state.dirty) continue;
-                ApplyOgsculeEffect(sLeaser, state.ogsculeSprite);
+
+                ApplyOgsculeEffect(sLeaser, state.ogsculeSprite, state.overrideColor);
                 state.dirty = false;
             }
         }

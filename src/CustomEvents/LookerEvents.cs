@@ -1,4 +1,5 @@
 ﻿using lsfUtils.DevtoolsObjects.EventRectangle;
+using SlugBase.SaveData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,8 @@ namespace Looker.CustomEvents
             {
                 SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.bathEnding, true);
                 SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "BathEnding");
-                //endingToTrigger = LookerEnums.looker_ending1;
+                room.game.rainWorld.progression.miscProgressionData.GetSlugBaseData().Set("lookerEndingBath", 1);
+                room.game.rainWorld.progression.SaveProgression(false, true);
             }
             return;
         }
@@ -63,7 +65,8 @@ namespace Looker.CustomEvents
             {
                 SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.maskEnding, true);
                 SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "MaskEnding");
-                //endingToTrigger = LookerEnums.looker_ending2;
+                room.game.rainWorld.progression.miscProgressionData.GetSlugBaseData().Set("lookerEndingMask", 1);
+                room.game.rainWorld.progression.SaveProgression(false, true);
             }
             return;
         }
@@ -89,7 +92,8 @@ namespace Looker.CustomEvents
             {
                 SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.linkEnding, true);
                 SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "LinkEnding");
-                //endingToTrigger = LookerEnums.looker_ending3;
+                room.game.rainWorld.progression.miscProgressionData.GetSlugBaseData().Set("lookerEndingLink", 1);
+                room.game.rainWorld.progression.SaveProgression(false, true);
             }
             return;
         }
@@ -119,7 +123,8 @@ namespace Looker.CustomEvents
             {
                 SaveFileCode.SetBool(room.game.GetStorySession.saveState, SaveFileCode.puzzleEnding, true);
                 SaveFileCode.SetString(room.game.GetStorySession.saveState, SaveFileCode.lastEndingDone, "PuzzleEnding");
-                //endingToTrigger = LookerEnums.looker_ending4;
+                room.game.rainWorld.progression.miscProgressionData.GetSlugBaseData().Set("lookerEndingPuzzle", 1);
+                room.game.rainWorld.progression.SaveProgression(false, true);
             }
             return;
         }
