@@ -22,8 +22,6 @@ namespace Looker.Regions
         public const int ogsculeNumber = 9000;
         public const float ogsculeSize = 40f;
 
-        private static bool insideDrawUpdate = false;
-
         public static IconSymbol.IconSymbolData CreatureSymbol_SymbolDataFromCreature(On.CreatureSymbol.orig_SymbolDataFromCreature orig, AbstractCreature creature)
         {
             IconSymbol.IconSymbolData value = orig(creature);
@@ -195,10 +193,7 @@ namespace Looker.Regions
 
         public static void SpriteLeaser_Update(On.RoomCamera.SpriteLeaser.orig_Update orig, RoomCamera.SpriteLeaser self, float timeStacker, RoomCamera rCam, Vector2 camPos)
         {
-            if (!insideDrawUpdate)
-            {
-                orig(self, timeStacker, rCam, camPos);
-            }
+            orig(self, timeStacker, rCam, camPos);
 
             if (self?.drawableObject is GraphicsModule) return;
             MarkDirty(self, rCam, self?.drawableObject);
@@ -206,15 +201,7 @@ namespace Looker.Regions
 
         public static void RoomCamera_DrawUpdate(On.RoomCamera.orig_DrawUpdate orig, RoomCamera self, float timeStacker, float timeSpeed)
         {
-            insideDrawUpdate = true;
-            try
-            {
-                orig(self, timeStacker, timeSpeed);
-            }
-            finally
-            {
-                insideDrawUpdate = false;
-            }
+            orig(self, timeStacker, timeSpeed);
 
             if (!CheckMechanics(self?.room, "pillar", "WPGA")) return;
             if (self.spriteLeasers == null) return;
