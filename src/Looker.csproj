@@ -40,7 +40,7 @@
 			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\HOOKS-Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="lsfUtils">
-			<HintPath>..\..\Stardust-Famine\lsfutils\bin\Debug\net48\lsfUtils.dll</HintPath>
+		  <HintPath>..\..\Stardust-Famine\lsfutils\Mod\plugins\lsfUtils.dll</HintPath>
 		</Reference>
 		<Reference Include="Mono.Cecil">
 			<HintPath>..\..\..\..\Downloads\MODDING\REFERENCES\Mono.Cecil.dll</HintPath>

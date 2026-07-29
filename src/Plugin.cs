@@ -124,13 +124,13 @@ namespace Looker
             {
                 return null;
             }
-            if (RegionCWT.TryGetCustomRegionParams(region, out var data))
+            /*if (RegionCWT.TryGetCustomRegionParams(region, out lsfUtils.RegionParams.RegionParamsSetup data))
             {
                 if (data.LookerMechanicOverride != null)
                 {
                     return data.LookerMechanicOverride;
                 }
-            }
+            }*/
             return region.name;
         }
 
