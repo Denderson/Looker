@@ -1,0 +1,5 @@
+DangerType: FloodAndRain
+BkgDroneVolume: 0.2769565
+Effects: WaterFluxMinLevel-0.5217391-40-40, WaterFluxMaxLevel-0.5217391-48-83, EvilWater-1-50-50, 
+PlacedObjects: Corruption><466.513><89.60526><-4~134, KarmaFlowerPatch><471.6259><41.55><-3~214~0.6600999~0~0~0.5~0.8043478, PrinceFilter><465.224><22.9238><-33~31~240~-28~3~1~1, 
+FadePalette: 10, 0.1839709

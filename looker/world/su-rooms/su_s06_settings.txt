@@ -1,0 +1,5 @@
+Template: su_settingstemplate_inside
+Clouds: 1
+Grime: 0.3586957
+EffectColorA: 2
+FadePalette: 8, 0.3152174
