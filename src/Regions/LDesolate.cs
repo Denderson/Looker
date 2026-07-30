@@ -57,7 +57,8 @@ namespace Looker.Regions
                         if (!OptionsMenu.legacyMelons.Value)
                         {
                             self.firstChunk.vel += Custom.DirVec(self.firstChunk.pos, player.DangerPos) * 25f;
-                            data.cooldown = (int)(60 * OptionsMenu.melonCooldown.Value);
+                            if (CheckEasyMode(self.room)) { data.cooldown = (int)(60 * Math.Max(OptionsMenu.melonCooldown.Value, 1.5f)); }
+                            else { data.cooldown = (int)(60 * OptionsMenu.melonCooldown.Value); }
                         }
                         else
                         {
@@ -65,7 +66,8 @@ namespace Looker.Regions
                             data.cooldown--;
                             if (data.cooldown < -80)
                             {
-                                data.cooldown = (int)(60 * OptionsMenu.melonCooldown.Value);
+                                if (CheckEasyMode(self.room)) { data.cooldown = (int)(60 * Math.Max(OptionsMenu.melonCooldown.Value, 1.5f)); }
+                                else { data.cooldown = (int)(60 * OptionsMenu.melonCooldown.Value); }
                             }
                         }
                         return;
@@ -84,7 +86,8 @@ namespace Looker.Regions
         {
             if (self.room?.game?.StoryCharacter == LookerEnums.looker && PomegranateCWT.TryGetData(self, out var data) && CheckMechanics(self.room, "desolate", "WTDB"))
             {
-                data.cooldown += (int)(40 * OptionsMenu.melonCooldown.Value);
+                if (CheckEasyMode(self.room)) { data.cooldown += (int)(40 * Math.Max(OptionsMenu.melonCooldown.Value, 1.5f)); }
+                else { data.cooldown += (int)(40 * OptionsMenu.melonCooldown.Value); }
                 return;
             }
             orig(self);

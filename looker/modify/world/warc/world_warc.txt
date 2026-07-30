@@ -138,7 +138,7 @@ CREATURES
 (looker){LookerRemix>0}WARC_B05 : 2-BigNeedleWorm, 3-Blue-2, 4-BigSpider-3, 4-Mouse-4
 
 (looker){LookerRemix=0}WARC_B06 : 2-BigSpider
-(looker){LookerRemix>0}WARC_B06 : 2-SpitterSpider
+(looker){LookerRemix>0}WARC_B06 : 2-MotherSpider
 
 (looker){LookerRemix<2}WARC_B09 : 5-Green, 6-Mouse
 (looker){LookerRemix>1}WARC_B09 : 5-Green, 6-Blue

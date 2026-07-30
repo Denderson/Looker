@@ -29,7 +29,6 @@ using UnityEngine;
 using UnityEngine.Playables;
 using Watcher;
 using static SlugBase.Features.FeatureTypes;
-
 namespace Looker.Regions
 {
     public static class LCoral_Migration
@@ -53,7 +52,7 @@ namespace Looker.Regions
                     otherObject.bodyChunks[k].vel += Custom.RNV() * 6f * UnityEngine.Random.value;
                     otherObject.bodyChunks[k].pos += Custom.RNV() * 6f * UnityEngine.Random.value;
                 }
-                if (OptionsMenu.weakerBarnacles.Value)
+                if (OptionsMenu.weakerBarnacles.Value || CheckEasyMode(self.room))
                 {
                     creature.LoseAllGrasps();
                     creature.Stun(120);
@@ -69,16 +68,11 @@ namespace Looker.Regions
         }
         public static void Room_Update(On.Room.orig_Update orig, Room self)
         {
-            if (self != null) orig(self);
-            if (self?.abstractRoom == null || self.PlayersInRoom == null && self.PlayersInRoom.Count() <= 0)
-            {
-                return;
-            }
+            orig(self);
+            if (self?.game == null) return;
+            if (self.game.GamePaused) return;
+            if (!self.game.processActive) return;
             int num = 0;
-            if (self.abstractRoom.name == "WORA_AI")
-            {
-                self.game.cameras[0].hud.karmaMeter.forceVisibleCounter = Mathf.Max(self.game.cameras[0].hud.karmaMeter.forceVisibleCounter, 200);
-            }
             if (CheckMechanics(self, "caves", "WRFA"))
             {
                 if (self.syncTicker % (int)(200f / OptionsMenu.barnacleRate.Value) != 1)
@@ -128,6 +122,7 @@ namespace Looker.Regions
                 }
 
             }
+
             if (CheckMechanics(self, "rusted", "WRRA") && self.world.rainCycle.TimeUntilRain < 400)
             {
                 if (self.syncTicker % (int)(40f / OptionsMenu.frogRainSpeed.Value) != 1)
@@ -219,7 +214,17 @@ namespace Looker.Regions
             }
             if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && OptionsMenu.metSliver.Value)
             {
-                NukeRoom(self);
+                if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && OptionsMenu.metSliver.Value)
+                {
+                    if (self.syncTicker > 40)
+                    {
+                        NukeRoom(self);
+                    }
+                }
+                else if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && !OptionsMenu.metSliver.Value)
+                {
+                    self.syncTicker = 0;
+                }
             }
         }
 

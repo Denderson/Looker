@@ -129,5 +129,4 @@ CREATURES
 (looker)WPTA_SPRINKLES : 2-Cyan-{Seed:4241,NamedAttr:Sprinkles,Mean:-1}
 
 (looker){LookerSkyWhales}OFFSCREEN : 0-skywhale-6
-(looker){LookerWeaver}WPTA_A02 : 2-WeaverLizard
 END CREATURES

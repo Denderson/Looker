@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: Sandstorm
+CeilingDrips: 0
+RainIntensity: 0.1521739
+RumbleIntensity: 0.02173913
+Clouds: 0.7720937
+Grime: 0.173913
+Palette: 35
+EffectColorA: 7
+EffectColorB: 21
+Effects: Darkness-0.5217391-20-20, 
+PlacedObjects: CustomDecal><604.5879><231.8203><15~153~170~139~199~-37~317~-263~0.3043478~0.6630435~0.4565217~whitetag6~0.1847826~0.3152174~0.1847826~0.3152174~0.1847826~0.3152174~0.1847826~0.3152174, DynamicWarpTarget><571.6318><430.5996><-305~-118~4~false~true, 
+AmbientSounds: SPOT><RWTW_AR_WhistlePipe.ogg><736.1592><264.0718><0.2608696><1.03913><360.1592><61.07178><-6.355347><-16.35534><0.7065217><0.1, SPOT><RWTW_AR_WindyCliff.ogg><429.586><424.8855><0.05434782><1><542.5859><389.8855><-127.3553><-53.35535><0><0.252174, OMNI><RWTW_RotAmb_VanillaRot.ogg><741.6096><572.3062><0.138309><0.7746382, OMNI><RWTW_DustStorm_Deep.ogg><741.0741><498.9098><0.1383096><0.7746382, 
+FadePalette: 19, 0.328233

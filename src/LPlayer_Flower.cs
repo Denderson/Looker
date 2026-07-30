@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using RWCustom;
 using SlugBase;
 using SlugBase.Features;
+using Smoke;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -101,6 +102,12 @@ namespace Looker
 
         public static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
         {
+            bool wasInWater = false;
+            if (self != null)
+            {
+                wasInWater = self.submerged;
+            }
+
             orig(self, eu);
 
             if (self?.room == null || self.inShortcut) return;
@@ -108,74 +115,95 @@ namespace Looker
 
             if (self.SlugCatClass == LookerEnums.looker && self.input != null && self.input.Length > 2)
             {
-                // faking death ability
-                if (!OptionsMenu.differentAbility.Value)
+            // faking death ability
+                if (data.fakingDeath > 0)
                 {
-                    if (data.fakingDeath > 0)
-                    {
-                        data.fakingDeath--;
-                    }
-                    if (self.input[0].spec && self.stun < 20)
-                    {
-                        data.fakingDeath = 15;
-                    }
+                    data.fakingDeath--;
+                }
+                if (self.input[0].spec && self.input[0].y < 0 && self.stun < 20)
+                {
+                    data.fakingDeath = 15;
                 }
 
-                // float ability
-                else
+            // float ability
+                // check if player currently wants to float
+                if (self.Consious && self.input[0].spec && self.input[0].y == 0 && data.floatRemaining > 0)
                 {
-                    // check if player currently wants to float
-                    if (self.Consious && self.input[0].spec && data.floatRemaining > 0)
+                    data.floatRemaining--;
+                    // check if player just started floating
+                    if (!data.currentlyFloating)
                     {
-                        data.floatRemaining--;
-                        // check if player just started floating
-                        if (!data.currentlyFloating)
-                        {
-                            self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, 120, 1f, 0.7f));
-                            for (int i = 0; i < self.bodyChunks.Length; i++)
-                            {
-                                if (self.bodyChunks[i].vel.y < 0)
-                                {
-                                    self.bodyChunks[i].vel.y *= 0.1f;
-                                }
-                            }
-                        }
-                        data.currentlyFloating = true;
-                    }
-                    else
-                    {
-                        data.currentlyFloating = false;
-                        if (self.canJump > 0)
-                        {
-                            data.floatRemaining = Math.Min(data.floatRemaining + 2, 60);
-                        }
-                    }
-                    if (data.currentlyFloating)
-                    {
-                        data.timeInFloat++;
-                        self.gravity = 0.3f;
+                        self.room.AddObject(new RippleRing(self.mainBodyChunk.pos, 120, 1f, 0.7f));
                         for (int i = 0; i < self.bodyChunks.Length; i++)
                         {
-                            if (self.bodyChunks[i].vel.y < 8)
+                            if (self.bodyChunks[i].vel.y < 0)
                             {
-                                self.bodyChunks[i].vel.y += Mathf.Min(0.25f * Mathf.Pow(data.timeInFloat, 0.7f), 1.1f);
+                                self.bodyChunks[i].vel.y *= 0.1f;
                             }
                         }
                     }
-                    else
+                data.currentlyFloating = true;
+                }
+                else
+                {
+                    data.currentlyFloating = false;
+                    if (self.canJump > 0)
                     {
-                        self.airFriction = 0.999f;
-                    }
-                    if ((!data.currentlyFloating && data.timeInFloat > 0) || (data.currentlyFloating && data.floatRemaining == 0))
-                    {
-                        self.Stun(data.timeInFloat * 2);
-                        data.timeInFloat = 0;
+                        data.floatRemaining = Math.Min(data.floatRemaining + 2, 60);
                     }
                 }
+                if (data.currentlyFloating)
+                {
+                    data.timeInFloat++;
+                    self.gravity = 0.3f;
+                    for (int i = 0; i < self.bodyChunks.Length; i++)
+                    {
+                        if (self.bodyChunks[i].vel.y < 8)
+                        {
+                            self.bodyChunks[i].vel.y += Mathf.Min(0.25f * Mathf.Pow(data.timeInFloat, 0.7f), 1.1f);
+                        }
+                    }
+                }
+                else
+                {
+                    self.airFriction = 0.999f;
+                }
+                if ((!data.currentlyFloating && data.timeInFloat > 0) || (data.currentlyFloating && data.floatRemaining == 0))
+                {
+                    self.Stun(data.timeInFloat * 2);
+                    data.timeInFloat = 0;
+                }
+                
             }
 
             if (self.room.game?.StoryCharacter == LookerEnums.looker)
             {
+                if (CheckMechanics(self.room, "waterways", "WVWA") && (CheckEasyMode(self.room) || OptionsMenu.acidProtection.Value))
+                {
+                    if (self.Submersion > 0)
+                    {
+                        if (!wasInWater && self.mainBodyChunk != null)
+                        {
+                            self.mainBodyChunk.vel.y = 50f;
+                            self.room.AddObject(new Smolder(self.room, self.firstChunk.pos, self.firstChunk, null));
+                            data.acidShieldTimer -= 70;
+                        }
+                        data.acidShieldTimer--;
+                    }
+                    else if (data.acidShieldTimer < 80)
+                    {
+                        data.acidShieldTimer++;
+                        if (UnityEngine.Random.value < 0.25f)
+                        {
+                            self.room.AddObject(new Explosion.ExplosionSmoke(self.mainBodyChunk.pos, Custom.RNV() * (2f * UnityEngine.Random.value), 1f));
+                        }
+                        if (UnityEngine.Random.value < 0.5f)
+                        {
+                            self.room.AddObject(new Spark(self.mainBodyChunk.pos, Custom.RNV(), Color.white, null, 4, 8));
+                        }
+                    }
+                }
+
                 if (data.timeUntilChaser > 0)
                 {
                     data.timeUntilChaser--;
@@ -184,42 +212,6 @@ namespace Looker
                         data.timeUntilChaser = -1;
                         LMigration.SpawnChaser(self);
                         data.chaserpos = new IntVector2();
-                    }
-                }
-
-                data.previousKarmaMode = data.karmaMode;
-                if (self.grasps.Length != 0)
-                {
-                    bool flag = false;
-                    for (int i = 0; i < self.grasps.Length; i++)
-                    {
-                        if (self.grasps[i]?.grabbed is VultureMask && (self.grasps[i].grabbed as VultureMask).abstractPhysicalObject.ID == SpecialId)
-                        {
-                            data.karmaMode = true;
-                            flag = true;
-                        }
-                        if (!flag) data.karmaMode = false;
-                    }
-                }
-                if (data.darknessImmunity > 0)
-                {
-                    retractDarkness = true;
-                    data.darknessImmunity--;
-                }
-                else
-                {
-                    retractDarkness = false;
-                }
-                if (darknessProgress > 0.8)
-                {
-                    self.eyesClosedTime = 10;
-                    self.slowMovementStun = 40;
-                    if (darknessProgress >= 1 && data.darknessImmunity <= 0)
-                    {
-                        if (!OptionsMenu.weakerDarkness.Value && !self.dead)
-                        {
-                            self.Die();
-                        }
                     }
                 }
             }
@@ -233,6 +225,76 @@ namespace Looker
                 self.blink = 0;
             }
         }
+        public static string PlayerGraphics_DefaultFaceSprite_float_int(On.PlayerGraphics.orig_DefaultFaceSprite_float_int orig, PlayerGraphics self, float eyeScale, int imgIndex)
+        {
+            if (self?.player != null && self.player.SlugCatClass == LookerEnums.looker )
+            {
+                if (self.RenderAsPup)
+                {
+                    return self._cachedFaceSpriteNames[0, 4, imgIndex];
+                }
+                else if (self.blink == 0)
+                {
+                    return self._cachedFaceSpriteNames[2, 0, imgIndex];
+                }
+                else
+                {
+                    return self._cachedFaceSpriteNames[2, 1, imgIndex];
+
+                }
+            }
+            else return
+            orig(self, eyeScale, imgIndex);
+        }
+        public static void PlayerGraphics_InitCachedSpriteNames(On.PlayerGraphics.orig_InitCachedSpriteNames orig, PlayerGraphics self)
+        {
+            self._cachedFaceSpriteNames = new AGCachedStrings3Dim(new string[]
+            {
+            "Face",
+            "PFace",
+            "LookerFace"
+            }, new string[]
+            {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+            }, 9);
+            self._cachedHeads = new AGCachedStrings2Dim(new string[]
+            {
+            "HeadA",
+            "HeadB",
+            "HeadC"
+            }, 18);
+            self._cachedPlayerArms = new AGCachedStrings("PlayerArm", 13);
+            self._cachedLegsA = new AGCachedStrings("LegsA", 31);
+            self._cachedLegsACrawling = new AGCachedStrings("LegsACrawling", 31);
+            self._cachedLegsAClimbing = new AGCachedStrings("LegsAClimbing", 31);
+            self._cachedLegsAOnPole = new AGCachedStrings("LegsAOnPole", 31);
+        }
+
+        public static string JollyPlayerSelector_GetPupButtonOffName(On.JollyCoop.JollyMenu.JollyPlayerSelector.orig_GetPupButtonOffName orig, JollyCoop.JollyMenu.JollyPlayerSelector self)
+        {
+            if (self.JollyOptions(self.index).PlayerClass != null && self.JollyOptions(self.index).PlayerClass.value.Equals("looker"))
+            {
+                return "looker_pup_off";
+            }
+            else return
+            orig(self);
+        }
+
+        public static void SymbolButtonToggle_LoadIcon(On.JollyCoop.JollyMenu.SymbolButtonToggle.orig_LoadIcon orig, JollyCoop.JollyMenu.SymbolButtonToggle self)
+        {
+            if (self.symbolNameOff.Contains("looker") && self.isToggled)
+            {
+                self.symbol.fileName = "looker_pup_on";
+            }
+            else { orig.Invoke(self); }
+           
+        }
+
+
         public static void Player_Die(On.Player.orig_Die orig, Player self)
         {
             bool wasDead = self.dead;
@@ -302,45 +364,25 @@ namespace Looker
                 }
                 else
                 {
+                    data.oldPipePosition = self.mainBodyChunk.pos;
                     data.shouldSpawnCopies = true;
-                    data.delayUntilCopies = 40;
+                    data.delayUntilCopies = (OptionsMenu.copyDelay.Value + 20) / 2;
                 }
             }
             else
             {
                 data.shouldSpawnCopies = false;
             }
-            if (roomName.StartsWith("WARA") && CheckMechanics(self.room, "signal", "WPTA"))
+            if (roomName.StartsWith("WARA") && CheckMechanics(self.room, "signal", "WPTA") && Plugin.delayedTutorial != null)
             {
                 Plugin.delayedTutorial = "WPTA";
             }
 
-            if (roomName.StartsWith("WORA_THRONE"))
+            if (roomName == "WORA_AI")
             {
                 SaveFileCode.SetBool(self.room.game.GetStorySession.saveState, "ReachedThrone", true);
             }
 
-            if (roomName == "WORA_AI")
-            {
-                bool flag = true;
-                for (int i = 0; i < newRoom.physicalObjects.Length; i++)
-                {
-                    for (int j = 0; j < newRoom.physicalObjects[i].Count; j++)
-                    {
-                        if (newRoom.physicalObjects[i][j] is VultureMask)
-                        {
-                            flag = false;
-                        }
-                    }
-                }
-                if (flag)
-                {
-                    Log.LogMessage("Spawning karma mask!");
-                    VultureMask.AbstractVultureMask abstractVultureMask = new(newRoom.world, null, newRoom.GetWorldCoordinate(new Vector2(1050f, 400f)), SpecialId, self.abstractCreature.ID.RandomSeed, false);
-                    self.room.abstractRoom.AddEntity(abstractVultureMask);
-                    abstractVultureMask.RealizeInRoom();
-                }
-            }
 
             if (Plugin.delayedTutorial != null)
             {
@@ -369,7 +411,8 @@ namespace Looker
             if (CheckMechanics(self.room, "signal", "WPTA") && enteredNewRoom && data.inShelter)
             {
                 data.inShelter = false;
-                data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value);
+                if (CheckEasyMode(self.room)) { data.signalLeniency = (int)(400 * Math.Max(OptionsMenu.broadcastingLeniencyTimer.Value, 1.5f)); }
+                else { data.signalLeniency = (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value); }
                 AbstractCreature abstractCreature = new(newRoom.world, StaticWorld.GetCreatureTemplate(CreatureTemplate.Type.VultureGrub), null, self.abstractCreature.pos, newRoom.game.GetNewID())
                 {
                     saveCreature = false
@@ -392,7 +435,7 @@ namespace Looker
                     data.reverseVertical = UnityEngine.Random.value > 0.5;
                 }
                 data.controlOffset = (int)(UnityEngine.Random.value * 100) % 3;
-                if (OptionsMenu.controlAnnouncement.Value)
+                if (OptionsMenu.controlAnnouncement.Value || CheckEasyMode(self.room))
                 {
                     string announcement = string.Empty;
                     if (data.reverseHorizontal)
@@ -414,7 +457,7 @@ namespace Looker
                 for (int i = 0; i < self.bodyChunks.Length; i++)
                 {
                     Vector2 vector = Custom.IntVector2ToVector2(newRoom.ShorcutEntranceHoleDirection(pos));
-                    self.bodyChunks[i].vel = vector * 10f;
+                    self.bodyChunks[i].vel = vector * 25f;
                 }
             }
             
@@ -423,30 +466,24 @@ namespace Looker
 
             if (data.inShelter)
             {
-                KarmaMask.CheckMaskMechanics(newRoom);
+                LMask.CheckMaskMechanics(newRoom);
             }
         }
 
         public static void PlayerGraphics_DrawSprites(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
         {
             orig(self, sLeaser, rCam, timeStacker, camPos);
-            if (sLeaser?.sprites is { Length: > 9 } && self?.player?.SlugCatClass == LookerEnums.looker && PlayerCWT.TryGetData(self?.player, out PlayerCWT.DataClass data) && data.fakingDeath > 0)
+            if (sLeaser?.sprites is { Length: > 9 } && self?.player?.SlugCatClass == LookerEnums.looker)
             {
-                sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("FaceDead");
-            }
-        }
+                if ((PlayerCWT.TryGetData(self?.player, out PlayerCWT.DataClass data) && data.fakingDeath > 0) || self.player.dead)
 
-        public static void PlayerGraphics_InitiateSprites(On.PlayerGraphics.orig_InitiateSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
-        {
-            orig(self, sLeaser, rCam);
-            if (self.player?.SlugCatClass == LookerEnums.looker)
-            {
-                sLeaser.sprites[0].shader = Custom.rainWorld.Shaders["PlayerCamoMaskBeforePlayer"];
-                for (int i = 1; i < 10; i++)
                 {
-                    sLeaser.sprites[i].shader = Custom.rainWorld.Shaders["RippleBasicBothSides"];
+                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("LookerFaceDead");
                 }
-                sLeaser.sprites[11].shader = Custom.rainWorld.Shaders["RippleBasicBothSides"];
+                else if (!self.player.Consious)
+                {
+                    sLeaser.sprites[9].element = Futile.atlasManager.GetElementWithName("LookerFaceStunned");
+                }
             }
         }
 

@@ -31,6 +31,7 @@
 		"world_state": [ "looker", "Watcher" ],
 		"select_menu_scene": "Slugcat_looker",
 		"sleep_scene": "Sleep_looker",
+		"title_card": "intro_roll_c_looker",
 		"expedition_enabled": false,
 		"story_regions": ["-SU", "-HI", "-CC", "-DS", "-GW", "-SL", "-SH", "-UW", "-SS", "-SI", "-LF", "-SB", "-VS", "WARA", "WARB", "WARC", "WARD", "WARE", "WARF", "WARG", "WBLA", "WMPA", "WPGA", "WPTA", "WRFA", "WRFB", "WRRA", "WSKA", "WSKB", "WSKC", "WSKD", "WTDA", "WTDB", "WVWA", "WVWB"]
 	}

@@ -91,6 +91,5 @@ CREATURES
 
 (looker)OFFSCREEN : 0-DrillCrab-{NamedAttr:H01Crab}
 
-(looker){LookerWeaver}WBLA_C03 : 3-WeaverLizard
 END CREATURES
 [ENDMERGE]

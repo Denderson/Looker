@@ -54,7 +54,7 @@ CREATURES
 
 (looker){LookerRemix-2}WARE_I15 : 2-FlameLizard
 (looker){LookerRemix-2}WARE_H15 : 2-RedCentipede
-(looker){LookerRemix-2}WARE_H16 : 2-RedCentipede, 3-RedCentipede
+(looker){LookerRemix>1}WARE_H16 : 2-RedCentipede, 3-RedCentipede
 
 
 (looker){LookerRemix<2}WARE_I15 : 2-Cyan
@@ -68,12 +68,10 @@ CREATURES
 (looker){LookerRemix=1}WARE_H16 : 2-Centipede-{0.4}, 3-RedCentipede
 
 
-(looker){LookerRemix-1}WARE_I13 : 1-FlameLizard
 (looker){LookerRemix-1}WARE_H11 : 2-FlameLizard
 (looker){LookerRemix-1}WARE_H21 : 1-BigNeedleWorm, 3-FlameLizard-2
 
 
-(looker){LookerRemix=0}WARE_I13 : 1-Cyan
 (looker){LookerRemix=0}WARE_H11 : 2-Yellow
 (looker){LookerRemix=0}WARE_H21 : 1-BigNeedleWorm, 3-Yellow-2
 (looker){LookerRemix=0}WARE_H24 : 2-Yellow, 3-Centipede-{0.3}
@@ -81,8 +79,7 @@ CREATURES
 
 
 (looker)WARE_H07 : 4-BigNeedleWorm-2
+(looker)WARE_I13 : 1-FlameLizard
 
-(looker){LookerWeaver}WARE_H06 : 3-WeaverLizard
-(looker){LookerWeaver}WARE_H11 : 2-WeaverLizard
 END CREATURES
 [ENDMERGE]

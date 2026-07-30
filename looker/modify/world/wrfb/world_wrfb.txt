@@ -71,7 +71,5 @@ CREATURES
 (looker)WRFB_C07 : 2-Snail-3
 
 (looker){#!lb-fgf-m4r-ik.modpack}WRFB_C13 : 4-Snail-3, 5-SeaLeech-5
-(looker){LookerWeaver}WRFB_D09 : 3-WeaverLizard
-(looker){LookerWeaver}WRFB_D10 : 2-WeaverLizard
 END CREATURES
 [ENDMERGE]

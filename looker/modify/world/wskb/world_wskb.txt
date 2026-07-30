@@ -175,7 +175,5 @@ CREATURES
 (looker)WSKB_N12 : 3-SmallCentipede-2
 (looker)WSKB_N14 : 2-Leech-3, 3-Leech-3
 
-(looker){LookerWeaver}WSKB_C05 : 4-WeaverLizard
-(looker){LookerWeaver}WSKB_N03 : 4-WeaverLizard
 END CREATURES
 [ENDMERGE]

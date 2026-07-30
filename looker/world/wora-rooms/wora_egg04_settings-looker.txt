@@ -1,0 +1,17 @@
+Template: NONE
+DangerType: None
+RainIntensity: 0.3588861
+RumbleIntensity: 0.05226666
+WaveSpeed: 0.491833
+WaveLength: 0.9959165
+WaveAmplitude: 0.04539466
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.157956
+Grime: 0.1486641
+Palette: 35
+Effects: SurfaceSandstorm-0.1022065-20-20, Outer Rim View-0.2934783-24.87109-96.63403, FlowerWind-0.4645754,0.8437858,0.4070849-296.7034-25.72858, Ripple Settings-0-1030-95-looker-NULL-NULL-0-0-19-0.6956522, GreenSparks-0.2934783-30-30, BkgOnlyLightning-0.5108696-40-40, ElectricDeath-1-50-50, 
+PlacedObjects: RottenSeedCob><301.7883><619.243><-323.1214~11.95996~2~3, WarpPoint><711.8099><559.1428><0~0~Watcher~Watcher~WORA~wora_dial~550~330~a1cf7772-daac-4f0b-b584-23352c1e3a15~WatcherOnly~0~6~8~4~8~4~4~4~7~150~150~-1~0~0~true~false~true~true~false~0~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false~-1~false, CosmeticRipple><587.9018><260.9541><-312.1177~210.3214~-140.4505~271.9911~587.9018~260.9541~306.1135~0.7073928~0.6246395~False~0.75~True~0.3169722~False~-1~0~False, FloatingDebris><756.0646><148.6751><110.6921~-77.28809~1324130580~0~6~0.8695638~1.260868~37~-375.1076|289.5556~-35.78531|137.3682~-1.021134|-0.2881981~-0.06660827|-0.09983642~0.4872467|0.666759~Ripple~0.5~0v0v0v0|0v0v0v0~0, CosmeticRipple><249.4064><732.0353><-186.7521~-366.4694~138.4944~-208.445~249.4064~732.0353~250.2599~0.7677128~0.3774689~False~0.5092913~True~0.1858298~False~-1~0~False, 
+AmbientSounds: OMNI><RWTW_DustStorm_Deep.ogg><318.6074><542.2929><0.1413043><0.6673913, OMNI><RWTW_DustStorm_Gusting.ogg><119.3366><544.4427><0.1004652><1.852961, SPOT><RWTW_AmbEmpty.ogg><771.0975><462.132><0.2305464><1><255.2339><602.6971><53.54578><-113.9493><0><0.2393726, 
+FadePalette: 10, 0.6739131
+RoomSpecificScriptActive: ON

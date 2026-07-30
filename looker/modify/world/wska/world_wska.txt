@@ -82,22 +82,6 @@ CREATURES
 (looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-WaterSpitter, 8-AquaCenti-2
 (looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_D15 : 6-CicadaB-3, 7-Salamander, 8-AquaCenti-2
 
-(looker){LookerRemix=3,LookerWarp-18,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=3,LookerWarp-15,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=3,LookerWarp-10,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=3,LookerWarp-5,LookerRandom-50}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-18,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-15,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-10,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-5,LookerRandom-30}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-18,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-15,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-10,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-5,LookerRandom-20}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-18,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-15,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-10,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-5,LookerRandom-15}WSKA_D18 : 2-WeaverLizard
 
 (looker){LookerRemix-2}WSKA_D20 : 2-SeaLeech-6, 3-AquaCenti
 (looker){LookerRemix=1}WSKA_D20 : 2-Leech-6, 3-AquaCenti
@@ -133,22 +117,6 @@ CREATURES
 (looker){LookerRemix=1,#lb-fgf-m4r-ik.modpack}WSKA_N01 : 2-CicadaB-3, 3-WaterSpitter
 (looker){LookerRemix=1,#!lb-fgf-m4r-ik.modpack}WSKA_N01 : 2-CicadaB-3, 3-Salamander
 
-(looker){LookerRemix=3,LookerWarp-18,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=3,LookerWarp-15,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=3,LookerWarp-10,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=3,LookerWarp-5,LookerRandom-50}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-18,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-15,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-10,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=2,LookerWarp-5,LookerRandom-30}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-18,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-15,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-10,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=1,LookerWarp-5,LookerRandom-20}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-18,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-15,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-10,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
-(looker){LookerRemix=0,LookerWarp-5,LookerRandom-15}WSKA_N01 : 2-WeaverLizard
 
 (looker){LookerRemix=3,#lb-fgf-m4r-ik.modpack}WSKA_N02 : 2-BouncingBall-4
 (looker){LookerRemix=2,#lb-fgf-m4r-ik.modpack}WSKA_N02 : 2-Snail-2, 2-BouncingBall-2

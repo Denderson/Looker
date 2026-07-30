@@ -35,9 +35,143 @@ namespace Looker.Regions
 {
     public static class LMisc
     {
+        // How much the player is pushed back toward the camera area
+        private const float oobPushStrength = 10f;
+
+        // How far outside the camera bounds before push kicks in
+        private const float oobMargin = 0f;
+
+        // How far into the camera bounds is the Player pushed
+        private const float oobInnerMargin = 20f;
+
+        // How long does player need to be out of bounds before the push (if set to zero, weird stuff when going through screens)
+        public const int oobRequirement = 10;
+
+
+        public static void Player_Update(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            orig(self, eu);
+
+            if (self?.room == null) return;
+            if (!PlayerCWT.TryGetData(self, out var data)) return;
+
+            if (CheckMechanics(self.room, "storage", "WARD"))
+            {
+                RoomCamera camera = FindCameraForRoom(self.room);
+                if (camera == null)
+                {
+                    return;
+                }
+
+                Vector2 cameraPos = camera.pos;
+
+                float camWidth = camera.sSize.x;
+                float camHeight = camera.sSize.y;
+
+                float left = cameraPos.x - oobMargin + 20;
+                float right = cameraPos.x + camWidth + oobMargin - 20;
+                float bottom = cameraPos.y - oobMargin;
+                float top = cameraPos.y + camHeight + oobMargin;
+
+                Vector2 playerPos = self.mainBodyChunk.pos;
+                Vector2 pushDir = Vector2.zero;
+
+                // Check horizontal OOB
+                if (playerPos.x < left)
+                {
+                    pushDir.x = cameraPos.x + oobInnerMargin - playerPos.x;
+                }
+                else if (playerPos.x > right)
+                {
+                    pushDir.x = (cameraPos.x + camWidth - oobInnerMargin) - playerPos.x;
+                }
+
+                // Check vertical OOB
+                if (playerPos.y < bottom && self.gravity == 0f)
+                {
+                    pushDir.y = cameraPos.y + oobInnerMargin - playerPos.y;
+                }
+                else if (playerPos.y > top)
+                {
+                    pushDir.y = (cameraPos.y + camHeight - oobInnerMargin) - playerPos.y;
+                }
+
+                // Check if any collision happened, dont run code afterwards if not
+                if (pushDir == Vector2.zero)
+                {
+                    data.oobTimer = 0;
+                    return;
+                }
+
+                if (data.oobTimer < oobRequirement)
+                {
+                    data.oobTimer++;
+                    return;
+                }
+                data.oobTimer = 0;
+
+                if (!OptionsMenu.nonLethalBorders.Value && !CheckEasyMode(self.room) && self.gravity == 0)
+                {
+                    self.Die();
+                    self.room.AddObject(new ZapCoil.ZapFlash(self.firstChunk.pos, 2f));
+                    self.room.PlaySound(SoundID.Zapper_Zap, self.firstChunk.pos, 1f, 1f);
+                }
+
+                Vector2 force = pushDir.normalized * oobPushStrength;
+                foreach (BodyChunk chunk in self.bodyChunks)
+                {
+                    chunk.vel += force;
+                }
+            }
+
+            if (CheckMechanics(self.room, "stormy", "WSKC"))
+            {
+                Color lightningColor = new Color(0.7f, 0.7f, 1f); // TODO make it dynamic
+                if (data.evilLightningWarning)
+                {
+                    if (UnityEngine.Random.value < 0.04f && self.bodyChunks.Length > 0)
+                    {
+                        int chunkIndex = UnityEngine.Random.Range(0, self.bodyChunks.Length);
+                        BodyChunk chunk = self.bodyChunks[chunkIndex];
+                        self.room.AddObject(new Spark(chunk.pos + Custom.RNV() * chunk.rad, Custom.RNV() * 3f, lightningColor, null, 6, 14));
+                    }
+                }
+                if (data.evilLightningSparks > 0)
+                {
+                    data.evilLightningSparks--;
+                    float urgency = 1f - Mathf.Clamp01((float)data.evilLightningSparks / (float)Mathf.Max(1, self.eyesClosedTime));
+                    float chance = Mathf.Lerp(0.08f, 0.6f, urgency);
+
+                    if (UnityEngine.Random.value < chance && self.bodyChunks.Length > 0)
+                    {
+                        int sparkCount = 1 + (int)(urgency * 2f);
+                        for (int i = 0; i < sparkCount; i++)
+                        {
+                            int chunkIndex = UnityEngine.Random.Range(0, self.bodyChunks.Length);
+                            BodyChunk chunk = self.bodyChunks[chunkIndex];
+                            self.room.AddObject(new Spark(chunk.pos + Custom.RNV() * chunk.rad, Custom.RNV() * Mathf.Lerp(4f, 12f, urgency), Color.Lerp(lightningColor, Color.white, urgency), null, 8, 20));
+                        }
+                    }
+                }
+            }
+        }
+
+        private static RoomCamera FindCameraForRoom(Room room)
+        {
+            if (room?.game == null) return null;
+
+            foreach (RoomCamera cam in room.game.cameras)
+            {
+                if (cam.room == room)
+                {
+                    return cam;
+                }
+            }
+            return null;
+        }
+
         public static void Lizard_ctor(On.Lizard.orig_ctor orig, Lizard self, AbstractCreature abstractCreature, World world)
         {
-            Log.LogMessage("LIZARD CTOR!!");
             if (world?.game?.StoryCharacter != LookerEnums.looker)
             {
                 orig(self, abstractCreature, world);
@@ -61,15 +195,9 @@ namespace Looker.Regions
                         self.LizardState.rotType = LizardState.RotType.Slight;
                     }
                 }
-                else
-                {
-                    Log.LogMessage("Couldnt grab self.LizardState!");
-                }
             }
 
             orig(self, abstractCreature, world);
-
-            Log.LogMessage("LOOKER LIZARD CTOR!!");
             if (world?.region?.name != null)
             {
                 string regionName = world.region.name.ToLowerInvariant();
@@ -79,8 +207,7 @@ namespace Looker.Regions
                 }
                 if (regionName.Contains("warg") && (OptionsMenu.strongerLizardChance.Value == 1f || UnityEngine.Random.value < OptionsMenu.strongerLizardChance.Value))
                 {
-                    Log.LogMessage("Buffing The Surface lizards!!");
-                    if (OptionsMenu.lizardsCanLeap.Value && self.jumpModule == null) self.jumpModule = new LizardJumpModule(self);
+                    if ((OptionsMenu.lizardsCanLeap.Value || CheckEasyMode(self.room)) && self.jumpModule == null) self.jumpModule = new LizardJumpModule(self);
                     if (OptionsMenu.lizardsCanShield.Value && self.blizzardModule == null) self.blizzardModule = new LizardBlizzardModule(self);
                 }
             }
@@ -103,6 +230,23 @@ namespace Looker.Regions
             }
         }
 
+        public static void Inspector_InitiateGraphicsModule(On.MoreSlugcats.Inspector.orig_InitiateGraphicsModule orig, Inspector self)
+        {
+            if (self.ownerIterator == -1)
+            {
+                if (CheckMechanics(self.room, "storage", "WARD")) { self.ownerIterator = 752; }
+            }
+            orig(self);
+        }
+
+        public static Color On_Inspector_get_OwneriteratorColor(Func<Inspector, Color> orig, Inspector self)
+        {
+            if (self.ownerIterator == 752) { return new Color(0.59f, 0.38f, 1f); }
+            return orig(self);
+        }
+
+
+
         public static int RainCycle_GetDesiredCycleLength(On.RainCycle.orig_GetDesiredCycleLength orig, RainCycle self)
         {
             int value = orig(self);
@@ -113,7 +257,7 @@ namespace Looker.Regions
                 {
                     if (self?.world?.region?.name != null && self.world.region.name == "WSKA")
                     {
-                        value = (int)((float)value * 0.30);
+                        value = (int)((float)value * (0.35 * OptionsMenu.rainTimerMult.Value));
                     }
                     else if (self?.world?.region?.name != null && self.world.region.name == "WRRA")
                     {
@@ -132,7 +276,7 @@ namespace Looker.Regions
         {
             orig(self);
             if (!CWTs.PlayerCWT.TryGetData(self, out var data)) return;
-            if (self.room != null && CheckMechanics(self.room, "salination", "WARB") && self.airInLungs <= 0.1f && !data.usedEmergencyBreath)
+            if (self.room != null && CheckMechanics(self.room, "salination", "WARB") && self.airInLungs <= 0.1f && OptionsMenu.emergencyBreath.Value && !data.usedEmergencyBreath)
             {
                 data.usedEmergencyBreath = true;
                 for (int i = 0; i < 10; i++)
@@ -151,7 +295,8 @@ namespace Looker.Regions
             int value = orig(self, amount);
             if (self?.room != null && CheckMechanics(self.room, "stormy", "WSKC"))
             {
-                return (int)(value / OptionsMenu.lightningSpawnSpeed.Value);
+                if (CheckEasyMode(self.room)) { return (int)(value / Math.Min(OptionsMenu.lightningSpawnSpeed.Value, 0.7f)); }
+                else { return (int)(value / OptionsMenu.lightningSpawnSpeed.Value); }
             }
             return value;
         }
@@ -159,37 +304,55 @@ namespace Looker.Regions
         public static Vector2 StaticBuildup_GetBestTarget(On.Watcher.LightningMaker.StaticBuildup.orig_GetBestTarget orig, LightningMaker.StaticBuildup self)
         {
             Vector2 value = orig(self);
-            if (OptionsMenu.lessEvilLightnings.Value)
-            {
-                return value;
-            }
-            if (!CheckMechanics(self?.room, "stormy", "WSKC"))
-            {
-                return value;
-            }
-            if (self.room.lightningMaker == null)
-            {
-                return value;
-            }
+            if (OptionsMenu.lessEvilLightnings.Value || CheckEasyMode(self.room)) return value;
+            if (!CheckMechanics(self?.room, "stormy", "WSKC")) return value;
+            if (self.room.lightningMaker == null) return value;
+
+            IntVector2 buildupTile = self.room.GetTilePosition(self.pos);
             foreach (PhysicalObject physicalObject in self.targets)
             {
                 if (physicalObject != null && !self.IsTargetForbidden(physicalObject) && !self.room.lightningMaker.IsPosProtected(physicalObject.firstChunk.pos) && physicalObject is Player player && PlayerCWT.TryGetData(player, out var data))
                 {
+                    IntVector2 targetTile = self.room.GetTilePosition(physicalObject.firstChunk.pos);
+                    if (!self.room.RayTraceTilesForTerrain(buildupTile.x, buildupTile.y, targetTile.x, targetTile.y))
+                    {
+                        continue;
+                    }
+
                     if (data.timesUntilTargetedByLightning > 0)
                     {
                         data.timesUntilTargetedByLightning--;
                         if (data.timesUntilTargetedByLightning == 0)
                         {
-                            player.eyesClosedTime = 200;
+                            data.evilLightningWarning = true;
                         }
                         return value;
                     }
-                    data.timesUntilTargetedByLightning = 2;
+                    data.timesUntilTargetedByLightning = 3;
                     return physicalObject.firstChunk.pos;
                 }
             }
             return value;
         }
+
+        public static void LightningMaker_Strike(On.Watcher.LightningMaker.orig_Strike orig, LightningMaker self, Vector2 pos, float branchingChance, float size, float effectRadius, float killRadius, int delayFrames)
+        {
+            if (self?.room?.abstractRoom != null && (!self.IsPosProtected(pos) || killRadius == 0f))
+            {
+                foreach (AbstractCreature ac in self.room.abstractRoom.creatures)
+                {
+                    if (ac?.realizedCreature is Player player && PlayerCWT.TryGetData(player, out var data) && data.evilLightningWarning)
+                    {
+                        data.evilLightningWarning = false;
+                        int totalDelay = delayFrames + 4;
+                        player.eyesClosedTime = totalDelay;
+                        data.evilLightningSparks = totalDelay;
+                    }
+                }
+            }
+            orig(self, pos, branchingChance, size, effectRadius, killRadius, delayFrames);
+        }
+
         public static void Player_AddFood(On.Player.orig_AddFood orig, Player self, int add)
         {
             orig(self, add);
@@ -201,7 +364,7 @@ namespace Looker.Regions
 
         public static void Frog_Attach(On.Watcher.Frog.orig_Attach orig, Frog self, BodyChunk chunk, bool suckFood)
         {
-            if (Plugin.CheckMechanics(self.room, "wrecks", "WRRA") && !OptionsMenu.noFrogStacking.Value && chunk.owner is Creature && (chunk.owner as Creature).grabbedBy.Count > 0)
+            if (Plugin.CheckMechanics(self.room, "wrecks", "WRRA") && (!OptionsMenu.noFrogStacking.Value || !CheckEasyMode(self.room)) && chunk.owner is Creature && (chunk.owner as Creature).grabbedBy.Count > 0)
             {
                 foreach (Creature.Grasp grasp in (chunk.owner as Creature).grabbedBy)
                 {
@@ -249,13 +412,46 @@ namespace Looker.Regions
                         {
                             continue;
                         }
-                        if (self.room.abstractRoom.creatures[i].realizedCreature is Player && Custom.DistLess(self.lightSource.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, 130f * OptionsMenu.breathZoneSize.Value))
+                        if (self.room.abstractRoom.creatures[i].realizedCreature is Player && (!CheckEasyMode(self.room) && Custom.DistLess(self.lightSource.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, 130f * OptionsMenu.breathZoneSize.Value) || (CheckEasyMode(self.room) && Custom.DistLess(self.lightSource.pos, self.room.abstractRoom.creatures[i].realizedCreature.mainBodyChunk.pos, 130f * Math.Max(OptionsMenu.breathZoneSize.Value, 1.5f)))))
                         {
                             (self.room.abstractRoom.creatures[i].realizedCreature as Player).airInLungs = 1f;
                         }
                     }
                 }
             }
+        }
+
+        public static void Creature_Update(ILContext il)
+        {
+            FieldInfo waterIsLethal = typeof(Water).GetField(nameof(Water.WaterIsLethal));
+
+            if (waterIsLethal == null)
+            {
+                Log.LogMessage("WaterIsLethal field not found!");
+                return;
+            }
+
+            ILCursor c = new(il);
+
+            if (!c.TryGotoNext(MoveType.After, x => x.MatchLdfld(waterIsLethal)))
+            {
+                Log.LogMessage("Creature_Update IL ldfld failed!");
+                return;
+            }
+
+            c.Emit(OpCodes.Ldarg_0);
+            c.EmitDelegate<Func<Creature, bool>>(IsWaterNonlethal);
+            c.Emit(OpCodes.Not);
+            c.Emit(OpCodes.And);
+        }
+
+        public static bool IsWaterNonlethal(Creature creature)
+        {
+            if (CheckMechanics(creature?.room, "waterways", "WVWA") && (CheckEasyMode(creature.room) || OptionsMenu.acidProtection.Value) && creature is Player player && PlayerCWT.TryGetData(player, out var data) && data.acidShieldTimer > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public static void Player_checkInput(On.Player.orig_checkInput orig, Player self)
@@ -271,7 +467,6 @@ namespace Looker.Regions
                 orig(self);
                 self.stun = 15;
                 self.input[0].x = 0;
-                self.input[0].y = 0;
                 self.input[0].analogueDir *= 0f;
                 self.input[0].jmp = false;
                 self.input[0].thrw = false;
@@ -356,21 +551,12 @@ namespace Looker.Regions
             return orig(rm) || (rm.world?.game?.StoryCharacter == LookerEnums.looker);
         }
 
-        public static string WarpPoint_ChooseDynamicWarpTarget(On.Watcher.WarpPoint.orig_ChooseDynamicWarpTarget orig, World world, string oldRoom, string targetRegion, bool badWarp, bool spreadingRot, bool playerCreated)
-        {
-            if (world.game?.StoryCharacter == LookerEnums.looker && playerCreated)
-            {
-                return "wrsa_l01";
-            }
-            return orig(world, oldRoom, targetRegion, badWarp, spreadingRot, playerCreated);
-        }
-
         public static string SaveState_SaveToString(On.SaveState.orig_SaveToString orig, SaveState self)
         {
             if (self.saveStateNumber == LookerEnums.looker)
             {
-                self.respawnCreatures = new List<int> { };
-                self.waitRespawnCreatures = new List<int> { };
+                self.respawnCreatures = [];
+                self.waitRespawnCreatures = [];
             }
             return orig(self);
         }
@@ -413,11 +599,37 @@ namespace Looker.Regions
 
         public static void Room_Loaded(On.Room.orig_Loaded orig, Room self)
         {
-            orig(self);
             if (self?.game?.StoryCharacter != LookerEnums.looker)
             {
+                orig(self);
                 return;
             }
+
+            if (self.abstractRoom.firstTimeRealized)
+            {
+                Log.LogMessage("First time realised!");
+                for (int i = 0; i < self.roomSettings.placedObjects.Count; i++)
+                {
+                    if (self.roomSettings.placedObjects[i].type == WatcherEnums.PlacedObjectType.WeaverSpot && self.roomSettings.placedObjects[i].active)
+                    {
+                        Vector2 spawnPosition = self.roomSettings.placedObjects[i].pos;
+                        Log.LogMessage("Let's go gambling!");
+                        if ((RXRandom.Int(100) < (int)(SaveFileCode.LinkCount(self.game.GetStorySession.saveState) / 5) * 15 * (0.5f + (0.25f * OptionsMenu.spawnFileDifficulty.Value))) && SaveFileCode.LinkCount(self.game.GetStorySession.saveState) >= 5)
+                        {
+                            AbstractCreature abstractCreature = new(self.world, StaticWorld.GetCreatureTemplate(lsfUtils.Enums.CreatureTemplateType.WeaverLizard), null, self.GetWorldCoordinate(spawnPosition), self.game.GetNewID());
+                            self.abstractRoom.AddEntity(abstractCreature);
+                            abstractCreature.RealizeInRoom();
+                            self.AddObject(new ShockWave(spawnPosition, 400f, 0.25f, 15, false));
+                            self.PlaySound(WatcherEnums.WatcherSoundID.Templar_Shield_Explode);
+                            Log.LogMessage("I can't stop winning!");
+                        }
+                        else Log.LogMessage("Aw dangit.");
+                    }
+                }
+            }
+
+            orig(self);
+
             for (int i = 0; i < self.roomSettings.placedObjects.Count; i++)
             {
                 if (self.roomSettings.placedObjects[i].type == WatcherEnums.PlacedObjectType.SpinningTopSpot)
@@ -425,7 +637,7 @@ namespace Looker.Regions
                     SpinningTop.SpawnBackupWarpPoint(self, self.roomSettings.placedObjects[i]);
                 }
             }
-
+            
         }
 
         public static void Room_InitializeSentientRotPresenceInRoom(On.Room.orig_InitializeSentientRotPresenceInRoom orig, Room self, float amount)

@@ -148,7 +148,4 @@ CREATURES
 (looker)WRFA_F05 : 3-Cicada-2, 5-TentaclePlant
 (looker)WRFA_F06 : 4-Tardigrade-10, 4-Tardigrade-{Slayer}, 5-Angler
 
-(looker){LookerWeaver}WRFA_C04 : 5-WeaverLizard
-(looker){LookerWeaver}WRFA_F02 : 6-WeaverLizard
-(looker){LookerWeaver}WRFA_F05 : 2-WeaverLizard
 END CREATURES

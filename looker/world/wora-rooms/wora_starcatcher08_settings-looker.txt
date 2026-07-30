@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04507615
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.2086676
+Palette: 35
+Effects: GreenSparks-0.1956522-20-20, BkgOnlyLightning-0.4130435-30-30, ElectricDeath-0.8043478-40-40, 
+AmbientSounds: OMNI><RWTW_RotAmb_VanillaRot.ogg><768.5073><537.0125><0.1383083><0.7746394, OMNI><RWTW_DustStorm_Deep.ogg><804.2122><458.6419><0.1383096><0.7245584, OMNI><RWTW_Amb_StrangeWind.ogg><797.6585><376.7602><0.2078652><0.5743168, SPOT><RWTW_DustStorm_Gusting.ogg><773.0334><212.7968><0.2078658><0.7996786><694.6756><148.0061><210.3719><-75.00664><0><0.1834677, SPOT><AM_IND-Utility01.ogg><529.8151><459.2257><0.3887103><1><965.9485><530.0169><-35.35534><-35.35534><0><0.3782236, 
+FadePalette: 10, 0.6825439

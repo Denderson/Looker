@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Looker.CWTs
 {
@@ -36,9 +36,6 @@ namespace Looker.CWTs
             public bool reverseVertical = false;
             public int controlOffset = -1;
 
-            public bool startingRipple = false;
-            public int rippleTimer = -1;
-
             public int signalLeniency = -1;
 
             public int darknessImmunity = -1;
@@ -65,6 +62,14 @@ namespace Looker.CWTs
 
             public bool shouldSpawnCopies = false;
             public int delayUntilCopies = -1;
+            public Vector2 oldPipePosition = new();
+
+            public int acidShieldTimer = 80;
+
+            public int oobTimer = 0;
+
+            public bool evilLightningWarning = false;
+            public int evilLightningSparks = 0;
         }
     }
 }

@@ -1,18 +1,25 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using LizardCosmetics;
+using Looker.CustomEvents;
 using Looker.CWTs;
 using Looker.Regions;
+using lsfUtils;
+using lsfUtils.CWTs;
 using Menu;
 using Menu.Remix.MixedUI;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
+using MoreSlugcats;
 using Newtonsoft.Json.Linq;
 using RWCustom;
+using SlugBase.SaveData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Permissions;
 using UnityEngine;
@@ -21,6 +28,7 @@ using Watcher;
 #pragma warning disable CS0618
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 #pragma warning restore CS0618
+
 
 namespace Looker
 {
@@ -37,7 +45,6 @@ namespace Looker
         public const string ogsculeIcon = "atlases/ogsculeIcon";
         public const string lookerRippleSmall = "atlases/lookerRippleSmall";
         public const string lookerRippleBig = "atlases/lookerRippleBig";
-        public const string templarMaskIcon = "atlases/templarMaskIcon";
         public const string lookerIntroRoll = "illustrations/intro_roll_c_looker";
 
         public static int MaxRippleDuration()
@@ -47,18 +54,22 @@ namespace Looker
 
         public static int MaxSignalLeniency()
         {
-            return (int) (400 * OptionsMenu.broadcastingLeniencyTimer.Value);
+            return (int)(400 * OptionsMenu.broadcastingLeniencyTimer.Value);
         }
         public static class LookerEnums
         {
             public static void RegisterValues()
             {
-                vineboom = new SoundID("vineboom", true);
+                vineboom = new(nameof(vineboom), true);
                 looker = new SlugcatStats.Name("looker");
                 lookerTimeline = new SlugcatStats.Timeline("looker");
-                meetLooker = new SSOracleBehavior.Action("meetLooker", true);
-                lookerConversation = new Conversation.ID("lookerConversation", true);
-                lookerSubBehaviour = new SSOracleBehavior.SubBehavior.SubBehavID("lookerSubBehaviour", true);
+                meetLooker = new(nameof(meetLooker), true);
+                lookerConversation = new(nameof(lookerConversation), true);
+                lookerSubBehaviour = new(nameof(lookerSubBehaviour), true);
+                looker_ending1 = new MenuScene.SceneID("looker_ending1");
+                looker_ending2 = new MenuScene.SceneID("looker_ending2");
+                looker_ending3 = new MenuScene.SceneID("looker_ending3");
+                looker_ending4 = new MenuScene.SceneID("looker_ending4");
             }
             public static void UnregisterValues()
             {
@@ -67,17 +78,28 @@ namespace Looker
                 Unregister(meetLooker);
                 Unregister(lookerConversation);
                 Unregister(lookerSubBehaviour);
+                Unregister(looker_ending1);
+                Unregister(looker_ending2);
+                Unregister(looker_ending3);
+                Unregister(looker_ending4);
             }
             private static void Unregister<T>(ExtEnum<T> extEnum) where T : ExtEnum<T>
             {
                 extEnum?.Unregister();
             }
             public static SoundID vineboom;
-            public static SSOracleBehavior.Action meetLooker;
-            public static SSOracleBehavior.SubBehavior.SubBehavID lookerSubBehaviour;
-            public static Conversation.ID lookerConversation;
             public static SlugcatStats.Name looker;
             public static SlugcatStats.Timeline lookerTimeline;
+            public static SSOracleBehavior.Action meetLooker;
+            public static Conversation.ID lookerConversation;
+            public static SSOracleBehavior.SubBehavior.SubBehavID lookerSubBehaviour;
+
+            public static Menu.MenuScene.SceneID looker_ending1;
+            public static Menu.MenuScene.SceneID looker_ending2;
+            public static Menu.MenuScene.SceneID looker_ending3;
+            public static Menu.MenuScene.SceneID looker_ending4;
+
+
         }
 
         public static OptionsMenu optionsMenuInstance;
@@ -94,6 +116,23 @@ namespace Looker
 
         public static readonly Color BoxWormColor = new(0.63f, 0.5f, 0.5f);
         public static readonly EntityID SpecialId = new(1, -50);
+        public static SlideShow.SlideShowID endingToTrigger = null;
+
+        public static string GetRegionName(Region region)
+        {
+            if (region == null)
+            {
+                return null;
+            }
+            /*if (RegionCWT.TryGetCustomRegionParams(region, out lsfUtils.RegionParams.RegionParamsSetup data))
+            {
+                if (data.LookerMechanicOverride != null)
+                {
+                    return data.LookerMechanicOverride;
+                }
+            }*/
+            return region.name;
+        }
 
         public static bool CheckMechanics(Room room, string originalRegionName, string originalRegionAcronym)
         {
@@ -101,18 +140,53 @@ namespace Looker
             {
                 return false;
             }
-            return (room.world.region.name == originalRegionAcronym) ||
-                (room.world.region.name == "WARA" && room.abstractRoom.subregionName != null && room.abstractRoom.subregionName.ToLowerInvariant().Contains(originalRegionName));
+
+            string regionName = GetRegionName(room.world.region);
+            string subregionName = room.abstractRoom.subregionName?.ToLowerInvariant();
+
+            return (regionName == originalRegionAcronym) ||
+                (regionName == "WARA" && subregionName != null && subregionName.Contains(originalRegionName));
         }
 
         public static bool CheckMechanics(RainWorldGame game, string originalRegionName, string originalRegionAcronym)
         {
-            if (game?.world?.name == null || game.cameras == null || game.cameras.Length > 0 || game.cameras[0].room != null || game.StoryCharacter != LookerEnums.looker || OptionsMenu.devMode.Value)
+            if (game?.world?.name == null || game.cameras == null || game.cameras.Length == 0 || game.cameras[0].room == null || game.StoryCharacter != LookerEnums.looker || OptionsMenu.devMode.Value)
             {
                 return false;
             }
-            return (game.world.name == originalRegionAcronym) ||
-                (game.world.name == "WARA" && game.cameras[0].room.abstractRoom?.subregionName != null && game.cameras[0].room.abstractRoom.subregionName.ToLowerInvariant().Contains(originalRegionName));
+
+            string regionName = GetRegionName(game.world.region);
+            string subregionName = game.cameras[0].room.abstractRoom?.subregionName?.ToLowerInvariant();
+
+            return (regionName == originalRegionAcronym) ||
+                (regionName == "WARA" && subregionName != null && subregionName.Contains(originalRegionName));
+        }
+
+        public static bool CheckMechanics(AbstractRoom abstractRoom, string originalRegionName, string originalRegionAcronym)
+        {
+            if (abstractRoom?.world?.game == null || abstractRoom.world.game.StoryCharacter != LookerEnums.looker || abstractRoom.shelter || OptionsMenu.devMode.Value)
+            {
+                return false;
+            }
+
+            string regionName = GetRegionName(abstractRoom.world.region);
+            string subregionName = abstractRoom.subregionName?.ToLowerInvariant();
+
+            return (regionName == originalRegionAcronym) ||
+                (regionName == "WARA" && subregionName != null && subregionName.Contains(originalRegionName));
+        }
+
+        public static bool CheckEasyMode(Room room)
+        {
+            if (room?.world?.region?.name == null || room.game?.StoryCharacter != LookerEnums.looker || !OptionsMenu.easierFinale.Value)
+            {
+                return false;
+            }
+            if (room.world.region.name == "WARA")
+            {
+                return true;
+            }
+            return false;
         }
 
         private void LoadResources(RainWorld rainWorld)
@@ -136,8 +210,6 @@ namespace Looker
                     On.Player.Die += LPlayer_Flower.Player_Die;
                     On.Player.SpitOutOfShortCut += LPlayer_Flower.Player_SpitOutOfShortCut;
 
-                    On.PlayerGraphics.InitiateSprites += LPlayer_Flower.PlayerGraphics_InitiateSprites;
-
                     On.Room.MaterializeRippleSpawn += LPlayer_Flower.Room_MaterializeRippleSpawn;
                     On.DaddyCorruption.SentientRotMode += LMisc.DaddyCorruption_SentientRotMode;
 
@@ -152,8 +224,11 @@ namespace Looker
 
                     On.PlayerGraphics.DrawSprites += LPlayer_Flower.PlayerGraphics_DrawSprites;
                     On.PlayerGraphics.Update += LPlayer_Flower.PlayerGraphics_Update;
+                    On.PlayerGraphics.DefaultFaceSprite_float_int += LPlayer_Flower.PlayerGraphics_DefaultFaceSprite_float_int;
+                    On.PlayerGraphics.InitCachedSpriteNames += LPlayer_Flower.PlayerGraphics_InitCachedSpriteNames;
 
-                    
+                    On.JollyCoop.JollyMenu.JollyPlayerSelector.GetPupButtonOffName += LPlayer_Flower.JollyPlayerSelector_GetPupButtonOffName;
+                    On.JollyCoop.JollyMenu.SymbolButtonToggle.LoadIcon += LPlayer_Flower.SymbolButtonToggle_LoadIcon;
                 }
 
                 // progression
@@ -173,23 +248,11 @@ namespace Looker
 
                 // mask and aether ridge mechanics
                 {
-                    On.HUD.KarmaMeter.ctor += KarmaMask.KarmaMeter_ctor;
+                    On.SaveState.GetSaveStateDenToUse += LMask.SaveState_GetSaveStateDenToUse;
+                    On.Player.ctor += LMask.Player_ctor;
 
-                    On.VultureMask.ctor += KarmaMask.VultureMask_ctor;
-                    On.MoreSlugcats.VultureMaskGraphics.DrawSprites += KarmaMask.VultureMaskGraphics_DrawSprites;
-                    On.MoreSlugcats.VultureMaskGraphics.ctor_PhysicalObject_AbstractVultureMask_int += KarmaMask.VultureMaskGraphics_ctor;
-                    On.MoreSlugcats.VultureMaskGraphics.ctor_PhysicalObject_MaskType_int_string += KarmaMask.VultureMaskGraphics_ctor_PhysicalObject_MaskType_int_string;
+                    On.HUD.KarmaMeter.ctor += LMask.KarmaMeter_ctor;
 
-                    On.VultureMask.Update += KarmaMask.VultureMask_Update;
-
-                    On.HUD.KarmaMeter.Update += KarmaMask.KarmaMeter_Update;
-
-                    On.SaveState.GetSaveStateDenToUse += KarmaMask.SaveState_GetSaveStateDenToUse;
-                    On.Player.ctor += KarmaMask.Player_ctor;
-
-                    On.ItemSymbol.SymbolDataFromItem += KarmaMask.ItemSymbol_SymbolDataFromItem;
-                    On.ItemSymbol.SpriteNameForItem += KarmaMask.ItemSymbol_SpriteNameForItem;
-                    On.ItemSymbol.ColorForItem += KarmaMask.ItemSymbol_ColorForItem;
                 }
 
                 // signal spires mechanics
@@ -199,19 +262,6 @@ namespace Looker
                     On.VultureGrub.Act += LSignal.VultureGrub_Act;
                     On.Player.ThrowObject += LSignal.Player_ThrowObject;
                     On.VultureGrub.Violence += LSignal.VultureGrub_Violence;
-                }
-
-                // sunlit port and badlands mechanics
-
-                {
-                    On.RoomCamera.Update += LSunlit_Badlands.RoomCamera_Update;
-
-                    On.Lantern.Update += LSunlit_Badlands.Lantern_Update;
-                    On.LanternStick.Update += LSunlit_Badlands.LanternStick_Update;
-
-                    On.ScavengerAbstractAI.InitGearUp += LSunlit_Badlands.ScavengerAbstractAI_InitGearUp;
-
-                    On.LightSource.Update += LSunlit_Badlands.LightSource_Update;
                 }
 
                 // coral caves and migration path mechanics
@@ -251,11 +301,15 @@ namespace Looker
                     On.Watcher.LightningMaker.StaticBuildup.GetBestTarget += LMisc.StaticBuildup_GetBestTarget;
 
                     On.AntiGravity.BrokenAntiGravity.Update += LMisc.BrokenAntiGravity_Update;
+                    On.MoreSlugcats.Inspector.InitiateGraphicsModule += LMisc.Inspector_InitiateGraphicsModule;
+                    MethodBase method = typeof(Inspector).GetMethod("get_OwneriteratorColor", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    Func<Func<Inspector, Color>, Inspector, Color> to;
+                    to = new Func<Func<Inspector, Color>, Inspector, Color>(LMisc.On_Inspector_get_OwneriteratorColor);
+                    new Hook(method, to);
+
 
                     On.Room.Loaded += LMisc.Room_Loaded;
                     On.Lizard.ctor += LMisc.Lizard_ctor;
-
-                    On.Watcher.WarpPoint.ChooseDynamicWarpTarget += LMisc.WarpPoint_ChooseDynamicWarpTarget;
 
                     On.SaveState.SaveToString += LMisc.SaveState_SaveToString;
                     On.WorldLoader.GeneratePopulation += LMisc.WorldLoader_GeneratePopulation;
@@ -264,6 +318,10 @@ namespace Looker
                     On.Room.InitializeSentientRotPresenceInRoom += LMisc.Room_InitializeSentientRotPresenceInRoom;
 
                     On.RainCycle.GetDesiredCycleLength += LMisc.RainCycle_GetDesiredCycleLength;
+
+                    IL.Creature.Update += LMisc.Creature_Update;
+
+                    On.Watcher.LightningMaker.Strike += LMisc.LightningMaker_Strike;
                 }
 
                 // arg ending
@@ -287,7 +345,6 @@ namespace Looker
                     On.SSOracleBehavior.NewAction += NothingToSeeHere.SSOracleBehavior_NewAction;
                     On.SSOracleBehavior.PebblesConversation.AddEvents += NothingToSeeHere.PebblesConversation_AddEvents;
                     On.SSOracleBehavior.SpecialEvent += NothingToSeeHere.SSOracleBehavior_SpecialEvent;
-                    On.Oracle.ctor += NothingToSeeHere.Oracle_ctor;
                     On.Room.ReadyForAI += NothingToSeeHere.Room_ReadyForAI;
 
                     On.SLOracleBehaviorHasMark.NameForPlayer += NothingToSeeHere.SLOracleBehaviorHasMark_NameForPlayer;
@@ -295,10 +352,17 @@ namespace Looker
 
                 // pillar grove
                 {
-                    On.RoomCamera.SpriteLeaser.Update += LGrove.SpriteLeaser_Update;
                     On.ItemSymbol.ColorForItem += LGrove.ItemSymbol_ColorForItem;
                     On.ItemSymbol.SpriteNameForItem += LGrove.ItemSymbol_SpriteNameForItem;
                     On.ItemSymbol.SymbolDataFromItem += LGrove.ItemSymbol_SymbolDataFromItem;
+                    On.RoomCamera.SpriteLeaser.Update += LGrove.SpriteLeaser_Update;
+                    On.GraphicsModule.DrawSprites += LGrove.GraphicsModule_DrawSprites;
+                    On.ComplexGraphicsModule.DrawSprites += LGrove.ComplexGraphicsModule_DrawSprites;
+                    On.ComplexGraphicsModule.GraphicsSubModule.DrawSprites += LGrove.GraphicsSubModule_DrawSprites;
+                    On.CreatureSymbol.SymbolDataFromCreature += LGrove.CreatureSymbol_SymbolDataFromCreature;
+                    On.CreatureSymbol.SpriteNameOfCreature += LGrove.CreatureSymbol_SpriteNameOfCreature;
+                    On.CreatureSymbol.ColorOfCreature += LGrove.CreatureSymbol_ColorOfCreature;
+                    On.RoomCamera.DrawUpdate += LGrove.RoomCamera_DrawUpdate;
                 }
 
                 // world setup
@@ -310,6 +374,8 @@ namespace Looker
                 // unorganised
                 {
                     On.SaveState.LoadGame += SaveFileCode.SaveState_LoadGame;
+                    On.Player.Update += LMisc.Player_Update;
+                    On.Menu.SlugcatSelectMenu.SlugcatPage.AddImage += SlugcatPage_AddImage;
 
                     On.Player.RippleSpawnInteractions += LMigration.Player_RippleSpawnInteractions;
                     IL.Menu.IntroRoll.ctor += IntroRoll_ctor;
@@ -321,13 +387,15 @@ namespace Looker
                     On.PlayerGraphics.DrawSprites += LCopies.PlayerGraphics_DrawSprites;
                 }
 
+                On.Menu.MenuScene.ctor += MenuScene_ctor;
+
                 // manual hooks
                 {
-                    new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.RippleLadderMode)).GetGetMethod(), typeof(KarmaMask).GetMethod(nameof(KarmaMask.RippleLadderMode)));
+                    new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.RippleLadderMode)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.RippleLadderMode)));
 
-                    new Hook(typeof(RegionGate).GetProperty(nameof(RegionGate.MeetRequirement))!.GetGetMethod(), typeof(KarmaMask).GetMethod(nameof(KarmaMask.Meet_Requirement)));
+                    //new Hook(typeof(RegionGate).GetProperty(nameof(RegionGate.MeetRequirement))!.GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Meet_Requirement)));
 
-                    new Hook(typeof(Player).GetProperty(nameof(Player.OutsideWatcherCampaign)).GetGetMethod(), typeof(KarmaMask).GetMethod(nameof(KarmaMask.Outside_Watcher)));
+                    new Hook(typeof(Player).GetProperty(nameof(Player.OutsideWatcherCampaign)).GetGetMethod(), typeof(LMask).GetMethod(nameof(LMask.Outside_Watcher)));
 
                     new Hook(typeof(Player).GetProperty(nameof(Player.rippleLevel)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.PlayerRippleLevel)));
                     new Hook(typeof(Player).GetProperty(nameof(Player.maxRippleLevel)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.PlayerMaxRippleLevel)));
@@ -343,6 +411,7 @@ namespace Looker
                     new Hook(typeof(Oracle).GetProperty(nameof(Oracle.Alive)).GetGetMethod(), typeof(NothingToSeeHere).GetMethod(nameof(NothingToSeeHere.Is_Alive)));
 
                     new Hook(typeof(Menu.KarmaLadderScreen).GetProperty(nameof(Menu.KarmaLadderScreen.UsesWarpMap)).GetGetMethod(), typeof(LProgression).GetMethod(nameof(LProgression.UsesWarpMap)));
+
                 }
 
                 if (isInit)
@@ -350,6 +419,7 @@ namespace Looker
                 isInit = true;
 
                 WorldLoader.Preprocessing.preprocessorConditions.Add(LookerConditionsClass.LookerConditions);
+                LookerEvents.RegisterLookerEvents();
 
                 Logger.LogMessage("LOOKER HOOKS SUCESS");
             }
@@ -359,6 +429,174 @@ namespace Looker
                 Logger.LogError(e);
             }
         }
+
+        public static void MenuScene_ctor(On.Menu.MenuScene.orig_ctor orig, MenuScene self, Menu.Menu menu, MenuObject owner, MenuScene.SceneID sceneID)
+        {
+            orig(self, menu, owner, sceneID);
+
+            if (sceneID == LookerEnums.looker_ending1) BuildBathEnding(self);
+            else if (sceneID == LookerEnums.looker_ending2) BuildMaskEnding(self);
+            else if (sceneID == LookerEnums.looker_ending3) BuildLinkEnding(self);
+            else if (sceneID == LookerEnums.looker_ending4) BuildPuzzleEnding(self);
+        }
+
+        public static void BuildBathEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 1";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "bath - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "bath - 3", new Vector2(0f, 100f), 3.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "bath - 2 - looker", new Vector2(0f, 100f), 2.3f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "bath - 1", new Vector2(0f, 100f), 1f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.3f);
+            }
+        }
+
+        public static void BuildMaskEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 2";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "mask - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 6", new Vector2(0f, 100f), 5.7f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 5", new Vector2(0f, 100f), 4.2f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 4", new Vector2(0f, 100f), 2.9f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 3", new Vector2(0f, 100f), 2.2f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 2 - looker", new Vector2(0f, 100f), 2.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "mask - 1", new Vector2(0f, 100f), 1.9f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.1f);
+            }
+        }
+
+        public static void BuildLinkEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 3";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "link - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 8", new Vector2(0f, 100f), 4.5f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 7", new Vector2(0f, 100f), 0.8f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 6", new Vector2(0f, 100f), 2.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 5", new Vector2(0f, 100f), 3.9f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 4 - looker", new Vector2(0f, 100f), 4f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 3", new Vector2(0f, 100f), 4.3f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 2", new Vector2(0f, 100f), 1.3f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "link - 1", new Vector2(0f, 100f), 4.3f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.7f);
+            }
+        }
+
+        public static void BuildPuzzleEnding(MenuScene self)
+        {
+            self.sceneFolder = "scenes/ending 4";
+
+            if (self.flatMode)
+            {
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, "tree - flat", new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+                return;
+            }
+
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 5", new Vector2(0f, 100f), 4.6f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 4", new Vector2(0f, 100f), 3.5f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 3", new Vector2(0f, 100f), 3.1f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 2 - looker", new Vector2(0f, 100f), 2.9f, MenuDepthIllustration.MenuShader.Basic));
+            self.AddIllustration(new MenuDepthIllustration(self.menu, self, self.sceneFolder, "tree - 1", new Vector2(0f, 100f), 2.6f, MenuDepthIllustration.MenuShader.Basic));
+
+            if (self is InteractiveMenuScene interactive)
+            {
+                interactive.idleDepths.Add(2.9f);
+            }
+        }
+
+        public static readonly ConditionalWeakTable<SlugcatSelectMenu.SlugcatPage, LookerSceneHolder> customSceneTracker = new();
+        public class LookerSceneHolder { public InteractiveMenuScene scene; }
+        public static void SlugcatPage_AddImage(On.Menu.SlugcatSelectMenu.SlugcatPage.orig_AddImage orig, SlugcatSelectMenu.SlugcatPage self, bool ascended)
+        {
+            orig(self, ascended);
+
+            if (self.slugcatNumber != LookerEnums.looker) return;
+            if (self is not SlugcatSelectMenu.SlugcatPageContinue) return;
+
+            var holder = customSceneTracker.GetOrCreateValue(self);
+
+            if (holder.scene != null)
+            {
+                holder.scene.RemoveSprites();
+                self.RemoveSubObject(holder.scene);
+                holder.scene = null;
+            }
+
+            self.slugcatImage.RemoveSprites();
+            self.RemoveSubObject(self.slugcatImage);
+
+            var data = self?.menu?.manager?.rainWorld?.progression?.miscProgressionData?.GetSlugBaseData();
+            if (data == null)
+            {
+                Log.LogMessage("Data in addimage is null!");
+            }
+
+            List<MenuScene.SceneID> completedEndings = [];
+
+            if ((data.TryGet<int>("lookerEndingBath", out int endingBath) || endingBath < 1) || OptionsMenu.devMode.Value)
+            completedEndings.Add(LookerEnums.looker_ending1);
+            if ((data.TryGet<int>("lookerEndingMask", out int endingMask) || endingMask < 1) || OptionsMenu.devMode.Value)
+            completedEndings.Add(LookerEnums.looker_ending2);
+            if ((data.TryGet<int>("lookerEndingLink", out int endingLink) || endingLink < 1) || OptionsMenu.devMode.Value)
+            completedEndings.Add(LookerEnums.looker_ending3);
+            if ((data.TryGet<int>("lookerEndingPuzzle", out int endingPuzzle) || endingPuzzle < 1) || OptionsMenu.devMode.Value)
+            completedEndings.Add(LookerEnums.looker_ending4);
+
+            if (completedEndings.Count == 0) return;
+
+            MenuScene.SceneID chosenScene = completedEndings[UnityEngine.Random.Range(0, completedEndings.Count)];
+
+            self.slugcatImage = new InteractiveMenuScene(self.menu, self, chosenScene);
+            self.subObjects.Add(self.slugcatImage);
+            holder.scene = self.slugcatImage;
+
+            self.sceneOffset = new Vector2(-10f, 100f);
+            self.sceneOffset.x -= (1366f - self.menu.manager.rainWorld.options.ScreenSize.x) / 2f;
+            if (chosenScene == LookerEnums.looker_ending1) self.slugcatDepth = 2.3f;
+            else if (chosenScene == LookerEnums.looker_ending2) self.slugcatDepth = 2.1f;
+            else if (chosenScene == LookerEnums.looker_ending3) self.slugcatDepth = 2.7f;
+            else if (chosenScene == LookerEnums.looker_ending4) self.slugcatDepth = 2.9f;
+        }
+
+        public static void RainWorldGame_GoToRedsGameOver(On.RainWorldGame.orig_GoToRedsGameOver orig, RainWorldGame self)
+        {
+            orig(self);
+            if (self?.StoryCharacter == LookerEnums.looker)
+            {
+                self.manager.statsAfterCredits = true;
+                self.manager.nextSlideshow = endingToTrigger;
+                self.manager.RequestMainProcessSwitch(ProcessManager.ProcessID.SlideShow);
+                // TODO when slideshows exist
+                return;
+            }
+        }
+
         public static void IntroRoll_ctor(ILContext il)
         {
             ILCursor c = new(il);
@@ -416,8 +654,8 @@ namespace Looker
             Futile.atlasManager.LoadImage(ogsculeIcon);
             Futile.atlasManager.LoadImage(lookerRippleBig);
             Futile.atlasManager.LoadImage(lookerRippleSmall);
-            Futile.atlasManager.LoadImage(templarMaskIcon);
             Futile.atlasManager.LoadImage(lookerIntroRoll);
+            Futile.atlasManager.LoadAtlas("atlases/LookerFace");
         }
     }
 }

@@ -1,0 +1,19 @@
+Template: NONE
+DangerType: None
+CeilingDrips: 0
+RainIntensity: 0
+RumbleIntensity: 0
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04507615
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.5394483
+Grime: 0.3695652
+Palette: 35
+EffectColorA: 3
+EffectColorB: 4
+Effects: GreenSparks-0.2173913-20-20, BkgOnlyLightning-0.4130435-30-30, ElectricDeath-1-40-40, 
+PlacedObjects: LightSource><850.613><1292.3><0.2317956~Environment~-537.5284~-52.20987~50~86.60254~0~0~None~0~0, LightSource><129.4963><99.5908><0.4070063~Environment~465.858~565.5832~50~86.60254~0~0~None~0~0, DangleFruit><88.92844><458.1349><0~0~2~3, DangleFruit><112.0057><406.585><0~0~2~3, LightSource><484.7908><32.497><0~Environment~396.7471~426.1641~50~86.60254~0~0~None~0~0, CustomDecal><506.267><28.16833><-40~704~497~876~453~-288~345~141~0.2282609~1~0.6413044~blackrust1~0.6413044~0.75~0.6413044~0.75~0.6413044~0.75~0.6413044~0.75, DangleFruit><842.5582><561.1933><0~0~2~3, 
+AmbientSounds: OMNI><RWTW_RotAmb_VanillaRot.ogg><787.1211><539.0063><0.1383083><0.7746394, OMNI><RWTW_DustStorm_Deep.ogg><784.8397><458.3256><0.1383096><0.7245584, SPOT><RWTW_Amb_StrangeWind.ogg><790.6625><261.9305><0.2078645><0.5743168><205.2732><70.23203><358.8321><317.6693><0><0.1973791, SPOT><RWTW_AR_Pumps.ogg><760.6792><88.03029><0.1104869><0.2988764><470.6508><1339.869><-98.06702><-98.03003><0><0.1834677, 
+FadePalette: 10, 0.7181942, 0.6577629

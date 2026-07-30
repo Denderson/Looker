@@ -31,10 +31,7 @@ CREATURES
 (looker){LookerRemix=1}WVWB_E02 : 3-BigSpider-2, 4-Frog-2
 (looker){LookerRemix>1}WVWB_E02 : 3-BigSpider-2, 4-Frog-3
 
-(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm}-2
-(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm|NamedAttr:TOPWhale}-3
-(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm|NamedAttr:MIDWhale}-3
-(looker){LookerRemix<3}OFFSCREEN : 0-SkyWhale-{AlternateForm|NamedAttr:BOTWhale}-3
+(looker)OFFSCREEN : 0-SkyWhale-{AlternateForm}-45, 0-SkyWhale-{AlternateForm,NamedAttr:TOPWhale}-3, 0-SkyWhale-{AlternateForm,NamedAttr:MIDWhale}-3, 0-SkyWhale-{AlternateForm,NamedAttr:BOTWhale}-3
 
 (looker)WVWB_D03 : 2-Frog
 (looker)WVWB_H01 : 4-Frog
