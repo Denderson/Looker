@@ -140,6 +140,10 @@ namespace Looker
             {
                 return false;
             }
+            if (room.PlayersInRoom == null || room.PlayersInRoom.Count <= 0)
+            { 
+                return false; 
+            }
 
             string regionName = GetRegionName(room.world.region);
             string subregionName = room.abstractRoom.subregionName?.ToLowerInvariant();
@@ -165,6 +169,10 @@ namespace Looker
         public static bool CheckMechanics(AbstractRoom abstractRoom, string originalRegionName, string originalRegionAcronym)
         {
             if (abstractRoom?.world?.game == null || abstractRoom.world.game.StoryCharacter != LookerEnums.looker || abstractRoom.shelter || OptionsMenu.devMode.Value)
+            {
+                return false;
+            }
+            if (abstractRoom.realizedRoom != null && (abstractRoom.realizedRoom.PlayersInRoom == null || abstractRoom.realizedRoom.PlayersInRoom.Count <= 0))
             {
                 return false;
             }
