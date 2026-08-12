@@ -1,0 +1,5 @@
+DangerType: FloodAndRain
+Clouds: 0.01086957
+Grime: 0.2608696
+BkgDroneVolume: 0.2769565
+PlacedObjects: RottenDangleFruit><608.3694><1357.91><90~-133~2~3, RottenDangleFruit><578.6281><1420.658><0~0~2~3, RottenDangleFruit><616.2464><1389.3><216.9999~33~2~3, Corruption><44.59503><529.8764><-19~59, Corruption><914.4495><689.014><-1~69, Corruption><918.6847><446.9232><-10~65, PassiveCorruption><268.3024><1314.628><5~101~-409~-165~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, PassiveCorruption><650.801><1061.02><0~66~-738~-248~7~15~0.8~0.3~0.55~0.05~0.15~0.2~0.2~Default~Dot~Passive~2~0~1, 
