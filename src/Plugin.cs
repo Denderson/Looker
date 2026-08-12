@@ -262,6 +262,8 @@ namespace Looker
                     On.VultureGrub.Act += LSignal.VultureGrub_Act;
                     On.Player.ThrowObject += LSignal.Player_ThrowObject;
                     On.VultureGrub.Violence += LSignal.VultureGrub_Violence;
+                    On.Creature.Die += LSignal.Creature_Die;
+                    On.Player.Update += LSignal.Player_Update;
                 }
 
                 // coral caves and migration path mechanics
@@ -379,6 +381,10 @@ namespace Looker
 
                     On.Player.RippleSpawnInteractions += LMigration.Player_RippleSpawnInteractions;
                     IL.Menu.IntroRoll.ctor += IntroRoll_ctor;
+
+                    On.SkyWhale.ctor += LFractured.SkyWhale_ctor;
+                    On.SkyWhale.Update += LFractured.SkyWhale_Update;
+                    On.SkyWhale.Collide += LFractured.SkyWhale_Collide;
                 }
 
                 // new migration

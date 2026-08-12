@@ -174,44 +174,6 @@ namespace Looker.Regions
                     }
                 }
             }
-            if (CheckMechanics(self, "daemon", "WRSA") && self.abstractRoom.name != "WRSA_WEAVER" && !self.abstractRoom.name.Contains("TREE"))
-            {
-                if (self.syncTicker % 40 != 1)
-                {
-                    return;
-                }
-                for (int i = 0; i < self.physicalObjects.Length; i++)
-                {
-                    for (int j = 0; j < self.physicalObjects[i].Count; j++)
-                    {
-                        if (self.physicalObjects[i][j] is KnotSpawn)
-                        {
-                            num++;
-                        }
-                    }
-                }
-                if (num > SaveFileCode.LinkCount(self.game.GetStorySession.saveState)) return;
-                int k = 0;
-                IntVector2 intVector = new(0, 0);
-                while (k < 100)
-                {
-                    int num2 = UnityEngine.Random.Range(1, self.Tiles.GetLength(0) - 1);
-                    int num3 = UnityEngine.Random.Range(1, self.Tiles.GetLength(1) - 1);
-                    if (!self.Tiles[num2, num3].Solid)
-                    {
-                        intVector = new IntVector2(num2, num3);
-                        break;
-                    }
-                    k++;
-                }
-                if (intVector.x != 0 && intVector.y != 0)
-                {
-                    AbstractPhysicalObject abstractCreature = new(self.world, WatcherEnums.AbstractObjectType.KnotSpawn, null, new WorldCoordinate(self.abstractRoom.index, intVector.x, intVector.y, -1), self.game.GetNewID());
-                    self.abstractRoom.AddEntity(abstractCreature);
-                    abstractCreature.RealizeInRoom();
-                    self.AddObject(new ShockWave(new Vector2((float)abstractCreature.pos.x * 20f, (float)abstractCreature.pos.y * 20f), 200f, 0.1f, 15, false));
-                }
-            }
             if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && OptionsMenu.metSliver.Value)
             {
                 if (self.abstractRoom.name.ToLowerInvariant() == "wssr_ai" && OptionsMenu.metSliver.Value)
@@ -252,28 +214,28 @@ namespace Looker.Regions
                     abstractPhysicalObject.RealizeInRoom();
                     (abstractPhysicalObject.realizedObject as ScavengerBomb).Explode(null);
                     room.ScreenMovement(null, new Vector2(0f, 0f), UnityEngine.Random.value * 10);
-                    if (room.syncTicker % 40 == 0)
-                    {
-                        room.game.framesPerSecond /= 2;
-                    }
-                    if (room.syncTicker >= 120 || room.game.framesPerSecond < 10)
-                    {
-                        while (true)
-                        {
-                            AbstractPhysicalObject finalBombs = new(room.world, AbstractPhysicalObject.AbstractObjectType.ScavengerBomb, null, room.GetWorldCoordinate(intVector), room.world.game.GetNewID());
-                            room.abstractRoom.AddEntity(finalBombs);
-                            finalBombs.RealizeInRoom();
-                            (finalBombs.realizedObject as ScavengerBomb).Explode(null);
-                        }
-                    }
                 }
             }
-            if (UnityEngine.Random.value < 0.5f)
+            if (UnityEngine.Random.value < -0.1f + 0.2f * room.syncTicker / 40)
             {
                 NukeRoom(room);
                 return;
             }
-            
+            if (room.syncTicker % 40 == 0)
+            {
+                room.game.framesPerSecond /= 2;
+            }
+            if (room.syncTicker >= 200)
+            {
+                Application.Quit();
+                /*while (true)
+                {
+                    AbstractPhysicalObject finalBombs = new(room.world, AbstractPhysicalObject.AbstractObjectType.ScavengerBomb, null, room.GetWorldCoordinate(intVector), room.world.game.GetNewID());
+                    room.abstractRoom.AddEntity(finalBombs);
+                    finalBombs.RealizeInRoom();
+                    (finalBombs.realizedObject as ScavengerBomb).Explode(null);
+                }*/
+            }
         }
     }
 }
