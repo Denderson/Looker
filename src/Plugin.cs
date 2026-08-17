@@ -549,7 +549,7 @@ namespace Looker
         public static void SlugcatPage_AddImage(On.Menu.SlugcatSelectMenu.SlugcatPage.orig_AddImage orig, SlugcatSelectMenu.SlugcatPage self, bool ascended)
         {
             orig(self, ascended);
-
+            return;
             if (self.slugcatNumber != LookerEnums.looker) return;
             if (self is not SlugcatSelectMenu.SlugcatPageContinue) return;
 
@@ -573,13 +573,13 @@ namespace Looker
 
             List<MenuScene.SceneID> completedEndings = [];
 
-            if ((data.TryGet<int>("lookerEndingBath", out int endingBath) || endingBath < 1) || OptionsMenu.devMode.Value)
+            if ((data.TryGet<int>("lookerEndingBath", out int endingBath) && endingBath == 1) || OptionsMenu.devMode.Value)
             completedEndings.Add(LookerEnums.looker_ending1);
-            if ((data.TryGet<int>("lookerEndingMask", out int endingMask) || endingMask < 1) || OptionsMenu.devMode.Value)
+            if ((data.TryGet<int>("lookerEndingMask", out int endingMask) && endingMask == 1) || OptionsMenu.devMode.Value)
             completedEndings.Add(LookerEnums.looker_ending2);
-            if ((data.TryGet<int>("lookerEndingLink", out int endingLink) || endingLink < 1) || OptionsMenu.devMode.Value)
+            if ((data.TryGet<int>("lookerEndingLink", out int endingLink) && endingLink == 1) || OptionsMenu.devMode.Value)
             completedEndings.Add(LookerEnums.looker_ending3);
-            if ((data.TryGet<int>("lookerEndingPuzzle", out int endingPuzzle) || endingPuzzle < 1) || OptionsMenu.devMode.Value)
+            if ((data.TryGet<int>("lookerEndingPuzzle", out int endingPuzzle) && endingPuzzle == 1) || OptionsMenu.devMode.Value)
             completedEndings.Add(LookerEnums.looker_ending4);
 
             if (completedEndings.Count == 0) return;
