@@ -1,4 +1,12 @@
-﻿using BepInEx;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Contexts;
+using System.Security.Permissions;
+using BepInEx;
 using BepInEx.Logging;
 using LizardCosmetics;
 using Looker.CustomEvents;
@@ -15,14 +23,8 @@ using MoreSlugcats;
 using Newtonsoft.Json.Linq;
 using RWCustom;
 using SlugBase.SaveData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Permissions;
 using UnityEngine;
+using UnityEngine.UI;
 using Watcher;
 
 #pragma warning disable CS0618
@@ -35,7 +37,7 @@ namespace Looker
     [BepInDependency("lsfUtils")]
     [BepInDependency("slime-cubed.slugbase")]
     [BepInDependency("io.github.dual.fisobs")]
-    [BepInPlugin("invedwatcher", "The Looker", "0.5")]
+    [BepInPlugin("invedwatcher", "The Looker", "0.9")]
 
     public class Plugin : BaseUnityPlugin
     {
@@ -70,6 +72,13 @@ namespace Looker
                 looker_ending2 = new MenuScene.SceneID("looker_ending2");
                 looker_ending3 = new MenuScene.SceneID("looker_ending3");
                 looker_ending4 = new MenuScene.SceneID("looker_ending4");
+
+                looker_slideshowTree = new SlideShow.SlideShowID("looker_slideshowTree", true);
+                looker_slideshowWeaver = new SlideShow.SlideShowID("looker_slideshowWeaver", true);
+
+                LookerSlideShowTree.RegisterValues();
+                LookerSlideShowWeaver.RegisterValues();
+
             }
             public static void UnregisterValues()
             {
@@ -82,6 +91,11 @@ namespace Looker
                 Unregister(looker_ending2);
                 Unregister(looker_ending3);
                 Unregister(looker_ending4);
+                Unregister(looker_slideshowTree);
+                Unregister(looker_slideshowWeaver);
+
+                LookerSlideShowTree.UnregisterValues();
+                LookerSlideShowWeaver.UnregisterValues();
             }
             private static void Unregister<T>(ExtEnum<T> extEnum) where T : ExtEnum<T>
             {
@@ -99,6 +113,110 @@ namespace Looker
             public static Menu.MenuScene.SceneID looker_ending3;
             public static Menu.MenuScene.SceneID looker_ending4;
 
+            public static Menu.SlideShow.SlideShowID looker_slideshowTree;
+            public static Menu.SlideShow.SlideShowID looker_slideshowWeaver;
+
+            public class LookerSlideShowTree
+            {
+                public static MenuScene.SceneID looker_slideshowTree_1;
+                public static MenuScene.SceneID looker_slideshowTree_2;
+                public static MenuScene.SceneID looker_slideshowTree_3;
+                public static MenuScene.SceneID looker_slideshowTree_4;
+                public static MenuScene.SceneID looker_slideshowTree_5;
+                public static MenuScene.SceneID looker_slideshowTree_6;
+                public static MenuScene.SceneID looker_slideshowTree_7;
+                public static MenuScene.SceneID looker_slideshowTree_8;
+
+                public static void RegisterValues()
+                {
+                    var fields = typeof(LookerSlideShowTree).GetFields(
+                        System.Reflection.BindingFlags.Static |
+                        System.Reflection.BindingFlags.Public);
+
+                    foreach (var field in fields)
+                    {
+                        if (field.FieldType == typeof(MenuScene.SceneID) &&
+                            field.Name.StartsWith("looker_slideshowTree_"))
+                        {
+                            string name = field.Name;
+                            var instance = new MenuScene.SceneID(name, true);
+                            field.SetValue(null, instance);
+                        }
+                    }
+                }
+
+                public static void UnregisterValues()
+                {
+                    var fields = typeof(LookerSlideShowTree).GetFields(
+                        System.Reflection.BindingFlags.Static |
+                        System.Reflection.BindingFlags.Public);
+
+                    foreach (var field in fields)
+                    {
+                        if (field.FieldType == typeof(MenuScene.SceneID) &&
+                            field.Name.StartsWith("looker_slideshowTree_"))
+                        {
+                            var id = field.GetValue(null) as MenuScene.SceneID;
+                            if (id != null)
+                            {
+                                id.Unregister();
+                                field.SetValue(null, null);
+                            }
+                        }
+                    }
+                }
+            }
+            public class LookerSlideShowWeaver
+            {
+                public static MenuScene.SceneID looker_slideshowWeaver_1;
+                public static MenuScene.SceneID looker_slideshowWeaver_2;
+                public static MenuScene.SceneID looker_slideshowWeaver_3;
+                public static MenuScene.SceneID looker_slideshowWeaver_4;
+                public static MenuScene.SceneID looker_slideshowWeaver_5;
+                public static MenuScene.SceneID looker_slideshowWeaver_6;
+                public static MenuScene.SceneID looker_slideshowWeaver_7;
+                public static MenuScene.SceneID looker_slideshowWeaver_8;
+                public static MenuScene.SceneID looker_slideshowWeaver_9;
+
+                public static void RegisterValues()
+                {
+                    var fields = typeof(LookerSlideShowWeaver).GetFields(
+                        System.Reflection.BindingFlags.Static |
+                        System.Reflection.BindingFlags.Public);
+
+                    foreach (var field in fields)
+                    {
+                        if (field.FieldType == typeof(MenuScene.SceneID) &&
+                            field.Name.StartsWith("looker_slideshowWeaver_"))
+                        {
+                            string name = field.Name;
+                            var instance = new MenuScene.SceneID(name, true);
+                            field.SetValue(null, instance);
+                        }
+                    }
+                }
+
+                public static void UnregisterValues()
+                {
+                    var fields = typeof(LookerSlideShowWeaver).GetFields(
+                        System.Reflection.BindingFlags.Static |
+                        System.Reflection.BindingFlags.Public);
+
+                    foreach (var field in fields)
+                    {
+                        if (field.FieldType == typeof(MenuScene.SceneID) &&
+                            field.Name.StartsWith("looker_slideshowWeaver_"))
+                        {
+                            var id = field.GetValue(null) as MenuScene.SceneID;
+                            if (id != null)
+                            {
+                                id.Unregister();
+                                field.SetValue(null, null);
+                            }
+                        }
+                    }
+                }
+            }
 
         }
 
@@ -402,6 +520,7 @@ namespace Looker
                 }
 
                 On.Menu.MenuScene.ctor += MenuScene_ctor;
+                IL.Menu.SlideShow.ctor += SlideShow_ctor;
 
                 // manual hooks
                 {
@@ -444,6 +563,82 @@ namespace Looker
             }
         }
 
+        public void Update()
+        {
+            if (Input.anyKeyDown && Input.GetKey(KeyCode.Y))
+            {
+                Log.LogInfo("Pressed");
+                if (RWCustom.Custom.rainWorld?.processManager != null)
+                {
+                    ProcessManager pm = RWCustom.Custom.rainWorld.processManager;
+                    if (pm.musicPlayer != null)
+                    {
+                        pm.musicPlayer.FadeOutAllSongs(60f);
+                    }
+                    Log.LogInfo("Sliding the show");
+                    pm.nextSlideshow = LookerEnums.looker_slideshowWeaver;
+                    pm.RequestMainProcessSwitch(ProcessManager.ProcessID.SlideShow);
+                }
+            }
+        }
+
+        private void SlideShow_ctor(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+            if (c.TryGotoNext(MoveType.After, x => x.MatchStfld(typeof(Menu.SlideShow).GetField(nameof(Menu.SlideShow.playList)))))
+            {
+                c.Emit(OpCodes.Ldarg_0);
+                c.Emit(OpCodes.Ldarg_2);
+                c.EmitDelegate((Menu.SlideShow self, SlideShow.SlideShowID slideShowID) =>
+                {
+                    if (slideShowID == LookerEnums.looker_slideshowTree)
+                    {
+                        self.processAfterSlideShow = ProcessManager.ProcessID.MainMenu;
+                        if (self.manager.musicPlayer != null)
+                        {
+                            self.waitForMusic = "RW_Intro_Theme";
+                            self.stall = true;
+                            self.manager.musicPlayer.MenuRequestsSong(self.waitForMusic, 1.5f, 0f);
+                        }
+                        self.playList.Add(new SlideShow.Scene(MenuScene.SceneID.Empty, 0f, 0f, 0f));
+
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_1, self.ConvertTime(0, 0, 20), self.ConvertTime(0, 3, 20), self.ConvertTime(0, 7, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_2, self.ConvertTime(0, 8, 20), self.ConvertTime(0, 11, 20), self.ConvertTime(0, 15, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_3, self.ConvertTime(0, 16, 20), self.ConvertTime(0, 18, 20), self.ConvertTime(0, 21, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_4, self.ConvertTime(0, 22, 00), self.ConvertTime(0, 24, 20), self.ConvertTime(0, 27, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_5, self.ConvertTime(0, 28, 20), self.ConvertTime(0, 30, 20), self.ConvertTime(0, 33, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_6, self.ConvertTime(0, 34, 20), self.ConvertTime(0, 36, 20), self.ConvertTime(0, 39, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_7, self.ConvertTime(0, 40, 20), self.ConvertTime(0, 42, 20), self.ConvertTime(0, 45, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowTree.looker_slideshowTree_8, self.ConvertTime(0, 46, 20), self.ConvertTime(0, 49, 20), self.ConvertTime(0, 53, 50)));
+                        self.playList.Add(new SlideShow.Scene(MenuScene.SceneID.Empty, self.ConvertTime(0, 56, 0), 0f, 0f));
+                    }
+                    else if (slideShowID == LookerEnums.looker_slideshowWeaver)
+                    {
+                        self.processAfterSlideShow = ProcessManager.ProcessID.MainMenu;
+                        if (self.manager.musicPlayer != null)
+                        {
+                            self.waitForMusic = "RW_Intro_Theme";
+                            self.stall = true;
+                            self.manager.musicPlayer.MenuRequestsSong(self.waitForMusic, 1.5f, 0f);
+                        }
+                        self.playList.Add(new SlideShow.Scene(MenuScene.SceneID.Empty, 0f, 0f, 0f));
+
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_1, self.ConvertTime(0, 0, 20), self.ConvertTime(0, 3, 20), self.ConvertTime(0, 7, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_2, self.ConvertTime(0, 8, 20), self.ConvertTime(0, 11, 20), self.ConvertTime(0, 15, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_3, self.ConvertTime(0, 16, 20), self.ConvertTime(0, 18, 20), self.ConvertTime(0, 21, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_4, self.ConvertTime(0, 22, 00), self.ConvertTime(0, 24, 20), self.ConvertTime(0, 27, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_5, self.ConvertTime(0, 28, 20), self.ConvertTime(0, 30, 20), self.ConvertTime(0, 33, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_6, self.ConvertTime(0, 34, 20), self.ConvertTime(0, 36, 20), self.ConvertTime(0, 39, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_7, self.ConvertTime(0, 40, 20), self.ConvertTime(0, 42, 20), self.ConvertTime(0, 45, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_8, self.ConvertTime(0, 46, 20), self.ConvertTime(0, 48, 20), self.ConvertTime(0, 51, 50)));
+                        self.playList.Add(new SlideShow.Scene(LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_9, self.ConvertTime(0, 52, 20), self.ConvertTime(0, 55, 20), self.ConvertTime(0, 59, 50)));
+                        self.playList.Add(new SlideShow.Scene(MenuScene.SceneID.Empty, self.ConvertTime(1, 02, 0), 0f, 0f));
+                    }
+                });
+            }
+            else Plugin.Log.LogError("SlideShow_ctor FAIULRE" + il);
+        }
+
         public static void MenuScene_ctor(On.Menu.MenuScene.orig_ctor orig, MenuScene self, Menu.Menu menu, MenuObject owner, MenuScene.SceneID sceneID)
         {
             orig(self, menu, owner, sceneID);
@@ -452,6 +647,41 @@ namespace Looker
             else if (sceneID == LookerEnums.looker_ending2) BuildMaskEnding(self);
             else if (sceneID == LookerEnums.looker_ending3) BuildLinkEnding(self);
             else if (sceneID == LookerEnums.looker_ending4) BuildPuzzleEnding(self);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_1) BuidlSlideShowScene(self, 1, 1);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_2) BuidlSlideShowScene(self, 1, 2);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_3) BuidlSlideShowScene(self, 1, 3);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_4) BuidlSlideShowScene(self, 1, 4);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_5) BuidlSlideShowScene(self, 1, 5);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_6) BuidlSlideShowScene(self, 1, 6);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_7) BuidlSlideShowScene(self, 1, 7);
+            else if (sceneID == LookerEnums.LookerSlideShowTree.looker_slideshowTree_8) BuidlSlideShowScene(self, 1, 8);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_1) BuidlSlideShowScene(self, 2, 1);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_2) BuidlSlideShowScene(self, 2, 2);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_3) BuidlSlideShowScene(self, 2, 3);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_4) BuidlSlideShowScene(self, 2, 4);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_5) BuidlSlideShowScene(self, 2, 5);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_6) BuidlSlideShowScene(self, 2, 6);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_7) BuidlSlideShowScene(self, 2, 7);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_8) BuidlSlideShowScene(self, 2, 8);
+            else if (sceneID == LookerEnums.LookerSlideShowWeaver.looker_slideshowWeaver_9) BuidlSlideShowScene(self, 2, 9);
+        }
+
+        public static void BuidlSlideShowScene(MenuScene self, int identifier, int index)
+        {
+            self.sceneFolder = "scenes/treescene - looker"; // failsafe
+            if (identifier == 1) self.sceneFolder = "scenes/treescene - looker";
+            else if (identifier == 2) self.sceneFolder = "scenes/weaverscene - looker";
+            string filename = Directory.GetFiles(AssetManager.ResolveDirectory(self.sceneFolder)).FirstOrDefault(file => Path.GetFileName(file).StartsWith(index.ToString()));
+
+            if (filename != null)
+            {
+                string name = Path.GetFileNameWithoutExtension(filename);
+                self.AddIllustration(new MenuIllustration(self.menu, self, self.sceneFolder, name, new Vector2(683f, 384f), crispPixels: false, anchorCenter: true));
+            }
+            else
+            {
+                Plugin.Log.LogError($"Couldn't find {filename} in {self.sceneFolder}");
+            }
         }
 
         public static void BuildBathEnding(MenuScene self)
