@@ -1,39 +1,11 @@
-﻿using BepInEx;
-using BepInEx.Logging;
-using Looker.CWTs;
+﻿using Looker.CWTs;
 using Looker.Regions;
-using Menu.Remix.MixedUI;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using MonoMod.RuntimeDetour;
-using MoreSlugcats;
-using Music;
-using Newtonsoft.Json.Linq;
 using RWCustom;
-using SlugBase;
-using SlugBase.Features;
 using Smoke;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Diagnostics.Eventing.Reader;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Cryptography;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Playables;
 using Watcher;
 using static Looker.Plugin;
-using static SlugBase.Features.FeatureTypes;
 
 namespace Looker
 {
@@ -53,7 +25,13 @@ namespace Looker
 
         public static bool CanSee_VoidSpawn(Func<SaveState, bool> orig, SaveState self)
         {
-            return orig(self) || (self.saveStateNumber == LookerEnums.looker);
+            return orig(self) || (self?.saveStateNumber == LookerEnums.looker);
+        }
+
+        public static bool RippleEggHidden(Func<VoidSpawnEgg, bool> orig, VoidSpawnEgg self)
+        {
+            if (self?.room?.game != null && self.room.game.IsStorySession && self.room.game.StoryCharacter == LookerEnums.looker) return false;
+            return orig(self);
         }
 
         public static float PlayerRippleLevel(Func<Player, float> orig, Player self)

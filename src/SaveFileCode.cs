@@ -1,37 +1,5 @@
-﻿using BepInEx;
-using BepInEx.Logging;
-using Fisobs.Core;
-using Menu.Remix.MixedUI;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using MonoMod.RuntimeDetour;
-using MoreSlugcats;
-using Music;
-using Newtonsoft.Json.Linq;
-using RWCustom;
-using SlugBase;
-using SlugBase.Features;
-using SlugBase.SaveData;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Globalization;
-using System.IO;
+﻿using SlugBase.SaveData;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Net.NetworkInformation;
-using System.Reflection;
-using System.Runtime;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Cryptography;
-using System.Security.Permissions;
-using System.Threading;
-using UnityEngine;
-using UnityEngine.Playables;
-using Watcher;
-using static SlugBase.Features.FeatureTypes;
-using static SlugBase.SaveData.SlugBaseSaveData;
 using static Looker.Plugin;
 
 namespace Looker

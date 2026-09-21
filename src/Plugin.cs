@@ -8,6 +8,7 @@ using lsfUtils;
 using lsfUtils.CWTs;
 using Menu;
 using Menu.Remix.MixedUI;
+using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
@@ -26,7 +27,7 @@ using UnityEngine;
 using Watcher;
 
 #pragma warning disable CS0618
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+[assembly: SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification = true)]
 #pragma warning restore CS0618
 
 
@@ -415,6 +416,7 @@ namespace Looker
                     new Hook(typeof(Player).GetProperty(nameof(Player.maxRippleLevel)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.PlayerMaxRippleLevel)));
 
                     new Hook(typeof(SaveState).GetProperty(nameof(SaveState.CanSeeVoidSpawn)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.CanSee_VoidSpawn)));
+                    new Hook(typeof(VoidSpawnEgg).GetProperty(nameof(VoidSpawnEgg.RippleEggHidden)).GetGetMethod(), typeof(Plugin).GetMethod(nameof(LPlayer_Flower.RippleEggHidden)));
 
                     new Hook(typeof(Player).GetProperty(nameof(Player.VisibilityBonus)).GetGetMethod(), typeof(LPlayer_Flower).GetMethod(nameof(LPlayer_Flower.Visibility_Bonus)));
                     //new Hook(typeof(Player).GetProperty(nameof(Player.gravity)).GetGetMethod(), typeof(Plugin).GetMethod(nameof(Plugin.OverrideGravity)));
