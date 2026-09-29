@@ -239,6 +239,8 @@ namespace Looker
 
             OptionsMenu.nonLethalBorders.Value = true;
 
+            OptionsMenu.slipperyWalls.Value = false;
+
             OptionsMenu.constantShelters.Value = true;
 
             OptionsMenu.lizardsCanLeap.Value = false;
@@ -269,6 +271,8 @@ namespace Looker
             OptionsMenu.lessEvilLightnings.Value = true;
             OptionsMenu.lightningSpawnSpeed.Value = 0.7f;
 
+            OptionsMenu.fireProtection.Value = true;
+
             OptionsMenu.melonCooldown.Value = 1.5f;
 
             OptionsMenu.easierFinale.Value = true;
@@ -292,6 +296,8 @@ namespace Looker
             OptionsMenu.controlAnnouncement.Value = false;
 
             OptionsMenu.nonLethalBorders.Value = false;
+
+            OptionsMenu.slipperyWalls.Value = false;
 
             OptionsMenu.constantShelters.Value = false;
 
@@ -323,6 +329,8 @@ namespace Looker
             OptionsMenu.lessEvilLightnings.Value = false;
             OptionsMenu.lightningSpawnSpeed.Value = 1f;
 
+            OptionsMenu.fireProtection.Value = false;
+
             OptionsMenu.melonCooldown.Value = 1f;
 
             OptionsMenu.easierFinale.Value = false;
@@ -346,6 +354,8 @@ namespace Looker
             OptionsMenu.controlAnnouncement.Value = false;
 
             OptionsMenu.nonLethalBorders.Value = false;
+
+            OptionsMenu.slipperyWalls.Value = true;
 
             OptionsMenu.constantShelters.Value = false;
 
@@ -376,6 +386,8 @@ namespace Looker
 
             OptionsMenu.lessEvilLightnings.Value = false;
             OptionsMenu.lightningSpawnSpeed.Value = 1.5f;
+
+            OptionsMenu.fireProtection.Value = false;
 
             OptionsMenu.melonCooldown.Value = 0.7f;
 

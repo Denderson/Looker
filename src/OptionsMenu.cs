@@ -129,7 +129,7 @@ namespace Looker
             nonLethalBorders = config.Bind("looker_nonLethalBorders", false, new ConfigurableInfo("Screen borders will push you back instead of killing you"));
 
             //ware
-
+            slipperyWalls = config.Bind("looker_slipperyWalls", false, new ConfigurableInfo("Walls become slippery too, making walljumps impossible"));
 
             //warf
             constantShelters = config.Bind("looker_constantShelters", false, new ConfigurableInfo("Disables the shelter randomisation mechanic"));
@@ -179,6 +179,9 @@ namespace Looker
             lessEvilLightnings = config.Bind("looker_lessEvilLightnings", false, new ConfigurableInfo("Lightnings no longer prioritise Looker"));
             lightningSpawnSpeed = config.Bind("looker_lightningSpawnSpeed", 1f, new ConfigurableInfo("Determines the speed at which lightning bolts appear"));
 
+            //wtda
+            fireProtection = config.Bind("looker_fireProtection", false, new ConfigurableInfo("Flames and burning become less lethal"));
+
             //wtdb
             bouncierMelons = config.Bind("looker_bouncierMelons", true, new ConfigurableInfo("Melons bounce when they should break"));
             legacyMelons = config.Bind("looker_legacyMelons", false, new ConfigurableInfo("Makes melons FAR more difficult and chaotic"));
@@ -206,10 +209,10 @@ namespace Looker
             Color desalinationColor = new(0.42f, 0.56f, 0.7f);
             Color fetidGlenColor = new(0.78f, 0.47f, 0.25f);
             Color coldStorageColor = new(0.49f, 0.33f, 0.79f);
-            //Color heatDuctsColor = new(f,f,f);
+            Color heatDuctsColor = new(0.78f, 0.36f, 0.37f);
             Color aetherRidgeColor = new(0.58f, 0.65f, 0.78f);
             Color theSurfaceColor = new(0.62f, 0.5f, 0.47f);
-            //Color badlandsColor = new(f,f,f);
+            //Color badlandsColor = new(0.95f, 0.85f, 0.61f);
             Color migrationPathColor = new(0.7f, 0.55f, 0.53f);
             Color pillarGroveColor = new(0.28f, 0.85f, 0.66f);
             Color signalSpiresColor = new(0.89f, 0.51f, 0.69f);
@@ -219,15 +222,15 @@ namespace Looker
             Color torrentialRailwaysColor = new(0.62f, 0.66f, 0.7f);
             Color sunbakedAlleyColor = new(0.95f, 0.72f, 0.74f);
             Color stormyCoastColor = new(0.62f, 0.62f, 0.7f);
-            //Color shroudedStacksColor = new(f,f,f);
-            //Color torridDesertColor = new(f,f,f);
+            //Color shroudedStacksColor = new(0.89f, 0.93f, 0.93f);
+            Color torridDesertColor = new(0.88f, 0.68f, 0.53f);
             Color desolateTractColor = new(0.69f, 0.7f, 0.67f);
             Color verdantWaterwaysColor = new(0.59f, 0.65f, 0.42f);
-            //Color fracturedGatewaysColor = new(f,f,f);
+            //Color fracturedGatewaysColor = new(f, f, f);
             Color shatteredTerraceColor = new(0.93f, 0.82f, 0.57f);
-            //Color ancientUrbanColor = new(f,f,f);
+            //Color ancientUrbanColor = new(0.78f, 0.69f, 0.62f);
             //Color rottenRegionColor = RainWorld.RippleGold;
-            //Color outerRimColor = new(f,f,f);
+            //Color outerRimColor = new(0.62f, 0.56f, 0.78f);
 
             // Tab 1
             UIelement[] UIArrayElements =
@@ -277,17 +280,21 @@ namespace Looker
                 Label("Non lethal borders", 1, 2, coldStorageColor),
                 CheckBox(nonLethalBorders, 1, 2, coldStorageColor),
 
-                RegionLabel("Aether Ridge", 3, aetherRidgeColor),
-                Label("Constant Shelters", 0, 3, aetherRidgeColor),
-                CheckBox(constantShelters, 0, 3, aetherRidgeColor),
+                RegionLabel("Heat Ducts", 3, heatDuctsColor),
+                Label("Slippery walls", 0, 3, heatDuctsColor),
+                CheckBox(slipperyWalls, 0, 3, heatDuctsColor),
 
-                RegionLabel("The Surface", 4, theSurfaceColor),
-                Label("Lizards can leap", 0, 4, theSurfaceColor),
-                CheckBox(lizardsCanLeap, 0, 4, theSurfaceColor),
-                Label("Lizards can shield", 1, 4, theSurfaceColor),
-                CheckBox(lizardsCanShield, 1, 4, theSurfaceColor),
-                SliderLabel("Stronger lizard chance", 4, theSurfaceColor),
-                new OpSlider(strongerLizardChance, new Vector2(0, 140), 100){min = 0, max = 100, description = OptionsMenu.strongerLizardChance.info.description, colorEdge = theSurfaceColor, colorLine = theSurfaceColor},
+                RegionLabel("Aether Ridge", 4, aetherRidgeColor),
+                Label("Constant Shelters", 0, 4, aetherRidgeColor),
+                CheckBox(constantShelters, 0, 4, aetherRidgeColor),
+
+                RegionLabel("The Surface", 5, theSurfaceColor),
+                Label("Lizards can leap", 0, 5, theSurfaceColor),
+                CheckBox(lizardsCanLeap, 0, 5, theSurfaceColor),
+                Label("Lizards can shield", 1, 5, theSurfaceColor),
+                CheckBox(lizardsCanShield, 1, 5, theSurfaceColor),
+                SliderLabel("Stronger lizard chance", 5, theSurfaceColor),
+                new OpSlider(strongerLizardChance, new Vector2(0, 60), 100){min = 0, max = 100, description = OptionsMenu.strongerLizardChance.info.description, colorEdge = theSurfaceColor, colorLine = theSurfaceColor},
             ];
             Tabs[1].AddItems(UIArrayElements);
 
@@ -365,17 +372,21 @@ namespace Looker
                 SliderLabel("Lightning spawn rate", 2, stormyCoastColor),
                 LookerFloatSlider(lightningSpawnSpeed, 2, 3, stormyCoastColor),
 
-                RegionLabel("Desolate Tract", 3, desolateTractColor),
-                Label("Bouncier melons", 0, 3, desolateTractColor),
-                CheckBox(bouncierMelons, 0, 3, desolateTractColor),
-                Label("Legacy melons", 1, 3, desolateTractColor),
-                CheckBox(legacyMelons, 1, 3, desolateTractColor),
-                SliderLabel("Melon cooldown", 3, desolateTractColor),
-                LookerFloatSlider(melonCooldown, 3, 3, desolateTractColor),
+                RegionLabel("Torrid Desert", 3, torridDesertColor),
+                Label("Fire protection", 0, 3, unfinishedColor),
+                CheckBox(fireProtection, 0, 3, unfinishedColor),
 
-                RegionLabel("Verdant Waterways", 4, verdantWaterwaysColor),
-                Label("Acid protection", 0, 4, verdantWaterwaysColor),
-                CheckBox(acidProtection, 0, 4, verdantWaterwaysColor)
+                RegionLabel("Desolate Tract", 4, desolateTractColor),
+                Label("Bouncier melons", 0, 4, desolateTractColor),
+                CheckBox(bouncierMelons, 0, 4, desolateTractColor),
+                Label("Legacy melons", 1, 4, desolateTractColor),
+                CheckBox(legacyMelons, 1, 4, desolateTractColor),
+                SliderLabel("Melon cooldown", 4, desolateTractColor),
+                LookerFloatSlider(melonCooldown, 4, 3, desolateTractColor),
+
+                RegionLabel("Verdant Waterways", 5, verdantWaterwaysColor),
+                Label("Acid protection", 0, 5, verdantWaterwaysColor),
+                CheckBox(acidProtection, 0, 5, verdantWaterwaysColor)
             ];
             Tabs[3].AddItems(UIArrayElements);
 
@@ -412,8 +423,8 @@ namespace Looker
 
                 new OpLabel(0, 450 - _creditsY * 25, "Special thanks to people who helped develop the mod!", true),
 
-                CreditsLabel("The Local Group for custom Looker threat music", 0, 4),
-                CreditsLabel("FrogTurtle56 for custom Looker sleep screen", 0, 2),
+                //CreditsLabel("The Local Group for custom Looker threat music", 0, 4),
+                CreditsLabel("FrogTurtle56 for custom Looker sleep screen", 0, 4),
                 CreditsLabel("Pebbel for server organising and Playtesting", 0, 2),
                 CreditsLabel("Meme for pearl writing and Playtesting", 0, 2),
                 CreditsLabel("hamborgirl :3 for the thumbnail and ending arts", 0, 2)
@@ -444,7 +455,7 @@ namespace Looker
             emergencyBreath, //desalination
             stableMovement, controlAnnouncement, //fetid glen
             normalGravity, nonLethalBorders, //cold storage
-                           //heat ducts
+            slipperyWalls, //heat ducts
             constantShelters, //aether ridge
             lizardsCanLeap, lizardsCanShield, //the surface
             weakerCopies, legacyChaser, //migration path
@@ -456,6 +467,7 @@ namespace Looker
                            //torrential railways
             weakerDarkness, resetDarkness, //sunbaked alley
             smallerLightnings, lessEvilLightnings, //stormy coast
+            fireProtection, //torrid desert
             bouncierMelons, legacyMelons, //desolate tract
             acidProtection, //verdant waterways
             easierFinale, //shattered terrace

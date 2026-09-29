@@ -1,0 +1,15 @@
+Template: NONE
+DangerType: AerieBlizzard
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Grime: 0
+Palette: 81
+EffectColorA: 11
+EffectColorB: 12
+Effects: Hue-0-116.8278-116.2582, 
+PlacedObjects: LightSource><492.6655><351.1074><0.03419893~EffectColor2~-1389.194~-734.4278~370.6709~-443.1025~1~1~None~0~0, SlipperyZone><318.1899><284.4375><-285~62~18^14~0.09782609~False~True, ClimbablePoleH><492.9031><445.4249><0^0, ClimbablePoleH><492.5776><497.3985><0^0, NoWallSlideZone><383.946><296.5574><219~257, ConditionalFilter><389.3158><299.172><100~50~LookerSlip~18^-1, 
+AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><449.6503><61.70226><0.2090215><1, 
+FadePalette: 35787, 0.8000153

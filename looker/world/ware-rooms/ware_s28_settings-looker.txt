@@ -1,0 +1,14 @@
+Template: NONE
+DangerType: AerieBlizzard
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Grime: 0
+Palette: 81
+EffectColorA: 20
+EffectColorB: 12
+Effects: Hue-0-31.96109-97.46224, 
+PlacedObjects: LightSource><451.9522><343.2889><0.03419826~EffectColor2~-1335.084~688.3713~424.2109~-443.6721~0~1~None~0~0, SlipperyZone><290.4493><237.5166><-282~45~17^12~0.09782609~False~True, NoWallSlideZone><310.5141><240.6995><244~225, ConditionalFilter><321.7539><244.2><-195~79~LookerSlip~22^3, 
+FadePalette: 35787, 0.8000152

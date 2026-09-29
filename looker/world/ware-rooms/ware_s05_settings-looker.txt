@@ -1,0 +1,17 @@
+Template: NONE
+DangerType: AerieBlizzard
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0
+Grime: 0
+RandomItemDensity: 0
+RandomItemSpearChance: 0
+Palette: 81
+EffectColorB: 12
+Effects: Hue-0-56.06134-70.7146, 
+PlacedObjects: LightSource><460.4041><353.8208><0.02188044~EffectColor2~-1353~-769~-180.678~-313.8089~0~1~None~0~0, CustomDecal><-192.3126><-50.43024><1~763~1350~762~1348~0~-209~-282~0~1~0~dirtywaterline~0.3043478~1~0.3043478~1~0.3043478~1~0.3043478~1, SlipperyZone><298.6036><250.6363><100~50~15^8~0.09782609~False~True, NoWallSlideZone><310.1235><290.8427><216~110, ConditionalFilter><317.449><292.77><100~50~LookerSlip~29^1, 
+AmbientSounds: OMNI><AM_IND-Fabrik01.ogg><356.445><28.69229><0.5><0.3543478, OMNI><AM_ENV-SubTerr.ogg><541.511><32.69971><0.1521739><1, OMNI><Deep Weird Wind.wav><728.5717><34.93671><0.05434782><1.9, 
+FadePalette: 35787, 0.8043478

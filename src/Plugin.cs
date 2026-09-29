@@ -25,7 +25,6 @@ using Newtonsoft.Json.Linq;
 using RWCustom;
 using SlugBase.SaveData;
 using UnityEngine;
-using UnityEngine.UI;
 using Watcher;
 
 #pragma warning disable CS0618
@@ -233,7 +232,7 @@ namespace Looker
         public static string delayedTutorial = null;
         public static bool shownPopupMenu = false;
 
-        public static readonly Color BoxWormColor = new(0.63f, 0.5f, 0.5f);
+        //public static readonly Color BoxWormColor = new(0.63f, 0.5f, 0.5f);
         public static readonly EntityID SpecialId = new(1, -50);
         public static SlideShow.SlideShowID endingToTrigger = null;
 
@@ -423,8 +422,8 @@ namespace Looker
 
                     On.Watcher.LightningMaker.StrikeAOE.ctor += LMisc.StrikeAOE_ctor;
 
-                    On.Watcher.BoxWormGraphics.BaseColor_AbstractRoom += LMisc.BoxWormGraphics_BaseColor_AbstractRoom;
-                    On.Watcher.BoxWormGraphics.BaseColor_Room += LMisc.BoxWormGraphics_BaseColor_Room;
+                    //On.Watcher.BoxWormGraphics.BaseColor_AbstractRoom += LMisc.BoxWormGraphics_BaseColor_AbstractRoom;
+                    //On.Watcher.BoxWormGraphics.BaseColor_Room += LMisc.BoxWormGraphics_BaseColor_Room;
 
                     On.Watcher.LethalThunderStorm.GetLethalDelay += LMisc.LethalThunderStorm_GetLethalDelay;
                     On.Watcher.LightningMaker.StaticBuildup.GetBestTarget += LMisc.StaticBuildup_GetBestTarget;

@@ -61,6 +61,11 @@ namespace Looker
                             result = !OptionsMenu.noSkyWhales.Value;
                             break;
                         }
+                    case "lookerslip":
+                        {
+                            result = OptionsMenu.slipperyWalls.Value;
+                            break;
+                        }
                     case "lookermask":
                         {
                             result = SaveFileCode.GetBool(game.GetStorySession.saveState, "ReachedThrone");

@@ -1,0 +1,16 @@
+Template: NONE
+DangerType: AerieBlizzard
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.1086956
+Grime: 0
+Palette: 80
+EffectColorA: 11
+EffectColorB: 12
+Effects: Fog-1-20-20, Flies-0.1521739-280-20, 
+PlacedObjects: CustomDecal><219.4343><201.1722><38~462~562~308~473~-26~-549~-540~0~1~0~greybones~0.2065217~1~0.2065217~1~0.2065217~1~0.2065217~1, CustomDecal><218.0535><199.2873><37~468~556~340~475~-26~-508~-538~0~1~0~dirtywaterline~0.3043478~1~0.3043478~1~0.3043478~1~0.3043478~1, LightSource><360.3043><600.2089><0.2717391~EffectColor2~7~-41~50~86.60254~0~0~None~0~0, LightSource><360.0238><599.1986><0.0326087~EffectColor2~0~100~100~-15.39746~0~1~None~0~0, LightSource><330.6968><531.4641><0.3043478~EffectColor2~-5~-11~249.975~-665.2495~0~0~None~0~0, LightSource><486.6472><344.9215><0.0661568~EffectColor2~1364~771~383.6472~-484.7552~0~1~None~0~0, ReliableSpear><441.16><293.6786><, SlimeMold><615.8713><318.4089><0~0~2~3, SlimeMold><530.8132><342.1783><0~0~2~3, SlimeMold><385.6501><317.6179><0~0~2~3, SlimeMold><424.5512><312.4774><0~0~2~3, CosmeticSlimeMold2><497.46><282.3528><-2~76, CosmeticSlimeMold><609.5507><320.9838><0~100, SlipperyZone><182.4975><183.3724><-328~71.99998~31^19~0.098936~False~True, NoWallSlideZone><253.2623><228.6064><468~355, ConditionalFilter><258.441><228.806><100~50~LookerSlip~16^0, 
+AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><511.573><43.65689><0.2065217><1, OMNI><AM_IND-Fabrik01.ogg><319.0981><38.67429><0.5><0.3543478, OMNI><SO_SFX-Morse.ogg><127.946><37.46054><0.04347826><1.9, OMNI><SO_IND-HeatDuct.ogg><873.6215><43.34109><0.1521739><1, OMNI><Deep Weird Wind.wav><131.8391><117.3812><0.0326087><1.9, 
+FadePalette: 35787, 0.8043478

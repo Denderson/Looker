@@ -506,7 +506,7 @@ namespace Looker.Regions
                 }
             }
         }
-        public static Color BoxWormGraphics_BaseColor_Room(On.Watcher.BoxWormGraphics.orig_BaseColor_Room orig, Room room)
+        /*public static Color BoxWormGraphics_BaseColor_Room(On.Watcher.BoxWormGraphics.orig_BaseColor_Room orig, Room room)
         {
             if (room.game.IsStorySession && room.world.game.GetStorySession.characterStats.name == LookerEnums.looker && room.world.name == "WTDA")
             {
@@ -522,7 +522,7 @@ namespace Looker.Regions
                 return BoxWormColor;
             }
             return orig(room);
-        }
+        }*/
 
         public static void RainCycle_Update(On.RainCycle.orig_Update orig, RainCycle self)
         {

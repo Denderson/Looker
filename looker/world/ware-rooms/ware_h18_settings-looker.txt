@@ -1,0 +1,16 @@
+Template: NONE
+DangerType: AerieBlizzard
+WaveSpeed: 0.5
+WaveLength: 0.75
+WaveAmplitude: 0.04999999
+SecondWaveLength: 0.1666667
+SecondWaveAmplitude: 0
+Clouds: 0.1086956
+Grime: 0
+Palette: 81
+EffectColorA: 11
+EffectColorB: 12
+Effects: Fog-1-20-20, Flies-0.1847826-277-17, 
+PlacedObjects: CustomDecal><301.4205><106.9336><51~528~292~534~367~-19~-668~-453~0~1~0~dirtywaterline~0.3043478~1~0.3043478~1~0.3043478~1~0.3043478~1, CustomDecal><357.4052><164.9261><70~475~199~302~266~108~-759~-478~0~1~0~greybones~0.1086956~1~0.1086956~1~0.1086956~1~0.1086956~1, LightSource><929.3835><333.6011><0.05434782~EffectColor2~-1340~751~-17~-305.3975~0~1~None~0~0, LightSource><21.19873><342.7728><0.05434782~EffectColor2~1357~745~873~-385.3975~0~1~None~0~0, LightSource><468.7664><367.0507><0.0326087~Environment~264~166~156~-410.3975~1~0~None~0~0, LightSource><471.5171><251.4493><1~EffectColor2~69~-5~-597.192~223.1767~0~0~None~0~0, LightSource><474.8639><329.3965><0.5~EffectColor2~27~47~-563.691~-20.63327~0~0~None~0~0, SlipperyZone><310.5848><87.61284><100~50~16^26~0.09782609~False~True, NoWallSlideZone><388.4237><169.0991><210~431, ConditionalFilter><391.4011><171.3262><100~50~LookerSlip~17^-3, 
+AmbientSounds: OMNI><AM_ENV-SubTerr.ogg><504.4132><28.13437><0.2065217><1, OMNI><AM_IND-Fabrik01.ogg><312.1368><26.6041><0.5><0.3543478, OMNI><SO_IND-HeatDuct.ogg><123.1453><24.32961><0.1521739><1, SPOT><RWTW_AR_Heater.ogg><736.3157><474.4389><0.08695652><0.8826087><471.3157><255.4389><-49.35535><-44.35535><0><0.154348, 
+FadePalette: 35787, 0.8043478
